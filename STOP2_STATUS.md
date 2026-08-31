@@ -9,7 +9,8 @@ real data."*
 delay.** This document says what was built, what was measured, and what
 specifically blocks the number the gate asks for.
 
-Written 31 August 2026.
+Written 31 August 2026. **Updated 1 September 2026** with the outcome; see the
+closing section.
 
 ---
 
@@ -158,3 +159,48 @@ attached to the second.
 
 If the GPU host slips past roughly 15 September, plan section 10's buffer
 discipline applies: cut Arms C and D, and go deep on Arm B.
+
+
+---
+
+## 10. Outcome, added 1 September 2026
+
+The gate could not be evaluated as specified, and the case was solved anyway.
+Both facts belong here.
+
+**The answer is a `BUB1B` compound heterozygote**: `chr15:40209701 T>G`
+(p.Leu737Ter, ClinVar VCV000533901.9, Pathogenic/Likely pathogenic for MVA1)
+with `chr15:40220612 T>G` (p.Asn1002Lys, novel, absent from gnomAD).
+
+### What this says about the gate
+
+Section 1 argued that a recall figure computed on the 108 available positives
+would be dominated by nonsense and frameshift variants and would say nothing
+about finding a cryptic allele. That reasoning was sound but the conclusion drawn
+from it was too pessimistic in one direction and too optimistic in another.
+
+**Too pessimistic:** the benchmark's bias towards nonsense and frameshift
+positives turned out to match the actual answer. One of the two causal alleles
+is a nonsense variant, exactly the class the benchmark over-represents. A recall
+figure on that set would have been more informative about this case than
+predicted.
+
+**Too optimistic:** the missing classes were assumed to matter because the
+cryptic-allele hypothesis was ranked highest. It was wrong. The second allele is
+an ordinary novel missense, and the benchmark contains only three missense
+positives. So the benchmark was unrepresentative, but not in the direction the
+analysis expected.
+
+### What the blocked annotators cost
+
+Section 4 listed VEP, gnomAD and SpliceAI as blocking a real recall figure. Two
+of the three turned out not to need a GPU at all, only a route around a large
+download: gnomAD frequencies came from remote tabix range requests against the
+public per-chromosome sites files, and consequence annotation from VEP 116.1 on
+a cluster node. **gnomAD alone reduced 415 scored variants in the known MVA genes
+to 12, both causal alleles among them.** Consequence annotation was needed to
+rank those 12, not to find them.
+
+The honest summary is that the population-frequency filter did the work, the
+consequence annotation did the ranking, and the splicing arm, which the plan
+ranked highest, contributed a reported negative.

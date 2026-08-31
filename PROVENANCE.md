@@ -72,6 +72,27 @@ Raw response preserved at `results/recon/ensembl_mva_genes.json`.
 TODO(source): Ensembl release number was not captured in the response body.
 Record it before the coordinates are used in any published table.
 
+## 4a. Analysis tooling on the compute node, 1 September 2026
+
+| Tool | Version | Role |
+|---|---|---|
+| Ensembl VEP | 116.1, merged cache, GRCh38 | Consequence annotation over all 5,012,204 records |
+| bwa-mem2 | 2.3 | FASTQ to BAM, 4 lanes, 14 threads, 4h10m |
+| samtools / bcftools / htslib | 1.24 | Sorting, duplicate marking, pileup, region queries |
+| mosdepth | 0.3.14 | Panel coverage |
+| SpliceAI | 1.3.1 | Splicing prediction, with a documented NumPy 2 compatibility shim |
+| Reference (alignment and VEP) | Ensembl 115 GRCh38 primary assembly, no-chr naming | Matches the callset convention |
+| gnomAD | v4.1 exomes and genomes sites, remote tabix slices | Allele frequency and homozygote counts |
+| gnomAD constraint | v4.1 (autosomes), v2.1.1 (chrX/Y, which v4.1 omits) | Gene constraint |
+
+**Reference deviation, stated because it affects reproducibility.** The upstream
+callset was produced against a DNAnexus-specific reference
+(`GCA_000001405.15_GRCh38_no_alt_analysis_set_plus_hs38d1_maskedGRC_exclusions_v2_no_chr`).
+That exact file is not publicly pinnable, so our alignment used the Ensembl 115
+primary assembly. Both are GRCh38 primary assembly so coordinates are unaffected,
+but the two differ in masked regions and decoy content, and our BAM is therefore
+not bit-identical to the one that produced the supplied VCF.
+
 ## 5. Databases not yet snapshotted
 
 Phase 1 work. Each needs a version and a snapshot date in

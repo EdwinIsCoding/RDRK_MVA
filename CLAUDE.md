@@ -33,6 +33,20 @@ is complete; its findings are in `DATA_CARD.md` and `RECON.md`.
 8. **No `Co-Authored-By` trailer and no Claude attribution** in commit messages
    or pull request bodies.
 
+## The answer (established 1 September 2026)
+
+`BUB1B` compound heterozygote causing MVA1 (OMIM 257300):
+`chr15:40209701 T>G` p.Leu737Ter (ClinVar VCV000533901.9, Pathogenic/Likely
+pathogenic) with `chr15:40220612 T>G` p.Asn1002Lys (novel, absent from gnomAD).
+Both read-level verified: VAF 0.553 and 0.444, strand balanced, MAPQ 60.
+Phase is **inferred, not demonstrated**: 10,911 bp apart, no PGT/PID phasing
+group. Secondary finding: `LZTR1` chr22:20996720 p.Tyr748Ter, ClinVar
+VCV001409252.7.
+
+Track 1 is effectively complete. **The remaining work is the write-ups and
+Track 2**, where the competition actually is: 61 teams were already tied at a
+perfect Track 1 score before we submitted.
+
 ## What Phase 0 established (do not re-derive)
 
 - Singleton, `WGS_EX2312012`. No parents. De novo and segregation models are off.
@@ -42,7 +56,8 @@ is complete; its findings are in `DATA_CARD.md` and `RECON.md`.
   177,522 of them and is a search target, not noise.
 - `PGT`/`PID` physical phasing tags are present and are the only native phasing
   signal available.
-- No RNA-seq. No BAM or CRAM, but 84.7 GB of paired FASTQ across four lanes.
+- No RNA-seq. No BAM or CRAM shipped, but 84.7 GB of paired FASTQ; an alignment
+  was built from it on 1 September (61 GB BAM, bwa-mem2, 4h10m).
 - No karyotype, no aneuploidy percentage, one tissue.
 - Eight HPO terms, already coded by the organisers. No extraction needed.
 - No consanguinity: longest ROH-like run is 2 Mb across 2,777 windows.
