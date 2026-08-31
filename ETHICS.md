@@ -83,6 +83,13 @@ that patient data does not enter a hosted LLM API. This is an exception to that
 default, made deliberately and recorded here rather than taken silently. A
 reasonable person could set the line differently.
 
+**Status: confirmed by the project owner on 31 August 2026.** The decision was
+put to them explicitly, with the reversal procedure below, and they elected to
+keep it. The exception does not generalise: it covers the clinical phenotype
+document only, and CLAUDE.md rule 1 continues to bar patient *genomic* data from
+an LLM context. Analyses of the callset are performed by scripts, which write
+aggregate summaries; the summaries are what is read.
+
 **How to reverse it.** If the hackathon rules or the team's own judgement place
 the phenotype document off-limits to a hosted model, then: delete
 `results/recon/Challenge_Clinical_Phenotype_1.docx.md`, remove the `hpo_terms`
