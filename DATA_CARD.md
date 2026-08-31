@@ -134,12 +134,21 @@ challenge organisers. No free-text extraction or LLM normalisation is required.
 | `HP:0004322` | Short stature | Below expectation for age and family background |
 | `HP:0001508` | Failure to thrive | Documented repeatedly |
 | `HP:0003202` | Skeletal muscle atrophy | Reduced muscle bulk |
-| `HP:0001622` | Premature birth | 32 weeks gestation |
-| `HP:0001518` | Small for gestational age | Approximately 1 kg at birth, consistent with IUGR |
+| `HP:0001622` | Premature birth | (gestational age withheld, see note) |
+| `HP:0001518` | Small for gestational age | (birth weight withheld, see note) |
 | `HP:0200067` | Recurrent spontaneous abortion | Parental history, multiple losses before the proband |
 
 The organisers flag the parental reproductive loss as phenotypic input rather
 than background, and ask that the constellation be read as a whole.
+
+**Two values are deliberately withheld from this public repository**: the exact
+gestational age at birth and the approximate birth weight. The HPO terms above
+carry the full scientific content, and the organisers' own guidance lists HPO
+terms among the material participants may retain. The numeric specifics add
+re-identification surface without adding analytical value, and the Hackathon
+Rules require that nothing published could re-identify the patient or family
+beyond what the family have themselves made public. Both values are in the
+challenge phenotype document, available to any approved participant.
 
 ### Sex: male, determined from the callset
 
