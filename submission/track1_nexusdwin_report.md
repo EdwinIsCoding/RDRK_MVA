@@ -23,6 +23,28 @@
 
 Both fall on the MANE Select transcript `ENST00000287598.11`.
 
+**Independently verified at read level.** We aligned the raw FASTQ ourselves with
+`bwa-mem2` against GRCh38, producing a 61 GB BAM with duplicates marked. This is
+orthogonal to the supplied Sentieon callset, so agreement is confirmation rather
+than restatement.
+
+| | chr15:40209701 | chr15:40220612 |
+|---|---|---|
+| Depth (MQ>=20, BQ>=20) | 47 | 27 |
+| Ref / alt reads | 21 / 26 | 15 / 12 |
+| **VAF** | **0.553** | **0.444** |
+| Strand balance of alt reads | 15 fwd / 12 rev | 6 fwd / 10 rev |
+| Mean MAPQ of alt reads | **60.0** | **60.0** |
+
+Every indicator is what a true germline heterozygote looks like and none is what
+an artefact looks like. VAF near 0.5 excludes a mosaic fraction or low-level
+noise; balanced strands exclude the commonest false-positive signature; MAPQ 60
+on every alternate read excludes paralogue mis-mapping, which is the failure mode
+that matters most in a gene family context.
+
+Coverage across all nine known MVA genes is 42-51x against a genome mean of
+43.8x, so no causal allele is hiding in a coverage hole.
+
 **Interpretation.** Biallelic loss of function in `BUB1B` causes mosaic variegated
 aneuploidy syndrome 1 (OMIM 257300), an autosomal recessive chromosomal
 instability disorder. A premature termination codon at p.Leu737, already
@@ -124,6 +146,12 @@ prediction and never an observation of an aberrant junction.
 
 **Singleton.** No de novo calling, no segregation filtering, no parental phasing.
 
+**Structural variant calling and mosaic re-genotyping were not run.** The
+alignment that would support them was completed, and both arms are unblocked,
+but the compute booking closed before they were reached. They would extend the
+negative results rather than change the call: both causal alleles sit at VAF near
+0.5, so neither is mosaic, and coverage across the panel is uniform.
+
 **Missense pathogenicity rests on SIFT and PolyPhen-2 only.** AlphaMissense, CADD
 and REVEL were not available in this run.
 
@@ -179,10 +207,21 @@ phenotype, so a dual diagnosis or modifying contribution cannot be excluded on
 this data. It is not proposed as the primary cause; MVA1 explains the
 chromosomal instability presentation and the BUB1B pair is the better fit.
 
-Two homozygous loss-of-function calls absent from gnomAD (`PEX5`, `CTU2`) were
-**deliberately excluded**. A true homozygous PEX5 knockout causes Zellweger
-spectrum disease, which this child plainly does not have, so these are almost
-certainly mis-calls in repetitive sequence. Read-level verification is pending.
+Two homozygous loss-of-function calls absent from gnomAD (`PEX5` chr12:7190512,
+`CTU2` chr16:88714226) were **deliberately excluded**, and the reason we first
+gave for excluding them was wrong.
+
+We assumed they were mis-calls in repetitive sequence. The alignment contradicts
+that: `PEX5` has mean MAPQ 58.7 and `CTU2` 60.0, with zero multi-mapping reads at
+either. Both lie in uniquely mappable sequence.
+
+The clinical argument is untouched and is why they remain excluded: a genuine
+homozygous `PEX5` knockout causes Zellweger spectrum disease, which this child
+plainly does not have, so the call is likelier wrong than the gene. But *how* it
+is wrong is unresolved. `PEX5` shows 8 soft-clipped reads of 28, hinting at a
+structural feature the caller may have represented as a large homozygous
+deletion; `CTU2` shows none and is harder to dismiss. Both are recorded as open
+rather than settled.
 
 ---
 
