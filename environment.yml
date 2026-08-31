@@ -1,0 +1,56 @@
+# ---------------------------------------------------------------------------
+# MVA Hackathon 2026 - bioinformatics toolchain.
+#
+# Target platform is linux-64 (the RTX 6000 host). The recon host is
+# darwin-arm64 and cannot run several of these; see DATA_CARD.md section 7.
+#
+# Every version below was verified against the anaconda.org API on 2026-08-31
+# rather than recalled. Re-verify before changing one.
+#
+#   mamba env create -f environment.yml
+#   mamba env export --no-builds > environment.lock.yml   # commit the lock
+# ---------------------------------------------------------------------------
+name: mva2026
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+
+dependencies:
+  - python=3.11
+
+  # --- core VCF and alignment handling (all arms) ---
+  - bcftools=1.24
+  - samtools=1.24
+  - htslib=1.24
+  - bedtools=2.31.1
+  - mosdepth=0.3.14
+
+  # --- Arm A: annotation ---
+  - ensembl-vep=116.1
+  - gatk4=4.6.2.0
+
+  # --- Arm B: splicing. Highest priority arm, see RECON.md ---
+  - spliceai=1.3.1
+  # Pangolin is not on bioconda; installed from PyPI via pyproject.toml.
+
+  # --- alignment, needed before Arms C, D and F can run ---
+  - bwa-mem2=2.3
+  - fastp=1.3.6
+  - multiqc=1.35
+
+  # --- Arm C: structural variants ---
+  - manta=1.6.0
+  - delly=2.6.0
+  - survivor=1.0.7
+  - annotsv=3.5.10
+  - expansionhunter=5.0.0
+
+  # --- Arm E: phenotype-driven prioritisation ---
+  # Exomiser is distributed as a JAR plus a large data bundle; the conda
+  # package is the REST prioritiser only. See config/db_versions.yaml.
+  - openjdk=21
+
+  # --- workflow ---
+  - snakemake-minimal=8.25.5
+  - pip

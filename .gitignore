@@ -92,3 +92,13 @@ Thumbs.db
 .env.*
 *.key
 *.pem
+
+# Caches redirected off the internal disk (see .envrc)
+.cache/
+.tmp/
+
+# Regenerable downloads and raw API dumps. Not patient data, just large.
+# benchmarks/*.tsv (the derived artefacts) ARE tracked; these are not.
+benchmarks/clinvar_raw/
+benchmarks/background/
+refs/
