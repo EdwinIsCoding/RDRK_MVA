@@ -303,17 +303,45 @@ class GeneModel:
 
 def iter_vcf(vcf: str | pathlib.Path, region: str | None = None) -> Iterator[dict]:
     """Stream a VCF as dicts. Uses bcftools so that indexes and BGZF are
-    handled, rather than reimplementing either."""
+    handled, rather than reimplementing either.
+
+    Two things this function refuses to do quietly:
+
+    * It does not assume the spike-in INFO tags exist. ``SPIKEGENE`` is present
+      only in VCFs built by ``mva.track1.spikein``; querying it against the
+      proband callset makes bcftools exit with an error.
+    * It does not treat a failed query as an empty result. That exact failure
+      silently produced "0 records seen, 0 candidates, annotators ran fine",
+      which is indistinguishable from a legitimate negative and is precisely
+      the outcome this project must never report by accident.
+    """
     import subprocess
+
+    header = subprocess.run(["bcftools", "view", "-h", str(vcf)],
+                            capture_output=True, text=True, check=True).stdout
+    has_spike = "##INFO=<ID=SPIKEGENE" in header
+
+    fields = "%CHROM\t%POS\t%REF\t%ALT\t%FILTER\t[%GT]\t[%DP]"
+    if has_spike:
+        fields += "\t%INFO/SPIKEGENE"
+    fields += "\n"
 
     cmd = ["bcftools", "query"]
     if region:
         cmd += ["-r", region]
-    cmd += ["-f", "%CHROM\t%POS\t%REF\t%ALT\t%FILTER\t[%GT]\t[%DP]\t%INFO/SPIKEGENE\n", str(vcf)]
-    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, text=True, bufsize=1 << 20)
+    cmd += ["-f", fields, str(vcf)]
+
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                            text=True, bufsize=1 << 20)
     assert proc.stdout is not None
+    n = 0
     for line in proc.stdout:
-        chrom, pos, ref, alt, filt, gt, dp, spike = line.rstrip("\n").split("\t")
+        parts = line.rstrip("\n").split("\t")
+        if len(parts) < 7:
+            continue
+        chrom, pos, ref, alt, filt, gt, dp = parts[:7]
+        spike = parts[7] if has_spike and len(parts) > 7 else "."
+        n += 1
         yield {
             "contig": chrom, "pos": int(pos), "ref": ref, "alt": alt,
             "filter": filt, "gt": gt,
@@ -321,3 +349,9 @@ def iter_vcf(vcf: str | pathlib.Path, region: str | None = None) -> Iterator[dic
             "spike_gene": None if spike == "." else spike,
         }
     proc.wait()
+    if proc.returncode != 0:
+        err = (proc.stderr.read() if proc.stderr else "").strip()
+        raise RuntimeError(
+            f"bcftools query failed (exit {proc.returncode}) on {vcf}"
+            f"{f' region {region}' if region else ''} after {n} records: {err}"
+        )

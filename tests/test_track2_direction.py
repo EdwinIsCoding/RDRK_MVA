@@ -140,3 +140,35 @@ class TestTractabilityClassification:
     def test_action_vocabularies_are_disjoint(self):
         # An action type counted as both would make every target look tractable.
         assert not (ACTIVATING_ACTIONS & INHIBITING_ACTIONS)
+
+
+class TestPipelineCompletenessReporting:
+    """An incomplete run must announce itself.
+
+    The failure guarded here actually happened: a hardcoded spike-in INFO tag
+    made bcftools error on the proband VCF, and the pipeline reported
+    "0 records seen, 0 candidates, annotators ran fine" -- indistinguishable
+    from a legitimate negative result.
+    """
+
+    def _result(self, ran):
+        from mva.track1.pipeline import PipelineResult
+        return PipelineResult(candidates=[], n_records_seen=0, n_records_in_panel=0,
+                              annotators_run=ran, annotators_unavailable={})
+
+    def test_default_annotator_set_is_reported_as_incomplete(self):
+        r = self._result(["panel", "region", "quality"])
+        assert not r.is_complete
+        assert set(r.missing_evidence_classes) == {"vep", "gnomad", "spliceai"}
+        note = r.completeness_note()
+        assert note.startswith("INCOMPLETE RUN")
+        assert "must not be presented as Track 1 findings" in note
+
+    def test_full_annotator_set_is_complete(self):
+        r = self._result(["panel", "region", "quality", "vep", "gnomad", "spliceai"])
+        assert r.is_complete
+        assert r.completeness_note().startswith("Complete run")
+
+    def test_missing_spliceai_is_called_out_as_the_highest_prior_arm(self):
+        r = self._result(["panel", "region", "quality", "vep", "gnomad"])
+        assert "highest prior" in r.missing_evidence_classes["spliceai"]

@@ -205,6 +205,44 @@ class PipelineResult:
     annotators_run: list[str]
     annotators_unavailable: dict[str, str]
 
+    #: Evidence classes a complete Track 1 run would include, and the
+    #: annotator that supplies each. Reported against what actually ran, so a
+    #: result can never imply completeness it does not have.
+    REQUIRED_FOR_COMPLETE = {
+        "panel": "gene plausibility",
+        "region": "splice distance and region class",
+        "quality": "artefact indicators",
+        "vep": "protein consequence (missense, nonsense, frameshift)",
+        "gnomad": "population allele frequency",
+        "spliceai": "splicing prediction (Arm B, highest prior)",
+    }
+
+    @property
+    def missing_evidence_classes(self) -> dict[str, str]:
+        """Evidence a complete run would have and this run does not.
+
+        Distinct from ``annotators_unavailable``, which lists only annotators
+        that were configured and then failed. An annotator absent from the
+        configuration entirely produces no error at all, so reporting only
+        failures would let a three-annotator run look complete.
+        """
+        ran = set(self.annotators_run)
+        return {name: what for name, what in self.REQUIRED_FOR_COMPLETE.items()
+                if name not in ran}
+
+    @property
+    def is_complete(self) -> bool:
+        return not self.missing_evidence_classes
+
+    def completeness_note(self) -> str:
+        """One line for the top of any report built from this result."""
+        if self.is_complete:
+            return "Complete run: all evidence classes present."
+        missing = self.missing_evidence_classes
+        return ("INCOMPLETE RUN. Missing evidence: "
+                + "; ".join(f"{k} ({v})" for k, v in missing.items())
+                + ". Rankings from this run must not be presented as Track 1 findings.")
+
     def top(self, n: int = 20) -> list[Candidate]:
         return self.candidates[:n]
 
