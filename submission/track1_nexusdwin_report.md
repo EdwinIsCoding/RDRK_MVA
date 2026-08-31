@@ -196,9 +196,21 @@ Required by the organisers' update of 28 August 2026.
 
 We disclose a compliance gap rather than presenting a clean summary. For part of
 this work the account permitted training on conversation content, which does not
-meet the organisers' condition of no training on inputs or outputs. The setting
-has been disabled, account data has been purged, and Sage Bionetworks has been
-notified.
+meet the organisers' condition of no training on inputs or outputs.
+
+Status at the time of writing, stated precisely because a vaguer summary would
+read better than the facts support:
+
+- The training setting **has been disabled**.
+- Hackathon-related content **has been deleted** from the assistant's stored
+  memory and conversation history, and an account data export taken on
+  31 August 2026 contained no hackathon-related material. That speaks to what
+  the account retains; it is not evidence about training pipelines, which are
+  separate infrastructure.
+- Notification to Sage Bionetworks' Privacy and Compliance Office is
+  **outstanding at the time of writing** and will be made. Whether
+  already-collected content can be removed from training pipelines is a question
+  only the provider can answer and has not yet been put to them.
 
 **What the model was and was not exposed to.** The project's first rule, written
 before any analysis and enforced by a pre-commit hook, was that patient genomic
