@@ -39,13 +39,21 @@ class GnomadFrequencyAnnotator(Annotator):
 
     name = "gnomad"
 
+    #: Half-width, in bases, of the window used to decide whether a position is
+    #: covered by the lookup at all. See ``_is_covered``.
+    COVERAGE_WINDOW = 200
+
     def __init__(self, table: str | pathlib.Path = GNOMAD_TABLE,
                  version: str = "gnomAD v4.1 exomes+genomes"):
         self.path = pathlib.Path(table)
         self._version = version
         self.af: dict[str, float] = {}
         self.nhomalt: dict[str, int] = {}
+        #: Sorted positions per contig, for the coverage test.
+        self._positions: dict[str, list[int]] = {}
         if self.path.exists():
+            import collections
+            pos: dict[str, list[int]] = collections.defaultdict(list)
             with gzip.open(self.path, "rt") as fh:
                 next(fh, None)
                 for line in fh:
@@ -55,6 +63,35 @@ class GnomadFrequencyAnnotator(Annotator):
                         self.nhomalt[key] = int(nh)
                     except ValueError:
                         continue
+                    c, p, *_ = key.split(":")
+                    pos[c].append(int(p))
+            self._positions = {c: sorted(v) for c, v in pos.items()}
+
+    def _is_covered(self, contig: str, pos: int) -> bool:
+        """Is this position inside a region the lookup actually assays?
+
+        This distinction is load-bearing and was missing at first. An
+        exomes-only lookup contains no intronic variants, so an intronic
+        position is not in the table because it was never assayed, not because
+        the allele is absent from the population. Treating the two the same
+        turned 1,007 ordinary intronic variants across the rhabdomyosarcoma
+        genes into "absent from gnomAD", which is the single most promoting
+        piece of evidence the scoring function has.
+
+        A position counts as covered if the lookup holds any variant within
+        ``COVERAGE_WINDOW`` bases. gnomAD variant density in assayed sequence is
+        far higher than one per 200 bp, so this separates assayed from
+        unassayed reliably without needing the coverage tracks.
+        """
+        ps = self._positions.get(contig)
+        if not ps:
+            return False
+        import bisect
+        i = bisect.bisect_left(ps, pos)
+        for j in (i - 1, i):
+            if 0 <= j < len(ps) and abs(ps[j] - pos) <= self.COVERAGE_WINDOW:
+                return True
+        return False
 
     @property
     def version(self) -> str:
@@ -74,6 +111,19 @@ class GnomadFrequencyAnnotator(Annotator):
         key = f"{p.contig}:{p.pos}:{p.ref}:{p.alt}"
 
         popmax = self.af.get(key)
+        if popmax is None and not self._is_covered(p.contig, p.pos):
+            # Not assayed, so nothing can be said about its frequency. Zero
+            # weight, and the candidate carries the gap visibly rather than
+            # being rewarded for it.
+            return [Evidence(
+                criterion="gnomad_not_assayed",
+                statement=("no gnomAD data at this position in the lookup used. "
+                           "This is a coverage gap, not evidence of rarity, and no "
+                           "frequency conclusion can be drawn."),
+                source_type=SourceType.GNOMAD, source_id=self._version,
+                weight=0.0,
+                detail={"lookup": self.path.name},
+            )]
         out = scoring.frequency(popmax, source=self._version)
 
         # Homozygote count. For a severe recessive paediatric phenotype this is
