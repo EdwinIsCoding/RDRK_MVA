@@ -141,6 +141,17 @@ challenge organisers. No free-text extraction or LLM normalisation is required.
 The organisers flag the parental reproductive loss as phenotypic input rather
 than background, and ask that the constellation be read as a whole.
 
+### Sex: male, determined from the callset
+
+The phenotype document does not state the proband's sex. It is determinable
+directly: chrX heterozygosity is 0.062 against 0.620 on the autosomes, and chrY
+carries 9,732 PASS variants. The proband is male.
+
+This raises the X-linked model from the low prior the plan assigns it, because
+for a male an X-linked recessive cause needs a single hit rather than a compound
+heterozygote with a cryptic second allele. See
+`results/summaries/proband_sex_and_x_linked.md`.
+
 ### What the phenotype document does **not** contain
 
 These absences change the plan and are recorded deliberately.
@@ -180,7 +191,7 @@ provenance in `config/gene_panels/mva_known.tsv`. Intervals carry 5 kb flanks.
 | `CEP57` | 11:95784965-95842070 | 57.1 kb | 7 | 7 | 0 | 4 | 3 |
 | `TRIP13` | 5:887849-924357 | 36.5 kb | 3 | 3 | 0 | 3 | 0 |
 | `BUB1` | 2:110630468-110683098 | 52.6 kb | 15 | 15 | 0 | 9 | 6 |
-| `BUB3` | 10:123149365-123318144 | 168.8 kb | 199 | 199 | 0 | 183 | 16 |
+| `BUB3` | 10:123149395-123175467 | 26.1 kb | 32 | 32 | 0 | 32 | 0 |
 | `CENATAC` | 11:118993051-119020811 | 27.8 kb | 20 | 20 | 0 | 3 | 17 |
 | `CEP192` | 18:12986283-13130053 | 143.8 kb | 189 | 189 | 0 | 74 | 115 |
 | `SMC5` | 9:70253270-70359874 | 106.6 kb | 98 | 97 | 1 | 43 | 55 |
@@ -189,6 +200,15 @@ provenance in `config/gene_panels/mva_known.tsv`. Intervals carry 5 kb flanks.
 Counts were cross-validated against an index-independent streaming pass
 (`scripts/04_verify_panel_tally.py`); the shipped `.tbi` agrees exactly on every
 interval, so region-scoped queries are trustworthy.
+
+**Correction, 31 August 2026.** The `BUB3` row originally reported 199 variants
+over a 168.8 kb span. Those coordinates came from the live Ensembl REST API,
+which returned a 158,779 bp span for `BUB3` against 16,072 bp in the pinned
+Ensembl 115 GTF, a 9.9-fold overstatement covering neighbouring sequence. The
+row above is corrected and the panel is now built from the pinned GTF. The other
+eight genes agreed within 10% and are unaffected. The conclusion drawn from the
+original figure, that `BUB3` shows no coverage anomaly, survives the correction:
+at the correct span its density is the highest of the MVA genes.
 
 ### Two candidate leads raised and both closed at Phase 0
 
