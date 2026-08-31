@@ -121,10 +121,39 @@ because some providers use content you give feedback on or that is flagged for
 safety review; and check the terms attached to any free credits, which may
 override account defaults.
 
-**TODO(owner):** confirm the plan or tier in use and that training on customer
-content is disabled, then write the disclosure line into the methods description
-for both tracks. This cannot be determined from inside the repository. See
-`RULES.md` section 6.
+### Resolved, and it is a deviation that must be disclosed
+
+The account is a **Claude Max subscription**, which is governed by Anthropic's
+consumer terms rather than the commercial terms in the organisers' example.
+The "help improve Claude" setting, which permits training on conversation
+content, was **ON for the whole of this work until 31 August 2026**, when the
+owner disabled it on discovering the requirement.
+
+Measured against the organisers' first mandatory condition, "No Training on your
+inputs or outputs, and no rights taken by the provider in either", that period
+does not comply. Their framing is whether the provider acts as a *processor*, a
+tool, or a *recipient* that gains rights in the data. With training enabled, a
+consumer plan is closer to the latter, which is the case they said must not
+arise.
+
+This is recorded here rather than quietly corrected, for three reasons: the
+Hackathon Rules require suspected unauthorised disclosure to be reported to Sage
+Bionetworks' Privacy and Compliance Office; the methods description must carry an
+accurate LLM disclosure in both tracks; and an inconsistency discovered by a
+judge would be far more damaging than the deviation itself.
+
+**Disclosure line for both tracks, to be used verbatim:**
+
+> Anthropic Claude (Claude Code), Max subscription, consumer terms. The
+> "help improve Claude" training setting was enabled until 31 August 2026 and
+> disabled thereafter. No patient genomic data (VCF, BAM, variant tables or
+> pasted variant blocks) entered the model context at any point; see the audit
+> below. Clinical phenotype terms and aggregate callset statistics did.
+
+**TODO(owner):** report to Sage Bionetworks' Privacy and Compliance Office via
+Sage's Help Center, and ask Anthropic whether already-collected conversation
+content can be deleted from training pipelines under the consumer terms. Neither
+can be actioned from inside this repository.
 
 ### What actually reached the model, audited
 
