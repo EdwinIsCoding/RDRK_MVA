@@ -1,0 +1,122 @@
+# ---------------------------------------------------------------------------
+# MVA Hackathon 2026 - project configuration.
+# Written by Phase 0 (scripts/01_characterise.py) on 2026-08-31.
+# Every coordinate in this project is interpreted against this build. Any tool
+# or resource that cannot be pinned to it must not be used.
+# ---------------------------------------------------------------------------
+
+project:
+  name: mva-hackathon-2026
+  licence: CC-BY-4.0
+  deadline: 2026-10-24
+  code_freeze: 2026-10-17
+
+genome:
+  build: GRCh38
+  # Chromosome 1 length used as the build discriminator.
+  chr1_length: 248956422
+  # Contigs are named 1, 2, ... X, Y, MT with NO chr prefix. Annotation
+  # resources are overwhelmingly distributed with the chr prefix, so a
+  # rename step is mandatory in front of VEP, SpliceAI, AnnotSV and friends.
+  contig_naming: ensembl_nochr
+  reference_fasta_upstream: >-
+    GCA_000001405.15_GRCh38_no_alt_analysis_set_plus_hs38d1_maskedGRC_exclusions_v2_no_chr.fasta
+  has_decoy_contigs: true
+  n_contigs_in_header: 2580
+
+cohort:
+  structure: singleton
+  proband_sample_id: WGS_EX2312012
+  parents_available: false
+  siblings_available: false
+  # Inheritance models that are impossible with this cohort.
+  disabled_models: [de_novo, segregation, parental_phasing]
+
+branch:
+  # Plan section 2.4. Branch C, deferred: alignments are derivable from FASTQ
+  # but do not yet exist.
+  id: C
+  qualifier: deferred
+  rationale: >-
+    Singleton with no BAM or CRAM shipped, but 84.7 GB of paired FASTQ across
+    four lanes. Alignment-dependent arms are blocked until a BAM is produced,
+    not permanently unavailable.
+  arms_live_now: [A, B, E, F_partial]
+  arms_blocked_on_alignment: [C, D, F_repeats]
+
+data:
+  # Relative to repository root. Never committed, never read into an LLM context.
+  root: data
+  vcf: data/WGS_EX2312012_HGWCNDSX7.vcf.gz
+  vcf_index: data/WGS_EX2312012_HGWCNDSX7.vcf.gz.tbi
+  fastq_glob: "data/WGS_EX2312012_HGWCNDSX7_S16_L00[1-4]_R[12]_001.fastq.gz"
+  fastq_lanes: [L001, L002, L003, L004]
+  fastq_paired: true
+  clinical_docx: data/Challenge_Clinical_Phenotype_1.docx
+  alignments: null
+  rnaseq: null
+
+callset:
+  caller: sentieon-genomics-202308.02
+  caller_algo: Haplotyper + GVCFtyper
+  filtering_tool: GATK VariantFiltration 4.2.4.0
+  filtering_strategy: hard_thresholds_non_destructive
+  call_conf: 10
+  emit_conf: 10
+  dbsnp_build: 138
+  total_records: 5012204
+  pass_records: 4740790
+  filtered_records: 271414
+  median_depth: 42
+  mean_depth: 44.2
+  het_hom_alt_ratio: 1.64
+  multiallelic_sites: 66860
+  # Physical phasing tags are present and are the only native phasing signal
+  # available in a singleton. Use them.
+  has_pgt_pid_phasing: true
+  format_fields: [GT, AD, DP, GQ, PL, PGT, PID]
+
+phenotype:
+  source: clinical_docx
+  already_hpo_coded: true
+  hpo_terms:
+    - {id: "HP:0002859", label: "Rhabdomyosarcoma"}
+    - {id: "HP:0000121", label: "Nephrocalcinosis"}
+    - {id: "HP:0004322", label: "Short stature"}
+    - {id: "HP:0001508", label: "Failure to thrive"}
+    - {id: "HP:0003202", label: "Skeletal muscle atrophy"}
+    - {id: "HP:0001622", label: "Premature birth"}
+    - {id: "HP:0001518", label: "Small for gestational age"}
+    - {id: "HP:0200067", label: "Recurrent spontaneous abortion"}
+  # Recorded because their absence is informative and must not be assumed away.
+  notably_absent: [microcephaly, seizures, developmental_delay, intellectual_disability, wilms_tumour]
+  karyotype_available: false
+  aneuploidy_percentage_available: false
+  n_tissues: 1
+  names_candidate_variant: false
+
+analysis:
+  # Frozen before the proband is scored. Plan section 6.7.
+  random_seed: 20261024
+  gnomad_popmax_af_max: 1.0e-4
+  spliceai_distance: 500
+  # Arm A must not filter to PASS blindly: 3.5% of records carry MQ40 and sit
+  # in exactly the repetitive sequence where diagnostic pipelines under-call.
+  include_filtered_records: true
+
+limitations:
+  # Carried verbatim into the submission. Each one is a thing we cannot do,
+  # stated so that no reader mistakes its absence for an oversight.
+  - "Singleton: no de novo calling, no segregation filtering, no parental phasing."
+  - "No RNA-seq: every splicing result is a prediction, never an observation. No FRASER2, no OUTRIDER."
+  - "No karyotype and no aneuploidy percentage: the VAF against aneuploidy correlation in plan section 6.4 is impossible."
+  - "One tissue: no cross-tissue comparison of any kind."
+  - "No alignments shipped: SV calling, mosaic re-genotyping and repeat expansion detection are all blocked until a BAM is built from FASTQ."
+  - "Track 2 signature reversal must use published MVA/CIN proxy signatures, not patient transcriptomics."
+
+compute:
+  # The recon host is NOT the host the plan assumes. See DATA_CARD.md section 7.
+  recon_host: {platform: darwin-arm64, model: "Apple M2 MacBook Pro", ram_gb: 8, gpu: none}
+  planned_host: {gpu: "RTX 6000", vram_gb: 48}
+  alignment_feasible_on_recon_host: false
+  alignment_blocker: "8 GB RAM and 181 GB free disk; bwa-mem2 human index alone needs ~30 GB RAM"

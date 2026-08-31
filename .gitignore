@@ -1,0 +1,94 @@
+# ---------------------------------------------------------------------------
+# Patient genomic data. NEVER commit. NEVER redistribute.
+# ---------------------------------------------------------------------------
+data/
+/data/**
+**/data/**
+
+# Genomic file formats (belt and braces, in case data lands elsewhere)
+*.vcf
+*.vcf.gz
+*.vcf.gz.tbi
+*.vcf.bgz
+*.bcf
+*.bcf.csi
+*.bam
+*.bam.bai
+*.cram
+*.cram.crai
+*.sam
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.gvcf
+*.g.vcf.gz
+*.ped
+*.fam
+*.bed.gz
+*.bigWig
+*.bw
+*.h5
+*.hdf5
+*.mtx
+*.loom
+*.rds
+*.RData
+
+# Reference bundles, caches, DB snapshots
+refs/
+cache/
+.vep/
+*.fa
+*.fa.gz
+*.fasta
+*.fasta.gz
+*.2bit
+*.chain
+
+# Results: derived data is still patient data.
+# Nothing under results/ is tracked. Everything here regenerates from scripts/,
+# so excluding it costs no reproducibility. It contains, among other things,
+# the extracted clinical phenotype text, FASTQ read identifiers carrying
+# instrument, run, flowcell and index, and the proband sample identifier.
+results/
+!results/**/.gitkeep
+
+# Extracted clinical text, wherever it lands.
+*Clinical_Phenotype*
+*.docx.md
+*.docx.structure.txt
+
+# ---------------------------------------------------------------------------
+# Environment / build
+# ---------------------------------------------------------------------------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+build/
+.snakemake/
+node_modules/
+
+# ---------------------------------------------------------------------------
+# OS / editor
+# ---------------------------------------------------------------------------
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Secrets
+.env
+.env.*
+*.key
+*.pem

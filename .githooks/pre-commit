@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+# ---------------------------------------------------------------------------
+# MVA Hackathon 2026 pre-commit guard.
+# Hard-fails on genomic file extensions, large files, and anything under data/.
+# Install: git config core.hooksPath .githooks
+# Bypass is deliberate and must be justified in the commit message: --no-verify
+# ---------------------------------------------------------------------------
+set -uo pipefail
+
+MAX_BYTES=5242880   # 5 MB
+FAIL=0
+
+# Extensions that must never be committed, whatever the directory.
+BANNED_RE='\.(vcf|vcf\.gz|vcf\.bgz|bcf|bam|cram|sam|fastq|fastq\.gz|fq|fq\.gz|gvcf|g\.vcf\.gz|bai|crai|tbi|csi|ped|fam|fa|fa\.gz|fasta|fasta\.gz|h5|hdf5|rds|RData|loom|mtx)$'
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR)
+[ -z "$staged" ] && exit 0
+
+while IFS= read -r f; do
+  [ -z "$f" ] && continue
+
+  # 1. Anything under a data/ directory.
+  case "$f" in
+    data/*|*/data/*)
+      echo "BLOCKED (patient data directory): $f"
+      FAIL=1
+      continue
+      ;;
+  esac
+
+  # 2. Banned genomic extensions.
+  if printf '%s' "$f" | grep -Eiq "$BANNED_RE"; then
+    echo "BLOCKED (genomic file extension): $f"
+    FAIL=1
+    continue
+  fi
+
+  # 3. Derived patient data: anything under results/, and extracted clinical
+  #    text wherever it lands. These regenerate from scripts/, so excluding
+  #    them costs nothing. Defence in depth behind .gitignore, which has
+  #    already been wrong once.
+  case "$f" in
+    results/*|*/results/*)
+      echo "BLOCKED (derived patient data under results/): $f"
+      FAIL=1
+      continue
+      ;;
+    *Clinical_Phenotype*|*.docx.md)
+      echo "BLOCKED (extracted clinical phenotype text): $f"
+      FAIL=1
+      continue
+      ;;
+  esac
+
+  # 4. The proband sample identifier must not appear in a tracked filename.
+  if printf '%s' "$f" | grep -q 'EX2312012'; then
+    echo "BLOCKED (proband sample identifier in filename): $f"
+    FAIL=1
+    continue
+  fi
+
+  # 5. Size guard.
+  if [ -f "$f" ]; then
+    size=$(wc -c < "$f" | tr -d ' ')
+    if [ "$size" -gt "$MAX_BYTES" ]; then
+      echo "BLOCKED (${size} bytes > ${MAX_BYTES} limit): $f"
+      FAIL=1
+    fi
+  fi
+done <<< "$staged"
+
+if [ "$FAIL" -ne 0 ]; then
+  cat <<'MSG'
+
+-----------------------------------------------------------------------
+Commit rejected. This repository handles a real child's genome under a
+specific consent. Patient genomic data must never enter git history,
+because history is effectively permanent and this repository will be
+made public as a hackathon submission.
+
+Fix the staging area, do not use --no-verify.
+-----------------------------------------------------------------------
+MSG
+  exit 1
+fi
+
+exit 0
