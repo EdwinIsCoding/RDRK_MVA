@@ -2,7 +2,7 @@
 # VEP cache plus the reference FASTA, downloaded on the node's own network
 # rather than pushed from the laptop, which measures ~1 MB/s.
 set -uo pipefail
-S=/REDACTED; B=$S/mva/mamba/envs/mva
+S=${REMOTE_SCRATCH:-/scratch0/$GPU_USER}; B=$S/mva/mamba/envs/mva
 export PATH=$B/bin:/usr/bin:/bin
 unset PERL5LIB
 ST=$S/mva/logs/STATUS_vepcache

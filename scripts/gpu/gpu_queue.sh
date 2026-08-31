@@ -3,7 +3,7 @@
 # runs the GPU-dependent Track 1 work in sequence. Nothing here kills or
 # interferes with the SailSwarm processes.
 set -uo pipefail
-S=/REDACTED; B=$S/mva/mamba/envs/mva
+S=${REMOTE_SCRATCH:-/scratch0/$GPU_USER}; B=$S/mva/mamba/envs/mva
 export PATH=$B/bin:/usr/bin:/bin
 export XDG_CACHE_HOME=$S/.cache PIP_CACHE_DIR=$S/.cache/pip TMPDIR=$S/mva/tmp
 export TORCH_HOME=$S/.cache/torch HF_HOME=$S/.cache/huggingface

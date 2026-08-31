@@ -1,0 +1,10 @@
+# Copy to scripts/gpu/.local.sh (gitignored) and fill in.
+# Node topology is deliberately kept out of version control: this repository is
+# public, and the cluster belongs to a third party. Hostnames and account names
+# are not credentials, but they are an attack-surface hint that is not ours to
+# publish.
+export GPU_USER=your-username
+export JUMP_HOST=jump.example.ac.uk
+export GPU_NODE=node.example.ac.uk
+export SSH_KEY=~/.ssh/your_key
+export REMOTE_SCRATCH=/scratch0/$GPU_USER

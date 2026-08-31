@@ -14,7 +14,7 @@
 #         alleles are further apart than a read pair. No amount of short-read
 #         depth changes that; it needs long reads or parental samples.
 set -uo pipefail
-S=/REDACTED
+S=${REMOTE_SCRATCH:-/scratch0/$GPU_USER}
 H=$S/mva/mamba/envs/htslib/bin
 A=$S/mva/mamba/envs/mva/bin
 export PATH=$H:$A:/usr/bin:/bin

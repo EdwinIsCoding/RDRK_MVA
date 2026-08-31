@@ -1,11 +1,11 @@
 # Running on the UCL GPU node
 
-Node `REDACTED` via jump host `REDACTED`, user `REDACTED`.
+Node `${GPU_NODE:?set in scripts/gpu/.local.sh}` via jump host `${JUMP_HOST:?set in scripts/gpu/.local.sh}`, user `${GPU_USER}`.
 
 ```bash
-SSHCMD="ssh -i REDACTED -o IdentitiesOnly=yes -o IdentityAgent=none \
-  -o BatchMode=yes -J REDACTED@REDACTED"
-$SSHCMD REDACTED@REDACTED 'bash -s' <<'REMOTE' | grep -v VBoxManage
+SSHCMD="ssh -i ${SSH_KEY:-~/.ssh/id_ed25519} -o IdentitiesOnly=yes -o IdentityAgent=none \
+  -o BatchMode=yes -J ${GPU_USER}@${JUMP_HOST:?set in scripts/gpu/.local.sh}"
+$SSHCMD ${GPU_USER}@${GPU_NODE:?set in scripts/gpu/.local.sh} 'bash -s' <<'REMOTE' | grep -v VBoxManage
   ...
 REMOTE
 ```
@@ -15,7 +15,7 @@ every command goes through `bash -s` and the output is filtered.
 
 ## Layout
 
-Everything lives under `/REDACTED`. **Scratch is wiped when the
+Everything lives under `${REMOTE_SCRATCH:-/scratch0/$GPU_USER}/mva`. **Scratch is wiped when the
 booking ends**, so results must be pulled before then. AFS home holds code only.
 
 ## Findings that shaped these scripts

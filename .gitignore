@@ -113,3 +113,6 @@ gnomad.*.tbi
 # transient credential staging, never committed
 .tmp/
 **/secure/
+
+# Cluster topology, not for a public repository
+scripts/gpu/.local.sh

@@ -5,7 +5,7 @@
 #
 # The conda perl must precede /opt/ucl/bin/perl or VEP cannot find BioPerl.
 set -uo pipefail
-S=/REDACTED; B=$S/mva/mamba/envs/mva
+S=${REMOTE_SCRATCH:-/scratch0/$GPU_USER}; B=$S/mva/mamba/envs/mva
 export PATH=$B/bin:/usr/bin:/bin
 unset PERL5LIB
 export TMPDIR=$S/mva/tmp

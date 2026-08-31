@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # MVA hackathon: bioinformatics toolchain on scratch. Idempotent, resumable.
 set -uo pipefail
-S=/REDACTED
+S=${REMOTE_SCRATCH:-/scratch0/$GPU_USER}
 export XDG_CACHE_HOME=$S/.cache PIP_CACHE_DIR=$S/.cache/pip TMPDIR=$S/mva/tmp
 export MAMBA_ROOT_PREFIX=$S/mva/mamba
 MM=$S/mva/bin/micromamba

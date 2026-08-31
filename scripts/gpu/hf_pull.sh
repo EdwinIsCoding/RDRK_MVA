@@ -3,7 +3,7 @@
 # disk, never in argv (world-readable via /proc), never echoed.
 set -uo pipefail
 read -r TOK
-S=/REDACTED
+S=${REMOTE_SCRATCH:-/scratch0/$GPU_USER}
 export HF_HOME=$S/mva/.hf XDG_CACHE_HOME=$S/.cache TMPDIR=$S/mva/tmp
 ST=$S/mva/logs/STATUS_hfpull
 say(){ echo "$(date -u +%H:%M) $*" | tee -a "$ST"; }
@@ -13,7 +13,7 @@ import os, time
 from huggingface_hub import hf_hub_download
 repo = "SageBio/mva-hackathon-2026-data"
 tok = os.environ["HF_TOKEN"]
-dest = "/REDACTED"
+dest = "${REMOTE_SCRATCH:-/scratch0/$GPU_USER}/mva/data"
 files = [f"WGS_EX2312012_HGWCNDSX7_S16_L00{l}_R{r}_001.fastq.gz"
          for l in (1,2,3,4) for r in (1,2)]
 for f in files:
