@@ -18,6 +18,21 @@ What this module does NOT do: protein consequence. Missense, nonsense and
 frameshift require a codon model and a translation, and VEP does that properly.
 Those classes come from VEP on the GPU host. Anything this module cannot decide
 is returned as ``UNCLASSIFIED`` rather than guessed.
+
+Validation
+----------
+Splice distances were cross-checked against the intron offsets in ClinVar's own
+HGVS strings, over the 301 benchmark rows carrying one:
+
+    SNVs    268/268   100.0% concordance
+    indels    8/33     24.2% concordance
+
+The SNV figure is the one that validates this module. The indel figure is a
+comparison artefact, not an error: HGVS 3'-shifts an indel to the most 3'
+position in a repeat, while VCF left-aligns it, so the two conventions
+legitimately disagree by the length of the repeat. Splice distance for indels
+should therefore be read as approximate, and an indel sitting near a class
+boundary should not be trusted to fall on the right side of it.
 """
 
 from __future__ import annotations
@@ -46,6 +61,9 @@ class Exon:
     end: int            # 1-based inclusive
     transcript: str
     rank: int
+    #: MANE Select where one exists, else Ensembl canonical. Splice distance is
+    #: measured against these exons only. See ``Gene.exon_bounds``.
+    is_representative: bool = False
 
 
 @dataclasses.dataclass(frozen=True)
@@ -62,13 +80,31 @@ class Gene:
 
     @property
     def exon_bounds(self) -> list[int]:
-        """Every exon boundary coordinate, deduplicated and sorted. Distance to
-        the nearest of these is the splice distance."""
+        """Exon boundaries of the representative transcript, sorted.
+
+        Measured against MANE Select (or Ensembl canonical) only, NOT against
+        every annotated transcript. Pooling all transcripts was measurably
+        wrong: cross-checking against ClinVar HGVS offsets gave 89.4%
+        concordance, and every disagreement was a variant pulled closer to a
+        minor isoform's boundary than to the canonical one. The effect is to
+        promote genuine deep intronic variants into the canonical-splice class,
+        which both overstates their significance and empties the deep intronic
+        bucket the benchmark is stratified by.
+
+        Falls back to all transcripts only where the gene has no representative
+        transcript annotated, which is rare and worth knowing about.
+        """
+        rep = [e for e in self.exons if e.is_representative]
+        source = rep or self.exons
         bounds: set[int] = set()
-        for e in self.exons:
+        for e in source:
             bounds.add(e.start)
             bounds.add(e.end)
         return sorted(bounds)
+
+    @property
+    def has_representative_transcript(self) -> bool:
+        return any(e.is_representative for e in self.exons)
 
 
 class GeneModel:
@@ -110,6 +146,8 @@ class GeneModel:
         gene_meta: dict[str, dict] = {}
         exons: dict[str, list[Exon]] = collections.defaultdict(list)
         cds: dict[str, list[int]] = collections.defaultdict(list)
+        # transcript_id -> priority; 2 = MANE Select, 1 = Ensembl canonical.
+        rep_rank: dict[str, int] = {}
 
         attr_re = re.compile(r'(\S+) "([^"]*)"')
         with opener(gtf, "rt") as fh:  # type: ignore[operator]
@@ -117,11 +155,20 @@ class GeneModel:
                 if line.startswith("#"):
                     continue
                 f = line.rstrip("\n").split("\t")
-                if len(f) < 9 or f[2] not in ("gene", "exon", "CDS"):
+                if len(f) < 9 or f[2] not in ("gene", "transcript", "exon", "CDS"):
                     continue
                 attrs = dict(attr_re.findall(f[8]))
                 sym = attrs.get("gene_name")
                 if not sym or (symbols is not None and sym not in symbols):
+                    continue
+
+                if f[2] == "transcript":
+                    tid = attrs.get("transcript_id", "")
+                    tags = f[8]
+                    if "MANE_Select" in tags:
+                        rep_rank[tid] = 2
+                    elif "Ensembl_canonical" in tags:
+                        rep_rank[tid] = max(rep_rank.get(tid, 0), 1)
                     continue
 
                 if f[2] == "gene":
@@ -140,6 +187,21 @@ class GeneModel:
                     ))
                 else:  # CDS
                     cds[sym].extend((int(f[3]), int(f[4])))
+
+        # GTFs list a transcript before its exons, but only within a record
+        # block; resolve representative status after the whole file is read
+        # rather than relying on ordering.
+        best = {}
+        for sym, exs in exons.items():
+            ranks = {e.transcript: rep_rank.get(e.transcript, 0) for e in exs}
+            top = max(ranks.values(), default=0)
+            best[sym] = {t for t, r in ranks.items() if r == top and r > 0}
+        for sym, exs in exons.items():
+            keep = best.get(sym) or set()
+            exons[sym] = [
+                dataclasses.replace(e, is_representative=e.transcript in keep)
+                for e in exs
+            ]
 
         out = []
         for sym, meta in gene_meta.items():

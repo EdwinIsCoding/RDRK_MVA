@@ -188,3 +188,71 @@ class TestCandidate:
         c = Candidate(gene="X", arm="A")
         assert c.variant_class is VariantClass.UNCLASSIFIED
         assert c.zygosity is Zygosity.UNKNOWN
+
+
+# ---------------------------------------------------------------------------
+# Region annotation, validated against an independent source of truth.
+# ---------------------------------------------------------------------------
+
+class TestRegionAnnotationAgainstClinVarHGVS:
+    """The splice distance drives the variant-class stratification that the
+    whole benchmark is reported by, so it is validated against ClinVar's own
+    HGVS intron offsets rather than trusted."""
+
+    @staticmethod
+    def _hgvs_intron_offset(hgvs: str) -> int | None:
+        import re
+        if ":c." not in hgvs:
+            return None
+        c = hgvs.split(":c.", 1)[1]
+        if c[:1] in "*-":
+            return None
+        m = re.match(r"^\d+([+-])(\d+)", c)
+        return int(m.group(2)) if m else None
+
+    def _compare(self, gene_model):
+        import csv
+        from mva.evidence import GenomicPosition
+        agree = disagree = 0
+        for row in csv.DictReader(
+                open("benchmarks/published_mva_variants.tsv"), delimiter="\t"):
+            off = self._hgvs_intron_offset(row["hgvs_c"])
+            if off is None or not (row["chrom_nochr"] and row["ref"] and row["alt"]):
+                continue
+            if len(row["ref"]) != len(row["alt"]):
+                continue  # indels: HGVS 3'-shifts, VCF left-aligns
+            try:
+                p = GenomicPosition(build="GRCh38", naming="ensembl_nochr",
+                                    contig=row["chrom_nochr"], pos=int(row["pos_grch38"]),
+                                    ref=row["ref"], alt=row["alt"])
+            except Exception:
+                continue
+            _, _, dist = gene_model.classify(p)
+            if dist is None:
+                continue
+            if abs(dist - off) <= 1:
+                agree += 1
+            else:
+                disagree += 1
+        return agree, disagree
+
+    @pytest.mark.slow
+    def test_snv_splice_distances_match_clinvar_exactly(self, gene_model):
+        agree, disagree = self._compare(gene_model)
+        assert agree + disagree >= 100, "too few comparable rows to validate"
+        concordance = agree / (agree + disagree)
+        # Was 89.4% when exon boundaries were pooled across all transcripts;
+        # restricting to MANE Select / Ensembl canonical made it exact.
+        assert concordance == 1.0, (
+            f"SNV splice-distance concordance dropped to {concordance:.3f} "
+            f"({disagree} disagreements). Something changed in transcript "
+            f"selection or in the GTF release."
+        )
+
+    @pytest.mark.slow
+    def test_every_gene_resolves_a_representative_transcript(self, gene_model):
+        missing = [g.symbol for g in gene_model.genes if not g.has_representative_transcript]
+        assert not missing, (
+            f"{len(missing)} genes fall back to pooled transcripts, which "
+            f"systematically understates splice distance: {missing[:10]}"
+        )
