@@ -109,3 +109,7 @@ refs/
 *.vcf.bgz.tbi
 *.vcf.gz.tbi
 gnomad.*.tbi
+
+# transient credential staging, never committed
+.tmp/
+**/secure/
