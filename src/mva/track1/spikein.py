@@ -134,7 +134,7 @@ def spike(
     background_vcf: str | pathlib.Path,
     variants: list[BenchmarkVariant],
     out_vcf: str | pathlib.Path,
-    sample: str = "SPIKED",
+    sample: str | None = None,
     genotype: str = "0/1",
 ) -> pathlib.Path:
     """Insert variants into a background VCF as heterozygous calls.
@@ -148,6 +148,13 @@ def spike(
     out_vcf.parent.mkdir(parents=True, exist_ok=True)
 
     naming = detect_naming(background_vcf)
+    if sample is None:
+        # bcftools concat refuses files whose sample names differ, so the spike
+        # records must carry the background's own sample name rather than a
+        # label of our choosing.
+        sample = subprocess.run(["bcftools", "query", "-l", str(background_vcf)],
+                                capture_output=True, text=True,
+                                check=True).stdout.split()[0]
     records = []
     for v in variants:
         p = v.position.to_naming(naming)  # type: ignore[arg-type]

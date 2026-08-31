@@ -204,6 +204,8 @@ class PipelineResult:
     n_records_in_panel: int
     annotators_run: list[str]
     annotators_unavailable: dict[str, str]
+    contig_naming: str = "ensembl_nochr"
+    n_records_unparseable: int = 0
 
     #: Evidence classes a complete Track 1 run would include, and the
     #: annotator that supplies each. Reported against what actually ran, so a
@@ -285,6 +287,28 @@ class Track1Pipeline:
         else:
             yield from iter_vcf(vcf)
 
+    @staticmethod
+    def _detect_naming(vcf: str | pathlib.Path) -> str:
+        """Read the contig convention from the VCF header rather than assuming it.
+
+        The proband callset is no-chr; the GIAB background used for spike-in
+        recall is chr-prefixed. Hardcoding either one makes GenomicPosition
+        reject every record from the other, and the exception handler in run()
+        turns that into a silent zero-candidate result. Detect, do not assume.
+        """
+        from mva.track1.spikein import detect_naming
+        return detect_naming(vcf)
+
+    @staticmethod
+    def _regions_for_naming(regions: list[str] | None, naming: str) -> list[str] | None:
+        """Region strings come from a no-chr BED; rewrite them if the VCF is
+        chr-prefixed, otherwise every region query silently returns nothing."""
+        if not regions:
+            return regions
+        if naming == "ucsc_chr":
+            return [r if r.startswith("chr") else f"chr{r}" for r in regions]
+        return [r[3:] if r.startswith("chr") else r for r in regions]
+
     def run(
         self,
         vcf: str | pathlib.Path,
@@ -293,7 +317,10 @@ class Track1Pipeline:
     ) -> PipelineResult:
         candidates: list[Candidate] = []
         unavailable: dict[str, str] = {}
-        n_seen = n_panel = 0
+        n_seen = n_panel = n_unparseable = 0
+
+        naming = self._detect_naming(vcf)
+        regions = self._regions_for_naming(regions, naming)
 
         for rec in self._records(vcf, regions):
             n_seen += 1
@@ -303,11 +330,15 @@ class Track1Pipeline:
                     continue
                 try:
                     pos = GenomicPosition(
-                        build="GRCh38", naming="ensembl_nochr",
+                        build="GRCh38", naming=naming,   # type: ignore[arg-type]
                         contig=rec["contig"], pos=rec["pos"],
                         ref=rec["ref"], alt=alt,
                     )
                 except Exception:
+                    # Symbolic alleles, decoy contigs and malformed records.
+                    # Counted, not silently swallowed: if this equals the record
+                    # count, something systematic is wrong.
+                    n_unparseable += 1
                     continue
 
                 gene, vclass, dist = self.gene_model.classify(pos)
@@ -340,10 +371,19 @@ class Track1Pipeline:
                 if cand.evidence:
                     candidates.append(cand)
 
+        if n_seen and n_unparseable == n_seen:
+            raise RuntimeError(
+                f"every one of {n_seen} records failed to parse as a "
+                f"{naming} GRCh38 position. This is a contig-convention or "
+                f"build mismatch, not an empty result."
+            )
+
         return PipelineResult(
             candidates=scoring.rank(candidates),
             n_records_seen=n_seen,
             n_records_in_panel=n_panel,
             annotators_run=[a.name for a in self.annotators if a.name not in unavailable],
             annotators_unavailable=unavailable,
+            contig_naming=naming,
+            n_records_unparseable=n_unparseable,
         )

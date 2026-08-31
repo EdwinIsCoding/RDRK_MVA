@@ -169,14 +169,22 @@ class TestRecall:
             by_class[v.variant_class.value].append(_recall_at(ranked, v.gene, 20))
 
         with capsys.disabled():
-            print("\n\n  recall@20 by variant class (gene-level triage only):")
+            print("\n\n  recall@20 by variant class")
             print(f"  {'class':26} {'n':>4} {'recall':>8}")
             for cls, hits in sorted(by_class.items()):
                 print(f"  {cls:26} {len(hits):>4} {sum(hits) / len(hits):>8.2f}")
-            if result.annotators_unavailable:
-                print("\n  annotators unavailable in this run:")
-                for name in result.annotators_unavailable:
-                    print(f"    - {name}")
-            print("  These numbers measure gene triage, not variant prioritisation.\n")
+            print(f"\n  {result.completeness_note()}")
+            print("\n  Read these numbers narrowly. Candidates are restricted to the")
+            print("  mitotic panel and every spiked variant lies in a panel gene, so a")
+            print("  recall of 1.00 shows the gene reaches the ranked list, not that the")
+            print("  causal variant is prioritised within it. The figure becomes")
+            print("  meaningful only once VEP, gnomAD and SpliceAI are wired in.\n")
 
         assert by_class, "no spiked variant was scored at all"
+        # The caveat must travel with the number. A recall table published
+        # without it would be the most misleading artefact in the submission.
+        assert not result.is_complete, (
+            "pipeline now reports a complete run; update the qualifying text "
+            "above and in STOP2_STATUS.md, and re-read the recall figures"
+        )
+        assert "spliceai" in result.missing_evidence_classes
