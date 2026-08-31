@@ -102,3 +102,10 @@ Thumbs.db
 benchmarks/clinvar_raw/
 benchmarks/background/
 refs/
+
+# Tabix indexes cached locally by bcftools when range-requesting remote public
+# reference files (gnomAD). Public data, regenerable, and caught by the
+# pre-commit hook's genomic-extension rule, which is working as intended.
+*.vcf.bgz.tbi
+*.vcf.gz.tbi
+gnomad.*.tbi
