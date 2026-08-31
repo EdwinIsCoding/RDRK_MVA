@@ -66,6 +66,125 @@ def build_vcf(shortlist: pathlib.Path, out: pathlib.Path, fai: pathlib.Path) -> 
     return n
 
 
+def _patch_numpy_for_spliceai() -> None:
+    """SpliceAI 1.3.1 calls ``np.fromstring`` in binary mode, removed in NumPy 2.
+
+    The published release predates NumPy 2 and has not been updated. Rather than
+    pinning NumPy below 2 (TensorFlow 2.21 will not accept that), the single
+    offending call is replaced with ``frombuffer``, which is what ``fromstring``
+    did in binary mode.
+
+    **The rest of the function body is reproduced verbatim and that matters.**
+    SpliceAI first rewrites the sequence into the byte values \x01 to \x04 and
+    only then encodes. An earlier version of this shim dropped that rewrite and
+    encoded raw ASCII, which silently produced a delta score of 0.000 for
+    everything, including eight known pathogenic canonical splice-site variants
+    in BUB1B. The positive controls in ``validate()`` exist because of that.
+
+    latin-1 rather than the default UTF-8: the sentinel bytes must survive
+    encoding unchanged.
+    """
+    import numpy as np
+    import spliceai.utils as u
+
+    _MAP = np.asarray([[0, 0, 0, 0],
+                       [1, 0, 0, 0],
+                       [0, 1, 0, 0],
+                       [0, 0, 1, 0],
+                       [0, 0, 0, 1]])
+
+    def one_hot_encode(seq):
+        seq = seq.upper().replace('A', '\x01').replace('C', '\x02')
+        seq = seq.replace('G', '\x03').replace('T', '\x04').replace('N', '\x00')
+        return _MAP[np.frombuffer(seq.encode('latin-1'), np.int8) % 5]
+
+    u.one_hot_encode = one_hot_encode
+
+
+def validate(fasta: pathlib.Path, distance: int) -> tuple[int, int, float]:
+    """Score known pathogenic canonical splice-site variants before trusting a
+    negative result.
+
+    A variant that destroys a GT or AG dinucleotide must score high. If these do
+    not, the tool is broken and any negative finding from it is meaningless.
+    Returns (n scoring >= 0.5, n scored, max delta seen).
+    """
+    import csv as _csv
+    have = {l.split("\t")[0] for l in
+            pathlib.Path(str(fasta) + ".fai").read_text().splitlines()}
+    rows = [r for r in _csv.DictReader(
+                open("benchmarks/published_mva_variants.tsv"), delimiter="\t")
+            if r["benchmark_tier"] == "1"
+            and r["variant_class"] == "splice_site_canonical"
+            and r["chrom_nochr"] in have
+            and len(r["ref"]) == 1 and len(r["alt"]) == 1]
+    if not rows:
+        return (0, 0, 0.0)
+
+    tmp = pathlib.Path("results/arm_b/positive_controls.vcf")
+    tmp.parent.mkdir(parents=True, exist_ok=True)
+    with tmp.open("w") as fh:
+        fh.write("##fileformat=VCFv4.2\n")
+        for l in pathlib.Path(str(fasta) + ".fai").read_text().splitlines():
+            f = l.split("\t")
+            fh.write(f"##contig=<ID={f[0]},length={f[1]}>\n")
+        fh.write("#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\n")
+        for r in sorted(rows, key=lambda r: (r["chrom_nochr"], int(r["pos_grch38"]))):
+            fh.write(f"{r['chrom_nochr']}\t{r['pos_grch38']}\t{r['clinvar_vcv']}"
+                     f"\t{r['ref']}\t{r['alt']}\t.\t.\t.\n")
+
+    res = run_spliceai(tmp, fasta, distance, quiet=True)
+    hi = sum(1 for x in res if x["max_delta"] >= 0.5)
+    mx = max((x["max_delta"] for x in res), default=0.0)
+    return (hi, len(res), mx)
+
+
+def run_spliceai(in_vcf: pathlib.Path, fasta: pathlib.Path, distance: int,
+                 quiet: bool = False) -> list[dict]:
+    """Score a VCF with SpliceAI through its Python API.
+
+    Driven directly rather than through the CLI so the NumPy shim above can be
+    applied, and so failures surface as exceptions rather than a parsed-empty
+    output file.
+    """
+    import os
+    os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "3")
+    _patch_numpy_for_spliceai()
+    import pysam
+    from spliceai.utils import Annotator, get_delta_scores
+
+    ann = Annotator(str(fasta), ANNOT)
+    out: list[dict] = []
+    labels = ["acceptor_gain", "acceptor_loss", "donor_gain", "donor_loss"]
+
+    vcf = pysam.VariantFile(str(in_vcf))
+    n_scored = 0
+    for rec in vcf:
+        scores = get_delta_scores(rec, ann, distance, 0)
+        n_scored += 1
+        for ann_str in scores:
+            p = ann_str.split("|")
+            if len(p) < 10:
+                continue
+            try:
+                ds = [float(x) if x not in ("", ".") else 0.0 for x in p[2:6]]
+                dp = [int(x) if x not in ("", ".") else 0 for x in p[6:10]]
+            except ValueError:
+                continue
+            best = max(range(4), key=lambda i: ds[i])
+            out.append({
+                "chrom": rec.chrom, "pos": rec.pos, "ref": rec.ref, "alt": p[0],
+                "gene": p[1],
+                "ds_acceptor_gain": ds[0], "ds_acceptor_loss": ds[1],
+                "ds_donor_gain": ds[2], "ds_donor_loss": ds[3],
+                "max_delta": ds[best], "max_type": labels[best],
+                "max_offset_bp": dp[best],
+            })
+    if not quiet:
+        print(f"scored {n_scored} variants, {len(out)} gene-level annotations")
+    return out
+
+
 def parse_spliceai(vcf: pathlib.Path) -> list[dict]:
     """Parse the SpliceAI INFO field.
 
@@ -127,14 +246,29 @@ def main() -> None:
     n = build_vcf(short, in_vcf, pathlib.Path(str(fasta) + ".fai"))
     print(f"{n} shortlisted variants -> {in_vcf}")
 
-    cmd = ["spliceai", "-I", str(in_vcf), "-O", str(out_vcf),
-           "-R", str(fasta), "-A", ANNOT, "-D", str(args.distance)]
-    print("running: " + " ".join(cmd))
-    r = subprocess.run(cmd, capture_output=True, text=True)
-    if r.returncode != 0:
-        sys.exit(f"spliceai failed:\n{r.stderr[-3000:]}")
+    hi, n_ctrl, mx = validate(fasta, args.distance)
+    print(f"positive controls: {hi}/{n_ctrl} known canonical splice variants "
+          f"score >= 0.5 (max delta {mx:.3f})")
+    if n_ctrl == 0:
+        # A vacuous pass is not a pass. This happens when the reference covers
+        # no chromosome carrying a benchmark positive, as for the chrX-only
+        # reference: every MVA benchmark variant is autosomal. The run may
+        # proceed, but the negative it produces is unvalidated and must say so.
+        print("WARNING: no positive control was available against this reference, "
+              "so SpliceAI is UNVALIDATED for this run. A negative result here "
+              "carries less weight than one from a validated run.")
+        validated = False
+    else:
+        validated = True
+    if n_ctrl and hi == 0:
+        sys.exit(
+            f"FATAL: SpliceAI scored 0/{n_ctrl} known pathogenic canonical "
+            f"splice-site variants above 0.5 (max delta {mx:.3f}). The tool is "
+            f"not working, so a negative result from it would be meaningless. "
+            f"Refusing to report one."
+        )
 
-    rows = parse_spliceai(out_vcf)
+    rows = run_spliceai(in_vcf, fasta, args.distance)
     json.dump(rows, open(out / "spliceai_scores.json", "w"), indent=1)
 
     # Aggregate summary only; the variant-level file stays gitignored.
@@ -152,6 +286,17 @@ def main() -> None:
     L = ["# Arm B: splicing prediction over the Arm A shortlist\n"]
     L.append(f"Generated by `scripts/19_arm_b_splicing.py`. "
              f"SpliceAI at `-D {args.distance}`, against the SpliceAI default of 50.\n")
+    if validated:
+        L.append(f"**Tool validated for this run:** {hi}/{n_ctrl} known pathogenic "
+                 f"canonical splice-site variants score at or above 0.5, max delta "
+                 f"{mx:.3f}. A negative below can be believed.\n")
+    else:
+        L.append("**Tool NOT validated for this run.** No positive control was "
+                 "available against this reference, because every canonical "
+                 "splice-site positive in the benchmark is autosomal and this "
+                 "reference is chrX only. The negative below is therefore weaker "
+                 "than one from a validated run, and should be re-run against a "
+                 "reference carrying controls before it is reported.\n")
     L.append("## Result\n")
     L.append(f"{n} shortlisted variants scored, {len(rows)} gene-level annotations.\n")
     L.append("| SpliceAI delta band | n |")
@@ -169,8 +314,8 @@ def main() -> None:
     L.append("## Reading this\n")
     if not hits:
         L.append("**No shortlisted variant reaches even the permissive 0.2 threshold.**\n")
-        L.append("That is a real negative and worth stating plainly: within the nine known")
-        L.append("MVA genes, no rare variant in this proband is predicted to alter splicing.")
+        L.append("That is a real negative and worth stating plainly: no rare variant in the")
+        L.append("genes examined here is predicted to alter splicing in this proband.")
         L.append("It does not exclude the cryptic-allele hypothesis, because the shortlist")
         L.append("covers only the known genes and only variants the caller emitted. It does")
         L.append("mean the hypothesis is not supported where it was most expected.\n")
