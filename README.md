@@ -10,13 +10,14 @@ Submission for **Rare Disease, Real Kid: The MVA Hackathon 2026**
 
 Deadline 24 October 2026, code freeze 17 October 2026. All outputs CC BY 4.0.
 
-## Status: Phase 0 complete, halted at STOP #1
+## Status: Phase 0-2 built. STOP #1 cleared, STOP #2 partial.
 
 | Document | Contents |
 |---|---|
 | `MVA_HACKATHON_PLAN.md` | The governing plan. Six analysis arms, four STOP checkpoints. |
 | `DATA_CARD.md` | What the data is, what state it is in, and what it will and will not support. |
 | `RECON.md` | Hypothesis class triage and the confirmed branch. |
+| `STOP2_STATUS.md` | **Why STOP #2 cannot yet be cleared**, and what was measured instead. |
 | `ETHICS.md` | Consent scope, what we did and did not do, and one documented judgement call. |
 | `RULES.md` | **Incomplete.** Hackathon rules transcription, needed before the first analysis commit. |
 | `PROVENANCE.md` | Input checksums, tool versions, database snapshot dates. |
@@ -25,6 +26,26 @@ Deadline 24 October 2026, code freeze 17 October 2026. All outputs CC BY 4.0.
 **Confirmed branch: C, deferred.** Singleton, GRCh38, no RNA-seq, no alignments
 shipped but FASTQ present. Arms A, B, E and part of F are live now; Arms C, D and
 repeat expansion detection are blocked behind building a BAM from FASTQ.
+
+### Findings so far
+
+Each of these changed a design decision, and each was measured rather than assumed.
+
+- **The benchmark cannot test the leading hypothesis.** Of 108 confidently
+  pathogenic MVA-gene variants in ClinVar, none is deep intronic, near-splice,
+  synonymous or UTR. `STOP2_STATUS.md` sets out the consequence and the
+  substitute control set.
+- **Every known MVA gene is unconstrained** (BUB1B LOEUF 0.707 pLI 0.000,
+  CENATAC 1.227, and so on). Weighted conventionally, constraint would have
+  deprioritised every correct answer.
+- **The direct spindle-checkpoint-restoration axis is pharmacologically
+  unavailable.** Signed-edge nomination yields ten targets all requiring
+  activation; ChEMBL holds 118 drug mechanisms across them, none activating.
+  See `results/summaries/track2_direction_audit.md`.
+- **No consanguinity** in the proband (longest ROH-like run 2 Mb), which keeps
+  the compound heterozygote as the leading model.
+- **Splice distance is exact for SNVs** (268/268 against ClinVar HGVS) after
+  restricting exon boundaries to the MANE Select transcript.
 
 ## Data
 
