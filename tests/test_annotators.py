@@ -47,12 +47,38 @@ class TestGnomadFrequencyAnnotator:
         with pytest.raises(NotAvailableHere, match="NOT"):
             a.annotate(cand(), {})
 
-    def test_absent_from_gnomad_scores_as_rare(self, gnomad_table):
+    def test_absent_from_gnomad_scores_as_rare_only_inside_assayed_sequence(
+            self, gnomad_table):
+        """Absent means assayed and not seen, not simply missing from the table.
+
+        This test previously asserted the opposite and encoded the bug: it used
+        a position 90 kb from any data in the fixture and expected
+        'absent_from_gnomad'. Applied to real data that reasoning turned 1,007
+        intronic variants across the rhabdomyosarcoma genes into apparent
+        ultra-rare candidates.
+        """
         a = GnomadFrequencyAnnotator(table=gnomad_table)
-        # A variant not in the table at all is absent from gnomAD.
-        ev = a.annotate(cand(pos=40299999), {})
+        # Close to fixture positions, so the region is assayed; genuinely absent.
+        ev = a.annotate(cand(pos=40206200, ref="A", alt="T"), {})
         assert any(e.criterion == "absent_from_gnomad" for e in ev)
         assert sum(e.weight for e in ev) > 0
+
+    def test_position_outside_assayed_sequence_gets_no_frequency_claim(
+            self, gnomad_table):
+        a = GnomadFrequencyAnnotator(table=gnomad_table)
+        ev = a.annotate(cand(pos=40299999), {})   # 90 kb away, intronic in effect
+        assert [e.criterion for e in ev] == ["gnomad_not_assayed"]
+        assert sum(e.weight for e in ev) == 0.0, (
+            "an unassayed position must not be scored as rare, in either direction"
+        )
+        assert "not evidence of rarity" in ev[0].statement
+
+    def test_coverage_test_uses_local_density_not_whole_contig(self, gnomad_table):
+        a = GnomadFrequencyAnnotator(table=gnomad_table)
+        assert a._is_covered("15", 40206173) is True
+        assert a._is_covered("15", 40206175 + a.COVERAGE_WINDOW) is True
+        assert a._is_covered("15", 40206175 + a.COVERAGE_WINDOW + 1) is False
+        assert a._is_covered("7", 40206173) is False   # contig absent entirely
 
     def test_common_variant_is_penalised(self, gnomad_table):
         a = GnomadFrequencyAnnotator(table=gnomad_table)
