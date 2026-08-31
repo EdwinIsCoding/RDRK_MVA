@@ -1,0 +1,2504 @@
+symbol	phenotype_score	fraction_of_max	n_terms_matched	matched_terms	in_disease_panel
+KCNJ1	12.776	0.4813	5	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+SLC12A1	12.776	0.4813	5	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+ABCC6	12.735	0.4797	4	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0200067(Recurrent spontaneous abortion)	yes
+ENPP1	12.735	0.4797	4	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0200067(Recurrent spontaneous abortion)	yes
+INSR	11.66	0.4393	5	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+MPV17	11.66	0.4393	5	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+VPS33B	11.66	0.4393	5	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+HRAS	11.564	0.4356	4	HP:0002859(Rhabdomyosarcoma);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+PTCH1	11.564	0.4356	4	HP:0002859(Rhabdomyosarcoma);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+BSND	11.509	0.4335	4	HP:0000121(Nephrocalcinosis);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+CLCNKA	11.509	0.4335	4	HP:0000121(Nephrocalcinosis);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+CLCNKB	11.509	0.4335	4	HP:0000121(Nephrocalcinosis);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+FBXL4	11.049	0.4162	5	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+FIG4	11.049	0.4162	5	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+SLC16A2	11.049	0.4162	5	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+PEX3	9.926	0.3739	4	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+IGHMBP2	9.782	0.3685	4	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+BUB1B	9.641	0.3632	3	HP:0002859(Rhabdomyosarcoma);HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+CEP57	9.641	0.3632	3	HP:0002859(Rhabdomyosarcoma);HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+PPFIA3	9.553	0.3599	4	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+-	9.499	0.3579	4	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	no
+DNAJC21	9.499	0.3579	4	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+HSD11B2	9.499	0.3579	4	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+IGF2	9.499	0.3579	4	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+SBDS	9.499	0.3579	4	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+SRP54	9.499	0.3579	4	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+NBN	8.953	0.3373	3	HP:0002859(Rhabdomyosarcoma);HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+TP53	8.953	0.3373	3	HP:0002859(Rhabdomyosarcoma);HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+ABCB11	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+AK2	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+ALG12	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+ATP8B1	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+FBN1	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+FBXO22	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+GINS3	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+IFT140	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+PAX2	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+PBX1	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+PEX2	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+RNU4ATAC	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+RNU5B-1	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+RPS19	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+SKIC2	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+SMARCAL1	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+WDR4	8.888	0.3348	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+CTNS	8.811	0.3319	4	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SLC7A7	8.811	0.3319	4	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+STRADA	8.66	0.3262	3	HP:0000121(Nephrocalcinosis);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+PTH1R	8.43	0.3176	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+MUSK	8.286	0.3121	3	HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+BRAF	8.2	0.3089	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+GLB1	8.2	0.3089	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+LMNA	8.2	0.3089	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+MYH7	8.2	0.3089	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+PEX10	8.2	0.3089	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+PEX5	8.2	0.3089	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+PEX6	8.2	0.3089	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+CDKN1C	8.003	0.3015	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+PIK3C2A	8.003	0.3015	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+SRCAP	8.003	0.3015	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+ACTB	7.773	0.2928	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+CARS1	7.773	0.2928	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+COG7	7.773	0.2928	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+DALRD3	7.773	0.2928	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+ERCC6	7.773	0.2928	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+HMGA2	7.773	0.2928	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+LETM1	7.773	0.2928	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+MAGEL2	7.773	0.2928	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+MYH3	7.773	0.2928	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+POLR3A	7.773	0.2928	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+PRPS1	7.773	0.2928	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+RAI1	7.773	0.2928	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+SUCLA2	7.773	0.2928	4	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+PAX3	7.686	0.2895	2	HP:0002859(Rhabdomyosarcoma);HP:0003202(Skeletal muscle atrophy)	yes
+PAX7	7.686	0.2895	2	HP:0002859(Rhabdomyosarcoma);HP:0003202(Skeletal muscle atrophy)	yes
+ALG8	7.621	0.2871	3	HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+GALK1	7.621	0.2871	3	HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+NDP	7.621	0.2871	3	HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+NR1H4	7.621	0.2871	3	HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	no
+PPP2R5C	7.621	0.2871	3	HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+TMEM70	7.621	0.2871	3	HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+ZNF699	7.621	0.2871	3	HP:0001508(Failure to thrive);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+VIPAS39	7.544	0.2842	3	HP:0000121(Nephrocalcinosis);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+ARID2	7.392	0.2785	3	HP:0004322(Short stature);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+COL1A1	7.392	0.2785	3	HP:0004322(Short stature);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+COL1A2	7.392	0.2785	3	HP:0004322(Short stature);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+DLK1	7.392	0.2785	3	HP:0004322(Short stature);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	no
+JKAMP	7.392	0.2785	3	HP:0004322(Short stature);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+LRP5	7.392	0.2785	3	HP:0004322(Short stature);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+MEG3	7.392	0.2785	3	HP:0004322(Short stature);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	no
+RTL1	7.392	0.2785	3	HP:0004322(Short stature);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	no
+THOC2	7.392	0.2785	3	HP:0004322(Short stature);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+TSHR	7.392	0.2785	3	HP:0004322(Short stature);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+WDR73	7.392	0.2785	3	HP:0004322(Short stature);HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+POLRMT	7.315	0.2756	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+MAGED2	7.163	0.2698	2	HP:0000121(Nephrocalcinosis);HP:0001622(Premature birth)	yes
+ZFX	7.163	0.2698	2	HP:0000121(Nephrocalcinosis);HP:0001622(Premature birth)	yes
+ACTA1	6.933	0.2612	3	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+AIMP1	6.933	0.2612	3	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+TPM3	6.933	0.2612	3	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+YARS1	6.933	0.2612	3	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+BUB1	6.792	0.2559	2	HP:0002859(Rhabdomyosarcoma);HP:0004322(Short stature)	yes
+BUB3	6.792	0.2559	2	HP:0002859(Rhabdomyosarcoma);HP:0004322(Short stature)	yes
+MDM2	6.792	0.2559	2	HP:0002859(Rhabdomyosarcoma);HP:0004322(Short stature)	no
+NF1	6.792	0.2559	2	HP:0002859(Rhabdomyosarcoma);HP:0004322(Short stature)	yes
+TRIP13	6.792	0.2559	2	HP:0002859(Rhabdomyosarcoma);HP:0004322(Short stature)	yes
+ADAT3	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ALPL	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ATP6V1B1	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ATP6V1E1	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+BAZ1B	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+BUD23	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+CASR	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CLDN16	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CLIP2	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+CRELD1	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DNAJC30	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+EIF4H	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+ELN	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+FKBP6	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+FUT8	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GTF2I	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GTF2IRD1	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GTF2IRD2	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+IFT56	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+LIMK1	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+METTL27	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+MLXIPL	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+MYO5B	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+NCF1	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+OCRL	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+RFC2	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+SLC1A2	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SLC34A1	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SLC34A3	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SLC37A4	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SLC4A1	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SPOUT1	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+STX1A	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TBL2	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+TMEM270	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+VPS37D	6.65	0.2505	3	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+GUK1	6.506	0.2451	3	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	no
+NDUFB8	6.506	0.2451	3	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+NGLY1	6.506	0.2451	3	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+DNA2	6.277	0.2365	3	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+HUWE1	6.277	0.2365	3	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+ITPR1	6.277	0.2365	3	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+PNPLA6	6.277	0.2365	3	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+RPS6KA3	6.277	0.2365	3	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+ABCB4	6.125	0.2307	2	HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+ALB	6.125	0.2307	2	HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+B4GALT1	6.125	0.2307	2	HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+CNTN1	6.125	0.2307	2	HP:0001622(Premature birth);HP:0001518(Small for gestational age)	no
+FZD4	6.125	0.2307	2	HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+ZNF808	6.125	0.2307	2	HP:0001622(Premature birth);HP:0001518(Small for gestational age)	yes
+ANXA5	6.084	0.2292	1	HP:0200067(Recurrent spontaneous abortion)	no
+F12	6.084	0.2292	1	HP:0200067(Recurrent spontaneous abortion)	yes
+F13A1	6.084	0.2292	1	HP:0200067(Recurrent spontaneous abortion)	yes
+F13B	6.084	0.2292	1	HP:0200067(Recurrent spontaneous abortion)	yes
+F2	6.084	0.2292	1	HP:0200067(Recurrent spontaneous abortion)	yes
+F5	6.084	0.2292	1	HP:0200067(Recurrent spontaneous abortion)	yes
+HTR1A	6.084	0.2292	1	HP:0200067(Recurrent spontaneous abortion)	no
+SERPINC1	6.084	0.2292	1	HP:0200067(Recurrent spontaneous abortion)	yes
+SYCP3	6.084	0.2292	1	HP:0200067(Recurrent spontaneous abortion)	no
+TOP6BL	6.084	0.2292	1	HP:0200067(Recurrent spontaneous abortion)	no
+ATP1A1	6.048	0.2278	2	HP:0000121(Nephrocalcinosis);HP:0003202(Skeletal muscle atrophy)	yes
+ABCA12	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	no
+ANKRD11	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+BRD4	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+CDON	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+COPB2	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+CRIPTO	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+DHCR7	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+DISP1	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+DLL1	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+EBF3	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+FDXR	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+FGF8	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+FGFR1	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+FOXH1	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+GAS1	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+GBA1	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+GLI2	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+HDAC8	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+KIF7	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+KRAS	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+MAP2K1	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+MAP2K2	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+MED12	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+MYT1L	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+NDUFB11	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+NIPBL	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+NODAL	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+OSGEP	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+PEX1	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+PEX11B	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+PEX12	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+PEX13	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+PEX14	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+PEX16	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+PEX19	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+PEX26	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+RAD21	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+SHH	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+SIX3	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+SMC1A	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+SMC3	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+SPINK5	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+TGIF1	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+WDR62	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+YWHAZ	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+ZIC2	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+ZMPSTE24	6.039	0.2275	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+CAV1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+CPLX1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+CREBBP	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+CTBP1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+CTCF	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+CYB5A	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+DHDDS	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+DHX9	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+DYRK1A	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+EHMT1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+EP300	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+ERCC2	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+ERCC5	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+FAM111A	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+FARSB	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+FGFRL1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	no
+FLCN	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+GMNN	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+GNPTAB	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+H19	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+IGF1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+KANSL1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+KDM2B	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+LIG4	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+LMBRD1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+MAPKAPK5	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+MCTP2	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	no
+NDN	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+NOTCH3	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+NSD2	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+NSUN2	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+OCA2	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+ORC1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+PIK3R1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+POC1A	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+POLR1A	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+PPFIBP1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+PSMD12	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+RECQL4	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+RET	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+RNU6ATAC	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+RPL5	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+SALL1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+SIN3A	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+SKIC3	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+SLC25A24	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+SLC35C1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+SMAD4	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+SNRPN	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	no
+STAG1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+STAMBP	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+TBL1XR1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+UBR1	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+VPS13B	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+WDR83OS	5.612	0.2114	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+CDKN2A	5.525	0.2081	1	HP:0002859(Rhabdomyosarcoma)	yes
+CHEK2	5.525	0.2081	1	HP:0002859(Rhabdomyosarcoma)	yes
+DICER1	5.525	0.2081	1	HP:0002859(Rhabdomyosarcoma)	yes
+FOXO1	5.525	0.2081	1	HP:0002859(Rhabdomyosarcoma)	yes
+KEAP1	5.525	0.2081	1	HP:0002859(Rhabdomyosarcoma)	no
+MAD1L1	5.525	0.2081	1	HP:0002859(Rhabdomyosarcoma)	yes
+MLH1	5.525	0.2081	1	HP:0002859(Rhabdomyosarcoma)	yes
+SLC67A1	5.525	0.2081	1	HP:0002859(Rhabdomyosarcoma)	no
+ASCC1	5.437	0.2048	2	HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+KLHL40	5.437	0.2048	2	HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+KLHL41	5.437	0.2048	2	HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+LMOD3	5.437	0.2048	2	HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+NEB	5.437	0.2048	2	HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+TRIP4	5.437	0.2048	2	HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+WARS2	5.437	0.2048	2	HP:0003202(Skeletal muscle atrophy);HP:0001622(Premature birth)	yes
+AGXT	5.383	0.2028	2	HP:0000121(Nephrocalcinosis);HP:0001508(Failure to thrive)	yes
+ATP6V0A4	5.383	0.2028	2	HP:0000121(Nephrocalcinosis);HP:0001508(Failure to thrive)	yes
+CYP24A1	5.383	0.2028	2	HP:0000121(Nephrocalcinosis);HP:0001508(Failure to thrive)	yes
+FAH	5.383	0.2028	2	HP:0000121(Nephrocalcinosis);HP:0001508(Failure to thrive)	yes
+SLC2A2	5.383	0.2028	2	HP:0000121(Nephrocalcinosis);HP:0001508(Failure to thrive)	yes
+TBC1D24	5.383	0.2028	2	HP:0000121(Nephrocalcinosis);HP:0001508(Failure to thrive)	yes
+AMMECR1	5.154	0.1942	2	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature)	no
+ATP6V1B2	5.154	0.1942	2	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature)	yes
+CLCN5	5.154	0.1942	2	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature)	yes
+CLPB	5.154	0.1942	2	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature)	yes
+DYNC2I2	5.154	0.1942	2	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature)	yes
+FGF23	5.154	0.1942	2	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature)	yes
+HLA-DRB1	5.154	0.1942	2	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature)	no
+HNF4A	5.154	0.1942	2	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature)	yes
+HPRT1	5.154	0.1942	2	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature)	yes
+PHEX	5.154	0.1942	2	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature)	yes
+ROR2	5.154	0.1942	2	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature)	yes
+TRA2B	5.154	0.1942	2	HP:0000121(Nephrocalcinosis);HP:0004322(Short stature)	yes
+AR	5.01	0.1887	2	HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+COQ7	5.01	0.1887	2	HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+DNM2	5.01	0.1887	2	HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+SYNE1	5.01	0.1887	2	HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+YY1	5.01	0.1887	2	HP:0003202(Skeletal muscle atrophy);HP:0001518(Small for gestational age)	yes
+AARS1	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+AHDC1	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+ALDH18A1	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+ANTXR2	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+ASAH1	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+ATM	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+ATP7A	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+B4GALT7	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+BMP4	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+BORCS8	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+C2orf69	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+CHRNG	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+CPLANE1	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+DIAPH1	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+DNMT3B	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+ELFN1	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+ERBB3	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+ERCC8	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+FLNA	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+FUCA1	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+HSPG2	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+IARS2	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+KDM5C	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+LEMD3	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+LGI1	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+MDGA2	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+MECP2	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+MKKS	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+MT-TL1	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+MYMK	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+MYMX	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	no
+NALCN	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+PEX7	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+PGAP1	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+PHKA2	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+PHKG2	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+PIEZO2	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+PIGA	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+PLP1	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+PSMB8	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+PTEN	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+PTRH2	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+PYCR2	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+RFC4	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	no
+RRM2B	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+RYR1	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SDHB	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SDHD	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SELENON	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SIL1	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SLC39A13	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SMPD1	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+TPM2	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+TRAPPC11	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+TTN	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+UBAP2L	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+UNC13A	4.924	0.1855	3	HP:0004322(Short stature);HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+ABCA3	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+ARHGAP31	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+ASNS	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+CAPNS1	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	no
+COQ4	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+CYP11A1	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	no
+DLL4	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+DOCK6	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+EOGT	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+FH	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+HBB	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+LYN	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	no
+MMADHC	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+NDUFB3	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+NOTCH1	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+PNPO	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+RBPJ	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+SARS2	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+SFTPB	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+SFTPC	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+SLC17A5	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	yes
+SLC26A3	4.772	0.1798	2	HP:0001508(Failure to thrive);HP:0001622(Premature birth)	no
+ADAMTS2	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	no
+BCR	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	no
+CLCN7	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+COL11A1	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+COL3A1	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+COL5A1	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+CRKL	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+DHPS	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+ESCO2	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+FLI1	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+FLNB	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+GON7	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	no
+HOXD13	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+LAGE3	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+LTBP3	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+MAPK1	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+NLRP3	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+NUP107	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+NUP133	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+PAN2	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+RPL10	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+SF3B4	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+SMPD4	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+SUFU	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+TP53RK	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+TPRKB	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+TRAF7	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+YRDC	4.543	0.1711	2	HP:0004322(Short stature);HP:0001622(Premature birth)	yes
+ABCC8	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+ASCL1	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+EPCAM	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+FASTKD5	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+GATA6	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+GCK	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+GRB10	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	no
+HADHA	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+HYMAI	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	no
+IARS1	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+INS	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+KARS1	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+KCNJ11	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+LRPPRC	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+MMACHC	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+MTO1	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+NDUFA6	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+NHEJ1	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+NR4A2	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+NSMCE3	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+PET100	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+PHOX2B	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+PLAGL1	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	no
+PRDX1	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	no
+PTF1A	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+SLC4A10	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+TALDO1	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	no
+TBR1	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+WSB2	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+ZFP57	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+ZNF668	4.345	0.1637	2	HP:0001508(Failure to thrive);HP:0001518(Small for gestational age)	yes
+ADA2	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+ANAPC1	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+AUTS2	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+CAMK2B	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+CCDC8	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+CCNQ	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+CDK4	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+CENPE	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+CILK1	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+CREB3L1	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+CRIPT	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+CTNNB1	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+CUL7	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+DTYMK	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+EIF2S3	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+EMG1	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+ESAM	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+FANCA	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+FANCC	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+FANCD2	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+FANCE	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+FRYL	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+GATA1	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+GK	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+GON4L	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+GRIN2A	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+GTF2E2	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+GTF2H4	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+HEATR3	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+KDM6B	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+KIF22	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+LONP1	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+MAU2	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+MBTPS1	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+MED16	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+NCAPD2	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+NCAPD3	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+NKX3-2	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+OBSL1	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+OTUD5	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+PALB2	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+PAM16	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+PLAG1	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+PPP1R15B	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+PPP2R3C	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+PQBP1	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+PRKAR1A	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+PTCD3	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+PUF60	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+RBBP8	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+RNU2-2	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+RPL11	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+RPL15	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+RPL18	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+RPL26	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+RPL27	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+RPL31	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+RPL35	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+RPL35A	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+RPL8	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+RPL9	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+RPS10	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+RPS15A	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+RPS17	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+RPS20	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+RPS24	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+RPS26	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+RPS27	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+RPS28	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+RPS29	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+RPS7	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+SEC61A1	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+SHROOM4	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+SIX2	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+SLC26A2	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+TAF13	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+TONSL	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+TP63	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+TRAIP	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+TRMT10A	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+TSR2	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	no
+WBP4	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+ZRSR2	4.116	0.1551	2	HP:0004322(Short stature);HP:0001518(Small for gestational age)	yes
+AIRE	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+BTNL2	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	no
+CDC73	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+CLDN19	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+COL4A3	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+FAM20A	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+GALNT3	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+GATA3	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+GCM2	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	no
+GEMIN4	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+GNA11	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+GRHPR	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+HOGA1	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+KCNQ1	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+KCNQ1OT1	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+MEFV	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+MEN1	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+OXGR1	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	no
+PIGT	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+PTH	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+RRAGD	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+STX3	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+TOR1A	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+TRNT1	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	yes
+ZNF687	3.887	0.1464	1	HP:0000121(Nephrocalcinosis)	no
+ACADSB	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+ADK	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+AGTPBP1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+COG8	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+COL12A1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	no
+COL6A1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+COL7A1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+CYP7B1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+DGUOK	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+DNAJC19	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+DNM1L	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+EXOSC3	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+EXOSC8	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+EXOSC9	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+GALC	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+GBE1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+GTPBP2	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+HEXB	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+ITGA7	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+ITPR3	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+JAG1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+KIF1B	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+KRT14	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	no
+KRT5	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	no
+MAP3K20	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+MARS1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+MCCC2	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+MDH2	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+MEGF10	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+MTRFR	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+MYOD1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	no
+NDUFA8	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+NDUFS2	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+NDUFS4	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+NEXMIF	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+PI4K2A	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+PNKP	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+PNPT1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+POLG	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+POLR2A	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+PUS1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+RAPSN	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+RBCK1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+RYR3	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SCO2	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SH3TC2	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SLC25A19	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SLC25A21	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	no
+SLC25A4	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SLC25A46	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SLC46A1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SLC9A6	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+STING1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	no
+SUCLG1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SURF1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+SYT2	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+TCF4	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+TGFB1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+TIMMDC1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+TK2	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+TPI1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	no
+TWNK	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+VRK1	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+YARS2	3.657	0.1378	2	HP:0001508(Failure to thrive);HP:0003202(Skeletal muscle atrophy)	yes
+ADARB1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+AGL	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+AIFM1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+ALS2	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+AMPD2	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+AP1S2	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+ARL6	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+ATP8A2	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+ATRX	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+BBIP1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+BBS1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+BBS10	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+BBS12	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+BBS2	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+BBS4	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+BBS5	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+BBS7	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+BBS9	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+BMP1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	no
+CA8	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+CACHD1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	no
+CEP19	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	no
+CEP290	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+CFAP410	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+CFAP418	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+CHCHD10	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+COL2A1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+COL6A2	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+COMP	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+CUL4B	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+GARS1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+GLE1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+GNAS	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+H4C11	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+HK1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+HNRNPA1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	no
+HNRNPA2B1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+IDUA	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+IFT172	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+IFT27	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+IFT74	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+INPP4A	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+INPP5K	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+KAT6A	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+KDM1A	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+KIF1A	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+KIF1C	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+LARGE1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+LZTFL1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+MKS1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+MORC2	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+MRE11	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+MSTO1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+MT-ATP8	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+NAA60	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+NDC1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+NDE1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+NEK1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+NEU1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+NPHP1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+OGDH	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+PHF6	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+PHKB	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+PLEC	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+PNPLA2	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+RAB3A	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+RBM28	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+RBSN	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+RECQL	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+SALL4	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+SCAPER	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+SCLT1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+SCN4A	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+SDCCAG8	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+SDHA	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+SDHAF1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+SEPTIN9	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+SPART	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+SPRTN	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+STAC3	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+STAT1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+STIM1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+TBC1D23	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+TBCE	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+TBK1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+TRIM32	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+TRPV4	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+TTC8	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+TUBB2B	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+VCP	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+VLDLR	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+WARS1	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+WASHC5	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+WDPCP	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+WDR81	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+WRN	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+ZBTB20	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+ZC4H2	3.428	0.1291	2	HP:0004322(Short stature);HP:0003202(Skeletal muscle atrophy)	yes
+AMOTL1	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+CCDC47	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+COL5A2	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+CRB2	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+DBR1	3.276	0.1234	1	HP:0001622(Premature birth)	no
+DCLRE1B	3.276	0.1234	1	HP:0001622(Premature birth)	no
+DMPK	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+FCSK	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+FEM1B	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+FLVCR2	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+GATB	3.276	0.1234	1	HP:0001622(Premature birth)	no
+GATC	3.276	0.1234	1	HP:0001622(Premature birth)	no
+GFM1	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+HYLS1	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+INTS11	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+LSM7	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+MTM1	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+PCDH12	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+QRSL1	3.276	0.1234	1	HP:0001622(Premature birth)	no
+RALGAPA1	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+SATB1	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+SERPINE1	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+SLC27A4	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+STAT2	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+VARS1	3.276	0.1234	1	HP:0001622(Premature birth)	yes
+ACADVL	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+ASH1L	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+BLM	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+CDAN1	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+CLTCL1	2.849	0.1073	1	HP:0001518(Small for gestational age)	no
+CNOT1	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+CORIN	2.849	0.1073	1	HP:0001518(Small for gestational age)	no
+COX20	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+CRLS1	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+CYB5R3	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+DEF6	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+FLT1	2.849	0.1073	1	HP:0001518(Small for gestational age)	no
+GUF1	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+HNF1A	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+IRF6	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+KICS2	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+LARS2	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+MAMLD1	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+MRPS16	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+MSX1	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+NCAPH	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+NDUFB7	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+NECTIN1	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+NPHS1	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+NSF	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+NUDT2	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+NUP188	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+PDHA1	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+POR	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+PTS	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+RBMX	2.849	0.1073	1	HP:0001518(Small for gestational age)	no
+SNIP1	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+SPR	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+STOX1	2.849	0.1073	1	HP:0001518(Small for gestational age)	no
+SUPT7L	2.849	0.1073	1	HP:0001518(Small for gestational age)	no
+TAPT1	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+THRB	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+TIMM22	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+TRMT1	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+UQCRC2	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+UQCRFS1	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+VARS2	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+YIPF5	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+ZNF335	2.849	0.1073	1	HP:0001518(Small for gestational age)	yes
+AAAS	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+AASS	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ABCD1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ABL1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ACD	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ACTG1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ACTL6B	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ADAR	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ADH5	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+ADNP	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+AFF3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+AFG2A	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+AGPS	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+AKT1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ALG9	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ALOX12B	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+ALOXE3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+ALPK3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+AMER1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+AP1B1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+AP3B2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+AQP2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+ARCN1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ARID1B	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ARVCF	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+ARX	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ASXL1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ATP1A2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ATP1A3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ATP5F1A	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ATP6V0A2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ATP6V1A	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ATPAF2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+AVPR2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+B3GALT6	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+BANF1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+BICRA	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+BMPR1A	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+BPTF	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+BRCA1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+BRCA2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+BRF1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+BTK	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+BUD13	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+CA2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CACNA1A	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CACNA1B	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CACNA2D1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CARMIL2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CASK	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CASP8	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CASZ1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CBL	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CD96	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CDC45	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CDC6	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CDK19	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CDT1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CELF2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CENPT	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CERS3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+CHD7	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CIT	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CLMP	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CLTC	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CNKSR2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+COG1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+COG4	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+COMT	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+COX4I1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+COX7B	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+COXFA4	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CPAP	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CSPP1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CYFIP2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CYP17A1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+CYP27B1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+CYP2R1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+DACT1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DDB2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DDC	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DDOST	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DEPDC5	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DHCR24	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DHRS3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DKC1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DMXL2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DNM1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DOLK	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DONSON	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DPP9	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+DRG1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DYM	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DYNC2I1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+DYNC2LI1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+EBP	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ECE1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+EDN3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+EDNRB	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+EEF1A2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+EFL1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+EIF4A2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+EPG5	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+EPRS1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ERBB2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+ERCC1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ERCC3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ERCC4	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+EVC	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+EVC2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+EXTL3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+FAAP100	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+FAM149B1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+FANCF	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+FBXO28	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+FGD1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+FGF12	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+FMR1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+FOXG1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+FZR1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GABBR2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GABRA2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GABRA5	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GABRB2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GABRD	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GABRG2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GATM	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GDNF	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+GGPS1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+GJA1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GJB6	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GLI1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+GMPPA	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GNPAT	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GP1BB	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GPD1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+GPR161	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GRIA4	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GRIN1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GRIN2D	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GRM7	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GTF2H5	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+GYS2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+H3-3B	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+H4C5	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+HADH	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+HBA1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+HBA2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+HCCS	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+HCFC1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+HCN1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+HERC2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+HESX1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+HIRA	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+HIVEP2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+HLA-DQA1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+HLA-DQB1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+HNRNPH1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+HNRNPH2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+HSD17B4	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+IDH1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+IKBKG	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+IKZF2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+IPO8	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+IQSEC2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ITCH	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+JAGN1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+JAK1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+JMJD1C	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+KAT6B	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+KCNA2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+KCNAB2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+KCNB1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+KCNC2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+KCNH5	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+KDM6A	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+KIAA0586	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+KIAA0753	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+KIF15	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+KLLN	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+KMT2A	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+KMT2C	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+KMT2D	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+LBR	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+LGI3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+LHX4	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+LMNB1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+LRRC7	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+LUZP1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+MAP3K7	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MARS2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MBTPS2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MCM4	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MGAT2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MKRN3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+MLYCD	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MMP23B	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+MSMO1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MT-ATP6	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MT-CO1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MT-CO2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MT-CO3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MT-ND1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MT-ND4	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MT-ND5	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MT-ND6	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MT-TF	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MT-TH	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MT-TK	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MT-TQ	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MT-TS1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MT-TS2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MT-TW	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MTR	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+MVK	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+NCAPG2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+NECAP1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+NFE2L2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+NFIX	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+NIPAL4	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+NKX2-1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+NKX2-5	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+NLRC4	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+NOTCH2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+NPAP1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+NPHP3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+NRCAM	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+NRTN	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+NSD1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+NTRK2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+NUS1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+OFD1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ORAI1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ORC4	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ORC6	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+OTUD6B	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+OTX2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PACS2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PARN	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PARS2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PCCA	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PCCB	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PCGF2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PDE6D	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PDPN	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+PGM3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PHGDH	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PIK3CA	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PIK3CD	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PKP1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+PLCH1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PNPLA1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+POGZ	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+POLA1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+POU1F1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PPP1CB	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PPP3CA	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PRDM16	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PREPL	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PRKACA	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PRKACB	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PRKCZ	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+PRMT7	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PROKR2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PTBP1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PTDSS1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PTPN11	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PTPN22	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+PWAR1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+PWRN1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+PYCR1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+PYGL	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+RAB3GAP1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+RERE	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+RFT1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+RIT1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+RMRP	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+RNU4-2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+RNU7-1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ROBO1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+RPL17	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+RREB1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+RTEL1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+RTTN	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SCN1A	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SCN3A	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SCN8A	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SCNN1A	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SCNN1B	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+SCNN1G	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SDHC	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SDR9C7	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+SEC23B	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SEC24C	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+SEMA3C	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+SEMA3D	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+SETD2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SGSM3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SH2B1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+SHOC2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SIM1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SKI	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SLC13A5	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SLC2A1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SLC35A2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SLC38A3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SLC39A4	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SLC39A8	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SLC6A8	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SMAD2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SMARCA2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SMO	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SMOC1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SNAP29	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SNORD115-1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+SNORD116-1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+SON	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SOX9	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SPEN	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SPTSSA	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SRD5A3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SREBF1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+SRSF1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+STAG2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+STAT3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+STAT5B	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+STIL	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+STRA6	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+STT3A	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SULT2B1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+SYNGAP1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SYNJ1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+SZT2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TACO1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TAOK1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TBX1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TBX4	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TCIRG1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TCTN3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TERT	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TG	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+TGDS	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TGFB3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TGM1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+TINF2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TLK2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TMEM165	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TMEM216	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TMEM231	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TNFRSF11B	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+TOPORS	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TRAK1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TRAPPC2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+TYMS	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+UBA5	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+UBE3B	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+UBE4B	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+UFC1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+UFD1	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+UFSP2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+USF3	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	no
+USP7	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+VAC14	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+VDR	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+VPS53	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+WDR11	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+XPA	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+XPC	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+YWHAG	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ZEB2	2.763	0.1041	2	HP:0004322(Short stature);HP:0001508(Failure to thrive)	yes
+ABCA1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+ABCD3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ABHD12	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ACADM	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ACTN2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ADAMTS15	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ADCY6	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+ADSL	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ADSS1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+AFG3L2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+AGRN	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+AIP	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+AK9	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+AMPD1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+ANG	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ANO5	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ANXA11	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+APTX	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ARHGAP19	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+ARMC5	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+ARSI	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+ATAD3A	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ATCAY	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ATL1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ATL3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ATP13A2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ATXN1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ATXN2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ATXN3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+B3GALNT2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+B4GALNT1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+B4GAT1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+BAG3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+BICD2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+BIN1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+BRPF1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+BSCL2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+C19orf12	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+C9orf72	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CADM3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CAPN1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+CAPN3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CAPRIN1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CAV3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CCNF	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CCT5	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CD28	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CD59	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+CDH23	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CEP126	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+CHAT	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CHMP2B	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CHN1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CHP1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+CHRNA1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CHRNB1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CHRND	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+CHRNE	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+CNBP	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+CNTNAP1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+COA7	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+COASY	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+COG3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+COL13A1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+COL25A1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+COL4A1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+COL6A3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+COLQ	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+COQ2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+COX18	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CPT1A	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CPT1C	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CRPPA	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CTLA4	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+CYP27A1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+DAG1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+DAO	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+DARS2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+DCAF8	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+DCTN1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+DES	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+DHH	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+DHTKD1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+DMD	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+DNAJB2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+DOK7	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+DPM3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+DUX4	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+DUX4L1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+DYNC1H1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+DYSF	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+EGR2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+EMD	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+ENTPD1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ERBB4	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ERGIC1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+ERLIN1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ERLIN2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+FAM111B	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+FARS2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+FBLN5	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+FBXO38	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+FGD4	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+FHL1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+FITM2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+FKBP14	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+FKRP	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+FKTN	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+FLNC	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+FLRT1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+FLVCR1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+FOXP2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+FRG1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+FUS	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+FXN	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+GAN	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+GBA2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+GBF1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+GDAP1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+GFPT1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+GIPC1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+GJB1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+GLDN	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+GLT8D1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+GMPPB	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+GNB4	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+GNE	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+GPR35	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+GYG1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+HARS1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+HINT1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+HMGCR	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+HNRNPDL	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+HSPB1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+HSPB3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+HSPB8	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+HYCC1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+IBA57	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+IFRD1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+INF2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ISCU	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+JAG2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+JPH1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+KBTBD13	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+KCNK9	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+KIF21A	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+KIF5A	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+KLC2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+KLHL9	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+KY	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+LAMB2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+LAMP2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+LDB3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+LIMS2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+LIPE	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+LITAF	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+LMNB2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+LRP12	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+LRP4	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+LRSAM1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+LTBP4	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+MAFB	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MAG	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MATR3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MB	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+MED25	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MFN2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MGME1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MINPP1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MLIP	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+MME	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MPZ	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MST1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+MT-TE	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MTAP	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MTMR14	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MTMR2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MYBPC1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MYH14	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MYO9A	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+MYOT	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+MYPN	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+NAGA	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+NARS2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+NDRG1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+NDUFA12	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+NDUFA9	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+NDUFAF6	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+NEFH	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+NEFL	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+NEMF	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+NIPA1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+NOP56	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+NOTCH2NLC	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+NPPA	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+NR3C1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+NT5C2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+NUP88	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+NUTM2B-AS1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+OPA1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+OPTN	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PDK3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PDXK	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+PFKM	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+PFN1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PHKA1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PHKG1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+PHYH	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PIK3R2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PIK3R5	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PIP5K1C	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PLEKHG5	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PLOD3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PLXND1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PMP2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PMP22	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+POGLUT1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+POMGNT1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+POMGNT2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+POMK	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+POMT1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+POMT2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PON1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+PON2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+PON3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+POPDC1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PPARGC1A	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+PRPH	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PRUNE1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PRX	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PSMG2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+PTRHD1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PYGM	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+PYROXD1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+RAB7A	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+REEP1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+RETREG1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+REV3L	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+RILPL1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+RNASEH1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+RNF170	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+RNF31	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+RRM1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+RTN2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+RXYLT1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SACS	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SBF1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SBF2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SCN5A	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SCN9A	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SCYL1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SCYL2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+SEMA4D	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+SETD5	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SETX	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SFXN4	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SGCA	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SGCB	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SGCD	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SGCG	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SIGMAR1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SLC12A6	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SLC18A3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+SLC25A1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SLC33A1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SLC52A2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SLC52A3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SLC5A6	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SLC5A7	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SMCHD1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SMN1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+SMN2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+SNAP25	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SOD1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SOX10	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SPAST	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SPEG	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SPG11	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SPTAN1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SPTBN4	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SPTLC1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SPTLC2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SQSTM1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+STUB1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SVBP	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+SYNE2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TAF15	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TARDBP	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TBCD	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TBCK	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TCAP	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TDP1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TFG	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TGFB2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TIA1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TIMM8A	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TMEM43	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TMTC3	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TNFRSF1B	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+TNNT1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TNR	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TNXB	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+TOE1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TOR1AIP1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TREM2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+TRIM2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+TTC19	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TTPA	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TUBA1A	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TUBA4A	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+TYMP	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+UBA1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+UBAP1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+UBQLN2	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+UNC45B	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+USP48	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+USP8	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+VAMP1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+VAPB	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+VMA21	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+VMA22	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+VPS13A	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+VPS13D	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+VWA1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	no
+WNK1	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+ZFYVE26	2.161	0.0814	1	HP:0003202(Skeletal muscle atrophy)	yes
+AARS2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ABAT	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ABCD4	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ACAD9	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ACADS	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ACO2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ACOX1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ACSF3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ACSL5	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+ACVR1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ADA	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ADAM17	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ADCY5	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+AGR2	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+AHCY	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+AKR1D1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ALAD	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ALDOB	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ALG11	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ALG3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ALG6	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+AMACR	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+AMN	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+ANKRD55	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+ANO1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ARFGEF2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ARPC1B	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ASL	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ASS1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ASXL3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ATP5F1B	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+ATP6AP1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ATP7B	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ATP9A	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ATXN7	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+AUH	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+BCAP31	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+BCS1L	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+BLNK	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CA12	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+CACNA1E	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CAD	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CAMKMT	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+CARS2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CAVIN1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CBFB	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CBS	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CCT3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CD247	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CD3D	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CD3E	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CD3G	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CD40LG	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CD79A	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CD79B	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CDKL5	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CEACAM3	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+CEACAM6	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+CFTR	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CHASERR	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CHRM3	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+CHRNA3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CIITA	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CLCA4	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+CLCN3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+COA8	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+COG6	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+COL4A5	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+COL4A6	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+COX10	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+COX15	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+COX4I2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+COX5A	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+COX6B1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CPS1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CPSF3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CSF2RA	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CSF2RB	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CSNK2A1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CUBN	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+CUL3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CYC1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+CYP11B2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+DCLRE1C	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+DCTN4	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+DEGS1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+DGAT1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+DHRSX	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+DLD	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+DNASE2	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+DOCK11	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+DOCK8	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+DPAGT1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+DPM1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+DPM2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+DPYD	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+DPYS	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+DSG1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+DSP	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+EARS2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+EDNRA	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+EFEMP1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+EGFR	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+EIF5A	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ELAC2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ELMO2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+EN1	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+ERMARD	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ETHE1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+FASTKD2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+FCGR2A	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+FDFT1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+FLT3LG	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+FOCAD	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+FOXN1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+FOXP1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+FOXP3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+FOXRED1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+FTH1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+FTO	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+G6PC3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GAA	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GALE	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GALM	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GALT	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GCDH	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GCLC	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+GFAP	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GJA5	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GJA8	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GJB2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GLUD1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GLYCTK	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GNAO1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GNB1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GNB2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GOLGA2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GPIHBP1	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+GPT2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+GSTM3	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+GTPBP3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+HACD1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+HADHB	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+HFE	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+HIBCH	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+HIKESHI	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+HMOX1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+HNRNPK	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+HPD	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+HPDL	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+HSD3B2	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+HSD3B7	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+HTRA2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+IFNG	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+IGHM	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+IGLL1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+IKBKB	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+IL1RN	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+IL21	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+IL21R	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+IL2RA	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+IL2RB	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+IL2RG	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+IL7R	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+IRF1	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+IRF4	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+IRF8	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+IVD	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+JAK3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+KCNA1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+KCNJ6	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+KCNN4	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+KCNQ2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+KCNT1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+KMT5B	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+KRT16	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+KRT17	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+KRT6A	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+KRT6B	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+LAMA3	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+LAMB3	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+LAMC2	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+LARS1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+LAT	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+LCK	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+LINS1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+LIPA	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+LPIN2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+LRBA	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+LRRC8A	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+LRRK1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+LTC4S	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+LYRM4	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+LYRM7	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MBL2	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+MC2R	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MCCC1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MCEE	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MECR	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MED17	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MICOS13	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MIF	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+MIPEP	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MMAA	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MMAB	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MMUT	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MPDU1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MPI	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MRAP	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MRPL12	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MRPL3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MRPL39	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MRPS14	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MRPS2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MRPS28	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MRPS7	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MT-CYB	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MT-ND2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MT-ND3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MT-TL2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MT-TN	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MT-TV	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MTHFR	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MTRR	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MTTP	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+MYL2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NACC1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NADK2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NAGS	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NCF2	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+NDUFA1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFA11	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFA13	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFA2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFAF1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFAF2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFAF3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFAF4	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFAF5	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFAF8	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFB10	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFB9	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFS1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFS3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFS6	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFS7	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFS8	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFV1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NDUFV2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NEDD4L	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NELFA	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+NEUROD2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NEUROG3	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+NFASC	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NFIA	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NFKB2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NFKBIA	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NFU1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NLRP1	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+NNT	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NONO	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NR0B1	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+NR3C2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NSRP1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NSUN3	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+NUBPL	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NUP214	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NUP54	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+NUP62	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+OCLN	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+OPLAH	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+OTC	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+OTULIN	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+OXCT1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PACS1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PACSIN3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PCSK1	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+PDGFRB	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PDHX	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PDX1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PEPD	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PIGB	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PIGG	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PIGP	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PIGQ	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PLAA	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PLCB1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PLCB4	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PMM2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PMPCB	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PNP	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+POLG2	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+POLR1B	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+POLR1C	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+POLR1D	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+POLR3K	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+POMC	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+POMP	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PPM1B	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+PPP1R13L	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PRF1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PSAP	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PSAT1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PSMB10	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PSMB4	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+PSMC1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+PTPN2	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+PUS3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+RAC2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+RAG1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+RAG2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+RARS2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+RASGRP1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+RBM10	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+RELB	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+RFX5	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+RFXANK	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+RFXAP	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+RHOBTB2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+RIPK1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+RNF13	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+RNF2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+RRAGC	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SAR1B	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+SC5D	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SCN1B	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SCN2A	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SCO1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SEC31A	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SERAC1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SERPINA1	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+SETBP1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SGO1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SI	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+SIK1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SLC10A2	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+SLC11A1	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+SLC12A3	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+SLC12A5	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SLC1A3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SLC22A5	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SLC25A13	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SLC25A15	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SLC25A22	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SLC25A3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SLC26A9	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SLC30A9	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SLC32A1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SLC39A7	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SLC3A1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SLC51A	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+SLC5A1	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+SLC6A14	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+SLC9A3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SMARCC2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SMARCD2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SNX10	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SOX17	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SP110	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SPI1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SPOP	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SPTBN1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SSR4	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ST3GAL5	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+STAR	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+STAT4	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+STT3B	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SUGCT	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+SV2A	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+TAFAZZIN	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TAMM41	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TASP1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TCF3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TCN2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TCOF1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TCP1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TFAM	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+TFRC	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TIMM50	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TJP2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TKFC	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TLL1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TMEM106B	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TMEM126B	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TMPRSS15	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+TNPO2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TOM1	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+TOP2B	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TRAC	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TRIM8	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TRIO	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TRIT1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TRMT10C	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TRMT5	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TSHB	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TWIST2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+TXNRD2	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+UBA2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+UMPS	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+UNC45A	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+UNC80	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+UQCC2	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+VHL	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+VPS37A	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+VPS45	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+VPS51	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+WAS	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+WDR26	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+WNT2B	1.496	0.0564	1	HP:0001508(Failure to thrive)	no
+WNT7B	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ZAP70	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ZIC3	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ZNFX1	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ZSWIM6	1.496	0.0564	1	HP:0001508(Failure to thrive)	yes
+ABCB6	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ABCB7	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ABHD5	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ACAN	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ACER3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ACP5	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ADAMTS10	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ADAMTS17	1.267	0.0477	1	HP:0004322(Short stature)	no
+ADAMTSL2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+AFF2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+AFF4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+AGA	1.267	0.0477	1	HP:0004322(Short stature)	yes
+AGO1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+AHSG	1.267	0.0477	1	HP:0004322(Short stature)	no
+ALDH3A2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ALDOA	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ALG2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ALMS1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ANK1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ANKH	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ANKLE2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ANKRD17	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ANTXR1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+AP4B1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+AP4E1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+AP4M1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+AP4S1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ARID1A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ARNT2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ARPC4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ARPC5	1.267	0.0477	1	HP:0004322(Short stature)	no
+ARSB	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ARSK	1.267	0.0477	1	HP:0004322(Short stature)	no
+ARSL	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ASCC3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ASPM	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ASPNAT	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ASPRV1	1.267	0.0477	1	HP:0004322(Short stature)	no
+ATP11A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ATP5F1D	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ATP5F1E	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ATP5MK	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ATR	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ATRIP	1.267	0.0477	1	HP:0004322(Short stature)	yes
+B3GAT3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+B3GLCT	1.267	0.0477	1	HP:0004322(Short stature)	yes
+BCAS3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+BCL11A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+BCOR	1.267	0.0477	1	HP:0004322(Short stature)	yes
+BDNF	1.267	0.0477	1	HP:0004322(Short stature)	no
+BGN	1.267	0.0477	1	HP:0004322(Short stature)	yes
+BMP15	1.267	0.0477	1	HP:0004322(Short stature)	yes
+BMP2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+BMPER	1.267	0.0477	1	HP:0004322(Short stature)	yes
+BMPR1B	1.267	0.0477	1	HP:0004322(Short stature)	yes
+BNC1	1.267	0.0477	1	HP:0004322(Short stature)	no
+BNIP1	1.267	0.0477	1	HP:0004322(Short stature)	no
+BPNT2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+BRCC3	1.267	0.0477	1	HP:0004322(Short stature)	no
+BRIP1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+C18orf32	1.267	0.0477	1	HP:0004322(Short stature)	no
+C1GALT1C1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+C1R	1.267	0.0477	1	HP:0004322(Short stature)	no
+C1S	1.267	0.0477	1	HP:0004322(Short stature)	no
+CAMK2G	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CAMTA1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CANT1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CAPN15	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CCDC134	1.267	0.0477	1	HP:0004322(Short stature)	no
+CCDC22	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CCN2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CCN6	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CDC42BPB	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CDCA7	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CDH3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CDIN1	1.267	0.0477	1	HP:0004322(Short stature)	no
+CDK10	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CDK13	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CDK5RAP2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CDK6	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CDSN	1.267	0.0477	1	HP:0004322(Short stature)	no
+CEP120	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CEP135	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CEP152	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CEP164	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CEP295	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CEP63	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CHD4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CHD6	1.267	0.0477	1	HP:0004322(Short stature)	no
+CHKA	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CHRNA7	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CHST11	1.267	0.0477	1	HP:0004322(Short stature)	no
+CHST3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CHSY1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CKAP2L	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CLPP	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CLTRN	1.267	0.0477	1	HP:0004322(Short stature)	no
+COA3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+COG5	1.267	0.0477	1	HP:0004322(Short stature)	yes
+COL10A1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+COL11A2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+COL27A1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+COL9A1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+COL9A2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+COL9A3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+COLEC10	1.267	0.0477	1	HP:0004322(Short stature)	yes
+COX8A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CRNKL1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CRTAP	1.267	0.0477	1	HP:0004322(Short stature)	no
+CSGALNACT1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CTC1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CTDP1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CTNNA2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CTNND2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CTSA	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CTSK	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CUX1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CWC27	1.267	0.0477	1	HP:0004322(Short stature)	yes
+CYBC1	1.267	0.0477	1	HP:0004322(Short stature)	no
+CYP11B1	1.267	0.0477	1	HP:0004322(Short stature)	no
+CYP19A1	1.267	0.0477	1	HP:0004322(Short stature)	no
+CYP4F22	1.267	0.0477	1	HP:0004322(Short stature)	no
+DAP3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DCC	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DCHS1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DDHD2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DDR2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DDRGK1	1.267	0.0477	1	HP:0004322(Short stature)	no
+DDX3X	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DGCR2	1.267	0.0477	1	HP:0004322(Short stature)	no
+DGCR6	1.267	0.0477	1	HP:0004322(Short stature)	no
+DGCR8	1.267	0.0477	1	HP:0004322(Short stature)	no
+DLL3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DLX5	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DMP1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DNAJC3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DNMT3A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DOCK3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DOT1L	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DPF2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DPH1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DPH2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DPH5	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DPP6	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DPYSL5	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DSTYK	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DVL1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DVL3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DYNC1I2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DYNC2H1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+DYNLT2B	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ECEL1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+EFNB1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+EFTUD2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+EHHADH	1.267	0.0477	1	HP:0004322(Short stature)	yes
+EIF2AK3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+EIF3F	1.267	0.0477	1	HP:0004322(Short stature)	yes
+EIF4A3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ELP2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ERF	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ERI1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ESS2	1.267	0.0477	1	HP:0004322(Short stature)	no
+EXOC6B	1.267	0.0477	1	HP:0004322(Short stature)	yes
+EXOSC2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+EXOSC5	1.267	0.0477	1	HP:0004322(Short stature)	no
+EXT1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+EXT2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+EYA1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FAM20C	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FAM50A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FANCB	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FANCG	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FANCI	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FANCL	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FANCM	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FAR1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FARSA	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FAS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FAT4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FBXL3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FBXO11	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FGFR2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FGFR3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FIGLA	1.267	0.0477	1	HP:0004322(Short stature)	no
+FILIP1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FKBP10	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FN1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FOXA2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FOXE1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FRA10AC1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FSHR	1.267	0.0477	1	HP:0004322(Short stature)	no
+FXR1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+FZD2	1.267	0.0477	1	HP:0004322(Short stature)	no
+G6PC1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GALNS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GALNT2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GATA4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GDF5	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GH1	1.267	0.0477	1	HP:0004322(Short stature)	no
+GHR	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GHRHR	1.267	0.0477	1	HP:0004322(Short stature)	no
+GHSR	1.267	0.0477	1	HP:0004322(Short stature)	no
+GINS1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GJB3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GJB4	1.267	0.0477	1	HP:0004322(Short stature)	no
+GLA	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GLI3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GM2A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GNPNAT1	1.267	0.0477	1	HP:0004322(Short stature)	no
+GNPTG	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GNS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GORAB	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GOT2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GPC4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GPC6	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GPX4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GRHL2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GRIA3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GRM1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GSC	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GTF3C3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GUSB	1.267	0.0477	1	HP:0004322(Short stature)	yes
+GZF1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+HAAO	1.267	0.0477	1	HP:0004322(Short stature)	yes
+HACE1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+HDAC4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+HDAC6	1.267	0.0477	1	HP:0004322(Short stature)	yes
+HELLS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+HES7	1.267	0.0477	1	HP:0004322(Short stature)	no
+HHAT	1.267	0.0477	1	HP:0004322(Short stature)	yes
+HMGB3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+HNF1B	1.267	0.0477	1	HP:0004322(Short stature)	yes
+HNRNPU	1.267	0.0477	1	HP:0004322(Short stature)	yes
+HS2ST1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+HSPA9	1.267	0.0477	1	HP:0004322(Short stature)	no
+HYAL1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+HYAL2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+HYOU1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IDH2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IDS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IFIH1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IFITM5	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IFT122	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IFT43	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IFT52	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IFT57	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IFT80	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IGBP1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IGF1R	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IHH	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IL11RA	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IL6ST	1.267	0.0477	1	HP:0004322(Short stature)	no
+INPPL1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+INTS1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+INTS8	1.267	0.0477	1	HP:0004322(Short stature)	yes
+INTU	1.267	0.0477	1	HP:0004322(Short stature)	yes
+INVS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IQCB1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IQSEC1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+IRS4	1.267	0.0477	1	HP:0004322(Short stature)	no
+ITGB6	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KATNIP	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KCNA4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KCNC3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KCNH1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KCNJ10	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KCNJ2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KCNJ5	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KCNK3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KCNMA1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KCTD1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KDELR2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KDM3B	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KDSR	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KIF11	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KIF14	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KIF23	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KIFBP	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KISS1R	1.267	0.0477	1	HP:0004322(Short stature)	no
+KLF1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KMT2B	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KNL1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+KRT10	1.267	0.0477	1	HP:0004322(Short stature)	no
+KYNU	1.267	0.0477	1	HP:0004322(Short stature)	yes
+L1CAM	1.267	0.0477	1	HP:0004322(Short stature)	yes
+LAMTOR2	1.267	0.0477	1	HP:0004322(Short stature)	no
+LARP7	1.267	0.0477	1	HP:0004322(Short stature)	yes
+LAS1L	1.267	0.0477	1	HP:0004322(Short stature)	yes
+LEF1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+LEMD2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+LEPR	1.267	0.0477	1	HP:0004322(Short stature)	no
+LFNG	1.267	0.0477	1	HP:0004322(Short stature)	yes
+LHX1	1.267	0.0477	1	HP:0004322(Short stature)	no
+LHX3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+LIFR	1.267	0.0477	1	HP:0004322(Short stature)	yes
+LIPN	1.267	0.0477	1	HP:0004322(Short stature)	yes
+LMBR1	1.267	0.0477	1	HP:0004322(Short stature)	no
+LMX1B	1.267	0.0477	1	HP:0004322(Short stature)	yes
+LRRC8C	1.267	0.0477	1	HP:0004322(Short stature)	yes
+LSM11	1.267	0.0477	1	HP:0004322(Short stature)	yes
+LSS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+LTBP1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+LTBP2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+LZTR1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MAB21L2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MACF1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MAD2L2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MADD	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MAF	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MALT1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MAN1B1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MAN2B2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MANF	1.267	0.0477	1	HP:0004322(Short stature)	no
+MAPRE2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MARK2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MAST1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MATN3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MBD5	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MCM3AP	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MCM7	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MCM9	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MCPH1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MED13L	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MEIS2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MESD	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MESP2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+METTL5	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MFSD2A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MGP	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MIA3	1.267	0.0477	1	HP:0004322(Short stature)	no
+MID1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MIR140	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MIR17HG	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MITF	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MMP13	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MMP2	1.267	0.0477	1	HP:0004322(Short stature)	no
+MMP9	1.267	0.0477	1	HP:0004322(Short stature)	no
+MPL	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MRAS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MRPS22	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MRPS25	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MSH4	1.267	0.0477	1	HP:0004322(Short stature)	no
+MSL2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MT-RNR1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MT-TP	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MTFMT	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MTHFS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MTOR	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MTX2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MYCN	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MYH8	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MYL11	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MYO18B	1.267	0.0477	1	HP:0004322(Short stature)	yes
+MYSM1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NAA10	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NAE1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NANS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NBAS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NCDN	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NDST1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NEK8	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NHP2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NIN	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NMNAT1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NOG	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NOP10	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NOS3	1.267	0.0477	1	HP:0004322(Short stature)	no
+NPHP4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NPM1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NPR2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NR2F1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NR5A1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NRAS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NSDHL	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NSMCE2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NUP37	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NUP85	1.267	0.0477	1	HP:0004322(Short stature)	yes
+NXN	1.267	0.0477	1	HP:0004322(Short stature)	no
+OSTM1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+P3H1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+P4HB	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PAICS	1.267	0.0477	1	HP:0004322(Short stature)	no
+PAK3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PAPPA2	1.267	0.0477	1	HP:0004322(Short stature)	no
+PAPSS2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PAX1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PAX6	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PAX8	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PCLO	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PCNA	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PCNT	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PCYT1A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PDCD6IP	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PDE3A	1.267	0.0477	1	HP:0004322(Short stature)	no
+PDE4D	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PGAP2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PGBD5	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PGM1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PHC1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PHLDB1	1.267	0.0477	1	HP:0004322(Short stature)	no
+PIEZO1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PISD	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PITX1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PKDCC	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PLAAT3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PLK4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PLOD2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PMPCA	1.267	0.0477	1	HP:0004322(Short stature)	yes
+POLD1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+POLE	1.267	0.0477	1	HP:0004322(Short stature)	yes
+POLR3B	1.267	0.0477	1	HP:0004322(Short stature)	yes
+POLR3GL	1.267	0.0477	1	HP:0004322(Short stature)	yes
+POLR3H	1.267	0.0477	1	HP:0004322(Short stature)	no
+POP1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PORCN	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PPIB	1.267	0.0477	1	HP:0004322(Short stature)	no
+PPM1D	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PRKG2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PROP1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PRR12	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PSMC3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PSMC3IP	1.267	0.0477	1	HP:0004322(Short stature)	no
+PTHLH	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PUM1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+PUS7	1.267	0.0477	1	HP:0004322(Short stature)	yes
+QRICH1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RAB18	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RAB23	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RAB33B	1.267	0.0477	1	HP:0004322(Short stature)	no
+RAB39B	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RAB3GAP2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RACGAP1	1.267	0.0477	1	HP:0004322(Short stature)	no
+RAD50	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RAD51	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RAD51C	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RAF1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RAP1B	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RAP1GDS1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RASA2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RB1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RBM8A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RC3H1	1.267	0.0477	1	HP:0004322(Short stature)	no
+RDH11	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RFWD3	1.267	0.0477	1	HP:0004322(Short stature)	no
+RIGI	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RIN2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RINT1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RIPPLY2	1.267	0.0477	1	HP:0004322(Short stature)	no
+RLIM	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RMP64	1.267	0.0477	1	HP:0004322(Short stature)	no
+RNASEH2A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RNASEH2B	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RNASEH2C	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RNF113A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RNF168	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RNF216	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RNPC3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ROBO3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ROGDI	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RPL13	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RPS23	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RRAS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RRAS2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RSPH4A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RSPH9	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RSPRY1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+RUNX2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SAMD9	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SAMHD1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SARS1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SASS6	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SATB2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SCARB2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SEC23A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SEC24D	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SECISBP2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SEL1L	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SELENOI	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SEMA3E	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SEMA5A	1.267	0.0477	1	HP:0004322(Short stature)	no
+SERPINH1	1.267	0.0477	1	HP:0004322(Short stature)	no
+SET	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SETD1A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SGMS2	1.267	0.0477	1	HP:0004322(Short stature)	no
+SHOX	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SHPK	1.267	0.0477	1	HP:0004322(Short stature)	no
+SIK3	1.267	0.0477	1	HP:0004322(Short stature)	no
+SIX6	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SLC10A7	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SLC19A2	1.267	0.0477	1	HP:0004322(Short stature)	no
+SLC25A36	1.267	0.0477	1	HP:0004322(Short stature)	no
+SLC26A4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SLC29A3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SLC35B2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SLC35D1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SLC4A4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SLC6A19	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SLC9A1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SLX4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SMARCA4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SMARCB1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SMARCE1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SMG8	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SMG9	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SMS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SNAPC4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SNRPB	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SOHLH1	1.267	0.0477	1	HP:0004322(Short stature)	no
+SOS1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SOS2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SOST	1.267	0.0477	1	HP:0004322(Short stature)	no
+SOX11	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SOX2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SOX3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SP7	1.267	0.0477	1	HP:0004322(Short stature)	no
+SPARC	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SPECC1L	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SPIDR	1.267	0.0477	1	HP:0004322(Short stature)	no
+SPRED1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SPRED2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+SRY	1.267	0.0477	1	HP:0004322(Short stature)	yes
+STAT6	1.267	0.0477	1	HP:0004322(Short stature)	yes
+STS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+STX16	1.267	0.0477	1	HP:0004322(Short stature)	no
+SUMF1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TAF4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TAF6	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TBC1D20	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TBC1D32	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TBX15	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TBX2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TBX22	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TBX3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TBX6	1.267	0.0477	1	HP:0004322(Short stature)	no
+TECPR2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TELO2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TERC	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TFAP2A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+THG1L	1.267	0.0477	1	HP:0004322(Short stature)	yes
+THPO	1.267	0.0477	1	HP:0004322(Short stature)	yes
+THUMPD1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TKT	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TM2D3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TMCO1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TMEM38B	1.267	0.0477	1	HP:0004322(Short stature)	no
+TMEM53	1.267	0.0477	1	HP:0004322(Short stature)	no
+TMEM67	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TNFRSF11A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TNNI2	1.267	0.0477	1	HP:0004322(Short stature)	no
+TNNT3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TOGARAM1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TOMM7	1.267	0.0477	1	HP:0004322(Short stature)	no
+TOP3A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TRAPPC10	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TRAPPC14	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TRAPPC6B	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TREX1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TRHR	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TRIM37	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TRIP11	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TRPS1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TRPV6	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TRRAP	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TTC21B	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TTI1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TTI2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TUBB	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TUBB4A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TUBGCP4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TUBGCP6	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TWIST1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+TXNL4A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+UBE2T	1.267	0.0477	1	HP:0004322(Short stature)	yes
+UBE3A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+UBE4A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+UBR5	1.267	0.0477	1	HP:0004322(Short stature)	yes
+UBR7	1.267	0.0477	1	HP:0004322(Short stature)	yes
+UGGT1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+UHRF1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+UROC1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+UROS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+USB1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+USP9X	1.267	0.0477	1	HP:0004322(Short stature)	yes
+VPS35L	1.267	0.0477	1	HP:0004322(Short stature)	yes
+WASHC4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+WBP11	1.267	0.0477	1	HP:0004322(Short stature)	no
+WDR19	1.267	0.0477	1	HP:0004322(Short stature)	yes
+WDR35	1.267	0.0477	1	HP:0004322(Short stature)	yes
+WIPI2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+WLS	1.267	0.0477	1	HP:0004322(Short stature)	yes
+WNT1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+WNT4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+WNT5A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+WNT7A	1.267	0.0477	1	HP:0004322(Short stature)	yes
+WRAP53	1.267	0.0477	1	HP:0004322(Short stature)	yes
+WT1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+XRCC2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+XRCC4	1.267	0.0477	1	HP:0004322(Short stature)	yes
+XYLT1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+XYLT2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+YME1L1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ZBTB18	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ZBTB24	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ZMYM2	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ZMYM3	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ZNF148	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ZNF407	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ZPR1	1.267	0.0477	1	HP:0004322(Short stature)	yes
+ZSWIM7	1.267	0.0477	1	HP:0004322(Short stature)	no
