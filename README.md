@@ -10,42 +10,68 @@ Submission for **Rare Disease, Real Kid: The MVA Hackathon 2026**
 
 Deadline 24 October 2026, code freeze 17 October 2026. All outputs CC BY 4.0.
 
-## Status: Phase 0-2 built. STOP #1 cleared, STOP #2 partial.
+## Status: Track 1 solved. Submission built, awaiting upload.
+
+**Answer: a compound heterozygote in `BUB1B`**, causing mosaic variegated
+aneuploidy syndrome 1 (OMIM 257300).
+
+| Allele | Change | Evidence |
+|---|---|---|
+| `chr15:40209701 T>G` | `c.2210T>G` **p.Leu737Ter**, nonsense | ClinVar **VCV000533901.9** Pathogenic/Likely pathogenic, listed against MVA1. gnomAD popmax 7.9e-05 |
+| `chr15:40220612 T>G` | `c.3006T>G` **p.Asn1002Lys**, missense | **Novel**, absent from gnomAD, SIFT 0.01, PolyPhen 0.997 |
+
+Both verified at read level against **our own alignment**, built from raw FASTQ
+independently of the supplied callset: VAF 0.553 and 0.444, strand balanced,
+mean MAPQ 60.0 on every alternate read.
+
+**Phase is inferred, not demonstrated.** The alleles lie 10,911 bp apart, beyond
+a read pair, and no `PGT`/`PID` phasing group exists in `BUB1B`. Confirmation
+needs parental testing or long reads.
 
 | Document | Contents |
 |---|---|
-| `MVA_HACKATHON_PLAN.md` | The governing plan. Six analysis arms, four STOP checkpoints. |
-| `DATA_CARD.md` | What the data is, what state it is in, and what it will and will not support. |
-| `RECON.md` | Hypothesis class triage and the confirmed branch. |
-| `STOP2_STATUS.md` | **Why STOP #2 cannot yet be cleared**, and what was measured instead. |
-| `ETHICS.md` | Consent scope, what we did and did not do, and one documented judgement call. |
-| `RULES.md` | **Incomplete.** Hackathon rules transcription, needed before the first analysis commit. |
-| `PROVENANCE.md` | Input checksums, tool versions, database snapshot dates. |
-| `CLAUDE.md` | Agent contract. Hard rules and anti-patterns. |
+| `submission/` | The Track 1 predictions file and report, ready to upload |
+| `MVA_HACKATHON_PLAN.md` | The governing plan. Six analysis arms, four STOP checkpoints |
+| `DATA_CARD.md` | What the data is and what it supports |
+| `RECON.md` | Hypothesis triage and the confirmed branch |
+| `STOP2_STATUS.md` | Why the benchmark could not test the leading hypothesis |
+| `ETHICS.md` | Consent scope, the LLM data-handling audit, and a disclosed compliance gap |
+| `RULES.md` | Hackathon rules, transcribed from the official Space |
+| `PROVENANCE.md` | Input checksums, tool versions, database snapshot dates |
+| `CLAUDE.md` | Agent contract. Hard rules and anti-patterns |
 
-**Confirmed branch: C, deferred.** Singleton, GRCh38, no RNA-seq, no alignments
-shipped but FASTQ present. Arms A, B, E and part of F are live now; Arms C, D and
-repeat expansion detection are blocked behind building a BAM from FASTQ.
+### Findings
 
-### Findings so far
+Each changed a decision, and each was measured rather than assumed.
 
-Each of these changed a design decision, and each was measured rather than assumed.
+- **The plan's central hypothesis was wrong.** It reasoned that a cryptic splice
+  allele was most likely, since a standard coding pipeline would already have
+  solved the case. SpliceAI at plus or minus 500 bp found nothing above even the
+  permissive threshold. The second allele is an ordinary novel missense.
+- **The benchmark cannot test the hypothesis it was built for.** Of 108
+  confidently pathogenic MVA-gene variants in ClinVar, none is deep intronic,
+  near-splice, synonymous or UTR. See `STOP2_STATUS.md`.
+- **Every known MVA gene is unconstrained** (BUB1B LOEUF 0.707, pLI 0.000).
+  Weighted as a dominant-disease pipeline would, constraint would have actively
+  deprioritised the correct answer.
+- **The proband is male**, determined from chrX heterozygosity of 0.062 against
+  0.620 autosomal. Not stated in the clinical document, and it makes X-linked a
+  single-hit hypothesis.
+- **The direct therapeutic axis is pharmacologically unavailable.** Signed-edge
+  nomination yields ten targets all requiring activation; ChEMBL holds 118 drug
+  mechanisms across them and none is activating.
+- **No consanguinity**, confirmed by two independent methods.
+- **No coverage gap** over any MVA gene: 42-51x against a genome mean of 43.8x.
 
-- **The benchmark cannot test the leading hypothesis.** Of 108 confidently
-  pathogenic MVA-gene variants in ClinVar, none is deep intronic, near-splice,
-  synonymous or UTR. `STOP2_STATUS.md` sets out the consequence and the
-  substitute control set.
-- **Every known MVA gene is unconstrained** (BUB1B LOEUF 0.707 pLI 0.000,
-  CENATAC 1.227, and so on). Weighted conventionally, constraint would have
-  deprioritised every correct answer.
-- **The direct spindle-checkpoint-restoration axis is pharmacologically
-  unavailable.** Signed-edge nomination yields ten targets all requiring
-  activation; ChEMBL holds 118 drug mechanisms across them, none activating.
-  See `results/summaries/track2_direction_audit.md`.
-- **No consanguinity** in the proband (longest ROH-like run 2 Mb), which keeps
-  the compound heterozygote as the leading model.
-- **Splice distance is exact for SNVs** (268/268 against ClinVar HGVS) after
-  restricting exon boundaries to the MANE Select transcript.
+### Method validation
+
+- SpliceAI silently returned 0.000 for everything, including eight known
+  pathogenic canonical splice variants, because of a NumPy 2 compatibility shim
+  of ours. Corrected, those controls score **9/9** above 0.5. The runner now
+  refuses to report a negative if its positive controls fail.
+- Splice distances agree with ClinVar HGVS intron offsets for **268/268 SNVs**.
+- **140 automated tests** across the evidence schema, scoring, annotators and
+  submission format.
 
 ## Data
 

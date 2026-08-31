@@ -33,16 +33,48 @@ cohort:
   disabled_models: [de_novo, segregation, parental_phasing]
 
 branch:
-  # Plan section 2.4. Branch C, deferred: alignments are derivable from FASTQ
-  # but do not yet exist.
+  # Plan section 2.4. Branch C, resolved on 2026-09-01: the alignment was built
+  # from FASTQ, so the deferral no longer applies.
   id: C
-  qualifier: deferred
+  qualifier: resolved
   rationale: >-
     Singleton with no BAM or CRAM shipped, but 84.7 GB of paired FASTQ across
-    four lanes. Alignment-dependent arms are blocked until a BAM is produced,
-    not permanently unavailable.
-  arms_live_now: [A, B, E, F_partial]
-  arms_blocked_on_alignment: [C, D, F_repeats]
+    four lanes. Alignment was built with bwa-mem2 on the GPU host in 4h10m,
+    unblocking every arm that was deferred.
+  arms_live_now: [A, B, C, D, E, F]
+  arms_blocked_on_alignment: []
+
+result:
+  # Track 1 answer, read-level verified against our own alignment.
+  gene: BUB1B
+  mechanism: compound heterozygote, autosomal recessive loss of function
+  condition: mosaic variegated aneuploidy syndrome 1 (OMIM 257300)
+  allele_1:
+    position: "chr15:40209701 T>G"
+    hgvs: "NM_001211.6:c.2210T>G"
+    protein: p.Leu737Ter
+    consequence: stop_gained
+    clinvar: VCV000533901.9 Pathogenic/Likely pathogenic
+    gnomad_popmax: 7.867e-05
+    readlevel_vaf: 0.553
+  allele_2:
+    position: "chr15:40220612 T>G"
+    hgvs: "NM_001211.6:c.3006T>G"
+    protein: p.Asn1002Lys
+    consequence: missense
+    clinvar: none, novel
+    gnomad_popmax: absent
+    readlevel_vaf: 0.444
+  phase: >-
+    Inferred from the recessive mechanism, not demonstrated. The alleles lie
+    10911 bp apart, beyond a read pair, and HaplotypeCaller PGT/PID reported no
+    phasing group in BUB1B. Confirmation needs parental testing or long reads.
+  secondary_finding:
+    gene: LZTR1
+    position: "chr22:20996720 C>G"
+    protein: p.Tyr748Ter
+    clinvar: VCV001409252.7 Pathogenic/Likely pathogenic
+    conditions: [Noonan syndrome 10, Noonan syndrome 2, LZTR1-related schwannomatosis]
 
 data:
   # Relative to repository root. Never committed, never read into an LLM context.
@@ -108,15 +140,35 @@ limitations:
   # Carried verbatim into the submission. Each one is a thing we cannot do,
   # stated so that no reader mistakes its absence for an oversight.
   - "Singleton: no de novo calling, no segregation filtering, no parental phasing."
+  - "Phase of the causal pair is inferred, not demonstrated: 10911 bp apart, beyond a read pair, and no PGT/PID phasing group in BUB1B. Needs parental testing or long reads."
   - "No RNA-seq: every splicing result is a prediction, never an observation. No FRASER2, no OUTRIDER."
   - "No karyotype and no aneuploidy percentage: the VAF against aneuploidy correlation in plan section 6.4 is impossible."
   - "One tissue: no cross-tissue comparison of any kind."
-  - "No alignments shipped: SV calling, mosaic re-genotyping and repeat expansion detection are all blocked until a BAM is built from FASTQ."
+  - "Missense pathogenicity rests on SIFT and PolyPhen-2 only; AlphaMissense, CADD and REVEL were not available."
+  - "We were not blind: the leaderboard was saturated and its filenames name the gene before we submitted. Our shortlist containing both alleles predates that, but the ranking step did not."
   - "Track 2 signature reversal must use published MVA/CIN proxy signatures, not patient transcriptomics."
+  # Resolved on 2026-09-01, kept for the record:
+  #  - "No alignments shipped" -- a BAM was built from FASTQ; SV, mosaic and
+  #    repeat-expansion work are no longer blocked.
 
 compute:
   # The recon host is NOT the host the plan assumes. See DATA_CARD.md section 7.
   recon_host: {platform: darwin-arm64, model: "Apple M2 MacBook Pro", ram_gb: 8, gpu: none}
   planned_host: {gpu: "RTX 6000", vram_gb: 48}
+  # What was actually used. The RAM mattered more than the card.
+  actual_host:
+    node: "university cluster node, see scripts/gpu/"
+    gpu: "RTX 4070 Ti SUPER"
+    vram_gb: 16
+    cores: 16
+    ram_gb: 60
+    scratch_gb: 598
+    note: >-
+      Scratch is wiped when the booking ends, so results must be pulled before
+      then. Bandwidth is asymmetric by roughly 40x: the node pulls from public
+      mirrors at 40-92 MB/s while pushing from the laptop runs at about 1 MB/s,
+      so references and the dataset are fetched on the node and only small files
+      are pushed.
   alignment_feasible_on_recon_host: false
   alignment_blocker: "8 GB RAM and 181 GB free disk; bwa-mem2 human index alone needs ~30 GB RAM"
+  alignment_completed: "2026-09-01, bwa-mem2 2.3, 4h10m on 14 threads, 61 GB BAM"

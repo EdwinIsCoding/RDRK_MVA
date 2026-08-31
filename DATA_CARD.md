@@ -269,11 +269,11 @@ expected mappability holes.
 |---|---|---|
 | Trio, quad or singleton? | **Singleton** | De novo calling and segregation filtering are impossible. Phasing must be read-backed (`PGT`/`PID`) and population-based. |
 | Reference build? | **GRCh38, no-chr contig naming** | Written to `config/config.yaml`. Every annotation resource must be GRCh38 and every tool needs the naming convention handled explicitly. |
-| BAM or CRAM present? | **No, but FASTQ is** | Arms C and D are not dead, they are deferred behind an alignment step that this laptop cannot run. See section 7. |
+| BAM or CRAM present? | **No, but FASTQ is** | Resolved: an alignment was built from FASTQ on a cluster node in 4h10m. Arms C and D were deferred, not lost. See section 7. |
 | RNA-seq present? | **No** | FRASER2 and OUTRIDER are out. Splicing predictions stay predictions. Track 2 signature reversal must use a published proxy signature, clearly labelled. |
 | How many tissues? | **One** | The VAF against aneuploidy-percentage correlation in plan section 6.4 is not possible. |
 | Caller and pre-filtering? | **Sentieon 202308.02, GATK hard filters, non-destructive** | 271,414 filtered records are recoverable. `MQ40` regions are a deliberate search target. |
-| Coverage over MVA genes? | **Normal, 0.86-1.07× of local flank** | No homozygous-deletion lead from depth. Provisional pending alignment. |
+| Coverage over MVA genes? | **Normal, 0.86-1.07× of local flank** | Confirmed against real alignment depth: 42-51x per gene against a genome mean of 43.8x. No gene under-covered. |
 | Clinical data format? | **`.docx`, already HPO-coded, 8 terms** | Exomiser and LIRICAL can be driven directly. No LLM extraction needed. |
 | Karyotype / aneuploidy %? | **Absent** | Plan section 6.4 loses its ground truth. Report as a data limitation. |
 | Clinical data names a candidate het? | **No** | Not branch E. The search is open, not a second-allele hunt. |
@@ -302,6 +302,23 @@ reference and index. With 181 GB free and 8 GB of RAM this is not feasible here.
 **VCF-scoped work runs comfortably on this laptop. Alignment-dependent work must
 move to the RTX 6000 host.** The 79 GB dataset is already on a portable external
 SSD, so the transfer path exists.
+
+### What was actually used, 1 September 2026
+
+A university cluster node with an RTX 4070 Ti SUPER (16 GB), 16 cores, 60 GB RAM
+and 598 GB of scratch. The card was less relevant than the RAM: `bwa-mem2` holds
+a roughly 30 GB human index resident, which the 8 GB laptop could never have
+done, and the alignment ran in 4h10m on 14 threads.
+
+Two practical findings, recorded in `scripts/gpu/README.md` because they shaped
+every decision about what ran where:
+
+- **Bandwidth is asymmetric by roughly 40x.** The node pulls from public mirrors
+  at 40-92 MB/s; pushing from the laptop over a jump host runs at about 1 MB/s.
+  The 79 GB dataset was therefore pulled on the node in about 13 minutes rather
+  than pushed over an estimated 24 hours.
+- **Scratch is wiped when the booking ends**, so results must be extracted
+  before then rather than left in place.
 
 ---
 

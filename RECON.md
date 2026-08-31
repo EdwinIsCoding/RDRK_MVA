@@ -8,6 +8,18 @@ Written 31 August 2026 at STOP #1.
 
 ---
 
+> **Resolved 1 September 2026.** The alignment was built from FASTQ in 4h10m,
+> so the deferral below no longer applies and every arm is unblocked. The case
+> is solved: a `BUB1B` compound heterozygote, `chr15:40209701 T>G`
+> (p.Leu737Ter) with `chr15:40220612 T>G` (p.Asn1002Lys). The triage below is
+> left as written, because how the reasoning stood before the answer was known
+> is the honest record, and because one of its central calls was wrong.
+>
+> **Class 1, the cryptic second allele, was ranked highest and was wrong.** The
+> second allele is an ordinary novel missense, not a cryptic splice variant.
+> SpliceAI at plus or minus 500 bp found nothing above even the permissive 0.2
+> threshold. The prior was reasonable given what was known, and it was mistaken.
+
 ## Confirmed branch: **C**, with one important amendment
 
 Plan section 2.4 defines branch C as *singleton plus BAMs*. What we have is
@@ -158,14 +170,19 @@ and do not let it consume time that class 1 should have.
 
 ## Arm status summary
 
-| Arm | Plan section | Status | Blocker |
+| Arm | Plan section | Status as of 1 September 2026 | Outcome |
 |---|---|---|---|
-| A — Baseline annotation and filtering | 6.1 | **Live now** | none |
-| B — Splicing and cryptic second allele | 6.2 | **Live now**, top priority | RNA-seq absent, so predictions stay predictions |
-| C — Structural variants | 6.3 | **Blocked** | needs alignment from FASTQ |
-| D — Mosaic / low VAF | 6.4 | **Partial now**, rest blocked | needs alignment; tissue correlation permanently unavailable |
-| E — Novel gene, phenotype-driven | 6.5 | **Live now** | none; widen beyond mitotic genes |
-| F — Completeness checks | 6.6 | **Split** | ROH and mtDNA live; repeat expansions blocked |
+| A — Baseline annotation and filtering | 6.1 | **Complete** | Found the answer. 5.0M records to 12 rare variants in the known MVA genes, both causal alleles among them |
+| B — Splicing and cryptic second allele | 6.2 | **Complete** | Reported negative. Nothing above 0.2; tool validated 9/9 on positive controls first |
+| C — Structural variants | 6.3 | **Alignment done**, SV calling not run | 61 GB BAM built; read-level verification and coverage complete |
+| D — Mosaic / low VAF | 6.4 | **Alignment done**, re-genotyping not run | Both causal alleles have VAF near 0.5, so not mosaic |
+| E — Novel gene, phenotype-driven | 6.5 | **Complete** | HPO prior ranked BUB1B 18th of 2,503 genes without variant data |
+| F — Completeness checks | 6.6 | **ROH and mtDNA complete**, repeat expansions not run | Both reported negatives |
+
+SV calling, mosaic re-genotyping and repeat expansion detection are no longer
+blocked; they were simply not reached before the answer was established and the
+booking window closed. They would strengthen the negative results section rather
+than change the call.
 
 ---
 
