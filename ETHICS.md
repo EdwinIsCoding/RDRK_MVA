@@ -98,6 +98,97 @@ and `phenotype` blocks from `config/config.yaml` and section 4 of
 a human. Nothing downstream depends on the free text, only on the eight coded
 terms, so the cost of reversing is low. It gets higher the longer it is left.
 
+## 3a. LLM use, measured against the organisers' own guidance
+
+The organisers published guidance on LLM use in the Community discussion linked
+from the Space, and updated the submission requirements on 28 August 2026. LLM
+use is **permitted**, with Claude named explicitly, subject to two mandatory
+conditions and a disclosure requirement.
+
+### The two conditions
+
+1. **No training on inputs or outputs**, and no rights taken by the provider in
+   either.
+2. **Retention limited in time and purpose.** Zero retention is not required;
+   short-lived logs for abuse monitoring, debugging or service quality are
+   acceptable.
+
+The guidance frames this as whether the provider acts as a *processor* (a tool)
+or a *recipient* (gains rights in the data). Only the former is acceptable.
+
+Two cautions are attached: disable training settings and **do not rate outputs**,
+because some providers use content you give feedback on or that is flagged for
+safety review; and check the terms attached to any free credits, which may
+override account defaults.
+
+**TODO(owner):** confirm the plan or tier in use and that training on customer
+content is disabled, then write the disclosure line into the methods description
+for both tracks. This cannot be determined from inside the repository. See
+`RULES.md` section 6.
+
+### What actually reached the model, audited
+
+The guidance distinguishes what must be deleted from what may be kept.
+
+| Their category | What we sent |
+|---|---|
+| **Delete:** VCF/BAM files | Never in context. Read only by scripts. |
+| **Delete:** variant tables with genotypes | Never in context. Written to gitignored files under `results/`, never read back. |
+| **Delete:** "prompts containing pasted variant blocks" | **None.** This is precisely what CLAUDE.md rule 1 prohibits, and it held. |
+| **Delete:** model weights trained on raw genomic data | None trained. |
+| **Keep:** HPO terms | Yes, the eight coded terms. Explicitly on the keep list. |
+| **Keep:** gene rankings, candidate rankings | Yes, gene-level and aggregate only. |
+| **Keep:** code, reports without raw genomic data | Yes. |
+
+Two things did reach the model that are patient-derived and worth naming rather
+than glossing:
+
+- **The clinical phenotype document**, in full: eight HPO terms, gestational age,
+  approximate birth weight, and the family history of recurrent miscarriage. This
+  was a deliberate decision, recorded in section 3 above and confirmed by the
+  project owner. It is clinical rather than genomic, and HPO terms sit on the
+  organisers' keep list.
+- **A small number of runs-of-homozygosity interval coordinates**, five of them,
+  printed while summarising Arm F. These are patient-derived genomic intervals.
+  They are not variants, carry no genotypes and no alleles, and are not a
+  "variant block" in the sense the guidance prohibits. Recorded here for
+  completeness rather than because it is thought to be a breach.
+
+The pseudonymous sample identifier `WGS_EX2312012`, assigned by the organisers,
+also appears throughout.
+
+### Assessment
+
+The architecture adopted at Phase 0, in which scripts touch `data/` and the
+model reads only aggregate summaries, was chosen before this guidance was read
+and turns out to match its central requirement almost exactly. The one category
+the guidance singles out, prompts containing pasted variant blocks, is the one
+CLAUDE.md rule 1 was written to prevent.
+
+What remains outstanding is not a property of this repository: it is whether the
+account's plan disables training on customer content. That is the owner's to
+verify.
+
+## 3b. Deletion obligation
+
+The Hackathon Rules require **all data to be deleted at the conclusion of the
+Hackathon**. The guidance scopes this to "what you control: your machines, cloud
+instances, notebooks, repositories, storage"; provider logs are out of scope.
+
+This needs scheduling rather than remembering. Concretely, on conclusion:
+
+- delete `data/` in full: the VCF, its index, all eight FASTQ files, and the
+  clinical phenotype document
+- delete `results/` in full, which holds the extracted phenotype text, the
+  variant-level shortlists, the ROH and mtDNA raw tables, and the recon outputs
+- delete the derived FASTA and gnomAD slices under `refs/` that were cached for
+  this analysis, though these are public reference data and not patient data
+- retain, per the guidance: candidate variant rankings, HPO terms, gene
+  rankings, code and reports, none of which contain raw genomic data
+
+The repository as tracked in git already contains none of the delete-list
+material, which the pre-commit hook enforces.
+
 ## 4. What the outputs are, and are not
 
 Everything this repository produces is a **research hypothesis**, generated by
