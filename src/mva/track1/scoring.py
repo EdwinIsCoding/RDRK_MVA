@@ -31,6 +31,31 @@ carries in a dominant-disease pipeline, this scoring function would actively
 deprioritise every known answer. Constraint therefore contributes at most a
 small positive nudge and **never a penalty**. This is the single most important
 design decision in this file and it came from measurement, not from assumption.
+
+Constraint on the X chromosome is a different matter
+----------------------------------------------------
+The proband is male (chrX heterozygosity 0.062 against 0.620 autosomal), so his
+X is hemizygous. A loss-of-function variant on the X is therefore fully exposed
+to selection in males, exactly as a dominant autosomal variant would be. LOEUF
+measures precisely that, so on the X it is informative rather than misleading.
+
+Measured across the panel:
+
+    X-linked panel genes (gnomAD v2.1.1)  median LOEUF 0.297,  13/20 with pLI > 0.9
+    known autosomal MVA genes (v4.1)      median LOEUF 0.727,   0/9  with pLI > 0.9
+
+Same metric, opposite meaning, and the difference is mechanistic rather than
+incidental: autosomal recessive carriers are healthy so selection is blind to
+their heterozygous LoF, while a hemizygous male has nowhere to hide.
+
+So constraint carries a larger bonus for X-linked genes than autosomal ones. It
+is still never a penalty, because an unconstrained X gene is not thereby
+excluded.
+
+Note the release difference. gnomAD v4.1's constraint file is autosomes only, so
+X values come from v2.1.1, which is a different build and an exome-only callset.
+Values from the two releases are not directly comparable and the panel records
+which release each came from.
 """
 
 from __future__ import annotations
@@ -62,6 +87,9 @@ class Weights:
     # Constraint: small positive nudge only, never a penalty. See the module
     # docstring. An unconstrained gene gets zero, not a deduction.
     gene_constrained_bonus: float = 0.25
+    # Constraint means something different on the X for a male proband, so it
+    # is weighted differently. See CONSTRAINT_ON_X below.
+    gene_constrained_bonus_hemizygous: float = 1.25
 
     # --- variant effect ----------------------------------------------------
     # Predicted loss of function in a gene where LoF is the known mechanism.
@@ -167,17 +195,38 @@ def gene_plausibility(
                         "go_terms": row.get("specific_go_terms", "")[:200]},
             ))
 
-    # Constraint: bonus only. Never a penalty. See the module docstring.
-    bin_ = row.get("constraint_bin", "")
-    if bin_ in ("highly_constrained", "constrained"):
+    # Constraint: bonus only, never a penalty, and weighted by whether the
+    # gene is hemizygous in this proband. See the module docstring.
+    source = row.get("constraint_source", "")
+    hemizygous = source.startswith("gnomAD v2")   # the X/Y fill
+    loeuf_str = row.get("gnomad_v2_loeuf" if hemizygous else "gnomad_loeuf", "NA")
+    pli_str = row.get("gnomad_v2_pli" if hemizygous else "gnomad_pli", "NA")
+
+    try:
+        loeuf = float(loeuf_str)
+    except (TypeError, ValueError):
+        loeuf = None
+
+    if loeuf is not None and loeuf < 0.60:
+        band = "highly constrained" if loeuf < 0.35 else "constrained"
+        if hemizygous:
+            statement = (f"{gene} is {band} (LOEUF {loeuf:.3f}, pLI {pli_str}). "
+                         f"The proband is male, so this X-linked gene is hemizygous "
+                         f"and loss of function is fully exposed to selection; "
+                         f"constraint is informative here in a way it is not for "
+                         f"an autosomal recessive gene.")
+            weight = WEIGHTS.gene_constrained_bonus_hemizygous
+            source_id = "gnomAD v2.1.1 constraint (X/Y)"
+        else:
+            statement = f"{gene} is {band} (LOEUF {loeuf:.3f})"
+            weight = WEIGHTS.gene_constrained_bonus
+            source_id = "gnomAD v4.1 constraint metrics"
         out.append(Evidence(
             criterion="gnomad_constraint",
-            statement=(f"{gene} is {bin_.replace('_', ' ')} "
-                       f"(LOEUF {row.get('gnomad_loeuf', 'NA')})"),
-            source_type=SourceType.GNOMAD,
-            source_id="gnomAD v4.1 constraint metrics",
-            weight=WEIGHTS.gene_constrained_bonus,
-            detail={"loeuf": row.get("gnomad_loeuf", ""), "pli": row.get("gnomad_pli", "")},
+            statement=statement,
+            source_type=SourceType.GNOMAD, source_id=source_id,
+            weight=weight,
+            detail={"loeuf": loeuf_str, "pli": pli_str, "hemizygous": hemizygous},
         ))
     return out
 
