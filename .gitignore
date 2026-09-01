@@ -116,3 +116,7 @@ gnomad.*.tbi
 
 # Cluster topology, not for a public repository
 scripts/gpu/.local.sh
+
+# Artefacts pulled from the compute node: annotated VCF and a panel BAM.
+# Patient genomic data. Never committed.
+node_artefacts/
