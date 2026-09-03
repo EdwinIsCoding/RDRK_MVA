@@ -295,7 +295,7 @@ The underlying honesty claim holds on the evidence available:
 | 16:35:51 | commit `d7c3549`, Arm B runs |
 | 16:38 | Hackathon Space captured to `results/rules/` |
 | 16:43:02 | commit `355b64c`, RULES.md transcribed from that capture |
-| 19:47:43 | commit `5214f06`, the submission built |
+| 19:47:43 | commit `0a64650`, the submission built |
 
 The shortlist therefore existed roughly seventeen minutes before the Space was
 first captured, and I confirmed by direct membership test that the regenerated
@@ -494,3 +494,85 @@ It was found by `tests/test_track1_report_matches_data.py` within a minute of
 that test first running, which is the argument for the test. Hand verification
 does not repeat itself; a test does. The report now reads depth 29, 16 reference
 and 13 alternate reads, and VAF 0.448, matching the recomputation.
+
+---
+
+## 6. History rewrite, 3 September 2026
+
+### 6.1 What prompted it, and what it found first
+
+The open item said commit `4ce0d4c` contained cluster hostnames that had been
+sanitised but remained in history. Preparing the rewrite showed that was only
+half the problem. **Both real hostnames were still in the working tree**, in
+`scripts/gpu/.local.sh.example`, which is tracked and public.
+
+The August sanitisation commit replaced the account name and the SSH key path
+with placeholders and left `JUMP_HOST` and `GPU_NODE` as real values. Its message
+stated that the repository "was carrying the GPU node and jump-host names, the
+account name and the SSH key path" and that topology now came from a gitignored
+file. Two thirds of that was accurate, and nobody had checked in the three days
+since. **A commit message asserting that something was removed is not evidence
+that it was removed.**
+
+### 6.2 What was redacted
+
+Seven distinct strings: two university hostnames, one account name and four
+paths derived from it. The list was not written by hand. It was derived from the
+lines the sanitisation commit itself removed, then filtered to strings that
+appear **only** under `scripts/gpu/`, so that no generic token could be replaced
+globally and corrupt unrelated content. Nothing was rejected by that filter,
+which is itself a check: had a common word appeared in the candidate list, it
+would have been excluded rather than replaced.
+
+| | |
+|---|---|
+| Tool | `git filter-repo --replace-text` |
+| Commits rewritten | 54, all of them |
+| Occurrences replaced | 154 across 7 files, all under `scripts/gpu/` |
+| Real hostnames remaining in any reachable commit | **0**, verified by exhaustive scan |
+
+### 6.3 What survived, which matters for the honesty claim
+
+Only two commits changed identity, both after the topology was introduced:
+
+| Cited as | Now |
+|---|---|
+| `5214f06` | `0a64650` |
+| `4ce0d4c` | `24e6ae7` |
+
+**The four commits cited as evidence elsewhere are unchanged**, because they
+predate the affected files: `849bf98`, `d7c3549`, `355b64c` and `fe460cd`. That
+includes `849bf98`, which the Track 1 report cites as the timestamp for the
+claim that both causal alleles were shortlisted before the leaderboard was seen.
+Had that SHA moved, the claim would have needed restating rather than
+renumbering.
+
+The two changed references have been updated in this document, in
+`docs/HANDOVER_PROMPT.md` and in `submission/README.md`.
+
+### 6.4 What this does not accomplish
+
+Stated because a rewrite invites the belief that the exposure is undone, and it
+is not.
+
+- **The remote still has the old history until it is force-pushed.** Until then
+  the hostnames remain public.
+- **Anyone who cloned or forked the repository keeps the old objects.** Rewriting
+  our copy does not reach theirs.
+- **GitHub retains unreachable objects** and serves them by SHA for a period.
+  Removing them entirely requires asking GitHub Support after the force-push.
+- **The backup retains everything.** A bundle of the pre-rewrite history was
+  taken before the rewrite and a `pre-sanitise-backup` tag was created. Both
+  contain the unredacted values and both should be destroyed once the rewrite is
+  confirmed good.
+
+None of the redacted strings is a credential. They are third-party university
+infrastructure names, which is why this is a tidy-up rather than an incident.
+
+### 6.5 The guard
+
+`tests/test_no_topology_leaks.py` asserts the property rather than trusting a
+commit message: no tracked file may carry an `.ac.uk` hostname other than the EBI
+API host and documentation placeholders, all four variables in the example file
+must look like placeholders, and no reachable commit may carry one either. That
+last test failed before the rewrite and passes after it.

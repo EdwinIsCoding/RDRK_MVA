@@ -260,6 +260,6 @@ a measurement**, and should be labelled as such unless you can support it.
 
 1. Notify Sage Bionetworks of the training-setting gap (may be done by now).
 2. Repository visibility: it is public; the rules permit private until the
-   hackathon ends. Commit `4ce0d4c` contains cluster hostnames and an account
+   hackathon ends. Commit `24e6ae7` contains cluster hostnames and an account
    name that were later sanitised but remain in history.
 3. Whether to submit the Track 1 file as it stands, or after your verification.

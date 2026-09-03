@@ -28,7 +28,7 @@ The rules require three artefacts. Two exist.
 | Required | Status |
 |---|---|
 | Written report, PDF or Markdown, filename carrying the team name | **Done**, `track2_nexusdwin_report.md` |
-| Public GitHub repository with reproducible code | Repository exists and is public. See the open item on commit `4ce0d4c`, which contains cluster hostnames later sanitised but still in history. |
+| Public GitHub repository with reproducible code | Repository exists and is public. History was rewritten on 3 September 2026 to purge third-party cluster hostnames and an account name; see `docs/VERIFICATION.md` section 6. A force-push is required before that takes effect on the remote. |
 | 3-minute pitch video on YouTube or Vimeo | **Not done.** The script is written and timed at 179 seconds; the recording and upload remain. |
 
 Only 3 Track 2 submissions are permitted per team and only the latest is
