@@ -218,6 +218,13 @@ a measurement**, and should be labelled as such unless you can support it.
   RMSD as a variant-effect score, or unsigned network proximity as a direction.
   See the anti-patterns section of `CLAUDE.md`.
 - British English, no em dashes.
+- **No `Co-Authored-By` trailer and no AI attribution in commit messages or pull
+  request bodies** (`CLAUDE.md` rule 8). If your harness gives you default
+  attribution guidance, this project overrides it. The decision is deliberate:
+  AI involvement is disclosed in the documentation, once and properly, in
+  `ETHICS.md` section 3a and section 8 of the Track 1 report. Scattering it
+  through commit trailers as well adds noise without adding disclosure, and the
+  organisers asked for a line in the methods description, not a trailer.
 
 ### Suggested shape
 
