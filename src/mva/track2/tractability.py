@@ -64,6 +64,17 @@ INHIBITING_ACTIONS = frozenset({
 })
 
 
+class LookupFailed(Exception):
+    """A ChEMBL lookup did not complete.
+
+    Distinct from a lookup that completed and found nothing. Returning None for
+    both made a target whose request failed indistinguishable from a target with
+    no ChEMBL entry, and both surfaced as the verdict ``unknown``. During a
+    period when ChEMBL was serving intermittent HTTP 500s that turned transport
+    failures into apparent biology.
+    """
+
+
 class Tractability(str, enum.Enum):
     AVAILABLE = "available"                  # a drug acts in the required direction
     WRONG_DIRECTION_ONLY = "wrong_direction" # drugs exist, all act the other way
@@ -104,10 +115,20 @@ class TractabilityResult:
         return f"tractability lookup failed for {self.gene}"
 
 
-def _get(url: str, timeout: int = 60) -> dict:
-    req = urllib.request.Request(url, headers={"User-Agent": "mva-hackathon-2026"})
-    with urllib.request.urlopen(req, timeout=timeout) as fh:
-        return json.load(fh)
+def _get(url: str, timeout: int = 45, attempts: int = 4) -> dict:
+    """Fetch with backoff. A single attempt turns a transient 500 into a
+    permanent-looking absence of evidence."""
+    last: Exception | None = None
+    for i in range(attempts):
+        req = urllib.request.Request(url,
+                                     headers={"User-Agent": "mva-hackathon-2026"})
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as fh:
+                return json.load(fh)
+        except Exception as exc:
+            last = exc
+            time.sleep(1.5 * (i + 1))
+    raise LookupFailed(f"{url}: {last}")
 
 
 def resolve_target(gene: str, cache_dir: pathlib.Path) -> str | None:
@@ -122,10 +143,9 @@ def resolve_target(gene: str, cache_dir: pathlib.Path) -> str | None:
         d = json.loads(cached.read_text())
     else:
         q = urllib.parse.urlencode({"q": gene, "format": "json", "limit": 25})
-        try:
-            d = _get(f"{CHEMBL}/target/search?{q}")
-        except Exception:
-            return None
+        # Deliberately no try/except: a failed lookup must reach the caller as
+        # LookupFailed, not become an apparent absence of any ChEMBL target.
+        d = _get(f"{CHEMBL}/target/search?{q}")
         cached.write_text(json.dumps(d))
         time.sleep(0.3)
 
@@ -149,7 +169,12 @@ def assess(
     cache = pathlib.Path(cache_dir)
     cache.mkdir(parents=True, exist_ok=True)
 
-    tid = resolve_target(gene, cache)
+    try:
+        tid = resolve_target(gene, cache)
+    except LookupFailed:
+        # Not "no target": "we could not find out". The caller must be able to
+        # tell these apart, so it is re-raised rather than folded into UNKNOWN.
+        raise
     if tid is None:
         return TractabilityResult(gene, None, required_direction, Tractability.UNKNOWN,
                                   0, 0, 0, 0.0, {}, ())
@@ -159,11 +184,7 @@ def assess(
         m = json.loads(cached.read_text())
     else:
         q = urllib.parse.urlencode({"target_chembl_id": tid, "format": "json", "limit": 500})
-        try:
-            m = _get(f"{CHEMBL}/mechanism?{q}")
-        except Exception:
-            return TractabilityResult(gene, tid, required_direction, Tractability.UNKNOWN,
-                                      0, 0, 0, 0.0, {}, ())
+        m = _get(f"{CHEMBL}/mechanism?{q}")
         cached.write_text(json.dumps(m))
         time.sleep(0.3)
 

@@ -195,10 +195,24 @@ class ChemblMolecule:
     atc_inherited_from: str | None = None
 
 
-def _get(url: str, timeout: int = 90) -> dict:
-    req = urllib.request.Request(url, headers={"User-Agent": "mva-hackathon-2026"})
-    with urllib.request.urlopen(req, timeout=timeout) as fh:
-        return json.load(fh)
+class LookupFailed(Exception):
+    """A request did not complete, as distinct from completing and finding
+    nothing. Collapsing the two makes a transport failure look like a gap in the
+    evidence."""
+
+
+def _get(url: str, timeout: int = 45, attempts: int = 4) -> dict:
+    last: Exception | None = None
+    for i in range(attempts):
+        req = urllib.request.Request(url,
+                                     headers={"User-Agent": "mva-hackathon-2026"})
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as fh:
+                return json.load(fh)
+        except Exception as exc:
+            last = exc
+            time.sleep(1.5 * (i + 1))
+    raise LookupFailed(f"{url}: {last}")
 
 
 def _cached(cache: pathlib.Path, key: str, fetch) -> dict | None:
