@@ -212,6 +212,7 @@ class TestRegionAnnotationAgainstClinVarHGVS:
 
     def _compare(self, gene_model):
         import csv
+
         from mva.evidence import GenomicPosition
         agree = disagree = 0
         for row in csv.DictReader(

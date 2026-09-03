@@ -10,10 +10,13 @@ recovering one of two).
 from __future__ import annotations
 
 import csv
-import sys, pathlib
+import pathlib
+import sys
+
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 
 import importlib.util
+
 _spec = importlib.util.spec_from_file_location(
     "t1", pathlib.Path(__file__).resolve().parents[1] / "scripts/23_track1_submission.py")
 t1 = importlib.util.module_from_spec(_spec)

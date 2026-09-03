@@ -32,9 +32,9 @@ than restatement.
 
 | | chr15:40209701 | chr15:40220612 |
 |---|---|---|
-| Depth (MQ>=20, BQ>=20) | 47 | 27 |
-| Ref / alt reads | 21 / 26 | 15 / 12 |
-| **VAF** | **0.553** | **0.444** |
+| Depth (MQ>=20, BQ>=20) | 47 | 29 |
+| Ref / alt reads | 21 / 26 | 16 / 13 |
+| **VAF** | **0.553** | **0.448** |
 | Strand balance of alt reads | 14 fwd / 12 rev | 5 fwd / 8 rev |
 | Mean MAPQ of alt reads | **60.0** | **60.0** |
 

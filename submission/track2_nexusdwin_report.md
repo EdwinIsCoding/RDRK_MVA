@@ -506,6 +506,32 @@ the next patient, not a claim about its accuracy.
 Every other input is a public database already wired in, and the safety screen is
 disease-agnostic by construction.
 
+### A note on knowledge-graph leakage, because we said we would check
+
+This project's anti-pattern list includes "any knowledge-graph claim without a
+time-split leakage check", and we use a knowledge graph: OmniPath's signed causal
+edges drive the whole nomination step. A reader who holds us to our own list is
+entitled to ask where the leakage check is.
+
+**It is absent because the check does not apply to this use, and saying so is
+better than performing a ritual version of it.** Leakage matters when a graph is
+used to *predict* something the graph already encodes, which is how a model that
+has memorised known drug-target pairs scores well on recovering known drug-target
+pairs. Our use is not predictive. We ask the graph a descriptive question, which
+protein regulates a seed gene and in which direction, and the answer is then
+tested against an independent source, ChEMBL, that the graph had no part in
+building. Nothing is being forecast, so there is no future to hold out.
+
+The failure mode that *does* apply here is different and worth naming, because it
+is the one a time split would not catch. Both OmniPath and ChEMBL are richer for
+well-studied proteins, so a target that is heavily curated in one is likely
+heavily curated in the other. Our targets are mitotic kinases, among the
+best-studied proteins in the genome, which means the direction we can resolve and
+the drugs we can find are both biased towards them. That bias works **against**
+our conclusion rather than for it: if anything, these targets are more likely to
+have an activator recorded than an average protein, and none does. Section 3.3
+puts a number on the comparison rather than leaving it as an argument.
+
 ---
 
 ## 7. What would falsify each hypothesis
@@ -552,7 +578,17 @@ Stated plainly, and none of them is repaired elsewhere in this report.
 
 ## 9. Reproducibility
 
-Every number in this report regenerates from the repository.
+Every number in this report regenerates from the repository, **and none of it
+needs the challenge dataset.**
+
+Track 2 reads no patient data. Every result above comes from public databases,
+no script in the pipeline opens a file under `data/`, and a test asserts it. A
+reviewer can therefore check this entire report without applying for data
+access, which is the difference between taking our word for it and not:
+
+```bash
+make reproduce-track2   # one 16 MB download, then the whole Track 2 pipeline
+```
 
 ```bash
 make track2        # direction audit, chemoprevention axis, axis availability

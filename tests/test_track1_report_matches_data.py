@@ -1,0 +1,166 @@
+"""The Track 1 report must not drift from the callset or from its own tables.
+
+Its numbers were verified by hand in September 2026 (docs/VERIFICATION.md) and
+nine of them were wrong at the time. Hand verification does not repeat itself,
+so the checks that can be automated are automated here: internal consistency,
+agreement with the verification artefacts, and the identifier and style rules.
+
+Checks needing the patient callset skip when the verification summaries are
+absent, so this suite still runs on a clone with no data access.
+"""
+from __future__ import annotations
+
+import pathlib
+import re
+
+import pytest
+
+REPO = pathlib.Path(__file__).resolve().parent.parent
+REPORT = REPO / "submission" / "track1_nexusdwin_report.md"
+SUBMISSION = REPO / "submission" / "track1_submission.csv"
+CALLSET = REPO / "results" / "summaries" / "verification_callset.md"
+READLEVEL = REPO / "results" / "summaries" / "verification_readlevel.md"
+
+#: The answer, as submitted. Any change here is a change to the call itself.
+ALLELE_1 = ("chr15", "40209701", "T", "G")
+ALLELE_2 = ("chr15", "40220612", "T", "G")
+SECONDARY = ("chr22", "20996720", "C", "G")
+
+
+@pytest.fixture(scope="module")
+def report():
+    if not REPORT.exists():
+        pytest.skip("Track 1 report absent")
+    return REPORT.read_text()
+
+
+class TestTheCallIsInternallyConsistent:
+    def test_the_submitted_csv_matches_the_report(self, report):
+        if not SUBMISSION.exists():
+            pytest.skip("submission absent")
+        import csv
+        rows = list(csv.DictReader(SUBMISSION.open()))
+        primary = [r for r in rows if r["finding_type"] == "primary"]
+        assert len(primary) == 1
+        p = primary[0]
+        assert (p["chrom_1"], p["pos_1"], p["ref_1"], p["alt_1"]) == ALLELE_1
+        assert (p["chrom_2"], p["pos_2"], p["ref_2"], p["alt_2"]) == ALLELE_2
+        for chrom, pos, ref, alt in (ALLELE_1, ALLELE_2):
+            assert f"{chrom}:{pos} {ref}>{alt}" in report or pos in report, (
+                f"{chrom}:{pos} is in the submission but not in the report")
+
+    def test_the_allele_separation_arithmetic(self, report):
+        stated = re.findall(r"10,?911", report)
+        assert stated, "the report no longer states the allele separation"
+        assert int(ALLELE_2[1]) - int(ALLELE_1[1]) == 10911, (
+            "the coordinates no longer differ by the separation the report claims")
+
+    def test_read_level_strand_counts_sum(self, report):
+        """The published table once gave 15 fwd + 12 rev beside 26 alt reads."""
+        alt, strand = [], []
+        for line in report.splitlines():
+            if line.strip().startswith("| Ref / alt reads"):
+                for cell in line.split("|")[2:]:
+                    m = re.match(r"\s*(\d+)\s*/\s*(\d+)\s*$", cell)
+                    if m:
+                        alt.append(int(m.group(2)))
+            if "fwd" in line and "rev" in line and line.strip().startswith("|"):
+                for cell in line.split("|")[2:]:
+                    m = re.match(r"\s*(\d+)\s*fwd\s*/\s*(\d+)\s*rev\s*$", cell)
+                    if m:
+                        strand.append((int(m.group(1)), int(m.group(2))))
+        if not alt or not strand:
+            pytest.skip("read-level table not in its expected shape")
+        assert len(alt) == len(strand)
+        for a, (f, r) in zip(alt, strand, strict=True):
+            assert f + r == a, f"{f} fwd + {r} rev is not {a} alternate reads"
+
+
+class TestTheReportAgreesWithTheVerificationArtefacts:
+    def test_genotypes_match_the_callset(self, report):
+        if not CALLSET.exists():
+            pytest.skip("run scripts/25_verify_track1_claims.py first")
+        data = CALLSET.read_text()
+        for pos in (ALLELE_1[1], ALLELE_2[1], SECONDARY[1]):
+            assert pos in data, f"{pos} is no longer in the verified callset table"
+        assert "| agrees | YES |" in data, (
+            "the callset verification no longer agrees with the submission")
+
+    def test_record_counts_match(self, report):
+        """Only the counts the report actually quotes. It need not repeat every
+        verified figure, but any it does repeat must still be true."""
+        if not CALLSET.exists():
+            pytest.skip("verification summary absent")
+        data = CALLSET.read_text()
+        for n in ("5,012,204", "4,950,283", "61,921"):
+            assert n in data, (
+                f"{n} is no longer produced by the verification script, so any "
+                f"document still quoting it is stale")
+        quoted = [n for n in ("5,012,204", "4,950,283", "61,921") if n in report]
+        assert quoted, "the report quotes none of the verified record counts"
+
+    def test_read_level_figures_match(self, report):
+        if not READLEVEL.exists():
+            pytest.skip("run scripts/26_verify_readlevel.py first")
+        data = READLEVEL.read_text()
+        for vaf in ("0.553", "0.448"):
+            assert vaf in data, f"VAF {vaf} is no longer in the recomputation"
+            assert vaf in report, f"the report does not carry VAF {vaf}"
+
+
+class TestTheCorrectedClaimsStayCorrected:
+    """One test per finding in docs/VERIFICATION.md that reached a deliverable."""
+
+    def test_allele_2_is_not_called_absent_from_gnomad(self, report):
+        for line in report.splitlines():
+            if "40220612" in line and "absent" in line.lower():
+                assert "genomes" in line.lower(), (
+                    "allele 2 is described as absent from gnomAD. It is present "
+                    f"in v4.1 exomes at 6.84e-07.\n  {line.strip()}")
+
+    def test_the_protein_change_clinvar_record_is_still_cited(self, report):
+        assert "VCV004600147" in report, (
+            "the ClinVar record of uncertain significance for the same protein "
+            "change was removed. It cuts against the missense and belongs here.")
+
+    def test_popmax_is_not_mislabelled(self, report):
+        assert "popmax" not in report.lower(), (
+            "the report reintroduced 'popmax'. The figures quoted are global "
+            "allele frequencies and group max separately; see VERIFICATION 2.3.")
+
+    def test_no_claim_of_zero_phasing_groups_in_bub1b(self, report):
+        bad = re.compile(r"no\s+(?:`?PGT`?/`?PID`?\s+)?phasing group\s+"
+                         r"(?:exists\s+)?(?:anywhere\s+)?in\s+`?BUB1B`?", re.I)
+        assert not bad.search(report), (
+            "one phasing group does exist in BUB1B (40216568_TA_T). The "
+            "defensible claim is that neither causal allele carries a tag.")
+
+    def test_pex5_and_ctu2_are_described_as_closed(self, report):
+        assert "7190512" in report and "88714226" in report
+        assert "0.252" in report and "0.767" in report, (
+            "the gnomAD frequencies that closed PEX5 and CTU2 were removed")
+        assert "open rather than settled" not in report
+
+    def test_the_shortlist_provenance_claim_is_accurate(self, report):
+        assert "849bf98" in report, "the shortlist provenance commit is no longer cited"
+        assert "not in git" in report or "nothing under `results/` is tracked" in report, (
+            "the report claims an artefact is timestamped in the repository. "
+            "Nothing under results/ is tracked; only the code and its commit "
+            "message are.")
+
+
+class TestTheReportObeysTheHardRules:
+    def test_no_em_dash(self, report):
+        assert "—" not in report
+
+    def test_identifier_shapes(self, report):
+        for acc in set(re.findall(r"\bVCV\d+", report)):
+            assert len(acc) == 12, f"{acc} is not a valid ClinVar accession shape"
+        for rs in set(re.findall(r"\brs\d+", report)):
+            assert rs[2:].isdigit()
+
+    def test_no_dosing_language(self, report):
+        """CLAUDE.md rule 3, which binds both tracks."""
+        dose = re.compile(r"\b\d+(?:\.\d+)?\s*(?:mg|mcg|IU)\b", re.I)
+        hits = [line.strip() for line in report.splitlines() if dose.search(line)]
+        assert not hits, f"dosing language in the Track 1 report: {hits[:3]}"

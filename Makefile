@@ -39,6 +39,18 @@ downloads:  ## fetch reference files (large; resumable)
 	  gzip -t $$f && echo "OK   $$f" || echo "TRUNCATED $$f - rerun 'make downloads' to resume"; \
 	done
 
+downloads-track2:  ## the ONLY download Track 2 needs (HGNC, 16 MB)
+	mkdir -p refs
+	curl -L --retry 8 --retry-all-errors -C - -o refs/hgnc_complete_set.txt \
+	  https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt
+	@wc -l refs/hgnc_complete_set.txt
+
+reproduce-track2: downloads-track2 track2 scalability structural-check resource test  ## Track 2 end to end, NO patient data required
+	@echo
+	@echo "Track 2 reproduced from public databases only."
+	@echo "No file under data/ was read. Compare results/summaries/ against"
+	@echo "the tables in submission/track2_nexusdwin_report.md."
+
 track2:  ## Track 2: direction audit, then the chemoprevention axis
 	python scripts/14_track2_direction_audit.py
 	python scripts/27_track2_chemoprevention.py
@@ -49,6 +61,9 @@ scalability:  ## run the same Track 2 pipeline on two comparator diseases
 
 resource:  ## publish the reusable directional availability table
 	python scripts/30_publish_directional_availability.py
+
+delete-plan:  ## dry run of the ETHICS 3b deletion obligation (deletes nothing)
+	python scripts/33_delete_challenge_data.py
 
 track2-drift:  ## has the live evidence moved since the Track 2 report was pinned?
 	python scripts/29_track2_drift_check.py
@@ -69,4 +84,4 @@ lint:  ## ruff and mypy
 reproduce: verify phase0 resources test  ## the full path a judge should be able to run
 	@echo "Reproduction complete. Compare results/ against the submitted artefact."
 
-.PHONY: help verify phase0 resources downloads track2 scalability resource track2-drift pitch-wordcount test lint reproduce
+.PHONY: help verify phase0 resources downloads downloads-track2 reproduce-track2 track2 scalability structural-check resource delete-plan track2-drift pitch-wordcount test lint reproduce

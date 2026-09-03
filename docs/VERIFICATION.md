@@ -474,3 +474,23 @@ beside our classification of it so a reader can overrule us.
 | Negative control in the chemoprevention run | A safety screen that excludes nothing because it is broken rather than because the candidates are clean. Five of five known cytotoxics are excluded. |
 | `binom_zero` in the library with a test | The base-rate arithmetic that weakens our own claim being wrong in the direction that flatters us. |
 | Pitch-length test | A three-minute video script that is not three minutes. The first draft ran to 593 spoken words, nearly four minutes. |
+| `tests/test_track1_report_matches_data.py` | The Track 1 report drifting from the callset, from the verification artefacts, or from itself. One test per corrected claim in section 2. |
+| `tests/test_track2_needs_no_patient_data.py` | A convenience read of a patient file quietly destroying the property that lets a reviewer reproduce Track 2 without data access. |
+
+### 5.6 The correction in section 2.7 was applied to only one of two documents
+
+Recorded because it is the same class of error the section documents.
+
+Section 2.7 found that the published strand counts did not sum to their own
+alternate-read counts, and recorded that the figures had been replaced with
+internally consistent ones. They were replaced in
+`arm_c_readlevel_verification.md` and only half replaced in the Track 1 report,
+where the strand row was corrected while the depth, read and VAF rows kept the
+superseded values. The report therefore carried 5 forward and 8 reverse
+alternate reads beside an alternate count of 12, which is the exact
+inconsistency section 2.7 exists to describe.
+
+It was found by `tests/test_track1_report_matches_data.py` within a minute of
+that test first running, which is the argument for the test. Hand verification
+does not repeat itself; a test does. The report now reads depth 29, 16 reference
+and 13 alternate reads, and VAF 0.448, matching the recomputation.

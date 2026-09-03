@@ -98,6 +98,38 @@ Each changed a decision, and each was measured rather than assumed.
 - **140 automated tests** across the evidence schema, scoring, annotators and
   submission format.
 
+## Reproducing Track 2 without any data access
+
+**Track 2 reads no patient data at all.** Every result in
+`submission/track2_nexusdwin_report.md` comes from public databases: ChEMBL,
+ClinicalTrials.gov, OmniPath, QuickGO, UniProt, PDBe and HGNC. No script in the
+Track 2 pipeline opens a file under `data/`, and a test asserts it
+(`tests/test_track2_needs_no_patient_data.py`).
+
+So a reviewer can check every Track 2 claim without applying for the challenge
+dataset:
+
+```bash
+git clone <this repository> && cd RDRK_MVA
+pip install -e .            # or: micromamba create -f environment.yml
+make reproduce-track2       # one 16 MB download, then the whole pipeline
+```
+
+That fetches HGNC, which supplies the denominator for the base-rate argument,
+runs the direction audit, the chemoprevention axis, the availability
+measurement, the three-disease generalisation check and the structural
+feasibility check, publishes the reusable availability table, and runs the test
+suite. Outputs land in `results/summaries/` and should match the tables in the
+Track 2 report.
+
+Two of the sources are live registries. `make track2-drift` compares today's
+counts against the ones pinned in `config/track2_evidence_pin.json` on the day
+the report was written, so a reviewer can tell whether a difference is our error
+or the world moving.
+
+**Track 1 is different** and does need the challenge distribution, because it is
+an analysis of this proband's genome. `make reproduce` is that path.
+
 ## Data
 
 Not in this repository and never will be. `data/` is gitignored and a pre-commit

@@ -204,7 +204,11 @@ The Hackathon Rules require **all data to be deleted at the conclusion of the
 Hackathon**. The guidance scopes this to "what you control: your machines, cloud
 instances, notebooks, repositories, storage"; provider logs are out of scope.
 
-This needs scheduling rather than remembering. Concretely, on conclusion:
+This needs scheduling rather than remembering, so it is executable rather
+than a list: `scripts/33_delete_challenge_data.py`, or `make delete-plan`
+for a dry run. It deletes nothing without `--execute` and a typed
+confirmation, and it prints the obligations it cannot discharge itself
+rather than implying they are done. Concretely, on conclusion:
 
 - delete `data/` in full: the VCF, its index, all eight FASTQ files, and the
   clinical phenotype document
@@ -217,6 +221,18 @@ This needs scheduling rather than remembering. Concretely, on conclusion:
 
 The repository as tracked in git already contains none of the delete-list
 material, which the pre-commit hook enforces.
+
+**Notification.** The data access terms require that deletion be notified to
+**`MVAHackathon2026@synapse.org`**. That address was recorded in the Track 1
+report and in the hackathon rules but not here, in the document that owns the
+obligation, until 3 September 2026. It is now printed by the deletion script as
+an outstanding manual item, because a script that deleted the data and said
+nothing would leave the obligation half discharged and looking complete.
+
+**Separately outstanding**, and not part of the deletion obligation: the
+notification to Sage Bionetworks' Privacy and Compliance Office about the
+training-setting deviation in section 3a. That one is about disclosure, not
+deletion, and it was still outstanding at the time of writing.
 
 ## 4. What the outputs are, and are not
 

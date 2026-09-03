@@ -8,8 +8,6 @@ direction looks exactly like one with a right direction.
 
 from __future__ import annotations
 
-import pytest
-
 from mva.track2.targets import Direction, SignedEdge, nominate, summarise
 from mva.track2.tractability import (
     ACTIVATING_ACTIONS,

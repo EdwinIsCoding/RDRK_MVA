@@ -28,8 +28,7 @@ import pytest
 
 from mva.evidence import VariantClass
 from mva.track1.pipeline import Track1Pipeline
-from mva.track1.spikein import BenchmarkVariant, load_benchmark, spike
-
+from mva.track1.spikein import load_benchmark, spike
 
 # ---------------------------------------------------------------------------
 # Benchmark integrity. These run anywhere and guard the ground truth itself.

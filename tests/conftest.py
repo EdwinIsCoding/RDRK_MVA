@@ -62,6 +62,7 @@ def panel_tsv() -> pathlib.Path:
 def gene_model(gtf_path, panel_tsv):
     """Gene model restricted to the panel, so the GTF parse stays fast."""
     import csv as _csv
+
     from mva.track1.regions import GeneModel
     with panel_tsv.open(newline="") as fh:
         symbols = {r["symbol"] for r in _csv.DictReader(fh, delimiter="\t")}

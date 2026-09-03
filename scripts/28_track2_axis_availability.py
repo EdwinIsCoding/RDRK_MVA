@@ -56,7 +56,12 @@ AXES = [
 
 def n_protein_coding() -> int:
     if not HGNC.exists():
-        return 0
+        raise SystemExit(
+            f"FATAL: {HGNC} is absent. It supplies the denominator for every "
+            f"rate in this analysis, and returning zero here would silently "
+            f"turn the base rate into 0.00% and make the argument look absurd "
+            f"rather than fail. Run `make downloads-track2` first."
+        )
     n = 0
     with HGNC.open(newline="") as fh:
         for r in csv.DictReader(fh, delimiter="\t"):
