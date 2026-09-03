@@ -170,7 +170,8 @@ Both facts belong here.
 
 **The answer is a `BUB1B` compound heterozygote**: `chr15:40209701 T>G`
 (p.Leu737Ter, ClinVar VCV000533901.9, Pathogenic/Likely pathogenic for MVA1)
-with `chr15:40220612 T>G` (p.Asn1002Lys, novel, absent from gnomAD).
+with `chr15:40220612 T>G` (p.Asn1002Lys, ultra-rare rather than novel: a
+single allele in 1,461,878 in gnomAD v4.1 exomes, absent from genomes only).
 
 ### What this says about the gate
 

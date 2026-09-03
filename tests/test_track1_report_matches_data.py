@@ -151,7 +151,7 @@ class TestTheCorrectedClaimsStayCorrected:
 
 class TestTheReportObeysTheHardRules:
     def test_no_em_dash(self, report):
-        assert "—" not in report
+        assert "\u2014" not in report
 
     def test_identifier_shapes(self, report):
         for acc in set(re.findall(r"\bVCV\d+", report)):
@@ -301,3 +301,59 @@ class TestEveryPredictorWithACallIsCounted:
         assert f"{dmg} of {total}" in report, (
             f"the panel reports {dmg} of {total} damaging; the report disagrees")
         assert f"{total} predictors consulted" in report or f"of {total}" in report
+
+
+class TestTheReadmeMatchesTheSubmittedDocuments:
+    """The README is the front door for a judge browsing the public repository,
+    and it repeats claims made in the submitted reports. It has drifted from
+    them twice: once on the predictor count and once on the test count."""
+
+    README = REPO / "README.md"
+    T2 = REPO / "submission" / "track2_nexusdwin_report.md"
+
+    def test_the_predictor_counts_agree_with_the_track1_report(self, report):
+        readme = self.README.read_text()
+        import re as _re
+        m = _re.search(r"\*\*(\d+) predictors: (\d+) damaging", readme)
+        assert m, "the README no longer states the predictor panel"
+        total, dmg = m.group(1), m.group(2)
+        assert f"{total} predictors consulted" in report, (
+            f"README says {total} predictors; the Track 1 report disagrees")
+        assert f"{dmg} of {total}" in report, (
+            f"README says {dmg} damaging; the Track 1 report disagrees")
+
+    def test_the_readme_does_not_claim_independence_either(self):
+        low = self.README.read_text().lower()
+        assert "independently of the supplied callset" not in low, (
+            "the README repeated the independence overclaim the Track 1 report "
+            "has since dropped")
+
+    def test_the_readme_test_count_is_not_stale(self):
+        """It said 140 while the suite had grown past 300."""
+        import re as _re
+        import subprocess
+        m = _re.search(r"\*\*(\d+) automated tests\*\*", self.README.read_text())
+        assert m, "the README no longer states a test count"
+        claimed = int(m.group(1))
+        out = subprocess.run(
+            ["python", "-m", "pytest", "tests/", "-q", "--collect-only"],
+            cwd=REPO, capture_output=True, text=True,
+            env={**__import__("os").environ, "PYTHONPATH": "src"}).stdout
+        m2 = _re.search(r"(\d+) tests? collected", out)
+        if not m2:
+            pytest.skip("could not collect the suite")
+        actual = int(m2.group(1))
+        # Tolerant by design. A tight bound would fail every time a test is
+        # added, including the one you are reading. What this catches is real
+        # drift: the README said 140 while the suite collected over 300.
+        assert abs(claimed - actual) <= 15, (
+            f"the README claims {claimed} tests; the suite collects {actual}. "
+            f"Update the README rather than widening this bound.")
+
+    def test_the_readme_gnomad_wording_matches_the_report(self, report):
+        readme = self.README.read_text()
+        for line in readme.splitlines():
+            if "40220612" in line and "absent" in line.lower():
+                assert "genomes" in line.lower(), (
+                    "the README calls allele 2 absent from gnomAD; it is "
+                    "ultra-rare, and absent only from gnomAD genomes")

@@ -180,7 +180,9 @@ judge would be far more damaging than the deviation itself.
 > pasted variant blocks) entered the model context at any point; see the audit
 > below. Clinical phenotype terms and aggregate callset statistics did.
 
-**TODO(owner):** report to Sage Bionetworks' Privacy and Compliance Office via
+**TODO(owner), drafted 3 September 2026 at `docs/sage_disclosure_draft.md`
+and awaiting the owner's review and sending:** report to Sage Bionetworks'
+Privacy and Compliance Office via
 Sage's Help Center, and ask Anthropic whether already-collected conversation
 content can be deleted from training pipelines under the consumer terms. Neither
 can be actioned from inside this repository.

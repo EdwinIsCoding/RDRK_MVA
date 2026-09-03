@@ -73,10 +73,11 @@ result:
       Ultra-rare, not absent: a single allele in 1,461,878 in gnomAD v4.1 exomes.
       Absent from gnomAD genomes, which is where the earlier "absent" wording
       came from. Corrected 2026-09-03, see docs/VERIFICATION.md section 2.1.
-    readlevel_vaf: 0.444
+    readlevel_vaf: 0.448
   phase: >-
     Inferred from the recessive mechanism, not demonstrated. The alleles lie
-    10911 bp apart; HaplotypeCaller PGT/PID places neither allele in a phasing
+    10911 bp apart; Sentieon Haplotyper's GATK-format PGT/PID places neither
+    allele in a phasing
     group; and no read or read pair in our own alignment touches both positions
     (median template length 502 bp, maximum 1103 bp). One phasing group does
     exist elsewhere in BUB1B (40216568_TA_T, two homozygous records) and carries

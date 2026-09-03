@@ -37,8 +37,11 @@ is complete; its findings are in `DATA_CARD.md` and `RECON.md`.
 
 `BUB1B` compound heterozygote causing MVA1 (OMIM 257300):
 `chr15:40209701 T>G` p.Leu737Ter (ClinVar VCV000533901.9, Pathogenic/Likely
-pathogenic) with `chr15:40220612 T>G` p.Asn1002Lys (novel, absent from gnomAD).
-Both read-level verified: VAF 0.553 and 0.444, strand balanced, MAPQ 60.
+pathogenic) with `chr15:40220612 T>G` p.Asn1002Lys (ultra-rare, not absent:
+gnomAD v4.1 exomes group max 8.99e-07, a single allele in 1,461,878, and absent
+from gnomAD genomes only. The same protein change via c.3006T>A is ClinVar
+VCV004600147.1, uncertain significance). Both read-level verified: VAF 0.553 and
+0.448, strand balanced, MAPQ 60.
 Phase is **inferred, not demonstrated**: 10,911 bp apart, no PGT/PID phasing
 group. Secondary finding: `LZTR1` chr22:20996720 p.Tyr748Ter, ClinVar
 VCV001409252.7.

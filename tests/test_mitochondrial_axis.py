@@ -96,7 +96,7 @@ class TestTheResultIsNotOversold:
         assert not hits, f"dosing reached the output: {hits[:3]}"
 
     def test_no_em_dash(self, out):
-        assert "—" not in out
+        assert "\u2014" not in out
 
     def test_excluded_drugs_carry_their_rule(self, out):
         if "### Excluded, and why" not in out:

@@ -12,8 +12,12 @@ Deadline 24 October 2026, code freeze 17 October 2026. All outputs CC BY 4.0.
 
 ## Status
 
-**Track 1 solved.** Submission built and verified, awaiting upload.
+**Track 1 solved.** Submission built, verified against primary sources, and
+independently reviewed. Awaiting upload.
 **Track 2 report and pitch script written**, pitch video not yet recorded.
+
+Everything outstanding is listed in one place, `submission/README.md`, together
+with the seven declared scientific limitations and which of them are closed.
 
 **Answer: a compound heterozygote in `BUB1B`**, causing mosaic variegated
 aneuploidy syndrome 1 (OMIM 257300).
@@ -21,11 +25,14 @@ aneuploidy syndrome 1 (OMIM 257300).
 | Allele | Change | Evidence |
 |---|---|---|
 | `chr15:40209701 T>G` | `c.2210T>G` **p.Leu737Ter**, nonsense | ClinVar **VCV000533901.9** Pathogenic/Likely pathogenic, listed against MVA1. gnomAD v4.1 exomes AF 7.9e-05, group max 1.0e-04 |
-| `chr15:40220612 T>G` | `c.3006T>G` **p.Asn1002Lys**, missense | **Ultra-rare**: gnomAD v4.1 exomes AF 6.8e-07, one allele in 1,461,878, no homozygotes. No ClinVar record for this nucleotide change; the same protein change via `c.3006T>A` is **VCV004600147.1**, Uncertain significance. **15 predictors: 9 damaging, 5 tolerated, 1 intermediate.** AlphaMissense pathogenic 0.92, CADD 24.5, REVEL 0.472. Favours a damaging effect; does not establish one |
+| `chr15:40220612 T>G` | `c.3006T>G` **p.Asn1002Lys**, missense | **Ultra-rare**: gnomAD v4.1 exomes AF 6.8e-07, one allele in 1,461,878, no homozygotes. No ClinVar record for this nucleotide change; the same protein change via `c.3006T>A` is **VCV004600147.1**, Uncertain significance. **16 predictors: 10 damaging, 5 tolerated, 1 intermediate.** AlphaMissense pathogenic 0.88-0.92, CADD 24.5, REVEL 0.472. Favours a damaging effect; does not establish one |
 
-Both verified at read level against **our own alignment**, built from raw FASTQ
-independently of the supplied callset: VAF 0.553 and 0.448, strand balanced,
-mean MAPQ 60.0 on every alternate read.
+Both recovered by three analysis routes over one library: the supplied Sentieon
+callset, our own `bwa-mem2` alignment, and GATK Mutect2 over that alignment.
+VAF 0.553 and 0.448, strand balanced, mean MAPQ 60.0 on every alternate read.
+That is robustness to aligner and caller, not independent confirmation: all
+three share one FASTQ library, so a sample swap or contamination would be
+reproduced by all of them.
 
 **Phase is inferred, not demonstrated.** The alleles lie 10,911 bp apart,
 neither carries a `PGT`/`PID` phasing tag, and no read or read pair in our
@@ -47,6 +54,9 @@ reads.
 | `submission/track2_nexusdwin_report.md` | The Track 2 report. Mechanism, the closed direct axis, chemoprevention and the safety screen |
 | `submission/track2_nexusdwin_pitch.md` | The 3-minute pitch script |
 | `resources/directional_availability/` | Reusable: every gene ChEMBL can push in each direction, published for other teams |
+| `submission/README.md` | The submission checklist, the seven declared limitations with status, and everything outstanding |
+| `docs/sage_disclosure_draft.md` | Draft disclosure to Sage Bionetworks' Privacy and Compliance Office, for the owner to send |
+| `config/db_versions.yaml` | Every database version, with the date and source each was read from |
 
 ### Findings
 
@@ -79,6 +89,17 @@ Each changed a decision, and each was measured rather than assumed.
   Fanconi anaemia and ataxia-telangiectasia, it returns 17 and 10 targets
   reachable by inhibition against 0 for this proband, which is what makes the
   closed axis a finding rather than a habit.
+- **The mitochondrial axis looked promising and did not survive follow-through.**
+  It was the only axis better supplied with activating drugs than the genome
+  average, but roughly 70% of that supply is `INSR`, `PPARA` and `GCK`, whose
+  drugs are insulins, fibrates and glucokinase activators swept in by a GO
+  annotation. Three axes are now closed and chemoprevention is the one standing.
+- **No structural variant over any known MVA gene**, from a breakpoint screen
+  calibrated against 400 sampled panel regions. Uncalibrated it flagged seven of
+  nine genes, which was the background rate of split-read artefact.
+- **No credible mosaicism, on two callers that fail in opposite directions.**
+  GATK Mutect2 tumour-only agrees with `bcftools mpileup`, and recovers both
+  causal alleles at PASS as its own positive control.
 - **No consanguinity**, confirmed by two independent methods.
 - **No coverage gap** over any MVA gene: 42-51x against a genome mean of 43.8x.
 - **Two variants we had set aside as unresolved are common polymorphisms.** The
@@ -95,8 +116,9 @@ Each changed a decision, and each was measured rather than assumed.
   all nine are at or above 0.5. The runner now refuses to report a negative if
   its positive controls fail.
 - Splice distances agree with ClinVar HGVS intron offsets for **268/268 SNVs**.
-- **140 automated tests** across the evidence schema, scoring, annotators and
-  submission format.
+- **345 automated tests** across the evidence schema, scoring, annotators,
+  submission format, and every claim corrected during verification. The suite
+  passes clean.
 
 ## Reproducing Track 2 without any data access
 
