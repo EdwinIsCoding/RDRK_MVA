@@ -555,8 +555,11 @@ The two changed references have been updated in this document, in
 Stated because a rewrite invites the belief that the exposure is undone, and it
 is not.
 
-- **The remote still has the old history until it is force-pushed.** Until then
-  the hostnames remain public.
+- ~~The remote still has the old history until it is force-pushed.~~ **Done,
+  3 September 2026.** `main` was force-pushed with an explicit lease on the
+  known remote value, and the result was verified by cloning the public
+  repository fresh and scanning every reachable commit: zero real hostnames.
+  The `pre-sanitise-backup` tag was deliberately not pushed.
 - **Anyone who cloned or forked the repository keeps the old objects.** Rewriting
   our copy does not reach theirs.
 - **GitHub retains unreachable objects** and serves them by SHA for a period.
