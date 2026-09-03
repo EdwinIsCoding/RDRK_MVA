@@ -471,10 +471,31 @@ sirolimus, is flagged for immunosuppression in exactly the patient who can least
 afford it.
 
 **Mitochondrial and oxidative support is the only axis of the three that is
-better supplied than the genome average**, at 1.5 times expectation. That makes
-it the axis where a repurposing search is most likely to find something to work
-with. It does not make it the axis most likely to help this child, and we have no
-evidence bearing on that question.
+better supplied than the genome average**, at 1.5 times expectation, which made
+it the axis where a repurposing search looked most likely to find something.
+
+**We followed that through, and it does not survive.** Naming the genes, pulling
+every activating drug ChEMBL records for them and screening each one shows the
+supply is not spread across the axis: **roughly 70% of the drug-target pairs
+come from just three genes**, `INSR`, `PPARA` and `GCK`. The exact counts move
+by one or two between runs, because ChEMBL serves intermittent HTTP 500s and a
+molecule whose record cannot be fetched is reported as unretrievable rather than
+screened on absent fields; the summary carries the figures for the run that
+produced it. Those are metabolic drug
+targets, and the drugs behind them are insulin analogues, fibrates and
+glucokinase activators. They reached this axis because their genes carry GO
+annotations for oxidative-stress response or aerobic respiration.
+
+That is an annotation artefact, not a therapeutic rationale. Insulin is not
+mitochondrial support for a child with mosaic variegated aneuploidy; it is a
+diabetes drug whose receptor is annotated to a metabolic process. The caveat
+below, that GO annotation sets are not therapeutic targets, is demonstrated here
+rather than asserted.
+
+**So this is the third axis to close**, and cancer chemoprevention and
+surveillance is the one left standing, which is where plan section 7.1 placed
+the value before any of this was measured. Full output:
+`results/summaries/track2_mitochondrial_axis.md`.
 
 A gene appearing in these counts means ChEMBL records a drug acting on it in the
 required direction. It does not mean the drug is safe in a child, reaches the

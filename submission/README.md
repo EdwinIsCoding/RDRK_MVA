@@ -44,10 +44,20 @@ blocked by data that does not exist, not by effort.
 | Structural variant calling never completed | **Partly closed.** A calibrated breakpoint screen over the nine MVA genes is negative. Genome-wide calling is still undone. |
 | Hypomorph model is an inference from viability | **Strengthened, still an inference.** Five curated MVA1 kinase-domain missense variants are all compound heterozygous with a nonsense allele, the nearest 10 residues from ours (PMID 15475955). No functional assay exists and no experimental structure resolves residue 1002. |
 | Mosaic arm used a diploid model, not a somatic caller | **Closed.** GATK Mutect2 tumour-only agrees with `bcftools mpileup`: zero credible mosaicism. Both known alleles recovered at PASS as a positive control. |
+| Mitochondrial axis identified as promising and not followed through | **Closed, and it closed the axis.** 70% of its drug-target pairs come from `INSR`, `PPARA` and `GCK`, whose drugs are insulins, fibrates and glucokinase activators. The 1.5x enrichment was a GO-annotation artefact. Chemoprevention is the axis left standing. |
 | Chemoprevention rests on transferring evidence across syndromes | **Confirmed by search, not removed.** PubMed returns zero for `Bub1b AND chemoprevention`. The assumption stands and is stated. |
 | Phase is inferred | **Cannot be closed.** Zero read pairs span the 10,911 bp, and statistical phasing carries no information for a private allele. |
 | Every splicing result is a prediction | **Cannot be closed.** No RNA-seq exists. |
 | Repeat expansion detection never run | **Declined.** The panel BAM covers *HTT* at 73 reads and *C9orf72* at none, so a result would look genome-wide and would not be. |
+
+**Plan section 7.2's target gates** were never applied and are now accounted
+for. Expression in the affected tissue is applied, from GTEx, for skeletal
+muscle and kidney. Open Targets tractability and Pharos development level are
+declared vacuous with the reason: the candidate set was built by requiring that
+a drug already exists, so every gene in it passes those gates by construction,
+and running them would return a pass for everything and look like evidence.
+Blood-brain barrier penetrance is conditional on a CNS endpoint and none is
+proposed.
 
 ## Everything still outstanding, as of 3 September 2026
 
