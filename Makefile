@@ -42,6 +42,7 @@ downloads:  ## fetch reference files (large; resumable)
 track2:  ## Track 2: direction audit, then the chemoprevention axis
 	python scripts/14_track2_direction_audit.py
 	python scripts/27_track2_chemoprevention.py
+	python scripts/28_track2_axis_availability.py
 
 test:  ## run the test suite
 	pytest -v
