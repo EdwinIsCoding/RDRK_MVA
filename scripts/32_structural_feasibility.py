@@ -122,7 +122,7 @@ def main() -> None:
           f"its accuracy stated honestly and presented as mechanistic "
           f"illustration rather than as a variant-effect score.\n")
     else:
-        w(f"**Not feasible, and not for want of a licence or a tool.**\n")
+        w("**Not feasible, and not for want of a licence or a tool.**\n")
         detail = "; ".join(f"{k} stops at residue {v}" for k, v in stops)
         w(f"Every PDB entry that maps to residue {RESIDUE} does so by declaring "
           f"the full-length construct, and in none of them does the BubR1 "

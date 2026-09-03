@@ -74,6 +74,24 @@ substitution is classified **uncertain significance** in ClinVar
 (VCV004600147.1). A reader should treat the hypomorph model as the most probable
 of several rather than as established.
 
+**We checked whether a structural calculation could do better, and it cannot.**
+Plan section 7.5 permits stability work for a missense in a protein with an
+experimental structure, and BubR1 has nine PDB entries. Two map to residue 1002,
+and both do so by declaring the full-length construct while the observed BubR1
+density stops at residue 308 and 345 respectively. The kinase domain, residues
+766 to 1050 and the half of the protein this variant sits in, is unresolved in
+every experimental structure of this protein. Both are cryo-EM reconstructions
+of the anaphase-promoting complex at 4.8 and 3.8 angstrom, where side-chain
+placement would not be determinable even where density existed.
+
+A predicted model would cover the residue, and a stability calculation on one
+would produce a number. That number would be a statement about the prediction
+rather than about the protein, and offering it as evidence for hypomorphism is
+the anti-pattern this project recorded before it began: structure prediction
+standing in for a variant-effect measurement. So the gap stays open with its
+reason recorded, rather than filled by a number that does not support it. See
+`results/summaries/track2_structural_feasibility.md`.
+
 ### 2.2 The pathway disrupted
 
 BubR1, the product of `BUB1B`, is a core component of the mitotic checkpoint
@@ -516,7 +534,9 @@ Stated plainly, and none of them is repaired elsewhere in this report.
    cannot be run against patient data at all. We did not substitute a published
    proxy signature and present it as though it were the patient's.
 3. **No patient cells and no functional assay.** Every mechanistic statement
-   about allele 2 is an inference from viability.
+   about allele 2 is an inference from viability, and no structural calculation
+   can substitute, because the kinase domain is unresolved in every experimental
+   structure of BubR1. See section 2.1.
 4. **The hypomorph model is unmeasured**, and the same protein change is a
    variant of uncertain significance in ClinVar.
 5. **GO-derived gene sets are coarse** and their overlap with druggable space is
