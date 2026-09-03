@@ -154,7 +154,18 @@ class TestMutect2Rerun:
         text = T1.read_text()
         assert "two orthogonal methods" not in text
 
-    def test_the_report_records_three_independent_confirmations(self):
+    def test_the_report_does_not_claim_independence_it_cannot_show(self):
+        """This test previously asserted "three independent routes", locking in
+        an overclaim: routes two and three share a BAM and all three share one
+        FASTQ library, so a sample swap or contamination would be reproduced by
+        all of them. An independent reviewer caught it. What the report may
+        claim is robustness to aligner and caller."""
         text = T1.read_text()
-        assert "three independent routes" in text.lower()
+        assert "three independent routes" not in text.lower(), (
+            "routes two and three share an alignment; they are not independent")
         assert "Mutect2" in text
+        low = text.lower()
+        assert "robustness to method" in low or "one library" in low, (
+            "the report must say what the three routes actually establish")
+        assert "sample swap" in low or "contamination" in low, (
+            "the failure modes that all three share must be named")

@@ -72,6 +72,13 @@ CATEGORICAL = [
      {"A": "disease causing automatic", "D": "disease causing",
       "N": "polymorphism", "P": "polymorphism automatic"}),
     ("PROVEAN", "provean", {"D": "damaging", "N": "neutral"}),
+    # PolyPhen-2 nests its call under hdiv/hvar rather than exposing "pred" at
+    # the top level, so a generic reader misses it entirely. It was missing from
+    # the first version of this panel, which reported 15 predictors instead of
+    # 16 and, worse, omitted one of the two the report had originally cited.
+    ("PolyPhen-2 HDIV", "polyphen2.hdiv", {"D": "probably damaging",
+                                           "P": "possibly damaging",
+                                           "B": "benign"}),
     ("PrimateAI", "primateai", {"D": "damaging", "T": "tolerated"}),
     ("SIFT", "sift", {"D": "deleterious", "T": "tolerated"}),
     ("SIFT4G", "sift4g", {"D": "deleterious", "T": "tolerated"}),
@@ -89,9 +96,11 @@ SCORES = [
 
 #: Calls that count as evidence for damage, for the tally.
 DAMAGING = {"pathogenic", "damaging", "deleterious", "disease causing",
-            "disease causing automatic", "high"}
+            "disease causing automatic", "high", "probably damaging"}
 BENIGN = {"benign", "tolerated", "neutral", "polymorphism",
           "polymorphism automatic"}
+#: "possibly damaging" is deliberately in neither set: it is PolyPhen-2 hedging,
+#: and forcing it into one column would overstate whichever column it joined.
 
 
 def fetch(hgvs: str) -> dict:
@@ -144,7 +153,9 @@ def main() -> None:
 
         rows, dmg, ben, other = [], 0, 0, 0
         for name, key, legend in CATEGORICAL:
-            blk = d.get(key)
+            blk = d
+            for part in key.split("."):
+                blk = blk.get(part) if isinstance(blk, dict) else None
             if not isinstance(blk, dict):
                 continue
             pred = first(blk.get("pred"))

@@ -255,7 +255,7 @@ class TestTheSubmissionNotesMatchTheReport:
         if not SUBMISSION.exists():
             pytest.skip("submission absent")
         notes = SUBMISSION.read_text()
-        assert "15 predictors" in notes, (
+        assert "16 predictors" in notes, (
             "the submission notes no longer describe the predictor panel")
         assert "tolerated" in notes, (
             "the submission notes state only the damaging calls; the "
@@ -273,3 +273,31 @@ class TestTheSubmissionNotesMatchTheReport:
             other = REPO / "submission" / name
             if other.exists():
                 assert other.read_bytes() == a, f"{name} has drifted from the submission"
+
+
+class TestEveryPredictorWithACallIsCounted:
+    """PolyPhen-2 nests its categorical call under hdiv/hvar rather than at the
+    top level, so a generic reader silently dropped it. The panel reported 15
+    predictors instead of 16, and omitted one of the two the report had
+    originally cited. An independent reviewer caught it."""
+
+    PANEL = REPO / "results" / "summaries" / "missense_predictor_panel.md"
+
+    def test_polyphen2_is_in_the_panel(self):
+        if not self.PANEL.exists():
+            pytest.skip("run scripts/34_missense_predictor_panel.py first")
+        assert "PolyPhen-2" in self.PANEL.read_text(), (
+            "PolyPhen-2 has a categorical call in dbNSFP and must be counted")
+
+    def test_the_report_and_the_panel_agree_on_the_count(self, report):
+        if not self.PANEL.exists():
+            pytest.skip("panel not generated")
+        m = re.search(r"\*\*(\d+) calls? it damaging, (\d+) calls? it tolerated "
+                      r"or benign, and (\d+) sits? in between\.\*\*",
+                      self.PANEL.read_text().split("Allele 2")[1])
+        assert m, "could not parse the tally for allele 2"
+        dmg, ben, mid = (int(x) for x in m.groups())
+        total = dmg + ben + mid
+        assert f"{dmg} of {total}" in report, (
+            f"the panel reports {dmg} of {total} damaging; the report disagrees")
+        assert f"{total} predictors consulted" in report or f"of {total}" in report

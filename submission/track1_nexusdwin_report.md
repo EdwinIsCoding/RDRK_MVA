@@ -1,8 +1,8 @@
 # Track 1 report: BUB1B compound heterozygote in PROBAND01
 
 **Submitter:** NexusDwin
-**Repository:** see the GitHub URL supplied with this submission
-**Date:** 31 August 2026
+**Repository:** https://github.com/EdwinIsCoding/RDRK_MVA
+**Date:** 31 August 2026, revised 3 September 2026
 **Licence:** CC BY 4.0
 
 ---
@@ -20,17 +20,24 @@
 | gnomAD v4.1 exomes, global AF | 7.87 × 10⁻⁵ | 6.84 × 10⁻⁷ |
 | gnomAD v4.1 exomes, group max AF | 9.98 × 10⁻⁵ | 8.99 × 10⁻⁷ |
 | gnomAD homozygotes | 0 | 0 |
-| In silico | CADD phred 36.0 | **15 predictors consulted: 9 damaging, 5 tolerated, 1 intermediate.** AlphaMissense pathogenic (0.92), CADD 24.5, REVEL 0.472. See section 1a |
+| In silico | CADD phred 36.0 | **16 predictors consulted: 10 damaging, 5 tolerated, 1 intermediate.** AlphaMissense pathogenic (0.88-0.92), CADD 24.5, REVEL 0.472. See section 1a |
 | Genotype | 0/1, DP 46, AD 21/25, GQ 99, PASS | 0/1, DP 28, AD 15/13, GQ 99, PASS |
 
 Both fall on the MANE Select transcript `ENST00000287598.11`.
 
-**Confirmed by three independent routes.** Beyond the supplied Sentieon callset,
-both alleles were recovered by our own `bwa-mem2` alignment and, separately, by
-GATK Mutect2 4.7.0.0 run as a somatic caller over that alignment: PASS at allele
-fraction 0.544 and 0.464, with allele depths 21/25 and 15/13 matching the
-supplied callset exactly. That third call also serves as the positive control
-licensing the mosaic negative in section 4.
+**Recovered by three analysis routes over one library, which is less than
+independence and worth stating precisely.** The supplied Sentieon callset, our
+own `bwa-mem2` alignment, and GATK Mutect2 4.7.0.0 run as a somatic caller over
+that same alignment all recover both alleles: Mutect2 at PASS, allele fraction
+0.544 and 0.464, with allele depths 21/25 and 15/13 matching the supplied
+callset exactly.
+
+Two aligners and two callers agreeing is robustness to method, not independent
+confirmation. All three consume the same FASTQ, and routes two and three share a
+BAM, so a sample swap, library artefact, index hop or contamination would be
+reproduced identically by all of them. Nothing here excludes those; only a second
+specimen would. The Mutect2 call also serves as the positive control licensing
+the mosaic negative in section 4.
 
 **Independently verified at read level.** We aligned the raw FASTQ ourselves with
 `bwa-mem2` against GRCh38, producing a 61 GB BAM with duplicates marked. This is
@@ -70,7 +77,7 @@ restriction, prematurity, failure to thrive and short stature are core features.
 ### 1a. The in silico evidence is broader, and less concordant, than we first said
 
 An earlier version of this report applied PP3 on the strength of two predictors,
-SIFT and PolyPhen-2, and listed AlphaMissense, CADD and REVEL among its
+SIFT and PolyPhen-2, both of which are in the panel below, and listed AlphaMissense, CADD and REVEL among its
 limitations as "not available". They are available for a single variant through
 a public aggregator of dbNSFP. A stated limitation that one query closes is not a
 limitation; it is an omission, and it is corrected here.
@@ -79,13 +86,15 @@ Consulting the full panel changes the claim in **both** directions.
 
 | | |
 |---|---|
-| Call it damaging | 9 of 15: AlphaMissense (pathogenic, 0.92), ClinPred, DEOGEN2, M-CAP, MetaRNN, MutationTaster, PROVEAN, SIFT, SIFT4G |
-| Call it tolerated | 5 of 15: FATHMM, LIST-S2, MetaLR, MetaSVM, PrimateAI |
+| Call it damaging | 10 of 16: AlphaMissense (pathogenic, 0.88-0.92), ClinPred, DEOGEN2, M-CAP, MetaRNN, MutationTaster, PolyPhen-2 HDIV, PROVEAN, SIFT, SIFT4G |
+| Call it tolerated | 5 of 16: FATHMM, LIST-S2, MetaLR, MetaSVM, PrimateAI |
 | Intermediate | MutationAssessor (medium) |
 | Reported without a threshold of ours | REVEL 0.472, CADD phred 24.5, VEST4 0.84-0.89, MVP 0.85, MPC 0.83, GERP++ 4.84 |
 
 **More evidence exists than we cited**, and AlphaMissense, the strongest single
-modern missense predictor, calls the variant pathogenic. **But the predictors are
+modern missense predictor, calls the variant pathogenic. Where dbNSFP records
+two transcript-level values both are shown, rather than the higher one.
+**But the predictors are
 not concordant.** Five tolerate it, including two meta-predictors that combine
 many of the others, and REVEL sits mid-range rather than near either end.
 Describing the computational evidence as concordant was true only of the two
@@ -108,7 +117,7 @@ function is the established mechanism), PM2_supporting (group max AF
 9.98 × 10⁻⁵), PP5 (ClinVar pathogenic, multiple submitters). Allele 2:
 PM2_supporting (ultra-rare, a single allele in 1,461,878 and no homozygotes,
 rather than absent), PP3 (computational evidence favours a damaging effect:
-9 of 15 predictors call it damaging including AlphaMissense, though 5 tolerate
+10 of 16 predictors call it damaging including AlphaMissense, though 5 tolerate
 it, so this is applied at supporting weight with the disagreement stated, see
 section 1a), PM3_supporting (in trans with a pathogenic allele, *inferred rather
 than demonstrated*, see section 5).
@@ -175,7 +184,7 @@ Reported because excluding an explanation is a result.
 
 | Question | Method | Outcome |
 |---|---|---|
-| Consanguinity or homozygosity by descent? | `bcftools roh`, plus an independent 1 Mb windowed heterozygosity scan | **No.** Longest homozygous segment 1.10 Mb; nothing above 1.5 Mb against the multiple >10 Mb tracts a first-cousin union produces. Two methods, one answer. |
+| Consanguinity or homozygosity by descent? | `bcftools roh`, plus an independent 1 Mb windowed heterozygosity scan | **No.** Longest homozygous segment 1.10 Mb by `bcftools roh`, and 2 Mb by the independent windowed scan, against the multiple >10 Mb tracts a first-cousin union produces. Two methods, one answer, and neither approaches the threshold. |
 | A cryptic splice allele, the a priori leading hypothesis? | SpliceAI at `-D 500` over the rare variants in the known MVA genes | **No.** Nothing reached even the permissive 0.2 threshold; BUB1B maximum delta 0.030. |
 | Coverage gap or deletion over an MVA gene? | 10 kb depth and density profiling | **No.** Gene-body to flank depth ratio 0.86–1.07 across all nine genes. |
 | Structural variant over a known MVA gene? | Breakpoint screen on the panel BAM, discordant pairs and split reads, calibrated against 400 sampled non-MVA panel regions | **No.** Every gene sits inside the background distribution. The uncalibrated version of this screen flagged seven of nine genes, which was the ordinary rate of split-read artefact, not seven structural variants. |
@@ -195,7 +204,8 @@ negative bounds the answer, but the prior was mistaken and is reported as such.
 
 **Trans configuration is inferred, not demonstrated.** The two alleles lie
 **10,911 bp apart**, well beyond a read pair. HaplotypeCaller's `PGT`/`PID`
-physical phasing places neither causal allele in a phasing group, which is exactly
+physical phasing, in Sentieon Haplotyper's GATK-format tags, places neither
+causal allele in a phasing group, which is exactly
 what that separation predicts. No amount of short-read depth resolves this;
 confirmation requires parental testing or long reads. We infer *trans* from the
 recessive mechanism and from neither allele appearing on a shared haplotype in
@@ -222,8 +232,21 @@ silently dropped. It would extend the negative results rather than change the
 call, since a compound heterozygote with both alleles read-level verified
 already explains the phenotype.
 
+**The second allele is presumed hypomorphic, and that is an inference.** Section
+1 calls it "one clearly disruptive allele plus one hypomorphic allele" on the
+reasoning that complete BubR1 nullity is not compatible with life, so a living
+compound heterozygote carrying one clear null must retain residual function from
+the other. That is an argument from viability rather than a measurement. No
+functional assay of p.Asn1002Lys exists, and no experimental structure resolves
+residue 1002: the two PDB entries mapping to it declare the full-length construct
+while the BubR1 density stops at residues 308 and 345. Five curated MVA1
+kinase-domain missense variants are all compound heterozygous with a nonsense
+allele, the nearest ten residues from ours (PMID 15475955), so the architecture
+is the documented one for this disease, but precedent near a residue is not
+evidence about that residue.
+
 **Missense pathogenicity rests on prediction, and the predictors disagree.**
-Fifteen were consulted: 9 call it damaging, 5 tolerated, 1 intermediate. No
+Sixteen were consulted: 10 call it damaging, 5 tolerated, 1 intermediate. No
 functional assay of p.Asn1002Lys exists, and prediction is not measurement.
 
 **We were not blind.** The Track 1 leaderboard was saturated with 61 perfect
@@ -260,8 +283,9 @@ Method validation was treated as a first-class deliverable, not a footnote.
   proband is hemizygous and selection is direct, it is weighted higher.
 - **Region annotation checked against an independent source**: splice distances
   agree with ClinVar HGVS intron offsets for **268/268 SNVs**.
-- **140 automated tests** covering the evidence schema, scoring, annotators and
-  submission format.
+- **339 automated tests** covering the evidence schema, scoring, annotators,
+  submission format, and every claim corrected during verification. The suite
+  passes clean.
 
 ---
 
@@ -296,7 +320,7 @@ wrongly, twice, and the sequence is worth setting out because it is a general
 lesson about population filters rather than a detail about two variants.
 
 **First we said they were mis-calls in repetitive sequence.** Then we overturned
-that on mapping quality: `PEX5` has mean MAPQ 58.7 and `CTU2` 60.0, with no
+that on mapping quality: `PEX5` has mean MAPQ 58.6 and `CTU2` 60.0, with no
 multi-mapping reads at either, so both lie in uniquely mappable sequence. We
 recorded them as open, and described them as loss-of-function calls absent from
 gnomAD.
