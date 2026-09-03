@@ -74,6 +74,22 @@ substitution is classified **uncertain significance** in ClinVar
 (VCV004600147.1). A reader should treat the hypomorph model as the most probable
 of several rather than as established.
 
+**There is precedent for this architecture, and it is close.** UniProt curates
+five MVA1 missense variants in the BubR1 kinase domain, at residues 814, 844,
+909, 921 and 1012, and **all five are annotated as compound heterozygous with a
+nonsense mutation**. That is exactly the architecture proposed here, and the
+nearest sits **10 residues** from ours. All five trace to Hanks et al., *Nature
+Genetics* 2004 (PMID 15475955), the study that established biallelic `BUB1B`
+mutation as the cause of MVA1. A phosphothreonine phosphorylated by PLK1 sits at
+residue 1008, six residues away.
+
+This does not make p.Asn1002Lys hypomorphic, and proximity to a pathogenic
+residue is not evidence about a different residue. What changes is the standing
+of the inference. The architecture we propose is the documented architecture for
+this disease rather than a construction of ours, so the hypomorph model rests on
+precedent as well as on viability. Full output:
+`results/summaries/kinase_domain_precedent.md`.
+
 **We checked whether a structural calculation could do better, and it cannot.**
 Plan section 7.5 permits stability work for a missense in a protein with an
 experimental structure, and BubR1 has nine PDB entries. Two map to residue 1002,
@@ -232,6 +248,27 @@ Asked first, because the answer governs what everything after it can claim.
 | any prevention trial with a drug, in rhabdomyosarcoma | **0** |
 
 Not a thin evidence base. An empty one.
+
+**We then asked the literature the same question**, because a registry records
+prospective trials and not published work, and an early chemoprevention signal
+would appear first in an animal model. PubMed returns **zero** publications for
+`Bub1b AND chemoprevention`. The three hits for mosaic variegated aneuploidy and
+cancer prevention are a review, a surgical case report and a colorectal risk
+study, none a prevention study; their titles are printed in
+`results/summaries/chemoprevention_literature.md` rather than summarised,
+because a hit count alone would have been misleading.
+
+One hit is worth more than its count. Lissa et al., *PNAS* 2014 (PMID 24516128)
+report that resveratrol and salicylate selectively reduce the fitness of
+**tetraploid** cells through AMP-activated protein kinase. Two independent parts
+of this project converge on it: aspirin reached our candidate table through a
+registry query that knew nothing of the paper, and `PRKAA1`, `PRKAA2`, `PRKAG1`,
+`PRKAG2` and `PRKAG3` reached our activatable list through the directional
+analysis in section 5. **It is still not evidence for this disease.** Tetraploidy
+from cytokinesis failure is not whole-chromosome aneuploidy from a weakened
+spindle checkpoint, and the paper's context is `APC`-driven intestinal neoplasia.
+It names a mechanistic route worth testing in the right model; it does not
+shorten the distance to this patient.
 
 **This is the dominant limitation of the axis and no downstream filtering
 repairs it.** Every candidate below is transferred from a different hereditary

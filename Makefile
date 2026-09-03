@@ -35,7 +35,9 @@ downloads:  ## fetch reference files (large; resumable)
 	  https://ftp.ensembl.org/pub/release-115/gtf/homo_sapiens/Homo_sapiens.GRCh38.115.gtf.gz
 	curl -L --retry 8 --retry-all-errors -C - -o benchmarks/background/HG002_GRCh38_v4.2.1.vcf.gz \
 	  https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/giab/release/AshkenazimTrio/HG002_NA24385_son/NISTv4.2.1/GRCh38/HG002_GRCh38_1_22_v4.2.1_benchmark.vcf.gz
-	@for f in refs/Homo_sapiens.GRCh38.115.gtf.gz benchmarks/background/HG002_GRCh38_v4.2.1.vcf.gz; do \
+	curl -L --retry 8 --retry-all-errors -C - -o refs/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz \
+	  https://ftp.ensembl.org/pub/release-115/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+	@for f in refs/Homo_sapiens.GRCh38.115.gtf.gz benchmarks/background/HG002_GRCh38_v4.2.1.vcf.gz refs/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz; do \
 	  gzip -t $$f && echo "OK   $$f" || echo "TRUNCATED $$f - rerun 'make downloads' to resume"; \
 	done
 
@@ -61,6 +63,15 @@ scalability:  ## run the same Track 2 pipeline on two comparator diseases
 
 resource:  ## publish the reusable directional availability table
 	python scripts/30_publish_directional_availability.py
+
+sv-screen:  ## calibrated breakpoint screen over the known MVA genes
+	python scripts/36_sv_screen_panel.py
+
+precedent:  ## curated MVA1 variants in the BubR1 kinase domain
+	python scripts/37_kinase_domain_precedent.py
+
+chemoprev-lit:  ## does chemoprevention evidence exist for this disease?
+	python scripts/38_chemoprevention_literature.py
 
 predictors:  ## in silico predictor panel for the two BUB1B alleles
 	python scripts/34_missense_predictor_panel.py
@@ -90,4 +101,4 @@ lint:  ## ruff and mypy
 reproduce: verify phase0 resources test  ## the full path a judge should be able to run
 	@echo "Reproduction complete. Compare results/ against the submitted artefact."
 
-.PHONY: help verify phase0 resources downloads downloads-track2 reproduce-track2 track2 scalability structural-check resource predictors dataset-revision delete-plan track2-drift pitch-wordcount test lint reproduce
+.PHONY: help verify phase0 resources downloads downloads-track2 reproduce-track2 track2 scalability structural-check resource sv-screen precedent chemoprev-lit predictors dataset-revision delete-plan track2-drift pitch-wordcount test lint reproduce

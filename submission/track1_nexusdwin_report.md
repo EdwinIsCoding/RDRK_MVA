@@ -171,6 +171,7 @@ Reported because excluding an explanation is a result.
 | Consanguinity or homozygosity by descent? | `bcftools roh`, plus an independent 1 Mb windowed heterozygosity scan | **No.** Longest homozygous segment 1.10 Mb; nothing above 1.5 Mb against the multiple >10 Mb tracts a first-cousin union produces. Two methods, one answer. |
 | A cryptic splice allele, the a priori leading hypothesis? | SpliceAI at `-D 500` over the rare variants in the known MVA genes | **No.** Nothing reached even the permissive 0.2 threshold; BUB1B maximum delta 0.030. |
 | Coverage gap or deletion over an MVA gene? | 10 kb depth and density profiling | **No.** Gene-body to flank depth ratio 0.86–1.07 across all nine genes. |
+| Structural variant over a known MVA gene? | Breakpoint screen on the panel BAM, discordant pairs and split reads, calibrated against 400 sampled non-MVA panel regions | **No.** Every gene sits inside the background distribution. The uncalibrated version of this screen flagged seven of nine genes, which was the ordinary rate of split-read artefact, not seven structural variants. |
 | Mitochondrial cause? | Contig `M` analysis | **No**, but weakly: 13 homoplasmic variants at median 4,177×, and the diploid germline caller used cannot detect low-level heteroplasmy. |
 
 The splicing negative is worth dwelling on. The project plan reasoned that a
@@ -197,10 +198,12 @@ prediction and never an observation of an aberrant junction.
 
 **Singleton.** No de novo calling, no segregation filtering, no parental phasing.
 
-**Mosaic re-genotyping was run and is negative** (section 4). **Structural
-variant calling was not completed.** Delly was launched genome-wide but the
-compute booking ended and scratch was wiped before results could be retrieved,
-so no SV call set exists. This is stated rather than omitted: a reader should
+**Mosaic re-genotyping was run and is negative** (section 4). **Genome-wide
+structural variant calling was not completed**, though a calibrated breakpoint
+screen over the nine known MVA genes has since been run from the panel BAM and
+is reported in section 4 as a negative. The genome-wide gap stands: Delly was
+launched genome-wide but the compute booking ended and scratch was wiped before
+results could be retrieved, so no SV call set exists. This is stated rather than omitted: a reader should
 know that the structural hypothesis was attempted and left unfinished, not
 silently dropped. It would extend the negative results rather than change the
 call, since a compound heterozygote with both alleles read-level verified

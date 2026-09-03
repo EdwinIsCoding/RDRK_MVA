@@ -120,3 +120,6 @@ scripts/gpu/.local.sh
 # Artefacts pulled from the compute node: annotated VCF and a panel BAM.
 # Patient genomic data. Never committed.
 node_artefacts/
+
+# Third-party toolchain, downloaded to the SSD. Never committed.
+tools/
