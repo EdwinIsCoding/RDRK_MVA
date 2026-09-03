@@ -227,13 +227,41 @@ AREA[ConditionSearch]"Neoplastic Syndromes, Hereditary"
 |---|---:|
 | prevention trials with a drug intervention | 39 |
 | distinct agent names after dose and formulation text is stripped | 49 |
-| resolved to a ChEMBL molecule | 25 |
-| unresolved, reported as gaps rather than guessed at | 24 |
+| dropped as placebo or vehicle arms | 2 |
+| intervention names resolved to a ChEMBL molecule | 39 |
+| **distinct molecules after merging arms of the same drug** | **30** |
+| unresolved, reported as gaps rather than guessed at | 8 |
 
 A name resolves only on an **exact** match against a ChEMBL preferred name or
-synonym. Fuzzy search returns a nearest molecule for almost any string, and a
-plausible wrong ChEMBL identifier in a report is worse than a gap because a
-reader cannot tell it is wrong.
+synonym, and three lookups are tried in that order: exact preferred name, exact
+synonym, then ChEMBL's ranked text search. The same exact check is applied to
+all three, so widening recall cannot admit a near miss. A plausible wrong ChEMBL
+identifier in a report is worse than a gap because a reader cannot tell it is
+wrong.
+
+**Relying on the ranked search alone lost roughly half the candidates.** Querying
+it for `sirolimus` returns ten molecules, none of them CHEMBL413, whose preferred
+name is SIROLIMUS. Among the names it silently dropped was **metformin**, which
+is one of the most studied repurposed chemoprevention agents and which appears
+in section 4.4 below with a tumour-count endpoint. The exact endpoints recover
+it. Registry intervention names describe trial arms rather than compounds, so
+`metformin combination`, `celecoxib monotherapy` and `for Aspirin 300` resolve
+only after the arm wrapper is stripped, and the summary prints the string that
+actually matched so the normalisation can be audited rather than trusted.
+
+Two names are **dropped rather than resolved**. `no active patidegib` is the
+control arm of a patidegib trial and `Vehicle comparator` is a vehicle arm.
+Normalising either to its drug would record the arm that received no drug as
+registry evidence for the drug. The eight that remain unresolved are food
+preparations, antibody classes and sponsor product codes, none of which is a
+single molecule.
+
+Arms of the same drug are then **merged into one candidate**. Left unmerged,
+aspirin appeared three times with its trial count split between the copies, and
+could hold two verdicts at once, since an arm labelled `for Aspirin 300` finds
+no paediatric trials and scores UNKNOWN while plain `Aspirin` scores ALLOWED.
+The paediatric lookup now runs on the ChEMBL preferred name rather than the
+registry arm label, for the same reason.
 
 ### 4.3 The safety screen
 
@@ -244,7 +272,7 @@ for this patient, and it is built as code rather than prose.
 
 | Verdict | Agents | Meaning |
 |---|---:|---|
-| allowed | 16 | passes the screen; still only a hypothesis |
+| allowed | 21 | passes the screen; still only a hypothesis |
 | flagged | 5 | a real tension that must be stated wherever the agent is proposed |
 | unknown | 4 | required paediatric evidence absent; **not a pass** |
 | excluded | 0 | categorical; no efficacy argument overrides |
@@ -254,11 +282,27 @@ paediatric exposure data is not thereby safe for a child.
 
 **A screen that excludes nothing may be permissive or may be broken, and the
 candidate set cannot tell you which**, because prevention trials rarely test
-cytotoxics. So known cytotoxic agents are pushed through the identical code
-path, named by the WHO ATC L01A alkylating-agent subgroup rather than by us:
-bendamustine, busulfan, carboquone, carmustine and chlorambucil. **Five of five
-are excluded.** The empty exclusion list above is therefore a property of the
-candidate set and not of a broken screen.
+cytotoxics. So the screen is controlled in both directions, with agents named by
+the WHO ATC classification rather than by us.
+
+| Control | Drawn from | Required behaviour | Result |
+|---|---|---|---|
+| Cytotoxics | ATC L01A alkylating agents: bendamustine, busulfan, carboquone, carmustine, chlorambucil | must be **excluded** | **5 of 5 excluded** |
+| Ordinary agents | ATC M01A anti-inflammatories, A02B acid-related agents, A11C fat-soluble vitamins | must **not** be excluded | **9 of 9 not excluded** |
+
+The second half matters as much as the first. A screen that refused everything
+would score five out of five on cytotoxics and look healthy, and the candidate
+set could not reveal the difference. Only the pair shows that the instrument
+discriminates rather than merely refuses, so the empty exclusion list above is a
+property of the candidate set. The ordinary agents return `unknown` rather than
+`allowed` because no paediatric lookup is run for a control, and `UNKNOWN` is
+never a pass.
+
+This control is not hypothetical insurance. It is the exact failure we shipped
+once: a blanket ATC L01 exclusion, which had passed its tests, removed celecoxib
+from the candidate list on the stated grounds that a COX-2 inhibitor is
+cytotoxic chemotherapy. The tests had been written from the same assumption as
+the rule, so only a real candidate set could expose it.
 
 ### 4.4 Candidates
 
@@ -266,24 +310,30 @@ Ordered by screen verdict. This is a prioritisation for research evaluation and
 not a ranking of clinical preference. **No dose appears anywhere in this
 repository and none may be added.**
 
+Only agents with at least one tumour-counting endpoint are listed here. The
+full table of thirty, including those that reach the list through a surrogate or
+an unrelated endpoint, is in `results/summaries/track2_chemoprevention.md`.
+
 | Agent | ChEMBL | Prevention trials | Endpoint measured | Verdict |
 |---|---|---:|---|---|
-| SULINDAC | CHEMBL15770 | 1 | duodenal polyp burden | allowed |
-| URSODIOL | CHEMBL1551 | 1 | number and size of duodenal adenomas | allowed |
+| ASPIRIN | CHEMBL25 | 3 | patients with at least one adenoma | allowed |
 | MESALAMINE | CHEMBL704 | 2 | occurrence of colorectal neoplasia | allowed |
+| NAPROXEN | CHEMBL154 | 2 | PGE2 concentration, a surrogate | allowed |
+| SULINDAC | CHEMBL15770 | 2 | duodenal polyp burden | allowed |
+| **METFORMIN** | CHEMBL1431 | 1 | number and size of colonic and duodenal polyps | allowed |
 | LETROZOLE | CHEMBL1444 | 1 | invasive breast cancer at 5 years | allowed |
 | NOGAPENDEKIN ALFA | CHEMBL4297690 | 1 | cumulative incidence of adenomas | allowed |
-| ASPIRIN | CHEMBL25 | 2 | Ki-67 and apoptosis, a surrogate | allowed |
-| NAPROXEN | CHEMBL154 | 2 | PGE2 concentration, a surrogate | allowed |
-| ATORVASTATIN | CHEMBL1487 | 1 | Ki-67 and apoptosis, a surrogate | allowed |
+| URSODIOL | CHEMBL1551 | 1 | number and size of duodenal adenomas | allowed |
+| TIPIFARNIB | CHEMBL289228 | 1 | median time to progression | allowed |
 | **CELECOXIB** | CHEMBL118 | **5** | number and size of duodenal adenomas | **flagged** |
+| SIROLIMUS | CHEMBL413 | 4 | seizure occurrence, and tumour volume | flagged |
 | ERLOTINIB | CHEMBL553 | 2 | duodenal polyp burden | flagged |
 | PATIDEGIB | CHEMBL538867 | 1 | number of new basal cell carcinomas | unknown |
 
 Celecoxib carries the most registry support of any agent in the set, at five
 prevention trials, with an endpoint that counts lesions rather than a biomarker.
 
-**Fourteen of the twenty-five resolved agents have at least one primary outcome
+**Seventeen of the thirty resolved molecules have at least one primary outcome
 that counts tumours or lesions.** The rest reached the list through a surrogate
 endpoint such as Ki-67 staining, or through an endpoint unrelated to cancer such
 as seizure frequency in tuberous sclerosis. That makes them weaker candidates
@@ -308,6 +358,10 @@ These are not footnotes. They are attached to the candidate wherever it appears.
   we do not propose a rapalog for the proteostasis axis despite the mechanistic
   appeal described in section 5. Naming that tension is the point; a proposal
   that omits it is the error a clinically trained reader will find first.
+- **METFORMIN** is not flagged and carries paediatric exposure evidence. It is
+  listed last among the caveats precisely because it has none, which is unusual
+  in this set and is the reason it is worth a closer look than its single trial
+  would otherwise justify.
 - **PIRFENIDONE** is immunosuppressive, with the same tension.
 
 ### 4.6 Surveillance
@@ -409,8 +463,19 @@ Every number in this report regenerates from the repository.
 
 ```bash
 make track2        # direction audit, chemoprevention axis, axis availability
+make track2-drift  # have the live registry counts moved since we wrote this?
 make test          # the full automated suite, which prints its own count
 ```
+
+Two of the sources above are live and change without notice. The counts this
+report quotes are therefore pinned in `config/track2_evidence_pin.json` with the
+date they were taken, and `make track2-drift` re-queries and reports the
+difference. A reader running the pipeline months later can tell whether we were
+wrong or the world moved.
+
+The four zeros in section 4.1 are marked load-bearing in that check. If one ever
+becomes non-zero it means a chemoprevention trial now exists for this disease,
+and section 4.1 has to be rewritten rather than have its number adjusted.
 
 Outputs land in `results/summaries/`: `track2_direction_audit.md`,
 `track2_chemoprevention.md` and `track2_axis_availability.md`. Sources are

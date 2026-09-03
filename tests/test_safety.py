@@ -166,3 +166,42 @@ class TestDeterminism:
             assert f.rule_id.startswith("SAFE-")
             assert f.field_read
             assert f.source
+
+
+class TestTheScreenDiscriminatesBothWays:
+    """A screen validated only against things it should reject is not validated.
+
+    The negative control alone cannot distinguish a working screen from one that
+    refuses everything, and the candidate set cannot either, because prevention
+    trials rarely test cytotoxics. Both halves are asserted here on synthetic
+    records so the property holds without a network call.
+    """
+
+    CYTOTOXIC_ATC = ["L01AA01", "L01BA01", "L01CA01", "L01DB01"]
+    ORDINARY_ATC = ["M01AB16", "A02BX09", "A11CC03", "C10AA05", "A10BA02"]
+
+    @pytest.mark.parametrize("atc", CYTOTOXIC_ATC)
+    def test_cytotoxic_classes_are_excluded(self, atc):
+        r = screen(DrugRecord(name="X", atc_codes=(atc,), provenance="WHO ATC"))
+        assert r.verdict is Verdict.EXCLUDED
+
+    @pytest.mark.parametrize("atc", ORDINARY_ATC)
+    def test_ordinary_classes_are_not_excluded(self, atc):
+        """M01A anti-inflammatories, A02B acid-related agents, A11C vitamins,
+        C10AA statins and A10BA biguanides sit outside every exclusion rule by
+        construction. Metformin is A10BA02 and is a real candidate."""
+        r = screen(DrugRecord(name="X", atc_codes=(atc,), provenance="WHO ATC"))
+        assert r.verdict is not Verdict.EXCLUDED, (
+            f"{atc} was excluded. The exclusion rules are over-broad, which is "
+            f"the failure that let a blanket L01 rule exclude celecoxib.")
+        assert r.may_be_proposed
+
+    def test_the_two_halves_disagree(self):
+        """The point of the pair: the same instrument must give different
+        answers to the two sets, or it is measuring nothing."""
+        cyto = {screen(DrugRecord(name="X", atc_codes=(a,), provenance="p")).verdict
+                for a in self.CYTOTOXIC_ATC}
+        ordinary = {screen(DrugRecord(name="X", atc_codes=(a,), provenance="p")).verdict
+                    for a in self.ORDINARY_ATC}
+        assert cyto == {Verdict.EXCLUDED}
+        assert Verdict.EXCLUDED not in ordinary

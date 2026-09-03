@@ -102,6 +102,69 @@ def split_combination(name: str) -> list[str]:
     return [p.strip() for p in parts if len(p.strip()) > 2]
 
 
+#: Trial-arm wrappers. A sponsor writes "Celecoxib monotherapy" or "Early
+#: Vigabatrin" to name an arm, not a compound, and neither string is in any
+#: chemical database.
+_ARM_WRAPPER = re.compile(
+    r"\b(monotherapy|combination|combined|drug|therapy|treatment|early|delayed|"
+    r"maintenance|adjuvant|supplement|supplements|nutritional|suppositories|"
+    r"suppository|slurry|probiotic|extract|cream|ointment|comparator|"
+    r"experimental|active|control|cohort)\b", re.IGNORECASE)
+
+#: Placebo and vehicle arms. These must be **dropped**, never resolved.
+#: "no active patidegib" is the control arm of a patidegib trial; resolving it
+#: to patidegib would record the placebo arm as evidence for the drug.
+_CONTROL_ARM = re.compile(
+    r"^\s*(no active\b|vehicle\b|placebo\b|sham\b|matching placebo\b)"
+    r"|\bplacebo\b|\bvehicle comparator\b", re.IGNORECASE)
+
+#: Sponsor product codes, e.g. TAVT-18, PTX-022, TPST-1495.
+_PRODUCT_CODE = re.compile(r"\b[A-Z]{2,6}[- ]?\d{2,5}\b")
+
+#: Words that are never a compound name, so never worth a lookup on their own.
+_STOPWORDS = frozenset({
+    "acid", "administration", "antibody", "arm", "black", "dose", "group",
+    "high", "low", "oral", "patients", "standard", "study", "then", "with",
+})
+
+
+def is_control_arm(name: str) -> bool:
+    """Is this a placebo or vehicle arm rather than an agent?"""
+    return bool(_CONTROL_ARM.search(name))
+
+
+def normalise_candidates(name: str) -> list[str]:
+    """Ordered candidate strings to try resolving, most specific first.
+
+    Generating several spellings is safe here **only** because resolution
+    demands an exact match against a ChEMBL preferred name or synonym. Each
+    candidate is either exactly right or it returns nothing, so a longer list
+    widens recall without admitting a near miss.
+    """
+    out: list[str] = []
+
+    def add(c: str) -> None:
+        c = re.sub(r"\s+", " ", c).strip(" -,")
+        if c and len(c) > 2 and c.lower() not in {x.lower() for x in out}:
+            out.append(c)
+
+    add(name)
+    add(_ARM_WRAPPER.sub(" ", name))
+    add(_PRODUCT_CODE.sub(" ", _ARM_WRAPPER.sub(" ", name)))
+
+    # A trailing or embedded all-caps abbreviation, as in "Eicosapentanoic Acid
+    # EPA" or "mesalamine 5-ASA", where the expansion is the resolvable half.
+    stripped = _PRODUCT_CODE.sub(" ", _ARM_WRAPPER.sub(" ", name))
+    add(re.sub(r"\b[0-9]?[A-Z]{2,6}(-[A-Z]{2,6})?\b", " ", stripped))
+
+    # Last resort: individual words. Recovers "Aspirin" from the wreckage of
+    # "100 for Aspirin 100" once the dose stripper has been through it.
+    for tok in re.findall(r"[A-Za-z][A-Za-z-]{3,}", stripped):
+        if tok.lower() not in _STOPWORDS:
+            add(tok)
+    return out
+
+
 @dataclasses.dataclass(frozen=True)
 class TrialEvidence:
     """What the registry says about one agent, with the trials that say it."""
@@ -250,54 +313,132 @@ def _molecule(chembl_id: str, cache: pathlib.Path) -> dict | None:
     return _cached(cache, f"molrec_{chembl_id}", fetch)
 
 
-def resolve_molecule(name: str, cache: pathlib.Path) -> ChemblMolecule | None:
-    """Resolve an agent name to a ChEMBL molecule, or return None.
+def _exact_molecules(field: str, value: str, cache: pathlib.Path) -> list[dict]:
+    """Molecules whose ``field`` equals ``value`` exactly, ignoring case.
 
-    A fuzzy search that silently returns the nearest molecule is how a wrong
-    ChEMBL ID gets into a report, so a hit counts only when the preferred name
-    or one of the molecule's synonyms matches the query exactly, ignoring case.
-    Anything else is an unresolved name and is reported as a gap.
+    ChEMBL's ``molecule/search`` is a ranked text search and its recall is poor
+    for common drug names. Searching it for "sirolimus" returns ten molecules,
+    none of them CHEMBL413, whose preferred name **is** SIROLIMUS. Relying on
+    that search cost this pipeline roughly half its candidate names.
+
+    The filter endpoints below are exact lookups and return the one right
+    answer, so they are tried first and the search is kept only as a fallback.
     """
     def fetch():
+        q = urllib.parse.urlencode({f"{field}__iexact": value,
+                                    "format": "json", "limit": 20})
+        return _get(f"{CHEMBL}/molecule?{q}")
+
+    d = _cached(cache, f"molx_{field}_{value.lower()}", fetch)
+    return (d or {}).get("molecules", []) or []
+
+
+def _to_molecule(m: dict, fallback_name: str, cache: pathlib.Path) -> ChemblMolecule:
+    atc = tuple(a for a in (m.get("atc_classifications") or []) if isinstance(a, str))
+
+    # A salt or ester form carries no ATC code of its own, so the safety screen
+    # sees nothing to act on. Left alone, that silently passes ERLOTINIB
+    # HYDROCHLORIDE while flagging ERLOTINIB, which is the same active molecule
+    # and the same concern. Inherit from the parent.
+    inherited = None
+    parent = (m.get("molecule_hierarchy") or {}).get("parent_chembl_id")
+    if not atc and parent and parent != m["molecule_chembl_id"]:
+        pm = _molecule(parent, cache) or {}
+        patc = tuple(a for a in (pm.get("atc_classifications") or [])
+                     if isinstance(a, str))
+        if patc:
+            atc, inherited = patc, parent
+
+    mp = m.get("max_phase")
+    return ChemblMolecule(
+        chembl_id=m["molecule_chembl_id"],
+        pref_name=m.get("pref_name") or fallback_name,
+        max_phase=float(mp) if mp is not None else None,
+        atc_codes=atc,
+        molecule_type=m.get("molecule_type"),
+        withdrawn=m.get("withdrawn_flag"),
+        atc_inherited_from=inherited,
+    )
+
+
+def _names_of(m: dict) -> set[str]:
+    names = {(m.get("pref_name") or "").lower()}
+    for syn in (m.get("molecule_synonyms") or []):
+        names.add((syn.get("molecule_synonym") or "").lower())
+    return names - {""}
+
+
+def resolve_molecule(name: str, cache: pathlib.Path) -> ChemblMolecule | None:
+    """Resolve one exact agent name to a ChEMBL molecule, or return None.
+
+    Three lookups are tried in order: exact preferred name, exact synonym, then
+    the ranked text search. **Every path applies the same exact-name check**, so
+    widening recall cannot admit a near miss. A fuzzy search that silently
+    returns the nearest molecule is how a wrong ChEMBL identifier gets into a
+    report, and a plausible wrong identifier is worse than a gap because a
+    reader cannot tell it is wrong (CLAUDE.md rule 2).
+    """
+    want = name.strip().lower()
+
+    def search():
         q = urllib.parse.urlencode({"q": name, "format": "json", "limit": 10})
         return _get(f"{CHEMBL}/molecule/search?{q}")
 
-    d = _cached(cache, f"mol_{name.lower()}", fetch)
-    if not d:
-        return None
-    want = name.strip().lower()
-    for m in d.get("molecules", []):
-        names = {(m.get("pref_name") or "").lower()}
-        for syn in (m.get("molecule_synonyms") or []):
-            names.add((syn.get("molecule_synonym") or "").lower())
-        if want not in names:
-            continue
-        atc = tuple(a for a in (m.get("atc_classifications") or []) if isinstance(a, str))
-
-        # A salt or ester form carries no ATC code of its own, so the safety
-        # screen sees nothing to act on. Left alone, that silently passes
-        # ERLOTINIB HYDROCHLORIDE while flagging ERLOTINIB, which is the same
-        # active molecule and the same concern. Inherit from the parent.
-        inherited = None
-        parent = (m.get("molecule_hierarchy") or {}).get("parent_chembl_id")
-        if not atc and parent and parent != m["molecule_chembl_id"]:
-            pm = _molecule(parent, cache) or {}
-            patc = tuple(a for a in (pm.get("atc_classifications") or [])
-                         if isinstance(a, str))
-            if patc:
-                atc, inherited = patc, parent
-
-        mp = m.get("max_phase")
-        return ChemblMolecule(
-            chembl_id=m["molecule_chembl_id"],
-            pref_name=m.get("pref_name") or name,
-            max_phase=float(mp) if mp is not None else None,
-            atc_codes=atc,
-            molecule_type=m.get("molecule_type"),
-            withdrawn=m.get("withdrawn_flag"),
-            atc_inherited_from=inherited,
-        )
+    # Lazily, so an exact hit costs one request rather than three. The fuzzy
+    # search is the slowest and least reliable of the three and should only ever
+    # run when both exact lookups have come back empty.
+    sources = (
+        lambda: _exact_molecules("pref_name", name, cache),
+        lambda: _exact_molecules("molecule_synonyms__molecule_synonym", name, cache),
+        lambda: (_cached(cache, f"mol_{want}", search) or {}).get("molecules", []) or [],
+    )
+    for source in sources:
+        for m in source():
+            if want in _names_of(m):
+                return _to_molecule(m, name, cache)
     return None
+
+
+def merge_evidence(a: TrialEvidence, b: TrialEvidence) -> TrialEvidence:
+    """Union two arms' evidence for the same molecule.
+
+    Once normalisation is doing its job, several intervention names resolve to
+    one molecule: "Aspirin", "for Aspirin 300" and "100 for Aspirin 100" are all
+    CHEMBL25. Left unmerged they appear as three separate candidates with their
+    trial counts split between them, and they can be given **conflicting
+    verdicts**, since a name that finds no paediatric trials scores UNKNOWN while
+    its twin scores ALLOWED.
+    """
+    def u(x, y):
+        return tuple(sorted(set(x) | set(y)))
+    return TrialEvidence(
+        agent=a.agent if len(a.agent) <= len(b.agent) else b.agent,
+        nct_ids=u(a.nct_ids, b.nct_ids),
+        conditions=u(a.conditions, b.conditions),
+        phases=u(a.phases, b.phases),
+        outcomes=tuple(dict.fromkeys(a.outcomes + b.outcomes)),
+    )
+
+
+def resolve_agent(name: str, cache: pathlib.Path
+                  ) -> tuple[ChemblMolecule | None, str | None]:
+    """Resolve a registry intervention name, trying normalised spellings.
+
+    Returns the molecule and **the string that actually matched**, so the output
+    can print "metformin combination -> metformin -> CHEMBL1431" and a reader can
+    audit the normalisation rather than trust it.
+
+    Control arms are refused outright. "no active patidegib" is the placebo arm
+    of a patidegib trial, and resolving it would record that arm as evidence for
+    the drug.
+    """
+    if is_control_arm(name):
+        return None, None
+    for candidate in normalise_candidates(name):
+        m = resolve_molecule(candidate, cache)
+        if m is not None:
+            return m, candidate
+    return None, None
 
 
 def mechanism_actions(chembl_id: str, cache: pathlib.Path) -> tuple[str, ...]:

@@ -1,0 +1,19 @@
+{
+  "taken": "2026-09-03",
+  "source": "ClinicalTrials.gov API v2",
+  "queries": {
+    "mva_any_trial": "AREA[ConditionSearch]\"Mosaic Variegated Aneuploidy\"",
+    "bub1b_any_trial": "AREA[ConditionSearch]\"BUB1B\" OR AREA[InterventionName]\"BUB1B\"",
+    "rhabdomyosarcoma_prevention": "AREA[ConditionSearch]\"Rhabdomyosarcoma\" AND AREA[DesignPrimaryPurpose]PREVENTION",
+    "rhabdomyosarcoma_prevention_drug": "AREA[ConditionSearch]\"Rhabdomyosarcoma\" AND AREA[DesignPrimaryPurpose]PREVENTION AND AREA[InterventionType]DRUG",
+    "hereditary_prevention_drug": "AREA[ConditionSearch]\"Neoplastic Syndromes, Hereditary\" AND AREA[DesignPrimaryPurpose]PREVENTION AND AREA[InterventionType]DRUG"
+  },
+  "counts": {
+    "mva_any_trial": 0,
+    "bub1b_any_trial": 0,
+    "rhabdomyosarcoma_prevention": 0,
+    "rhabdomyosarcoma_prevention_drug": 0,
+    "hereditary_prevention_drug": 39
+  },
+  "note": "Pinned so that drift is detectable. See scripts/29_track2_drift_check.py. A load-bearing count that moves is a rewrite of the claim it supports, not an edit to the number."
+}

@@ -33,33 +33,65 @@ from mva.track2.chemoprevention import (
     count_trials,
     endpoint_classes,
     extract_drug_agents,
+    is_control_arm,
     mechanism_actions,
+    merge_evidence,
     paediatric_trials,
     query_trials,
+    resolve_agent,
     resolve_molecule,
 )
 from mva.track2.safety import DrugRecord, Verdict, screen
 
-ATC_TABLE = pathlib.Path("refs/atc/atc_l01.json")
-
-
-
-def control_agents(n: int = 5) -> list[str]:
-    """Known cytotoxic agents, named by the WHO ATC table rather than by us.
-
-    Taken from L01A, the alkylating-agent subgroup, whose members are cytotoxic
-    by definition of the class. Used as a negative control on the safety screen.
-    """
-    import json
-    if not ATC_TABLE.exists():
-        return []
-    rows = json.loads(ATC_TABLE.read_text()).get("atc", [])
-    names = [r["who_name"] for r in rows
-             if r.get("level3") == "L01A" and r.get("who_name")]
-    return sorted(names)[:n]
-
 CACHE = pathlib.Path("results/track2/cache")
 OUT = pathlib.Path("results/summaries/track2_chemoprevention.md")
+ATC_DIR = pathlib.Path("refs/atc")
+
+
+
+def _atc_names(group: str, level3: str, n: int) -> list[str]:
+    """Agent names from one WHO ATC subgroup, in deterministic order.
+
+    Names come from the ATC table cached under refs/atc/, retrieved from the
+    ChEMBL atc_class endpoint. Choosing control agents from a published
+    classification rather than from our own recall is the point: a control set
+    we picked would share whatever blind spot the rule under test has.
+    """
+    import json
+    f = ATC_DIR / f"atc_{group.lower()}.json"
+    if not f.exists():
+        return []
+    rows = json.loads(f.read_text()).get("atc", [])
+    names = {r["who_name"] for r in rows
+             if r.get("level3") == level3 and r.get("who_name")}
+    return sorted(names)[:n]
+
+
+def negative_control_agents(n: int = 5) -> list[str]:
+    """Cytotoxic agents that the screen MUST exclude.
+
+    L01A is the alkylating-agent subgroup, cytotoxic by definition of the class.
+    """
+    return _atc_names("l01", "L01A", n)
+
+
+def positive_control_agents(n: int = 3) -> list[str]:
+    """Ordinary agents that the screen must NOT exclude.
+
+    A screen with only a negative control is not validated. One that excluded
+    every compound put to it would score five out of five on cytotoxics and look
+    healthy, and the candidate set cannot reveal the difference because
+    prevention trials rarely test cytotoxics either way.
+
+    These come from ATC subgroups outside every exclusion rule by construction:
+    M01A non-steroidal anti-inflammatories, A02B acid-related agents, and A11C
+    fat-soluble vitamins. None is L01A to L01D, none is L04, none has a
+    genotoxic mechanism. If the screen excludes one of these, the exclusion
+    rules are over-broad and no verdict it produces can be trusted.
+    """
+    return (_atc_names("m01", "M01A", n) + _atc_names("a02", "A02B", n)
+            + _atc_names("a11", "A11C", n))
+
 
 #: The proband's own disease and tumour. Queried to establish that the
 #: syndrome-specific evidence base is empty, which is a reported negative and
@@ -142,32 +174,79 @@ def main() -> None:
     # ---------------------------------------------------------------- stage 2
     resolved: list[tuple[str, ChemblMolecule, object]] = []
     unresolved: list[str] = []
+    controls: list[str] = []
+    via: dict[str, str] = {}
     for key in sorted(agents):
         ev = agents[key]
-        mol = resolve_molecule(ev.agent, CACHE)
+        if is_control_arm(ev.agent):
+            controls.append(ev.agent)
+            continue
+        mol, matched = resolve_agent(ev.agent, CACHE)
         if mol is None:
             unresolved.append(ev.agent)
             continue
+        if matched and matched.lower() != ev.agent.lower():
+            via[mol.chembl_id] = matched
         resolved.append((ev.agent, mol, ev))
 
+    # One row per molecule, not per arm label. See merge_evidence.
+    merged: dict[str, tuple[str, ChemblMolecule, object]] = {}
+    for agent, mol, ev in resolved:
+        if mol.chembl_id in merged:
+            prev_agent, prev_mol, prev_ev = merged[mol.chembl_id]
+            merged[mol.chembl_id] = (prev_agent, prev_mol, merge_evidence(prev_ev, ev))
+        else:
+            merged[mol.chembl_id] = (agent, mol, ev)
+    n_arms, resolved = len(resolved), list(merged.values())
+
     w("## 3. Resolution to ChEMBL\n")
-    w(f"| resolved to a ChEMBL molecule | **{len(resolved)}** |")
+    w("| | count |")
     w("|---|---:|")
+    w(f"| intervention names resolved | {n_arms} |")
+    w(f"| distinct molecules after merging arms of the same drug | **{len(resolved)}** |")
+    w(f"| dropped as a placebo or vehicle arm | {len(controls)} |")
     w(f"| unresolved, reported as a gap | {len(unresolved)} |\n")
     w("A name resolves only when it matches a ChEMBL preferred name or synonym "
-      "exactly. Fuzzy search returns a nearest molecule for almost anything, and "
-      "a plausible wrong ChEMBL identifier in a report is worse than a gap "
-      "because a reader cannot tell it is wrong (`CLAUDE.md` rule 2).\n")
+      "**exactly**. Three lookups are tried in order, exact preferred name, "
+      "exact synonym, then ChEMBL's ranked text search, and the same exact check "
+      "is applied to all three. Widening recall therefore cannot admit a near "
+      "miss, and a plausible wrong ChEMBL identifier is worse than a gap because "
+      "a reader cannot tell it is wrong (`CLAUDE.md` rule 2).\n")
+    w("**The ranked text search alone was losing roughly half the candidates.** "
+      "Querying it for `sirolimus` returns ten molecules, none of them CHEMBL413, "
+      "whose preferred name is SIROLIMUS. Among the names it dropped was "
+      "metformin, which is one of the most studied repurposed chemoprevention "
+      "agents. The exact endpoints recover it.\n")
+    if via:
+        w("Registry intervention names are sponsor free text naming an arm rather "
+          "than a compound, so several resolve only after trial-arm wrappers are "
+          "stripped. **The string that actually matched is printed** so the "
+          "normalisation can be audited rather than trusted:\n")
+        w("| ChEMBL | matched on |")
+        w("|---|---|")
+        for cid, matched in sorted(via.items()):
+            w(f"| {cid} | `{matched}` |")
+        w("")
+    if controls:
+        w("Dropped as placebo or vehicle arms, **not** resolved: "
+          + ", ".join(f"`{c}`" for c in sorted(controls))
+          + ". `no active patidegib` is the control arm of a patidegib trial, and "
+            "resolving it would have recorded that arm as evidence for the drug.\n")
     if unresolved:
         w("Unresolved names, left as gaps rather than guessed at: "
           + ", ".join(f"`{u}`" for u in sorted(unresolved)[:25])
-          + (" ..." if len(unresolved) > 25 else "") + "\n")
+          + (" ..." if len(unresolved) > 25 else "")
+          + ". These are food preparations, antibody classes and sponsor product "
+            "codes, none of which is a single ChEMBL molecule.\n")
 
     # ------------------------------------------------------------ stages 3, 4
     rows = []
     for agent, mol, ev in resolved:
         acts = mechanism_actions(mol.chembl_id, CACHE)
-        paeds = paediatric_trials(agent, CACHE)
+        # Search on the ChEMBL preferred name, not the registry arm label. An
+        # arm called "for Aspirin 300" finds no paediatric trials and would earn
+        # aspirin an UNKNOWN verdict for want of a lookup on its own name.
+        paeds = paediatric_trials(mol.pref_name, CACHE)
         rec = DrugRecord(
             name=mol.pref_name,
             chembl_id=mol.chembl_id,
@@ -274,14 +353,15 @@ def main() -> None:
       f"a reader is entitled to apply their own.\n")
 
     # ------------------------------------------------------------ control
-    w("### Negative control: does the screen exclude anything at all?\n")
+    w("### Two-sided control: does the screen discriminate?\n")
+    w("#### Cytotoxic agents, which must be excluded\n")
     w("A screen that excludes nothing may be permissive or may be broken, and "
       "the candidate set cannot tell you which, because prevention trials rarely "
       "test cytotoxics. So known cytotoxic agents are pushed through the "
       "identical code path: resolved against ChEMBL by name, screened by the "
       "same rules. Their names are taken from the WHO ATC L01A alkylating-agent "
       "subgroup as cached in `refs/atc/atc_l01.json`, not chosen by us.\n")
-    controls = control_agents()
+    controls = negative_control_agents()
     w("| control agent | ChEMBL | ATC | verdict | rule |")
     w("|---|---|---|---|---|")
     n_ctrl_excluded = 0
@@ -301,12 +381,47 @@ def main() -> None:
           f"{', '.join(cmol.atc_codes[:2]) or 'none'} | "
           f"**{cres.verdict.value}** | {rule} |")
     w("")
-    w(f"**{n_ctrl_excluded} of {len(controls)} controls excluded.** "
-      + ("The screen discriminates, so an empty exclusion list above is a "
-         "property of the candidate set rather than of the screen.\n"
-         if n_ctrl_excluded == len(controls) else
-         "**Not all controls were excluded. The screen is not trustworthy until "
-         "this is fixed, and no verdict above should be relied on.**\n"))
+    w(f"**{n_ctrl_excluded} of {len(controls)} cytotoxic controls excluded.**"
+      + ("\n" if n_ctrl_excluded == len(controls) else
+         " **Not all were excluded. The screen is not trustworthy until this is "
+         "fixed, and no verdict above should be relied on.**\n"))
+
+    w("\n#### Ordinary agents, which must not be excluded\n")
+    w("A screen that excluded everything would also score full marks above. So "
+      "ordinary agents go through the same path and must **not** be excluded. "
+      "They are drawn from ATC subgroups outside every exclusion rule by "
+      "construction: M01A non-steroidal anti-inflammatories, A02B acid-related "
+      "agents and A11C fat-soluble vitamins.\n")
+    w("They come out `unknown` rather than `allowed` because no paediatric "
+      "lookup is run for a control, and `UNKNOWN` is not a pass. The property "
+      "under test is only that none is **excluded**.\n")
+    pos = positive_control_agents()
+    w("| control agent | ChEMBL | ATC | verdict |")
+    w("|---|---|---|---|")
+    n_pos_ok = n_pos_seen = 0
+    for pname in pos:
+        pmol = resolve_molecule(pname, CACHE)
+        if pmol is None:
+            w(f"| {pname} | unresolved | | |")
+            continue
+        n_pos_seen += 1
+        pmech = "; ".join(mechanism_actions(pmol.chembl_id, CACHE)) or None
+        prec = DrugRecord(name=pmol.pref_name, chembl_id=pmol.chembl_id,
+                          atc_codes=pmol.atc_codes, mechanism=pmech,
+                          provenance=f"ChEMBL {pmol.chembl_id}")
+        pres = screen(prec)
+        n_pos_ok += pres.verdict is not Verdict.EXCLUDED
+        w(f"| {pmol.pref_name} | {pmol.chembl_id} | "
+          f"{', '.join(pmol.atc_codes[:2]) or 'none'} | **{pres.verdict.value}** |")
+    w("")
+    w(f"**{n_pos_ok} of {n_pos_seen} ordinary agents were not excluded.**"
+      + ("\n" if n_pos_ok == n_pos_seen else
+         " **The exclusion rules are over-broad. That is the failure which let a "
+         "blanket ATC L01 rule exclude celecoxib, and no verdict above should be "
+         "relied on until it is fixed.**\n"))
+    w("\nTaken together the two halves say the screen discriminates rather than "
+      "merely refuses, so an empty exclusion list among the candidates is a "
+      "property of the candidate set and not of the instrument.\n")
 
     w("### Excluded, and why\n")
     excl = [r for r in rows if r[4].verdict is Verdict.EXCLUDED]

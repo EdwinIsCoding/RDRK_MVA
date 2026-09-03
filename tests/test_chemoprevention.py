@@ -154,3 +154,120 @@ class TestEndpointClassification:
     def test_an_agent_with_no_recorded_outcome_is_not_silently_a_tumour_endpoint(self):
         ev = cp.TrialEvidence("X", ("NCT00000000",), ("Cancer",), (), ())
         assert cp.endpoint_classes(ev) == {"none recorded"}
+
+
+class TestArmLabelsAreNotCompounds:
+    """Registry intervention names describe trial arms, not molecules.
+
+    Leaving them unnormalised cost this pipeline roughly half its candidates,
+    metformin among them. Normalising them carelessly is worse: it can turn a
+    placebo arm into evidence for the drug it was controlling.
+    """
+
+    @pytest.mark.parametrize("raw,expected", [
+        ("metformin combination", "metformin"),
+        ("celecoxib monotherapy", "celecoxib"),
+        ("Sulindac drug", "Sulindac"),
+        ("Early Vigabatrin", "Vigabatrin"),
+        ("Delayed Vigabatrin", "Vigabatrin"),
+        ("TAVT-18 sirolimus", "sirolimus"),
+        ("for Aspirin 300", "Aspirin"),
+        ("100 for Aspirin 100", "Aspirin"),
+        ("mesalamine 5-ASA", "mesalamine"),
+    ])
+    def test_the_drug_survives_the_arm_wrapper(self, raw, expected):
+        cands = [c.lower() for c in cp.normalise_candidates(raw)]
+        assert expected.lower() in cands, f"{raw!r} did not yield {expected!r}: {cands}"
+
+    @pytest.mark.parametrize("raw", [
+        "no active patidegib", "Vehicle comparator", "Placebo",
+        "matching placebo", "placebo oral tablet",
+    ])
+    def test_control_arms_are_identified(self, raw):
+        assert cp.is_control_arm(raw), f"{raw!r} was not recognised as a control arm"
+
+    @pytest.mark.parametrize("raw", [
+        "metformin combination", "celecoxib monotherapy", "Aspirin", "sirolimus",
+    ])
+    def test_real_agents_are_not_mistaken_for_control_arms(self, raw):
+        assert not cp.is_control_arm(raw)
+
+    def test_a_control_arm_is_refused_before_any_lookup(self, tmp_path, monkeypatch):
+        """The placebo arm of a patidegib trial must not resolve to patidegib.
+
+        Doing so would record the arm that received no drug as registry evidence
+        for the drug.
+        """
+        called = []
+        monkeypatch.setattr(cp, "_cached",
+                            lambda cache, key, fetch: called.append(key) or None)
+        mol, matched = cp.resolve_agent("no active patidegib", tmp_path)
+        assert mol is None and matched is None
+        assert not called, "a control arm triggered a ChEMBL lookup"
+
+
+class TestExactLookupBeforeFuzzySearch:
+    """ChEMBL's ranked text search has poor recall for common drug names.
+
+    Searching it for "sirolimus" returns ten molecules, none of them CHEMBL413,
+    whose preferred name is SIROLIMUS. Relying on it dropped metformin from the
+    candidate set entirely.
+    """
+
+    def test_exact_endpoints_are_queried_before_the_search(self, tmp_path, monkeypatch):
+        keys: list[str] = []
+
+        def fake_cached(cache, key, fetch):
+            keys.append(key)
+            if key.startswith("molx_pref_name_"):
+                return {"molecules": [{
+                    "molecule_chembl_id": "CHEMBL413", "pref_name": "SIROLIMUS",
+                    "molecule_synonyms": [], "atc_classifications": ["L04AH01"],
+                    "max_phase": 4.0,
+                    "molecule_hierarchy": {"parent_chembl_id": "CHEMBL413"}}]}
+            return {"molecules": []}
+
+        monkeypatch.setattr(cp, "_cached", fake_cached)
+        m = cp.resolve_molecule("sirolimus", tmp_path)
+        assert m is not None and m.chembl_id == "CHEMBL413"
+        assert keys and keys[0].startswith("molx_pref_name_"), (
+            f"the exact preferred-name lookup must come first, got {keys[:1]}")
+        assert not any(k.startswith("mol_") and not k.startswith("molx_")
+                       for k in keys), "the fuzzy search ran despite an exact hit"
+
+    def test_exact_endpoint_results_still_face_the_exact_name_check(self, tmp_path, monkeypatch):
+        """Defence in depth: even the exact endpoint's output is name-checked,
+        so a filter that ever loosened could not admit a near miss."""
+        monkeypatch.setattr(cp, "_cached", lambda cache, key, fetch: {"molecules": [{
+            "molecule_chembl_id": "CHEMBL999", "pref_name": "SOMETHING ELSE",
+            "molecule_synonyms": [], "atc_classifications": [], "max_phase": None,
+            "molecule_hierarchy": {"parent_chembl_id": "CHEMBL999"}}]})
+        assert cp.resolve_molecule("sirolimus", tmp_path) is None
+
+
+class TestArmsOfOneDrugMergeIntoOneCandidate:
+    def test_evidence_is_unioned(self):
+        a = cp.TrialEvidence("Aspirin", ("NCT00000001",), ("Lynch Syndrome",),
+                             ("PHASE2",), ("polyp count",))
+        b = cp.TrialEvidence("for Aspirin 300", ("NCT00000002",), ("FAP",),
+                             ("PHASE3",), ("adenoma burden",))
+        m = cp.merge_evidence(a, b)
+        assert m.nct_ids == ("NCT00000001", "NCT00000002")
+        assert set(m.conditions) == {"Lynch Syndrome", "FAP"}
+        assert set(m.outcomes) == {"polyp count", "adenoma burden"}
+        assert m.n_trials == 2, "merging must not lose a trial"
+
+    def test_the_shorter_agent_label_is_kept(self):
+        a = cp.TrialEvidence("100 for Aspirin 100", ("NCT1",), (), (), ())
+        b = cp.TrialEvidence("Aspirin", ("NCT2",), (), (), ())
+        assert cp.merge_evidence(a, b).agent == "Aspirin"
+
+    def test_generated_summary_lists_each_molecule_once(self):
+        """Unmerged arms gave one molecule two verdicts at once: ALLOWED from the
+        arm whose name found paediatric trials, UNKNOWN from the one that did not."""
+        out = REPO / "results" / "summaries" / "track2_chemoprevention.md"
+        if not out.exists():
+            pytest.skip("run scripts/27_track2_chemoprevention.py first")
+        ids = re.findall(r"^\| [A-Z][^|]*\| (CHEMBL\d+) \|", out.read_text(), re.M)
+        dupes = {i for i in ids if ids.count(i) > 1}
+        assert not dupes, f"these molecules appear more than once: {sorted(dupes)}"
