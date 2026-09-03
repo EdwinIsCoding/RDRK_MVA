@@ -164,3 +164,83 @@ class TestTheReportObeysTheHardRules:
         dose = re.compile(r"\b\d+(?:\.\d+)?\s*(?:mg|mcg|IU)\b", re.I)
         hits = [line.strip() for line in report.splitlines() if dose.search(line)]
         assert not hits, f"dosing language in the Track 1 report: {hits[:3]}"
+
+
+class TestTheInSilicoPanelIsReportedHonestly:
+    """The report once said PP3 rested on 'two concordant' predictors while
+    listing AlphaMissense, CADD and REVEL as unavailable. They were available,
+    and consulting them showed the panel is neither as narrow nor as concordant
+    as either half of that sentence implied."""
+
+    PANEL = REPO / "results" / "summaries" / "missense_predictor_panel.md"
+
+    def test_pp3_no_longer_claims_two_concordant_predictors(self, report):
+        low = report.lower()
+        assert "two concordant in silico predictors" not in low, (
+            "PP3 is again claiming two concordant predictors. Fifteen were "
+            "consulted and five call the variant tolerated.")
+
+    def test_the_report_states_the_disagreement(self, report):
+        assert "tolerate" in report.lower(), (
+            "the report no longer states that some predictors tolerate the "
+            "variant, which is the honest half of this evidence")
+
+    def test_alphamissense_is_no_longer_listed_as_unavailable(self, report):
+        for line in report.splitlines():
+            low = line.lower()
+            if "alphamissense" in low and "not available" in low:
+                pytest.fail(f"AlphaMissense is available and was consulted.\n  {line.strip()}")
+
+    def test_the_counts_match_the_generated_panel(self, report):
+        if not self.PANEL.exists():
+            pytest.skip("run scripts/34_missense_predictor_panel.py first")
+        text = self.PANEL.read_text()
+        m = re.search(r"\*\*(\d+) calls? it damaging, (\d+) calls? it tolerated "
+                      r"or benign, and (\d+) sits? in between\.\*\*", text)
+        assert m, "could not parse the tally from the generated panel"
+        # The missense allele is the second block; take the last match.
+        tallies = re.findall(r"\*\*(\d+) calls? it damaging, (\d+) calls? it "
+                             r"tolerated or benign, and (\d+) sits? in between\.\*\*", text)
+        dmg, ben, mid = tallies[-1]
+        total = int(dmg) + int(ben) + int(mid)
+        assert f"{dmg} of {total}" in report or f"{dmg} damaging" in report, (
+            f"the report does not carry the damaging count {dmg} of {total} that "
+            f"the panel produced")
+        assert f"{ben} of {total}" in report or f"{ben} tolerate" in report, (
+            f"the report does not carry the tolerated count {ben}")
+
+
+class TestProvenanceGapsStayClosed:
+    def test_the_dataset_revision_is_recorded(self):
+        text = (REPO / "PROVENANCE.md").read_text()
+        assert "59e322d27f399006b398d366d33e703e48a29914" in text, (
+            "the recovered HuggingFace dataset revision was removed")
+        assert "SageBio/mva-hackathon-2026-data" in text
+
+    def test_the_revision_is_labelled_as_inferred(self):
+        """It was reconstructed from a last-modified date, not logged. Presenting
+        it as a captured fact would be a stronger claim than the evidence."""
+        text = (REPO / "PROVENANCE.md").read_text().lower()
+        assert "inference, not a log entry" in text or "inferred" in text
+
+    def test_the_ensembl_rest_coordinates_are_marked_superseded(self):
+        text = (REPO / "config" / "gene_panels" / "panel_provenance.md").read_text()
+        assert "Superseded" in text, (
+            "panel_provenance.md again presents the REST coordinates as the "
+            "source. The panel is built from the pinned Ensembl 115 GTF.")
+
+    def test_bub3_carries_the_gtf_span_not_the_rest_span(self):
+        """The concrete difference: 16,072 bp from the GTF against 158,779 bp
+        from the live API."""
+        panel = REPO / "config" / "gene_panels" / "mva_known.tsv"
+        if not panel.exists():
+            pytest.skip("panel absent")
+        for line in panel.read_text().splitlines()[1:]:
+            f = line.split("\t")
+            if f and f[0] == "BUB3":
+                span = int(f[7]) - int(f[6])
+                assert span == 16072, (
+                    f"BUB3 spans {span} bp. The pinned GTF gives 16,072; the "
+                    f"live REST API gave 158,779 and was wrong.")
+                return
+        pytest.fail("BUB3 is not in the known-gene panel")

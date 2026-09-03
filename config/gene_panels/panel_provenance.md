@@ -7,6 +7,14 @@ Nine genes: the seven named in `MVA_HACKATHON_PLAN.md` section 0.1, plus
 
 ### Assembly method
 
+> **Superseded, 3 September 2026.** The coordinates below came from the REST
+> API and are **not** the ones in `mva_known.tsv` today. The live API returned a
+> 158,779 bp span for `BUB3` against 16,072 bp in the pinned Ensembl 115 GTF, so
+> the panel was rebuilt from the GTF. `BUB3` now spans 123,154,395 to
+> 123,170,467. The section below is the record of the original step, kept
+> because the correction is part of the provenance rather than a replacement for
+> it. See `DATA_CARD.md` section 5 and `PROVENANCE.md` section 4.
+
 Coordinates were retrieved from the Ensembl REST API in a single batch call on
 31 August 2026:
 

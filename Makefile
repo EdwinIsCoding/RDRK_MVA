@@ -62,6 +62,12 @@ scalability:  ## run the same Track 2 pipeline on two comparator diseases
 resource:  ## publish the reusable directional availability table
 	python scripts/30_publish_directional_availability.py
 
+predictors:  ## in silico predictor panel for the two BUB1B alleles
+	python scripts/34_missense_predictor_panel.py
+
+dataset-revision:  ## recover the HuggingFace dataset revision for PROVENANCE
+	python scripts/35_capture_dataset_revision.py
+
 delete-plan:  ## dry run of the ETHICS 3b deletion obligation (deletes nothing)
 	python scripts/33_delete_challenge_data.py
 
@@ -84,4 +90,4 @@ lint:  ## ruff and mypy
 reproduce: verify phase0 resources test  ## the full path a judge should be able to run
 	@echo "Reproduction complete. Compare results/ against the submitted artefact."
 
-.PHONY: help verify phase0 resources downloads downloads-track2 reproduce-track2 track2 scalability structural-check resource delete-plan track2-drift pitch-wordcount test lint reproduce
+.PHONY: help verify phase0 resources downloads downloads-track2 reproduce-track2 track2 scalability structural-check resource predictors dataset-revision delete-plan track2-drift pitch-wordcount test lint reproduce

@@ -63,6 +63,36 @@ are transcribed in `RULES.md`.
   were raised and closed during Phase 0 (`DATA_CARD.md` section 5). Reporting
   either would have been easy and would have been wrong.
 
+## 2a. A second judgement call: we sent two variant coordinates to a public annotator
+
+**What we did.** On 3 September 2026 the two `BUB1B` coordinates were queried
+against MyVariant.info, which serves dbNSFP, to obtain the in silico predictor
+panel now in section 1a of the Track 1 report.
+
+**Why this needs recording.** At Phase 0 we deliberately queried gnomAD by gene
+interval rather than through its GraphQL API, on the stated grounds that the
+latter "would require sending the proband's own variants to a third party". This
+is that thing, done knowingly.
+
+**Why we judged it acceptable.** Both coordinates are already published, in
+`submission/track1_submission.csv` and in the Track 1 report, under CC BY 4.0 and
+in a public GitHub repository. The query transmits a coordinate and its alleles
+and nothing else: no genotype, no sample identifier, no link to the proband. Any
+reader of our submission could make the identical query, and the organisers
+publish submitted results to the research community, so the coordinates are
+public by the challenge's own design. The offline alternative is a local dbNSFP
+installation of tens of gigabytes for two lookups.
+
+**What it bought.** A stated limitation in the report turned out to be closeable,
+and closing it showed the computational evidence was both broader and less
+concordant than we had claimed. Leaving it unchecked would have left a weaker and
+less honest report.
+
+**The line we did not cross.** No genotype, depth, allele fraction or phasing
+information was transmitted, and no query linked the two coordinates to each
+other or to a patient. A reasonable person could still set this boundary
+differently, which is why it is here rather than in a commit message.
+
 ## 3. A judgement call: we read the clinical phenotype document
 
 **What we did.** `data/Challenge_Clinical_Phenotype_1.docx` was converted to text

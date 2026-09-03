@@ -28,9 +28,22 @@ Source: the challenge data distribution. Not redistributed by this repository.
 
 <!-- END INPUT TABLE -->
 
-TODO(source): record the HuggingFace dataset revision hash for the distribution
-these files came from. It was not captured at download time and is needed for a
-complete provenance chain.
+**Dataset revision, recovered 3 September 2026.**
+
+| | |
+|---|---|
+| Repository | `SageBio/mva-hackathon-2026-data` |
+| Revision | `59e322d27f399006b398d366d33e703e48a29914` |
+| Repository last modified | 2026-08-26 |
+| Downloaded | 2026-08-31 |
+
+It was not captured at download time. It is recoverable because the repository's
+metadata endpoint is readable without authentication even though the data is
+gated, and it reports a last-modified date five days before our download with no
+change since. **This is an inference, not a log entry**: it would be wrong if the
+repository had been changed and reverted within that window, which the
+last-modified date cannot rule out. All eleven filenames match, which corroborates
+without proving. Regenerate with `scripts/35_capture_dataset_revision.py`.
 
 ## 2. Upstream provenance of the callset
 
@@ -58,8 +71,20 @@ Executed on DNAnexus. Calling thresholds `--call_conf 10 --emit_conf 10`.
 
 Installed via Homebrew on 31 August 2026.
 
-TODO(source): pin exact pandoc and Python patch versions once the container is
-built in Phase 1, and record them from inside the container rather than the host.
+**Host tool versions, read 3 September 2026.** The container was never built, so
+these are the host versions that actually produced the outputs, which is what a
+reproduction needs to match.
+
+| Tool | Version |
+|---|---|
+| Python | 3.12.13, arm64 |
+| pandoc | 3.5 |
+| bcftools / htslib | 1.24 |
+| samtools | 1.24 |
+
+Read from this host today rather than recorded at the time. The work ran on this
+machine between 31 August and 3 September and nothing was upgraded in that
+window, but the distinction is stated rather than glossed.
 
 ## 4. External resources queried
 
@@ -69,8 +94,16 @@ built in Phase 1, and record them from inside the container rather than the host
 
 Raw response preserved at `results/recon/ensembl_mva_genes.json`.
 
-TODO(source): Ensembl release number was not captured in the response body.
-Record it before the coordinates are used in any published table.
+**Moot, resolved 3 September 2026.** The release number was never captured, and
+it no longer matters, because **the REST coordinates are not the ones used**.
+They were replaced by the pinned Ensembl 115 GTF after the live API returned a
+158,779 bp span for `BUB3` against 16,072 bp in the GTF, a 9.9-fold
+overstatement covering neighbouring sequence (`DATA_CARD.md` section 5).
+
+`config/gene_panels/mva_known.tsv` now carries the GTF coordinates: `BUB3` spans
+123,154,395 to 123,170,467, which is 16,072 bp. The REST response is retained at
+`results/recon/ensembl_mva_genes.json` as the record of a step that was taken and
+then corrected, not as a source for any published coordinate.
 
 ## 4a. Analysis tooling on the compute node, 1 September 2026
 

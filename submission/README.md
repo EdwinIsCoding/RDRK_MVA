@@ -48,11 +48,18 @@ The authoritative list. Anything not here is done.
 | 6 | Delete the local `pre-sanitise-backup` tag and the pre-rewrite bundle, both of which still hold the unredacted history. | owner |
 | 7 | At the conclusion of the hackathon, run `scripts/33_delete_challenge_data.py --execute` and notify `MVAHackathon2026@synapse.org`. | owner |
 
-Three provenance gaps are recorded rather than closed, none of which reached a
-deliverable: the HuggingFace dataset revision hash was not captured at download
-time, the Ensembl REST release number was not in the response body, and exact
-pandoc and Python patch versions were never pinned from inside the container.
-They are marked `TODO(source)` in `PROVENANCE.md` rather than guessed at.
+**The three provenance gaps are now closed**, 3 September 2026. The HuggingFace
+dataset revision was recovered as `59e322d2` and is labelled an inference rather
+than a log entry, because it rests on the repository's last-modified date
+preceding our download. The Ensembl REST release number turned out to be moot:
+those coordinates were replaced by the pinned Ensembl 115 GTF after the live API
+overstated the `BUB3` span 9.9-fold, and `panel_provenance.md` had still been
+naming REST as the source. Host tool versions are recorded, with the caveat that
+they were read afterwards rather than at the time.
+
+The three `TODO(source)` markers that remain in `config/db_versions.yaml` are
+genuine: the SpliceAI model-weights hash, the OmniPath release and the GO release
+behind QuickGO are not published through the interfaces used.
 
 ## Verification performed before submitting
 

@@ -32,6 +32,16 @@ genome:
   upstream_callset_reference: >-
     GCA_000001405.15_GRCh38_no_alt_analysis_set_plus_hs38d1_maskedGRC_exclusions_v2_no_chr.fasta
 
+dataset:
+  # Recovered 2026-09-03, see PROVENANCE.md section 1 and
+  # scripts/35_capture_dataset_revision.py. Inferred from the repository's
+  # last-modified date preceding our download, not captured at download time.
+  huggingface_repo: SageBio/mva-hackathon-2026-data
+  revision: 59e322d27f399006b398d366d33e703e48a29914
+  repo_last_modified: 2026-08-26
+  downloaded: 2026-08-31
+  confidence: inferred, not logged
+
 upstream_callset:
   # Read from the VCF header, preserved at
   # results/recon/WGS_EX2312012_HGWCNDSX7.vcf.gz.header.txt

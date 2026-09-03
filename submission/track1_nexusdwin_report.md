@@ -20,7 +20,7 @@
 | gnomAD v4.1 exomes, global AF | 7.87 × 10⁻⁵ | 6.84 × 10⁻⁷ |
 | gnomAD v4.1 exomes, group max AF | 9.98 × 10⁻⁵ | 8.99 × 10⁻⁷ |
 | gnomAD homozygotes | 0 | 0 |
-| In silico | n/a for a nonsense | SIFT deleterious (0.01), PolyPhen-2 probably damaging (0.997) |
+| In silico | CADD phred 36.0 | **15 predictors consulted: 9 damaging, 5 tolerated, 1 intermediate.** AlphaMissense pathogenic (0.92), CADD 24.5, REVEL 0.472. See section 1a |
 | Genotype | 0/1, DP 46, AD 21/25, GQ 99, PASS | 0/1, DP 28, AD 15/13, GQ 99, PASS |
 
 Both fall on the MANE Select transcript `ENST00000287598.11`.
@@ -60,13 +60,51 @@ The phenotype fits. Rhabdomyosarcoma (HP:0002859) is the tumour most
 characteristically reported in BUB1B-related MVA; intrauterine growth
 restriction, prematurity, failure to thrive and short stature are core features.
 
+### 1a. The in silico evidence is broader, and less concordant, than we first said
+
+An earlier version of this report applied PP3 on the strength of two predictors,
+SIFT and PolyPhen-2, and listed AlphaMissense, CADD and REVEL among its
+limitations as "not available". They are available for a single variant through
+a public aggregator of dbNSFP. A stated limitation that one query closes is not a
+limitation; it is an omission, and it is corrected here.
+
+Consulting the full panel changes the claim in **both** directions.
+
+| | |
+|---|---|
+| Call it damaging | 9 of 15: AlphaMissense (pathogenic, 0.92), ClinPred, DEOGEN2, M-CAP, MetaRNN, MutationTaster, PROVEAN, SIFT, SIFT4G |
+| Call it tolerated | 5 of 15: FATHMM, LIST-S2, MetaLR, MetaSVM, PrimateAI |
+| Intermediate | MutationAssessor (medium) |
+| Reported without a threshold of ours | REVEL 0.472, CADD phred 24.5, VEST4 0.84-0.89, MVP 0.85, MPC 0.83, GERP++ 4.84 |
+
+**More evidence exists than we cited**, and AlphaMissense, the strongest single
+modern missense predictor, calls the variant pathogenic. **But the predictors are
+not concordant.** Five tolerate it, including two meta-predictors that combine
+many of the others, and REVEL sits mid-range rather than near either end.
+Describing the computational evidence as concordant was true only of the two
+predictors we had happened to run.
+
+Where a predictor supplies its own categorical call, that call is used. Where it
+supplies only a score, the score is reported and no threshold is applied, because
+the thresholds in common use would be recited from memory rather than sourced.
+
+**This does not change the call.** Allele 2 is not the allele carrying the
+diagnosis. Allele 1 is a ClinVar-pathogenic nonsense variant in a gene where loss
+of function is the established mechanism. Allele 2's job is to be the second hit,
+and the argument for that rests on the recessive mechanism and on its rarity, not
+on any predictor score. Full output: `results/summaries/missense_predictor_panel.md`.
+
+---
+
 **ACMG/AMP criteria applied.** Allele 1: PVS1 (nonsense in a gene where loss of
 function is the established mechanism), PM2_supporting (group max AF
 9.98 × 10⁻⁵), PP5 (ClinVar pathogenic, multiple submitters). Allele 2:
 PM2_supporting (ultra-rare, a single allele in 1,461,878 and no homozygotes,
-rather than absent), PP3 (two concordant in silico predictors), PM3_supporting
-(in trans with a pathogenic allele, *inferred rather than demonstrated*, see
-section 5).
+rather than absent), PP3 (computational evidence favours a damaging effect:
+9 of 15 predictors call it damaging including AlphaMissense, though 5 tolerate
+it, so this is applied at supporting weight with the disagreement stated, see
+section 1a), PM3_supporting (in trans with a pathogenic allele, *inferred rather
+than demonstrated*, see section 5).
 
 The same protein change carries a ClinVar record of **uncertain significance**
 (VCV004600147.1, via `c.3006T>A`). That does not support PS1, which requires an
@@ -168,8 +206,9 @@ silently dropped. It would extend the negative results rather than change the
 call, since a compound heterozygote with both alleles read-level verified
 already explains the phenotype.
 
-**Missense pathogenicity rests on SIFT and PolyPhen-2 only.** AlphaMissense, CADD
-and REVEL were not available in this run.
+**Missense pathogenicity rests on prediction, and the predictors disagree.**
+Fifteen were consulted: 9 call it damaging, 5 tolerated, 1 intermediate. No
+functional assay of p.Asn1002Lys exists, and prediction is not measurement.
 
 **We were not blind.** The Track 1 leaderboard was saturated with 61 perfect
 scores before we submitted, and filenames on it identify the gene. Our shortlist
