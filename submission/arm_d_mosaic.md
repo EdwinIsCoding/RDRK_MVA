@@ -1,5 +1,13 @@
 # Arm D: mosaic and low variant allele fraction. Reported negative.
 
+> **Arm C (structural variants) was NOT completed.** Delly was launched twice.
+> The first run failed instantly because Delly 2.6 renamed its `call`
+> subcommand to `sr`. The second run started correctly but the compute booking
+> ended and `/scratch0` was wiped before the results could be retrieved. No
+> genome-wide SV call set exists. What we do have for Arm C is read-level
+> verification and panel coverage (`arm_c_readlevel_verification.md`), which is
+> not the same thing and should not be described as if it were.
+
 Plan section 6.4. MVA is by definition a mosaicism disorder, so allele fractions
 that a germline caller discards are exactly the signal worth re-examining.
 

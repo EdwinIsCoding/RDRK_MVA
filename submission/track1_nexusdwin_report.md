@@ -146,11 +146,14 @@ prediction and never an observation of an aberrant junction.
 
 **Singleton.** No de novo calling, no segregation filtering, no parental phasing.
 
-**Structural variant calling and mosaic re-genotyping were not run.** The
-alignment that would support them was completed, and both arms are unblocked,
-but the compute booking closed before they were reached. They would extend the
-negative results rather than change the call: both causal alleles sit at VAF near
-0.5, so neither is mosaic, and coverage across the panel is uniform.
+**Mosaic re-genotyping was run and is negative** (section 4). **Structural
+variant calling was not completed.** Delly was launched genome-wide but the
+compute booking ended and scratch was wiped before results could be retrieved,
+so no SV call set exists. This is stated rather than omitted: a reader should
+know that the structural hypothesis was attempted and left unfinished, not
+silently dropped. It would extend the negative results rather than change the
+call, since a compound heterozygote with both alleles read-level verified
+already explains the phenotype.
 
 **Missense pathogenicity rests on SIFT and PolyPhen-2 only.** AlphaMissense, CADD
 and REVEL were not available in this run.
