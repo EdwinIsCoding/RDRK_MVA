@@ -93,13 +93,25 @@ primary assembly. Both are GRCh38 primary assembly so coordinates are unaffected
 but the two differ in masked regions and decoy content, and our BAM is therefore
 not bit-identical to the one that produced the supplied VCF.
 
-## 5. Databases not yet snapshotted
+## 5. Database versions
 
-Phase 1 work. Each needs a version and a snapshot date in
-`config/db_versions.yaml` before it is used: VEP cache, gnomAD, ClinVar,
-AlphaMissense, CADD, REVEL, SpliceAI model weights hash, Pangolin weights,
-Exomiser data, HPO release, SIGNOR, OmniPath, Reactome, Open Targets, ChEMBL,
-DrugBank, Broad Repurposing Hub, LINCS/CMap.
+**`config/db_versions.yaml` now exists and is the single source for every
+database version in this project**, as `CLAUDE.md` rule 5 requires. It was
+missing until 3 September 2026: the rule named the path from the start and this
+section listed what was meant to land there, but nothing ever created the file,
+so a hard rule pointed at nothing. Found by the Track 1 verification pass, see
+`docs/VERIFICATION.md` section 2.9.
+
+Every value in it was read from a file header, an API status endpoint or a
+tool's version output, with the date recorded. Three entries remain
+`TODO(source)`, each because the resource genuinely publishes no version through
+the interface used: the SpliceAI model-weights hash, the OmniPath release, and
+the GO release served by QuickGO.
+
+Resources that were never used are listed there too, under `not_used`, so that
+their absence is a recorded decision rather than an oversight. That covers
+AlphaMissense, CADD, REVEL, Exomiser, DrugBank, the Broad Repurposing Hub,
+LINCS/CMap, Open Targets and PrimeKG.
 
 ## 6. Phase 0 outputs and the script that produced each
 

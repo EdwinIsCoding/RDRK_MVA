@@ -312,10 +312,15 @@ regenerated shortlist is bit-identical to the original.
 ### 2.9 `config/db_versions.yaml` does not exist
 
 `CLAUDE.md` rule 5 requires that all database versions come from
-`config/db_versions.yaml`. There is no such file. Database versions are recorded
-in `PROVENANCE.md` instead, which is adequate in substance, but a hard rule
-naming a file that was never created is a rule nobody can follow. Either create
-the file or amend the rule.
+`config/db_versions.yaml`. No such file existed. Database versions were recorded
+in `PROVENANCE.md` instead, which was adequate in substance, but a hard rule
+naming a file that was never created is a rule nobody can follow.
+
+**Resolved.** The file now exists. Every value in it was read from a file
+header, an API status endpoint or a tool's version output, with the date
+recorded, and three entries stay `TODO(source)` because the resource publishes
+no version through the interface used. Resources that were never used are listed
+under `not_used`, so their absence is a decision rather than an oversight.
 
 ---
 
@@ -392,3 +397,80 @@ Recorded here rather than folded silently into the documents.
 
 **Nothing was changed about the answer.** The variants, their order, the `epcr`
 values and the finding types are exactly as submitted.
+
+---
+
+## 5. Findings from the Track 2 work, recorded here for the same reason
+
+The verification remit was Track 1, but building Track 2 turned up defects of
+the same kind in the same places, and burying them in commit messages would
+defeat the point of this document.
+
+### 5.1 The safety screen categorically excluded the best chemoprevention agent
+
+`rule_genotoxic` excluded any drug carrying an ATC code beginning `L01`, on the
+stated grounds that cytotoxic chemotherapy is out of scope. Running the screen
+over a real candidate set for the first time showed what that costs. **Celecoxib
+carries `L01XX33`** alongside `M01AH01`, because of its familial adenomatous
+polyposis indication. The rule excluded the single best-evidenced chemoprevention
+agent in hereditary cancer predisposition, and excluded it on the reasoning that
+a COX-2 inhibitor is cytotoxic chemotherapy.
+
+The exclusion is now scoped to `L01A` to `L01D`, the cytotoxic subgroups, with
+the boundaries read from the ChEMBL ATC endpoint and cached at
+`refs/atc/atc_l01.json` rather than recalled. `L01E`, `L01F` and `L01X` are
+flagged instead, so an antineoplastic classification still travels with a
+candidate and never passes silently.
+
+**The general lesson is that a rule written against an imagined candidate set
+was wrong in a way that only a real one could reveal.** It had passed its tests,
+because the tests were written from the same imagination.
+
+### 5.2 Our own headline Track 2 claim was overstated
+
+The direction audit found ten targets, all requiring activation, and no
+activating drug among 118 ChEMBL mechanism records. That was reported as though
+it were a property of the spindle assembly checkpoint.
+
+Measuring the base rate shows it is mostly a property of pharmacology. Only 359
+of 19,297 approved protein-coding genes have any activating drug, so at the
+genome-wide rate the expected count among ten targets is 0.19 and **the
+probability of observing zero is 0.83**. The observation is unremarkable.
+
+The claim is now made at the strength the evidence supports, in section 3.4 of
+the Track 2 report. Three narrower statements survive and they are enough.
+
+### 5.3 Three pipeline defects, each of which produced a confident wrong number
+
+- **A cache-key collision.** A count query asking for one study poisoned the
+  cache for the full query behind it, so the pipeline derived candidates from a
+  single trial while printing the true total of 39 beside them. The output
+  looked internally consistent and was wrong.
+- **Salt forms escaped the safety screen.** ChEMBL attaches no ATC code to a
+  salt, so `ERLOTINIB` was flagged and `ERLOTINIB HYDROCHLORIDE` was allowed.
+  Same active molecule, same concern, opposite verdict. ATC is now inherited
+  from the ChEMBL parent.
+- **An empty lookup reported as no lookup.** Agents whose paediatric trial search
+  returned nothing were described as "paediatric exposure not looked up" when it
+  had been looked up and found nothing. Those are different statements and the
+  screen distinguishes them.
+
+### 5.4 A heuristic of ours was confidently wrong before it shipped
+
+A first attempt to flag non-tumour prevention endpoints tested keywords against
+each trial's **condition** list. It reported that atorvastatin in Lynch syndrome
+was not a chemoprevention candidate, because the string "Lynch Syndrome" contains
+no tumour word. The test was replaced rather than patched: classification now
+reads the trial's **primary outcome** text, and the output prints that text
+beside our classification of it so a reader can overrule us.
+
+### 5.5 What this run added to prevent recurrence
+
+| Guard | Prevents |
+|---|---|
+| `tests/test_track2_report_matches_data.py` | Every candidate row, ChEMBL identifier, trial count and verdict in the Track 2 report is checked against the generated summary, and every cited NCT identifier must appear in the pipeline's own output. |
+| Dose assertions on the real output files | A dose reaching any artefact, which `CLAUDE.md` rule 3 forbids. |
+| Identifier-shape assertions | A malformed accession, which is usually an invented one. |
+| Negative control in the chemoprevention run | A safety screen that excludes nothing because it is broken rather than because the candidates are clean. Five of five known cytotoxics are excluded. |
+| `binom_zero` in the library with a test | The base-rate arithmetic that weakens our own claim being wrong in the direction that flatters us. |
+| Pitch-length test | A three-minute video script that is not three minutes. The first draft ran to 593 spoken words, nearly four minutes. |

@@ -1,0 +1,170 @@
+# ---------------------------------------------------------------------------
+# Database and resource versions. CLAUDE.md rule 5 requires that every database
+# version used anywhere in this project comes from this file.
+#
+# The file was missing until 3 September 2026. The rule named it from the start
+# and PROVENANCE.md section 5 listed the resources that were meant to land here,
+# but nothing ever created it, so a hard rule pointed at a path that did not
+# exist. Found by the Track 1 verification pass, docs/VERIFICATION.md section 2.9.
+#
+# Every value below was read from a file header, an API status endpoint or a
+# tool's own version output on the date given. Nothing here is recalled.
+# Where a version could not be established it says TODO(source) and stays that
+# way until somebody establishes it, per CLAUDE.md rule 2.
+# ---------------------------------------------------------------------------
+
+meta:
+  written: 2026-09-03
+  how_to_regenerate: >-
+    Each entry records where its value came from. Re-read the source rather than
+    editing a number here, because a version in a config file that no longer
+    matches the resource on disk is worse than no version at all.
+
+genome:
+  assembly: GRCh38
+  ensembl_release: 115
+  reference_fasta: Homo_sapiens.GRCh38.dna.primary_assembly (Ensembl 115)
+  gtf: Homo_sapiens.GRCh38.115.gtf.gz
+  contig_naming: ensembl_nochr
+  source: refs/, downloaded 2026-08-31 by `make downloads`
+  # The upstream callset used a DNAnexus-specific reference that is not publicly
+  # pinnable. See PROVENANCE.md section 4a for what that costs.
+  upstream_callset_reference: >-
+    GCA_000001405.15_GRCh38_no_alt_analysis_set_plus_hs38d1_maskedGRC_exclusions_v2_no_chr.fasta
+
+upstream_callset:
+  # Read from the VCF header, preserved at
+  # results/recon/WGS_EX2312012_HGWCNDSX7.vcf.gz.header.txt
+  caller: sentieon-genomics-202308.02
+  filtering_tool: GATK VariantFiltration 4.2.4.0
+  dbsnp_build: 138
+  called: 2025-02-04
+  joint_genotyped: 2025-02-05
+
+annotation:
+  vep:
+    version: "116.1"
+    cache: merged, GRCh38
+    used_on: 2026-09-01
+    source: tool output, node_artefacts/logs/vep.log
+  spliceai:
+    version: "1.3.1"
+    note: >-
+      Run through the Python API with a documented NumPy 2 compatibility shim.
+      The shim silently zeroed every score until it was caught by positive
+      controls; see section 6 of the Track 1 report.
+    model_weights_sha256: TODO(source)
+  pangolin:
+    version: not used
+    note: >-
+      Distributed from source only. pyproject.toml once pinned a PyPI package
+      name that does not exist; the package called pangolin on PyPI is the
+      SARS-CoV-2 lineage tool. Fixed in commit 849bf98.
+
+population:
+  gnomad:
+    release: v4.1
+    datasets: [exomes sites, genomes sites]
+    access: remote tabix range requests against the public per-chromosome files
+    source: https://storage.googleapis.com/gcp-public-data--gnomad/release/4.1/
+    accessed: 2026-08-31, and 2026-09-03 for the verification pass
+  gnomad_constraint:
+    autosomes: v4.1
+    chrX_and_chrY: v2.1.1
+    warning: >-
+      The two releases are not directly comparable. v4.1 constraint covers
+      autosomes only, so an X-linked gene can never receive a v4.1 value and
+      must not be penalised for its absence.
+    source: refs/gnomad.v4.1.constraint_metrics.tsv, refs/gnomad.v2.1.1.lof_metrics.by_gene.txt.bgz
+
+clinical_variant:
+  clinvar:
+    access: NCBI E-utilities, esummary and esearch against db=clinvar
+    benchmark_harvested: 2026-08-31
+    verification_queries: 2026-09-03
+    note: >-
+      E-utilities serves the live database, so accession versions move. Records
+      are cited with their version suffix (VCV000533901.9) so a reader can tell
+      which revision was read.
+    snapshot_file: benchmarks/published_mva_variants.tsv
+
+phenotype:
+  hpo:
+    release: "2026-06-23"
+    source: >-
+      refs/hpo/hp.obo data-version line, and the #version line of
+      refs/hpo/phenotype.hpoa
+    files: [hp.obo, phenotype.hpoa, genes_to_phenotype.txt]
+
+gene_naming:
+  hgnc:
+    file: refs/hgnc_complete_set.txt
+    downloaded: 2026-08-14 by `make downloads`
+    approved_protein_coding_genes: 19297
+    note: >-
+      The protein-coding count is the denominator for the Track 2 base-rate
+      calculation, so it is recorded rather than recomputed silently.
+
+track2:
+  chembl:
+    db_version: ChEMBL_37
+    release_date: 2026-05-01
+    source: https://www.ebi.ac.uk/chembl/api/data/status, read 2026-09-03
+    used_for: [drug mechanisms, molecule resolution, ATC classifications, target resolution]
+  atc:
+    source: >-
+      ChEMBL atc_class endpoint, cached at refs/atc/atc_l01.json, read 2026-09-03
+    note: >-
+      The L01 subgroup descriptions are load-bearing: the safety screen excludes
+      L01A to L01D as cytotoxic and merely flags L01E, L01F and L01X. Reading
+      those boundaries from the source rather than from memory is what caught
+      the blanket L01 rule wrongly excluding celecoxib.
+  omnipath:
+    endpoint: https://omnipathdb.org/interactions
+    version: TODO(source)
+    accessed: 2026-08-31
+    note: >-
+      The endpoint returns no version field in the interaction response. Signed
+      causal edges are read with consensus_stimulation and consensus_inhibition.
+  clinicaltrials_gov:
+    api: v2
+    endpoint: https://clinicaltrials.gov/api/v2/studies
+    accessed: 2026-09-03
+    note: >-
+      A live registry with no release version. Counts move, so the report states
+      the query rather than only its result, and a test fails if the count of
+      trials in mosaic variegated aneuploidy ever stops being zero.
+  quickgo:
+    endpoint: https://www.ebi.ac.uk/QuickGO/services
+    go_release: TODO(source)
+    accessed: 2026-09-03
+    note: >-
+      QuickGO serves the current GO release and the annotation search response
+      carries no release identifier. GO term identifiers are resolved by exact
+      name match and printed in the output.
+
+alignment:
+  bwa_mem2: "2.3"
+  samtools: "1.24"
+  bcftools: "1.24"
+  htslib: "1.24"
+  mosdepth: "0.3.14"
+  source: PROVENANCE.md section 4a, from tool version output on the compute node
+
+not_used:
+  # Named so that their absence is a recorded decision rather than an oversight.
+  # PROVENANCE.md section 5 listed these as pending; several were never reached.
+  alphamissense: not run, no VEP plugin available in this environment
+  cadd: not run
+  revel: not run
+  exomiser: not run, the HPO prior was computed directly instead
+  drugbank: not used, ChEMBL supplied the structured drug fields
+  broad_repurposing_hub: not used
+  lincs_cmap: >-
+    not used. Plan section 7.3 makes signature reversal branch A only, and there
+    is no patient transcriptome. A published proxy signature was deliberately
+    not substituted for one.
+  signor: not queried directly; reached through OmniPath's aggregation
+  open_targets: not used
+  primekg: not used, and deliberately. Its edges are largely unsigned, and plan
+    section 0.4 forbids inferring direction from unsigned proximity.

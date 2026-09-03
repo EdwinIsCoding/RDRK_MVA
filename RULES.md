@@ -111,9 +111,16 @@ Added by the organisers on 28 August 2026:
 > line is enough, for example: *'Anthropic API, Claude Sonnet, commercial terms,
 > no training on customer content.'*"
 
-TODO(source): confirm the exact provider, plan/tier and data-handling setting in
-use for this project and write the disclosure line into the methods description
-for both tracks. This is a submission requirement, not optional.
+**Resolved 3 September 2026.** The provider, plan and data-handling setting are
+established and the disclosure line is written verbatim into `ETHICS.md`
+section 3a, section 8 of the Track 1 report and section 9 of the Track 2 report.
+It discloses a compliance gap rather than a clean summary: the account is a
+Claude Max subscription on consumer terms and the training setting was enabled
+until 31 August 2026.
+
+**Still outstanding, and it is the owner's to do, not this repository's:**
+notification to Sage Bionetworks' Privacy and Compliance Office. It had not been
+made at the time of writing and the reports say so.
 
 ## 7. Compute
 
