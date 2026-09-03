@@ -114,7 +114,7 @@ _IMMUNOSUPPRESSANT_TERMS = re.compile(
     r"immunosuppress\w*|anti[- ]?thymocyte)\b", re.I)
 
 #: The cytotoxic ATC subgroups of L01. Descriptions retrieved from the ChEMBL
-#: ATC endpoint on 3 September 2026 and cached at ``refs/atc/atc_l01.json``:
+#: ATC endpoint on 3 September 2026 and cached at ``config/atc/atc_l01.json``:
 #:
 #:     L01A  ALKYLATING AGENTS
 #:     L01B  ANTIMETABOLITES

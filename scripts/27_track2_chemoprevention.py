@@ -45,7 +45,7 @@ from mva.track2.safety import DrugRecord, Verdict, screen
 
 CACHE = pathlib.Path("results/track2/cache")
 OUT = pathlib.Path("results/summaries/track2_chemoprevention.md")
-ATC_DIR = pathlib.Path("refs/atc")
+ATC_DIR = pathlib.Path("config/atc")
 
 
 
@@ -360,7 +360,7 @@ def main() -> None:
       "test cytotoxics. So known cytotoxic agents are pushed through the "
       "identical code path: resolved against ChEMBL by name, screened by the "
       "same rules. Their names are taken from the WHO ATC L01A alkylating-agent "
-      "subgroup as cached in `refs/atc/atc_l01.json`, not chosen by us.\n")
+      "subgroup as cached in `config/atc/atc_l01.json`, not chosen by us.\n")
     controls = negative_control_agents()
     w("| control agent | ChEMBL | ATC | verdict | rule |")
     w("|---|---|---|---|---|")
@@ -381,10 +381,20 @@ def main() -> None:
           f"{', '.join(cmol.atc_codes[:2]) or 'none'} | "
           f"**{cres.verdict.value}** | {rule} |")
     w("")
-    w(f"**{n_ctrl_excluded} of {len(controls)} cytotoxic controls excluded.**"
-      + ("\n" if n_ctrl_excluded == len(controls) else
-         " **Not all were excluded. The screen is not trustworthy until this is "
-         "fixed, and no verdict above should be relied on.**\n"))
+    if not controls:
+        # A vacuous pass is not a pass. With no control agents, "0 of 0
+        # excluded" satisfies every equality test in this function and reads as
+        # a clean result while nothing has been tested. Arm B already refuses to
+        # report an unvalidated negative for exactly this reason; so does this.
+        w("**NOT VALIDATED. No control agents were available**, so the screen "
+          "was not exercised at all. `config/atc/` is missing or unreadable. "
+          "Every verdict in this document is unvalidated and none should be "
+          "relied on until this is fixed.\n")
+    else:
+        w(f"**{n_ctrl_excluded} of {len(controls)} cytotoxic controls excluded.**"
+          + ("\n" if n_ctrl_excluded == len(controls) else
+             " **Not all were excluded. The screen is not trustworthy until this "
+             "is fixed, and no verdict above should be relied on.**\n"))
 
     w("\n#### Ordinary agents, which must not be excluded\n")
     w("A screen that excluded everything would also score full marks above. So "
@@ -414,14 +424,22 @@ def main() -> None:
         w(f"| {pmol.pref_name} | {pmol.chembl_id} | "
           f"{', '.join(pmol.atc_codes[:2]) or 'none'} | **{pres.verdict.value}** |")
     w("")
-    w(f"**{n_pos_ok} of {n_pos_seen} ordinary agents were not excluded.**"
-      + ("\n" if n_pos_ok == n_pos_seen else
-         " **The exclusion rules are over-broad. That is the failure which let a "
-         "blanket ATC L01 rule exclude celecoxib, and no verdict above should be "
-         "relied on until it is fixed.**\n"))
-    w("\nTaken together the two halves say the screen discriminates rather than "
-      "merely refuses, so an empty exclusion list among the candidates is a "
-      "property of the candidate set and not of the instrument.\n")
+    if not n_pos_seen:
+        w("**NOT VALIDATED. No ordinary control agents were available**, so the "
+          "over-broad-exclusion half of the control did not run.\n")
+    else:
+        w(f"**{n_pos_ok} of {n_pos_seen} ordinary agents were not excluded.**"
+          + ("\n" if n_pos_ok == n_pos_seen else
+             " **The exclusion rules are over-broad. That is the failure which "
+             "let a blanket ATC L01 rule exclude celecoxib, and no verdict above "
+             "should be relied on until it is fixed.**\n"))
+    if controls and n_pos_seen:
+        w("\nTaken together the two halves say the screen discriminates rather "
+          "than merely refuses, so an empty exclusion list among the candidates "
+          "is a property of the candidate set and not of the instrument.\n")
+    else:
+        w("\n**The screen is unvalidated for this run.** Both halves of the "
+          "control must run before any verdict above means anything.\n")
 
     w("### Excluded, and why\n")
     excl = [r for r in rows if r[4].verdict is Verdict.EXCLUDED]

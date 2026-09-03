@@ -113,7 +113,7 @@ track2:
     used_for: [drug mechanisms, molecule resolution, ATC classifications, target resolution]
   atc:
     source: >-
-      ChEMBL atc_class endpoint, cached at refs/atc/atc_l01.json, read 2026-09-03
+      ChEMBL atc_class endpoint, cached at config/atc/atc_l01.json, read 2026-09-03
     note: >-
       The L01 subgroup descriptions are load-bearing: the safety screen excludes
       L01A to L01D as cytotoxic and merely flags L01E, L01F and L01X. Reading

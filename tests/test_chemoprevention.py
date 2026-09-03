@@ -271,3 +271,55 @@ class TestArmsOfOneDrugMergeIntoOneCandidate:
         ids = re.findall(r"^\| [A-Z][^|]*\| (CHEMBL\d+) \|", out.read_text(), re.M)
         dupes = {i for i in ids if ids.count(i) > 1}
         assert not dupes, f"these molecules appear more than once: {sorted(dupes)}"
+
+
+class TestTheControlCannotPassVacuously:
+    """"0 of 0 controls excluded" satisfies every equality test and reads clean.
+
+    The ATC tables live under config/ specifically so a fresh clone has them.
+    They used to live under refs/, which is gitignored, so anyone cloning this
+    repository would have run the safety screen with no controls at all and been
+    told it discriminates. Arm B already refuses to report an unvalidated
+    negative; this asserts the same discipline here.
+    """
+
+    @pytest.fixture(scope="class")
+    def runner(self):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location(
+            "runner", REPO / "scripts" / "27_track2_chemoprevention.py")
+        m = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(m)
+        return m
+
+    def test_the_atc_tables_are_committed(self):
+        """Not a style point. The safety screen's only validation depends on
+        them, and it fails open rather than closed when they are absent."""
+        import subprocess
+        tracked = subprocess.run(["git", "ls-files", "config/atc"], cwd=REPO,
+                                 capture_output=True, text=True).stdout.split()
+        assert any(f.endswith("atc_l01.json") for f in tracked), (
+            "the cytotoxic control table is not committed, so a fresh clone "
+            "validates the safety screen against nothing")
+
+    def test_control_sets_are_non_empty(self, runner):
+        assert runner.negative_control_agents(), "no cytotoxic controls"
+        assert runner.positive_control_agents(), "no ordinary controls"
+
+    def test_a_missing_table_yields_no_controls_rather_than_a_silent_default(
+            self, runner, tmp_path, monkeypatch):
+        monkeypatch.setattr(runner, "ATC_DIR", tmp_path / "absent")
+        assert runner.negative_control_agents() == []
+        assert runner.positive_control_agents() == []
+
+    def test_the_summary_refuses_to_claim_validation_without_controls(self):
+        """The generated summary must say NOT VALIDATED when nothing was tested,
+        never report a reassuring 0 of 0."""
+        out = REPO / "results" / "summaries" / "track2_chemoprevention.md"
+        if not out.exists():
+            pytest.skip("run scripts/27_track2_chemoprevention.py first")
+        text = out.read_text()
+        assert "0 of 0" not in text, (
+            "the control reported a vacuous pass: zero controls, zero failures, "
+            "and a clean-looking result")
+        assert "controls excluded" in text
