@@ -113,8 +113,38 @@ _IMMUNOSUPPRESSANT_TERMS = re.compile(
     r"calcineurin inhibit\w*|ciclosporin|cyclosporine|tacrolimus|"
     r"immunosuppress\w*|anti[- ]?thymocyte)\b", re.I)
 
-#: ATC level-1 L01 is antineoplastic, L04 is immunosuppressant.
-_ATC_ANTINEOPLASTIC = re.compile(r"^L01", re.I)
+#: The cytotoxic ATC subgroups of L01. Descriptions retrieved from the ChEMBL
+#: ATC endpoint on 3 September 2026 and cached at ``refs/atc/atc_l01.json``:
+#:
+#:     L01A  ALKYLATING AGENTS
+#:     L01B  ANTIMETABOLITES
+#:     L01C  PLANT ALKALOIDS AND OTHER NATURAL PRODUCTS
+#:     L01D  CYTOTOXIC ANTIBIOTICS AND RELATED SUBSTANCES
+#:
+#: These four are categorically excluded. The remaining L01 subgroups are not:
+#:
+#:     L01E  PROTEIN KINASE INHIBITORS
+#:     L01F  MONOCLONAL ANTIBODIES AND ANTIBODY DRUG CONJUGATES
+#:     L01X  OTHER ANTINEOPLASTIC AGENTS
+#:
+#: Why this was narrowed
+#: ---------------------
+#: The rule was originally a blanket exclusion on any ATC code beginning L01,
+#: justified as "cytotoxic chemotherapy is out of scope". Running the screen over
+#: a real candidate set showed what that costs: **celecoxib** (CHEMBL118) carries
+#: ATC L01XX33 alongside M01AH01, because of its familial adenomatous polyposis
+#: indication. A blanket L01 rule excludes the single best-evidenced
+#: chemoprevention agent in hereditary cancer predisposition, and excludes it on
+#: the stated grounds that a COX-2 inhibitor is cytotoxic chemotherapy, which is
+#: false.
+#:
+#: The narrowed rule keeps the categorical exclusion where the reasoning holds
+#: and routes the rest to the mechanism-based rules, which is where a judgement
+#: about DNA damage belongs. An L01E, L01F or L01X agent that is not otherwise
+#: excluded is FLAGGED rather than silently allowed, so its antineoplastic
+#: classification travels with it.
+_ATC_CYTOTOXIC = re.compile(r"^L01[ABCD]", re.I)
+_ATC_ANTINEOPLASTIC_OTHER = re.compile(r"^L01[EFX]", re.I)
 _ATC_IMMUNOSUPPRESSANT = re.compile(r"^L04", re.I)
 
 
@@ -148,11 +178,34 @@ def rule_genotoxic(d: DrugRecord) -> SafetyFinding | None:
             "SAFE-002", Verdict.EXCLUDED,
             f"mechanism or label text indicates DNA damage ({m.group(0)!r})",
             "mechanism/boxed_warning/carcinogenesis_section", d.provenance)
-    if any(_ATC_ANTINEOPLASTIC.match(a) for a in d.atc_codes):
+    hit = next((a for a in d.atc_codes if _ATC_CYTOTOXIC.match(a)), None)
+    if hit:
         return SafetyFinding(
             "SAFE-003", Verdict.EXCLUDED,
-            "ATC L01 antineoplastic; cytotoxic chemotherapy is out of scope for "
-            "a chemoprevention or supportive-care hypothesis",
+            f"ATC {hit}, a cytotoxic antineoplastic subgroup (L01A alkylating, "
+            f"L01B antimetabolite, L01C plant alkaloid, L01D cytotoxic "
+            f"antibiotic). Cytotoxic chemotherapy is out of scope for a "
+            f"chemoprevention or supportive-care hypothesis",
+            "atc_codes", d.provenance)
+    return None
+
+
+def rule_non_cytotoxic_antineoplastic(d: DrugRecord) -> SafetyFinding | None:
+    """L01E, L01F and L01X: antineoplastic but not categorically cytotoxic.
+
+    Flagged rather than excluded. See the note on ``_ATC_CYTOTOXIC`` for why the
+    blanket L01 exclusion was wrong. An agent here is still an oncology drug
+    being considered for a child who does not currently need one, and that
+    belongs next to it wherever it is proposed.
+    """
+    hit = next((a for a in d.atc_codes if _ATC_ANTINEOPLASTIC_OTHER.match(a)), None)
+    if hit:
+        return SafetyFinding(
+            "SAFE-013", Verdict.FLAGGED,
+            f"ATC {hit}, classified antineoplastic (L01E protein kinase "
+            f"inhibitor, L01F monoclonal antibody, or L01X other). Not "
+            f"categorically cytotoxic, so not excluded, but the antineoplastic "
+            f"classification must be stated wherever this is proposed",
             "atc_codes", d.provenance)
     return None
 
@@ -258,6 +311,7 @@ def rule_cns_penetrance(d: DrugRecord, cns_target: bool = False) -> SafetyFindin
 
 ALL_RULES = (
     rule_genotoxic,
+    rule_non_cytotoxic_antineoplastic,
     rule_chromosomal_instability,
     rule_immunosuppression,
     rule_radiosensitiser,

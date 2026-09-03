@@ -37,9 +37,38 @@ class TestGenotoxicExclusion:
         r = screen(DrugRecord(name="X", mechanism=mechanism, provenance="ChEMBL"))
         assert r.verdict is Verdict.EXCLUDED, f"{mechanism!r} was not excluded"
 
-    def test_antineoplastic_atc_excluded(self):
-        r = screen(DrugRecord(name="X", atc_codes=("L01XE01",), provenance="WHO ATC"))
-        assert r.verdict is Verdict.EXCLUDED
+    @pytest.mark.parametrize("atc,group", [
+        ("L01AA01", "L01A alkylating"),
+        ("L01BA01", "L01B antimetabolite"),
+        ("L01CA01", "L01C plant alkaloid"),
+        ("L01DB01", "L01D cytotoxic antibiotic"),
+    ])
+    def test_cytotoxic_antineoplastic_atc_excluded(self, atc, group):
+        r = screen(DrugRecord(name="X", atc_codes=(atc,), provenance="WHO ATC"))
+        assert r.verdict is Verdict.EXCLUDED, f"{group} was not excluded"
+
+    @pytest.mark.parametrize("atc", ["L01EX01", "L01FF01", "L01XX33"])
+    def test_non_cytotoxic_antineoplastic_atc_flagged_not_excluded(self, atc):
+        """The blanket L01 rule excluded celecoxib, which carries L01XX33.
+
+        Celecoxib is the best-evidenced chemoprevention agent in hereditary
+        cancer predisposition, and the stated reason for excluding it was that
+        cytotoxic chemotherapy is out of scope. A COX-2 inhibitor is not
+        cytotoxic chemotherapy. The exclusion is now scoped to L01A-L01D.
+        """
+        r = screen(DrugRecord(name="X", atc_codes=(atc,), provenance="WHO ATC"))
+        assert r.verdict is not Verdict.EXCLUDED
+        assert r.may_be_proposed
+        assert any("antineoplastic" in c for c in r.mandatory_caveats), (
+            "a non-cytotoxic antineoplastic must still carry its classification "
+            "as a caveat, never pass silently")
+
+    def test_celecoxib_atc_pair_is_not_excluded(self):
+        """The real ATC pair for CHEMBL118, retrieved from ChEMBL."""
+        r = screen(DrugRecord(name="celecoxib", chembl_id="CHEMBL118",
+                              atc_codes=("M01AH01", "L01XX33"),
+                              provenance="ChEMBL"))
+        assert r.verdict is not Verdict.EXCLUDED
 
     def test_in_vitro_chromosomal_instability_excluded(self):
         # This is the disease mechanism itself.

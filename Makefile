@@ -39,8 +39,9 @@ downloads:  ## fetch reference files (large; resumable)
 	  gzip -t $$f && echo "OK   $$f" || echo "TRUNCATED $$f - rerun 'make downloads' to resume"; \
 	done
 
-track2:  ## Track 2 directional nomination and tractability audit
+track2:  ## Track 2: direction audit, then the chemoprevention axis
 	python scripts/14_track2_direction_audit.py
+	python scripts/27_track2_chemoprevention.py
 
 test:  ## run the test suite
 	pytest -v
