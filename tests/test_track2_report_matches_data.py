@@ -138,8 +138,8 @@ class TestPitchScript:
         return PITCH.read_text()
 
     def spoken_words(self, pitch: str) -> int:
-        return sum(len(l[1:].split()) for l in pitch.splitlines()
-                   if l.startswith("> "))
+        return sum(len(line[1:].split()) for line in pitch.splitlines()
+                   if line.startswith("> "))
 
     def test_fits_in_three_minutes(self, pitch):
         w = self.spoken_words(pitch)
@@ -177,12 +177,12 @@ class TestReportObeysTheHardRules:
 
     def test_no_dose_appears(self, report):
         """CLAUDE.md rule 3."""
-        bad = [l.strip() for l in report.splitlines() if self.DOSE.search(l)]
+        bad = [line.strip() for line in report.splitlines() if self.DOSE.search(line)]
         assert not bad, "a dose reached the Track 2 report:\n  " + "\n  ".join(bad[:5])
 
     def test_no_em_dashes(self, report):
         """Project style, CLAUDE.md rule 7."""
-        assert "—" not in report, "an em dash reached the Track 2 report"
+        assert "\u2014" not in report, "an em dash reached the Track 2 report"
 
     def test_identifiers_are_well_formed(self, report):
         """A malformed identifier is usually an invented one."""

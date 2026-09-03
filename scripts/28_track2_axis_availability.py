@@ -27,8 +27,12 @@ import sys
 
 sys.path.insert(0, "src")
 
-from mva.track2.druggable_direction import (binom_zero, build_directional_proteome,
-                                            go_gene_symbols, resolve_go_term)
+from mva.track2.druggable_direction import (
+    binom_zero,
+    build_directional_proteome,
+    go_gene_symbols,
+    resolve_go_term,
+)
 from mva.track2.targets import Direction, fetch_signed_edges, nominate
 
 CACHE = "results/track2/cache_dd"
@@ -164,13 +168,13 @@ def main() -> None:
         hit_e = sorted(expg & set(want))
         wrong = sorted(allg & set(other))
         exp = act_rate * len(allg) if direction is Direction.ACTIVATE else inh_rate * len(allg)
-        w(f"| | genes | with a drug in the required direction | expected at base rate |")
+        w("| | genes | with a drug in the required direction | expected at base rate |")
         w("|---|---:|---:|---:|")
         w(f"| all evidence codes | {len(allg):,} | **{len(hit)}** | {exp:.1f} |")
         w(f"| experimental evidence only | {len(expg):,} | **{len(hit_e)}** | "
           f"{(act_rate if direction is Direction.ACTIVATE else inh_rate) * len(expg):.1f} |")
         w("")
-        w(f"Genes in this axis with a drug in the required direction: "
+        w("Genes in this axis with a drug in the required direction: "
           + (", ".join(f"`{g}`" for g in hit[:30]) + (" ..." if len(hit) > 30 else "")
              if hit else "**none**") + "\n")
         w(f"Genes in this axis with a drug in the **opposite** direction: "
@@ -181,9 +185,9 @@ def main() -> None:
             w(f"That is **{ratio:.1f} times** the base-rate expectation for a "
               f"gene set of this size.")
             if ratio >= 1.2:
-                w(f"So this axis is better supplied with activating drugs than "
-                  f"the genome average, and unlike the direct axis it has "
-                  f"something to work with.\n")
+                w("So this axis is better supplied with activating drugs than "
+                  "the genome average, and unlike the direct axis it has "
+                  "something to work with.\n")
             else:
                 w(f"So this axis is **no better supplied than the genome "
                   f"average**, and on this measure it is not a promising place "

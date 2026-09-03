@@ -61,11 +61,11 @@ class TestNoDoseEscapes:
         out = REPO / "results" / "summaries" / "track2_chemoprevention.md"
         if not out.exists():
             pytest.skip("run scripts/27_track2_chemoprevention.py first")
-        offenders = [l.strip() for l in out.read_text().splitlines()
-                     if DOSE_PATTERN.search(l)]
+        offenders = [line.strip() for line in out.read_text().splitlines()
+                     if DOSE_PATTERN.search(line)]
         assert not offenders, (
             "a dose reached the chemoprevention output, which CLAUDE.md rule 3 "
-            f"forbids outright:\n  " + "\n  ".join(offenders[:5]))
+            "forbids outright:\n  " + "\n  ".join(offenders[:5]))
 
 
 class TestIdentifiersAreNeverGuessed:

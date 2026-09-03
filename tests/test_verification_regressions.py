@@ -101,7 +101,7 @@ class TestStrandCountsAddUp:
             f"{len(alt_counts)} alternate-read counts against "
             f"{len(strand_pairs)} strand splits in {path.name}"
         )
-        for alt, (fwd, rev) in zip(alt_counts, strand_pairs):
+        for alt, (fwd, rev) in zip(alt_counts, strand_pairs, strict=True):
             assert fwd + rev == alt, (
                 f"strand split {fwd} fwd + {rev} rev = {fwd + rev}, but the same "
                 f"column reports {alt} alternate reads. One of the two is wrong."
@@ -118,8 +118,8 @@ class TestPositiveControlCounts:
     def test_validate_reports_variants_and_annotations_separately(self):
         src = (REPO / "scripts" / "19_arm_b_splicing.py").read_text()
         body = src.split("def validate(")[1].split("\ndef ")[0]
-        returns = [l.strip() for l in body.splitlines()
-                   if l.strip().startswith("return (")]
+        returns = [line.strip() for line in body.splitlines()
+                   if line.strip().startswith("return (")]
         assert returns, "validate() no longer returns a tuple"
         for r in returns:
             assert r.count(",") >= 3, (

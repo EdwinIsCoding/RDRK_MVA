@@ -9,7 +9,9 @@ aggregate counts plus the five candidate loci that are already published in
 submission/track1_submission.csv under CC BY 4.0.
 """
 from __future__ import annotations
-import pathlib, subprocess, sys
+
+import pathlib
+import subprocess
 
 VCF = "data/WGS_EX2312012_HGWCNDSX7.vcf.gz"
 FASTA = "refs/mva_chroms.fa.gz"          # contigs named without the chr prefix
@@ -65,9 +67,10 @@ w("\n## 2. The candidate loci, read from the original callset\n")
 w("| locus | CHROM:POS | REF | ALT | FILTER | GT | DP | AD | GQ | PGT | PID |")
 w("|---|---|---|---|---|---|---|---|---|---|---|")
 found = {}
-for name, chrom, pos, exp_ref, exp_alt in LOCI:
+for name, chrom, pos, _exp_ref, _exp_alt in LOCI:
     q = sh(f"bcftools query -r {chrom}:{pos}-{pos} "
-           f"-f '%CHROM\\t%POS\\t%REF\\t%ALT\\t%FILTER\\t[%GT\\t%DP\\t%AD\\t%GQ\\t%PGT\\t%PID]\\n' {VCF}")
+           f"-f '%CHROM\\t%POS\\t%REF\\t%ALT\\t%FILTER"
+           f"\\t[%GT\\t%DP\\t%AD\\t%GQ\\t%PGT\\t%PID]\\n' {VCF}")
     if not q.strip():
         w(f"| {name} | {chrom}:{pos} | ABSENT FROM CALLSET |||||||||")
         found[name] = None
@@ -80,7 +83,7 @@ for name, chrom, pos, exp_ref, exp_alt in LOCI:
 w("\n### REF and ALT against what the submission claims\n")
 w("| locus | claimed | observed | agrees |")
 w("|---|---|---|---|")
-for name, chrom, pos, exp_ref, exp_alt in LOCI:
+for name, _chrom, _pos, exp_ref, exp_alt in LOCI:
     if exp_ref is None:
         continue
     f = found.get(name)
@@ -93,7 +96,7 @@ w("\n## 3. REF alleles against the GRCh38 reference FASTA\n")
 w(f"Source: `{FASTA}` (Ensembl 115 primary assembly, no-chr contig naming).\n")
 w("| locus | reference base | claimed REF | agrees |")
 w("|---|---|---|---|")
-for name, chrom, pos, exp_ref, exp_alt in LOCI:
+for name, chrom, pos, exp_ref, _exp_alt in LOCI:
     if exp_ref is None or chrom not in {"15", "10", "18", "2", "6", "9"}:
         continue
     seq = sh(f"samtools faidx {FASTA} {chrom}:{pos}-{pos}").strip().split("\n")[1].upper()
@@ -108,10 +111,10 @@ w(f"40220612 - 40209701 = **{d:,} bp**. Claimed 10,911 bp. "
 # -------------------------------------------------------------------- phasing
 w("\n## 5. PGT/PID physical phasing across BUB1B\n")
 q = sh(f"bcftools query -r {BUB1B_REGION} -f '[%PGT\\t%PID]\\n' {VCF}")
-lines = [l for l in q.strip().split("\n") if l.strip()]
+lines = [line for line in q.strip().split("\n") if line.strip()]
 n_tot = len(lines)
-n_phased = sum(1 for l in lines if l.split("\t")[1] not in {".", ""})
-pids = sorted({l.split("\t")[1] for l in lines if l.split("\t")[1] not in {".", ""}})
+n_phased = sum(1 for line in lines if line.split("\t")[1] not in {".", ""})
+pids = sorted({line.split("\t")[1] for line in lines if line.split("\t")[1] not in {".", ""}})
 w(f"| records in {BUB1B_REGION} | {n_tot} |\n|---|---|\n"
   f"| records carrying a PID phasing group | {n_phased} |\n"
   f"| distinct phasing groups | {len(pids)} |\n")
@@ -135,7 +138,8 @@ if pathlib.Path(vep).exists():
     PRIMARY = {str(i) for i in range(1, 23)} | {"X", "Y", "MT"}
     lost_primary = {k: a[k] - b.get(k, 0) for k in a if k in PRIMARY and a[k] != b.get(k, 0)}
     lost_other = sum(a[k] - b.get(k, 0) for k in a if k not in PRIMARY)
-    w(f"\n| records lost on primary contigs (1-22, X, Y, MT) | {sum(lost_primary.values()):,} |\n|---|---|\n"
+    w(f"\n| records lost on primary contigs (1-22, X, Y, MT) | "
+      f"{sum(lost_primary.values()):,} |\n|---|---|\n"
       f"| records lost on decoy and unplaced contigs | {lost_other:,} |\n")
     if lost_primary:
         w("\n**Primary-contig losses, which the claim says should be zero:**\n")

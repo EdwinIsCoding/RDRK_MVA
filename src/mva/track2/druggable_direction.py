@@ -36,10 +36,11 @@ import time
 import urllib.parse
 import urllib.request
 
+from mva.track2.tractability import ACTIVATING_ACTIONS, INHIBITING_ACTIONS
+
 CHEMBL = "https://www.ebi.ac.uk/chembl/api/data"
 QUICKGO = "https://www.ebi.ac.uk/QuickGO/services"
 
-from mva.track2.tractability import ACTIVATING_ACTIONS, INHIBITING_ACTIONS
 
 #: GO evidence codes that rest on an experiment rather than on electronic
 #: inference. IEA annotations are unreviewed and dominate large GO terms, so

@@ -7,7 +7,11 @@ results/summaries/verification_readlevel.md. Only the five loci already
 published in submission/track1_submission.csv are reported.
 """
 from __future__ import annotations
-import collections, pathlib, re, subprocess
+
+import collections
+import pathlib
+import re
+import subprocess
 
 BAM = "node_artefacts/WGS_EX2312012.panel.bam"
 OUT = pathlib.Path("results/summaries/verification_readlevel.md")
@@ -21,8 +25,10 @@ LOCI = [
 ]
 
 CLAIMED = {   # from results/summaries/arm_c_readlevel_verification.md
-    "BUB1B allele 1 p.Leu737Ter":  dict(depth=47, ref=21, alt=26, vaf=0.553, fwd=15, rev=12, mapq=60.0),
-    "BUB1B allele 2 p.Asn1002Lys": dict(depth=27, ref=15, alt=12, vaf=0.444, fwd=6,  rev=10, mapq=60.0),
+    "BUB1B allele 1 p.Leu737Ter": dict(depth=47, ref=21, alt=26, vaf=0.553,
+                                       fwd=15, rev=12, mapq=60.0),
+    "BUB1B allele 2 p.Asn1002Lys": dict(depth=27, ref=15, alt=12, vaf=0.444,
+                                        fwd=6, rev=10, mapq=60.0),
 }
 
 BASE_RE = re.compile(r"[ACGTNacgtn]")
@@ -122,7 +128,8 @@ w("Both are deletion calls in the callset, not substitutions:\n")
 w("- `PEX5` 12:7190512 `GGCCTCTGAGGCAGTGAGTGTTCTTGAGGTGGAAAGCCCAGGTGCA` > `G`, "
   "a 45 bp deletion, GT 1/1, DP 10, AD 0,10, GQ 37\n")
 w("- `CTU2` 16:88714226 `AGGTGTG` > `A`, a 6 bp deletion, GT 1/1, DP 27, AD 0,27, GQ 82\n")
-w("\n| locus | depth (MAPQ>=20) | reads spanning as deletion | reads carrying an indel | mean MAPQ |")
+w("\n| locus | depth (MAPQ>=20) | reads spanning as deletion "
+  "| reads carrying an indel | mean MAPQ |")
 w("|---|---:|---:|---:|---:|")
 for name, chrom, pos, alt in LOCI:
     if alt is not None:

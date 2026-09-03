@@ -27,11 +27,17 @@ import sys
 
 sys.path.insert(0, "src")
 
-from mva.track2.chemoprevention import (MESH_HEREDITARY_NEOPLASTIC, ChemblMolecule,
-                                        count_trials, endpoint_classes,
-                                        extract_drug_agents, mechanism_actions,
-                                        paediatric_trials, query_trials,
-                                        resolve_molecule)
+from mva.track2.chemoprevention import (
+    MESH_HEREDITARY_NEOPLASTIC,
+    ChemblMolecule,
+    count_trials,
+    endpoint_classes,
+    extract_drug_agents,
+    mechanism_actions,
+    paediatric_trials,
+    query_trials,
+    resolve_molecule,
+)
 from mva.track2.safety import DrugRecord, Verdict, screen
 
 ATC_TABLE = pathlib.Path("refs/atc/atc_l01.json")
@@ -199,7 +205,7 @@ def main() -> None:
       "ranking of clinical preference.\n")
     w("| agent | ChEMBL | max phase | ATC | prevention trials | paediatric trials | verdict |")
     w("|---|---|---:|---|---:|---:|---|")
-    for agent, mol, ev, rec, res in rows:
+    for _agent, mol, ev, rec, res in rows:
         atc = ", ".join(mol.atc_codes[:3]) or "none"
         if mol.atc_inherited_from:
             atc += f" (from parent {mol.atc_inherited_from})"
@@ -217,7 +223,7 @@ def main() -> None:
 
     w("### Caveats that must travel with each candidate\n")
     any_caveat = False
-    for agent, mol, ev, rec, res in rows:
+    for _agent, mol, ev, rec, res in rows:
         if res.verdict is Verdict.EXCLUDED or not res.mandatory_caveats:
             continue
         any_caveat = True
@@ -250,8 +256,8 @@ def main() -> None:
     w("| agent | endpoint classes | primary outcome, as recorded |")
     w("|---|---|---|")
     n_tumour = 0
-    for agent, mol, ev, rec, res in rows:
-        if res.verdict is Verdict.EXCLUDED:
+    for _agent, mol, ev, _rec2, _res2 in rows:
+        if _res2.verdict is Verdict.EXCLUDED:
             continue
         cls = endpoint_classes(ev)
         n_tumour += "tumour" in cls
@@ -307,7 +313,7 @@ def main() -> None:
     if excl:
         w("| agent | ChEMBL | rule | reason |")
         w("|---|---|---|---|")
-        for agent, mol, ev, rec, res in excl:
+        for _agent, mol, _ev, _rec, res in excl:
             for f in res.findings:
                 if f.verdict is Verdict.EXCLUDED:
                     w(f"| {mol.pref_name} | {mol.chembl_id} | {f.rule_id} | {f.reason} |")
