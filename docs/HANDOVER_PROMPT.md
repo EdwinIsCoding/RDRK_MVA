@@ -22,11 +22,19 @@ Key documents, in reading order: `README.md`, `RULES.md` (the actual competition
 rules, transcribed from the Space), `submission/track1_nexusdwin_report.md`
 (the deliverable), `DATA_CARD.md`, `RECON.md`, `STOP2_STATUS.md`, `ETHICS.md`.
 
-**The compute booking has ended and `/scratch0` on the cluster node is wiped.**
-Do not try to reach it. Everything salvaged is in `node_artefacts/` (gitignored):
-the VEP-annotated VCF (4,950,283 records), a panel-scoped BAM (12.7M reads),
-coverage output and all node logs. `scripts/gpu/` documents how the node was
-used if another booking appears.
+**The cluster node is still reachable, but `/scratch0` was wiped between
+bookings.** Nothing of ours survives there; the tooling, references, dataset and
+alignment would all have to be rebuilt. Everything salvaged is in
+`node_artefacts/` (gitignored): the VEP-annotated VCF (4,950,283 records), a
+panel-scoped BAM (12.7M reads), coverage output and all node logs.
+
+`scripts/gpu/` holds working, sanitised scripts for the whole path: toolchain
+install, reference and VEP cache download, dataset pull, alignment, and a GPU
+queue that waits politely for another user's job. Topology goes in
+`scripts/gpu/.local.sh` (gitignored, example committed). Read
+`scripts/gpu/README.md` before using them: it records three traps that each cost
+a cycle, including that the login shell is tcsh and that bandwidth is asymmetric
+by about 40x in favour of pulling on the node.
 
 ---
 
@@ -101,8 +109,16 @@ Every one of these appears in a document. Recompute a sample:
 
 ### 1.4 Known gaps, do not re-derive
 
-- **Arm C structural variant calling was never completed.** Delly ran but the
-  booking ended before results were retrieved. There is no SV call set.
+- **Arm C structural variant calling was never completed.** Delly was launched
+  twice: the first failed because Delly 2.6 renamed `call` to `sr`, and the
+  second was still running when the booking ended. There is no SV call set.
+
+  **It is recoverable but not cheap.** Rebuilding costs roughly seven hours of a
+  new booking: dataset pull ~15 min, reference and index ~1 h, alignment 4h10m,
+  Delly 1-3 h. Judge whether that is worth it. The likely output is a reported
+  negative ("no structural variant over the panel"), which is a completeness
+  item rather than a finding, and Track 2 is where the marks are. If a booking
+  is available and idle, run it; do not displace Track 2 work for it.
 - Arm D mosaic re-genotyping is done and negative.
 - No RNA-seq exists, so every splicing result is a prediction.
 - gnomAD v4.1 constraint is autosomes only; chrX values come from v2.1.1 and
