@@ -15,9 +15,11 @@
 | HGVS | `NM_001211.6:c.2210T>G` | `NM_001211.6:c.3006T>G` |
 | Protein | `p.Leu737Ter` | `p.Asn1002Lys` |
 | Consequence | nonsense (stop gained) | missense |
-| dbSNP | rs759242053 | none, novel |
-| ClinVar | **VCV000533901.9**, Pathogenic/Likely pathogenic, multiple submitters, no conflicts, listed against *Mosaic variegated aneuploidy syndrome 1* | no record |
-| gnomAD v4.1 popmax | 7.87 × 10⁻⁵ | **absent** |
+| dbSNP | rs759242053 | none |
+| ClinVar | **VCV000533901.9**, Pathogenic/Likely pathogenic, multiple submitters, no conflicts, listed against *Mosaic variegated aneuploidy syndrome 1* | no record for this nucleotide change. The **same protein change** `p.Asn1002Lys`, reached via `c.3006T>A`, is **VCV004600147.1, Uncertain significance**, single submitter |
+| gnomAD v4.1 exomes, global AF | 7.87 × 10⁻⁵ | 6.84 × 10⁻⁷ |
+| gnomAD v4.1 exomes, group max AF | 9.98 × 10⁻⁵ | 8.99 × 10⁻⁷ |
+| gnomAD homozygotes | 0 | 0 |
 | In silico | n/a for a nonsense | SIFT deleterious (0.01), PolyPhen-2 probably damaging (0.997) |
 | Genotype | 0/1, DP 46, AD 21/25, GQ 99, PASS | 0/1, DP 28, AD 15/13, GQ 99, PASS |
 
@@ -33,7 +35,7 @@ than restatement.
 | Depth (MQ>=20, BQ>=20) | 47 | 27 |
 | Ref / alt reads | 21 / 26 | 15 / 12 |
 | **VAF** | **0.553** | **0.444** |
-| Strand balance of alt reads | 15 fwd / 12 rev | 6 fwd / 10 rev |
+| Strand balance of alt reads | 14 fwd / 12 rev | 5 fwd / 8 rev |
 | Mean MAPQ of alt reads | **60.0** | **60.0** |
 
 Every indicator is what a true germline heterozygote looks like and none is what
@@ -48,7 +50,7 @@ Coverage across all nine known MVA genes is 42-51x against a genome mean of
 **Interpretation.** Biallelic loss of function in `BUB1B` causes mosaic variegated
 aneuploidy syndrome 1 (OMIM 257300), an autosomal recessive chromosomal
 instability disorder. A premature termination codon at p.Leu737, already
-classified pathogenic for this exact condition, in trans with a novel missense
+classified pathogenic for this exact condition, in trans with an ultra-rare missense
 predicted damaging by two orthogonal methods, is the canonical MVA1 allelic
 architecture: one clearly disruptive allele plus one hypomorphic allele.
 Complete BUB1B nullity is not compatible with life, so a residual-function
@@ -59,10 +61,17 @@ characteristically reported in BUB1B-related MVA; intrauterine growth
 restriction, prematurity, failure to thrive and short stature are core features.
 
 **ACMG/AMP criteria applied.** Allele 1: PVS1 (nonsense in a gene where loss of
-function is the established mechanism), PM2_supporting (popmax 7.9 × 10⁻⁵),
-PP5 (ClinVar pathogenic, multiple submitters). Allele 2: PM2 (absent from
-gnomAD), PP3 (two concordant in silico predictors), PM3_supporting (in trans
-with a pathogenic allele, *inferred rather than demonstrated*, see section 5).
+function is the established mechanism), PM2_supporting (group max AF
+9.98 × 10⁻⁵), PP5 (ClinVar pathogenic, multiple submitters). Allele 2:
+PM2_supporting (ultra-rare, a single allele in 1,461,878 and no homozygotes,
+rather than absent), PP3 (two concordant in silico predictors), PM3_supporting
+(in trans with a pathogenic allele, *inferred rather than demonstrated*, see
+section 5).
+
+The same protein change carries a ClinVar record of **uncertain significance**
+(VCV004600147.1, via `c.3006T>A`). That does not support PS1, which requires an
+established pathogenic classification for the same amino acid change, and it is
+stated here rather than omitted because it cuts against the missense.
 
 ---
 
@@ -104,7 +113,11 @@ proband's eight HPO terms and the HPO gene-to-phenotype corpus.
 Both causal alleles were present in the shortlist of **3 rare heterozygous BUB1B
 variants** produced at stage 3, using only population frequency and gene-panel
 membership. Consequence annotation was needed to *rank* them, not to *find*
-them. That artefact is timestamped in the repository (commit `849bf98`).
+them. What is timestamped in the repository is the code that produced that
+shortlist and a commit message stating its result, at commit `849bf98`,
+31 August 2026 16:00 UTC+2. The shortlist file itself is not in git, because
+nothing under `results/` is tracked. The shortlist was written at 16:21 and the
+Hackathon Space was first captured to `results/rules/` at 16:38.
 
 The phenotype prior independently ranked `BUB1B` **18th of 2,503 genes** on the
 HPO corpus alone, top 0.8%, without using any variant data.
@@ -125,7 +138,7 @@ Reported because excluding an explanation is a result.
 The splicing negative is worth dwelling on. The project plan reasoned that a
 cryptic second allele was the highest-prior hypothesis, since a standard coding
 pipeline would already have solved the case. **That reasoning was wrong.** The
-second allele is an ordinary novel missense that any competent pipeline reaches
+second allele is an ordinary ultra-rare missense that any competent pipeline reaches
 once it has consequence annotation. The searching was not wasted, because the
 negative bounds the answer, but the prior was mistaken and is reported as such.
 
@@ -135,7 +148,7 @@ negative bounds the answer, but the prior was mistaken and is reported as such.
 
 **Trans configuration is inferred, not demonstrated.** The two alleles lie
 **10,911 bp apart**, well beyond a read pair. HaplotypeCaller's `PGT`/`PID`
-physical phasing reported no phasing group anywhere in `BUB1B`, which is exactly
+physical phasing places neither causal allele in a phasing group, which is exactly
 what that separation predicts. No amount of short-read depth resolves this;
 confirmation requires parental testing or long reads. We infer *trans* from the
 recessive mechanism and from neither allele appearing on a shared haplotype in
@@ -180,8 +193,10 @@ Method validation was treated as a first-class deliverable, not a footnote.
 - **Tools are validated before their negatives are believed.** SpliceAI initially
   returned 0.000 for everything, including eight known pathogenic canonical
   splice-site variants in `BUB1B`. The cause was a NumPy 2 compatibility shim of
-  ours that dropped a base-encoding step. Corrected, those controls score 9/9
-  above 0.5 with a maximum delta of 1.000. The runner now **refuses to report a
+  ours that dropped a base-encoding step. Corrected, all eight score above 0.5.
+  They yield **nine** gene-level annotations, because `15:40218455` is annotated
+  to both `BUB1B` and `PAK6`, and all nine are at or above 0.5 with a minimum of
+  0.60 and a maximum of 1.000. The runner now **refuses to report a
   negative** if its positive controls fail.
 - **Calibration that changed the design.** Every known MVA gene is unconstrained
   (BUB1B LOEUF 0.707, pLI 0.000; CENATAC 1.227). Weighted as a dominant-disease
@@ -198,33 +213,69 @@ Method validation was treated as a first-class deliverable, not a footnote.
 ## 7. Secondary finding
 
 **`LZTR1` chr22:20996720 C>G, `NM_006767.4:c.2244C>G`, p.Tyr748Ter**, heterozygous
-nonsense, rs1682503990, gnomAD popmax 1.4 × 10⁻⁶, DP 48, GQ 99, PASS.
+nonsense, rs1682503990, gnomAD v4.1 exomes global AF 1.4 × 10⁻⁶ and group max
+AF 3.0 × 10⁻⁵ with no homozygotes, DP 48, GQ 99, PASS.
 **ClinVar VCV001409252.7, Pathogenic/Likely pathogenic**, multiple submitters, no
 conflicts, against Noonan syndrome 10 (OMIM 616564), Noonan syndrome 2
 (OMIM 605275) and LZTR1-related schwannomatosis (OMIM 615670).
 
-Reported because it is an established pathogenic variant with tumour
-surveillance implications warranting clinical review, and because
-rhabdomyosarcoma, short stature and failure to thrive overlap the RASopathy
-phenotype, so a dual diagnosis or modifying contribution cannot be excluded on
-this data. It is not proposed as the primary cause; MVA1 explains the
-chromosomal instability presentation and the BUB1B pair is the better fit.
+Reported because it is an established pathogenic variant in a tumour-suppressor
+gene, and a child already under oncological care is a child for whom a second
+tumour-predisposition allele is worth a clinician knowing about. That is the
+whole of the claim.
 
-Two homozygous loss-of-function calls absent from gnomAD (`PEX5` chr12:7190512,
-`CTU2` chr16:88714226) were **deliberately excluded**, and the reason we first
-gave for excluding them was wrong.
+We do **not** propose it as a modifier of the presenting phenotype. An earlier
+draft of this report argued that rhabdomyosarcoma, short stature and failure to
+thrive overlap the RASopathy phenotype, so a modifying contribution could not be
+excluded. That argument is withdrawn. Nothing in this dataset supports it,
+rhabdomyosarcoma is not among the three conditions ClinVar lists for this
+variant, and "cannot be excluded on this data" is true of a great many things in
+a genome examined this closely. MVA1 explains the presentation and the `BUB1B`
+pair is the better fit.
 
-We assumed they were mis-calls in repetitive sequence. The alignment contradicts
-that: `PEX5` has mean MAPQ 58.7 and `CTU2` 60.0, with zero multi-mapping reads at
-either. Both lie in uniquely mappable sequence.
+### Two excluded calls, and how we got them wrong twice
 
-The clinical argument is untouched and is why they remain excluded: a genuine
-homozygous `PEX5` knockout causes Zellweger spectrum disease, which this child
-plainly does not have, so the call is likelier wrong than the gene. But *how* it
-is wrong is unresolved. `PEX5` shows 8 soft-clipped reads of 28, hinting at a
-structural feature the caller may have represented as a large homozygous
-deletion; `CTU2` shows none and is harder to dismiss. Both are recorded as open
-rather than settled.
+Two homozygous calls in `PEX5` (chr12:7190512) and `CTU2` (chr16:88714226) were
+excluded from this submission. They were excluded correctly and described
+wrongly, twice, and the sequence is worth setting out because it is a general
+lesson about population filters rather than a detail about two variants.
+
+**First we said they were mis-calls in repetitive sequence.** Then we overturned
+that on mapping quality: `PEX5` has mean MAPQ 58.7 and `CTU2` 60.0, with no
+multi-mapping reads at either, so both lie in uniquely mappable sequence. We
+recorded them as open, and described them as loss-of-function calls absent from
+gnomAD.
+
+**Both descriptions were wrong.** Checked directly against gnomAD v4.1 exomes:
+
+| Call | Change | AF | group max | homozygotes in gnomAD |
+|---|---|---|---|---|
+| `PEX5` 12:7190512 | 45 bp deletion | 0.252 | 0.720 | 173,260 |
+| `CTU2` 16:88714226 | 6 bp deletion | 0.767 | 0.925 | 425,713 |
+
+The `CTU2` deletion is the major allele in the population. Neither is
+loss-of-function either: 45 and 6 are both multiples of three, so both are
+in-frame. And our own alignment does not support the `PEX5` genotype at all, with
+25 reads spanning the position and **zero** carrying any indel, against a callset
+genotype of 1/1.
+
+**Why the filter missed it.** It did not. No gnomAD slice fetched for this
+project covers chromosome 16, and none covers the `PEX5` locus on chromosome 12,
+so the annotator returned `gnomad_not_assayed` for both, which is the correct
+verdict and a deliberately separate one from "absent". The phrase "absent from
+gnomAD" entered in the write-up, not in the analysis. An unassayed position
+described as an absent allele is the single most promoting error a rare-disease
+filter can make, and we made it in prose after building the machinery
+specifically to prevent it in code.
+
+**The overturned reasoning was closer to right than what replaced it.** Both loci
+are tandem repeats: gnomAD carries a 90 bp allele at the `PEX5` locus, twice the
+45 bp unit, and a ladder of alleles from 2 to 55 bp at the `CTU2` locus. Unique
+mappability does not address repeat-*length* polymorphism, which is what these
+are and which short reads genotype unreliably. The mapping-quality rebuttal was
+sound about mapping and did not touch the actual mechanism.
+
+**Both are now closed**, not open.
 
 ---
 

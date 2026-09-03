@@ -17,16 +17,17 @@ aneuploidy syndrome 1 (OMIM 257300).
 
 | Allele | Change | Evidence |
 |---|---|---|
-| `chr15:40209701 T>G` | `c.2210T>G` **p.Leu737Ter**, nonsense | ClinVar **VCV000533901.9** Pathogenic/Likely pathogenic, listed against MVA1. gnomAD popmax 7.9e-05 |
-| `chr15:40220612 T>G` | `c.3006T>G` **p.Asn1002Lys**, missense | **Novel**, absent from gnomAD, SIFT 0.01, PolyPhen 0.997 |
+| `chr15:40209701 T>G` | `c.2210T>G` **p.Leu737Ter**, nonsense | ClinVar **VCV000533901.9** Pathogenic/Likely pathogenic, listed against MVA1. gnomAD v4.1 exomes AF 7.9e-05, group max 1.0e-04 |
+| `chr15:40220612 T>G` | `c.3006T>G` **p.Asn1002Lys**, missense | **Ultra-rare**: gnomAD v4.1 exomes AF 6.8e-07, one allele in 1,461,878, no homozygotes. No ClinVar record for this nucleotide change; the same protein change via `c.3006T>A` is **VCV004600147.1**, Uncertain significance. SIFT 0.01, PolyPhen 0.997 |
 
 Both verified at read level against **our own alignment**, built from raw FASTQ
-independently of the supplied callset: VAF 0.553 and 0.444, strand balanced,
+independently of the supplied callset: VAF 0.553 and 0.448, strand balanced,
 mean MAPQ 60.0 on every alternate read.
 
-**Phase is inferred, not demonstrated.** The alleles lie 10,911 bp apart, beyond
-a read pair, and no `PGT`/`PID` phasing group exists in `BUB1B`. Confirmation
-needs parental testing or long reads.
+**Phase is inferred, not demonstrated.** The alleles lie 10,911 bp apart,
+neither carries a `PGT`/`PID` phasing tag, and no read or read pair in our
+alignment touches both positions. Confirmation needs parental testing or long
+reads.
 
 | Document | Contents |
 |---|---|
@@ -39,6 +40,7 @@ needs parental testing or long reads.
 | `RULES.md` | Hackathon rules, transcribed from the official Space |
 | `PROVENANCE.md` | Input checksums, tool versions, database snapshot dates |
 | `CLAUDE.md` | Agent contract. Hard rules and anti-patterns |
+| `docs/VERIFICATION.md` | Adversarial re-check of every Track 1 claim against primary sources, and the nine corrections it produced |
 
 ### Findings
 
@@ -47,7 +49,7 @@ Each changed a decision, and each was measured rather than assumed.
 - **The plan's central hypothesis was wrong.** It reasoned that a cryptic splice
   allele was most likely, since a standard coding pipeline would already have
   solved the case. SpliceAI at plus or minus 500 bp found nothing above even the
-  permissive threshold. The second allele is an ordinary novel missense.
+  permissive threshold. The second allele is an ordinary ultra-rare missense.
 - **The benchmark cannot test the hypothesis it was built for.** Of 108
   confidently pathogenic MVA-gene variants in ClinVar, none is deep intronic,
   near-splice, synonymous or UTR. See `STOP2_STATUS.md`.
@@ -62,13 +64,19 @@ Each changed a decision, and each was measured rather than assumed.
   mechanisms across them and none is activating.
 - **No consanguinity**, confirmed by two independent methods.
 - **No coverage gap** over any MVA gene: 42-51x against a genome mean of 43.8x.
+- **Two variants we had set aside as unresolved are common polymorphisms.** The
+  `PEX5` and `CTU2` homozygous calls are carried homozygously by 173,260 and
+  425,713 people in gnomAD. We had described them as absent from gnomAD, from a
+  lookup that never assayed their chromosomes. See `docs/VERIFICATION.md`.
 
 ### Method validation
 
 - SpliceAI silently returned 0.000 for everything, including eight known
   pathogenic canonical splice variants, because of a NumPy 2 compatibility shim
-  of ours. Corrected, those controls score **9/9** above 0.5. The runner now
-  refuses to report a negative if its positive controls fail.
+  of ours. Corrected, all eight score above 0.5. They produce nine gene-level
+  annotations, because one control is annotated to both `BUB1B` and `PAK6`, and
+  all nine are at or above 0.5. The runner now refuses to report a negative if
+  its positive controls fail.
 - Splice distances agree with ClinVar HGVS intron offsets for **268/268 SNVs**.
 - **140 automated tests** across the evidence schema, scoring, annotators and
   submission format.

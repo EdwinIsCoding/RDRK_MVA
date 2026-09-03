@@ -55,20 +55,32 @@ result:
     protein: p.Leu737Ter
     consequence: stop_gained
     clinvar: VCV000533901.9 Pathogenic/Likely pathogenic
-    gnomad_popmax: 7.867e-05
+    gnomad_af: 7.867e-05
+    gnomad_grpmax: 9.982e-05
     readlevel_vaf: 0.553
   allele_2:
     position: "chr15:40220612 T>G"
     hgvs: "NM_001211.6:c.3006T>G"
     protein: p.Asn1002Lys
     consequence: missense
-    clinvar: none, novel
-    gnomad_popmax: absent
+    clinvar: >-
+      No record for this nucleotide change. The same protein change p.Asn1002Lys,
+      reached via c.3006T>A, is VCV004600147.1 Uncertain significance.
+    gnomad_af: 6.84e-07
+    gnomad_grpmax: 8.99e-07
+    gnomad_nhomalt: 0
+    gnomad_note: >-
+      Ultra-rare, not absent: a single allele in 1,461,878 in gnomAD v4.1 exomes.
+      Absent from gnomAD genomes, which is where the earlier "absent" wording
+      came from. Corrected 2026-09-03, see docs/VERIFICATION.md section 2.1.
     readlevel_vaf: 0.444
   phase: >-
     Inferred from the recessive mechanism, not demonstrated. The alleles lie
-    10911 bp apart, beyond a read pair, and HaplotypeCaller PGT/PID reported no
-    phasing group in BUB1B. Confirmation needs parental testing or long reads.
+    10911 bp apart; HaplotypeCaller PGT/PID places neither allele in a phasing
+    group; and no read or read pair in our own alignment touches both positions
+    (median template length 502 bp, maximum 1103 bp). One phasing group does
+    exist elsewhere in BUB1B (40216568_TA_T, two homozygous records) and carries
+    no trans information. Confirmation needs parental testing or long reads.
   secondary_finding:
     gene: LZTR1
     position: "chr22:20996720 C>G"
@@ -140,7 +152,7 @@ limitations:
   # Carried verbatim into the submission. Each one is a thing we cannot do,
   # stated so that no reader mistakes its absence for an oversight.
   - "Singleton: no de novo calling, no segregation filtering, no parental phasing."
-  - "Phase of the causal pair is inferred, not demonstrated: 10911 bp apart, beyond a read pair, and no PGT/PID phasing group in BUB1B. Needs parental testing or long reads."
+  - "Phase of the causal pair is inferred, not demonstrated: 10911 bp apart, neither allele in a PGT/PID phasing group, and no read pair spanning both. Needs parental testing or long reads."
   - "No RNA-seq: every splicing result is a prediction, never an observation. No FRASER2, no OUTRIDER."
   - "No karyotype and no aneuploidy percentage: the VAF against aneuploidy correlation in plan section 6.4 is impossible."
   - "One tissue: no cross-tissue comparison of any kind."

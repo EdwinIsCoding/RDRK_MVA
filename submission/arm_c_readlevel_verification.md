@@ -13,11 +13,17 @@ from raw FASTQ. Agreement is independent confirmation, not a restatement.
 | | chr15:40209701 T>G | chr15:40220612 T>G |
 |---|---|---|
 | | p.Leu737Ter | p.Asn1002Lys |
-| Depth (MQ>=20, BQ>=20) | 47 | 27 |
-| Ref / alt reads | 21 / 26 | 15 / 12 |
-| **VAF** | **0.553** | **0.444** |
-| Strand balance of alt reads | 15 fwd / 12 rev | 6 fwd / 10 rev |
+| Depth (MQ>=20, BQ>=20) | 47 | 29 |
+| Ref / alt reads | 21 / 26 | 16 / 13 |
+| **VAF** | **0.553** | **0.448** |
+| Strand balance of alt reads | 14 fwd / 12 rev | 5 fwd / 8 rev |
 | Mean MAPQ of alt reads | **60.0** | **60.0** |
+
+Recomputed 3 September 2026 by `scripts/26_verify_readlevel.py`. An earlier
+version of this table gave allele 2 as depth 27 with 15/12 reads, and gave strand
+splits of 15/12 and 6/10 that did not sum to their own alternate-read counts.
+The figures above are internally consistent and were produced by a script that is
+in the repository. Every conclusion below is unchanged.
 
 Every indicator is what a true germline heterozygote looks like and none is what
 an artefact looks like:
@@ -50,32 +56,43 @@ cannot distinguish "no variant" from "no coverage". Real depth settles it:
 42.1x against a genome mean of 43.8x. The Phase 0 closure was right, and it is
 now demonstrated rather than inferred.
 
-## Where a stated hypothesis of ours was wrong
+## PEX5 and CTU2: closed, 3 September 2026
 
-Two homozygous loss-of-function calls absent from gnomAD, `PEX5` chr12:7190512
-and `CTU2` chr16:88714226, were excluded from the Track 1 submission on the
-reasoning that they were "almost certainly mis-calls in repetitive sequence".
+Two homozygous calls, `PEX5` chr12:7190512 and `CTU2` chr16:88714226, were
+excluded from the Track 1 submission. This section previously recorded them as
+"open, not resolved". They are now resolved, and both descriptions we had given
+them were wrong.
 
-**The alignment does not support that reasoning.**
+**They are common polymorphisms.** Checked against gnomAD v4.1 exomes by remote
+range request:
 
-| | PEX5 12:7190512 | CTU2 16:88714226 |
-|---|---|---|
-| Depth | 25 | 29 |
-| Mean MAPQ | 58.7 | 60.0 |
-| MAPQ-0 (multi-mapping) reads | 0 | 0 |
-| Soft-clipped reads | 8 of 28 | 0 of 36 |
+| Call | Change | AF | group max AF | homozygotes in gnomAD |
+|---|---|---|---|---|
+| `PEX5` 12:7190512 | 45 bp deletion | 0.252 | 0.720 | 173,260 |
+| `CTU2` 16:88714226 | 6 bp deletion | 0.767 | 0.925 | 425,713 |
 
-Both lie in uniquely mappable sequence. Neither shows the multi-mapping
-signature that "repetitive sequence" would predict. The exclusion may still be
-correct, but the stated reason for it was not.
+The `CTU2` deletion is the major allele in the population. Neither is a
+candidate for a severe recessive paediatric phenotype and neither ever was.
 
-What remains true is the clinical argument, which is independent of mapping: a
-genuine homozygous `PEX5` knockout causes Zellweger spectrum disease, which this
-child does not have. So the call is more likely wrong than the gene is, and the
-question is *how* it is wrong. The 8 soft-clipped reads at `PEX5` hint at a
-structural feature that the caller may have represented as a large homozygous
-deletion; `CTU2` has no soft-clipping at all and is harder to dismiss.
+**Neither is loss of function.** 45 bp and 6 bp are both multiples of three, so
+both are in-frame deletions.
 
-**Open, not resolved.** Both need direct inspection of the read alignments and a
-check of whether the indel representation is stable under left-alignment before
-anything is claimed about them either way.
+**Our own alignment does not support the PEX5 genotype.** At `12:7190512` the
+panel BAM shows 25 reads spanning the position, mean MAPQ 58.6, and **zero**
+reads carrying a deletion or any other indel, against a callset genotype of 1/1.
+The `CTU2` deletion is real but not homozygous: 20 of 30 reads carry it, an
+allele fraction of 0.67, against a callset genotype of 1/1 with AD 0,27.
+
+**Why they were ever described as absent from gnomAD.** They were not, by the
+pipeline. No gnomAD slice fetched for this project covers chromosome 16, and none
+covers the `PEX5` locus on chromosome 12, so `GnomadFrequencyAnnotator` returned
+`gnomad_not_assayed` for both. That verdict is correct and is deliberately
+distinct from "absent". The phrase entered in the write-up.
+
+**And the reasoning we overturned was closer to right than what replaced it.**
+Both loci are tandem repeats. gnomAD carries a 90 bp allele at the `PEX5` locus,
+exactly twice the 45 bp unit, and a ladder of alleles from 2 bp to 55 bp at the
+`CTU2` locus. Mapping quality near 60 shows the reads map uniquely; it says
+nothing about repeat-*length* polymorphism, which is what these are and which
+short reads genotype unreliably. The mapping-quality rebuttal was sound about
+mapping and never touched the mechanism.
