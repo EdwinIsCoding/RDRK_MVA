@@ -34,6 +34,21 @@ The rules require three artefacts. Two exist.
 Only 3 Track 2 submissions are permitted per team and only the latest is
 reviewed, so there is no value in submitting early to probe a score.
 
+## Scientific limitations: seven declared, four remain
+
+Four of the seven were addressed on 3 September 2026. The three that remain are
+blocked by data that does not exist, not by effort.
+
+| Limitation | Status |
+|---|---|
+| Structural variant calling never completed | **Partly closed.** A calibrated breakpoint screen over the nine MVA genes is negative. Genome-wide calling is still undone. |
+| Hypomorph model is an inference from viability | **Strengthened, still an inference.** Five curated MVA1 kinase-domain missense variants are all compound heterozygous with a nonsense allele, the nearest 10 residues from ours (PMID 15475955). No functional assay exists and no experimental structure resolves residue 1002. |
+| Mosaic arm used a diploid model, not a somatic caller | **Closed.** GATK Mutect2 tumour-only agrees with `bcftools mpileup`: zero credible mosaicism. Both known alleles recovered at PASS as a positive control. |
+| Chemoprevention rests on transferring evidence across syndromes | **Confirmed by search, not removed.** PubMed returns zero for `Bub1b AND chemoprevention`. The assumption stands and is stated. |
+| Phase is inferred | **Cannot be closed.** Zero read pairs span the 10,911 bp, and statistical phasing carries no information for a private allele. |
+| Every splicing result is a prediction | **Cannot be closed.** No RNA-seq exists. |
+| Repeat expansion detection never run | **Declined.** The panel BAM covers *HTT* at 73 reads and *C9orf72* at none, so a result would look genome-wide and would not be. |
+
 ## Everything still outstanding, as of 3 September 2026
 
 The authoritative list. Anything not here is done.

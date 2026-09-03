@@ -44,8 +44,11 @@ counts*, cell to cell. The causal genotype is constitutional.
 
 - Scope is the nine known MVA genes, not the whole panel or genome.
 - `bcftools mpileup` with a diploid model is not a dedicated somatic caller.
-  Mutect2 in tumour-only mode or DeepSomatic would be the better instrument and
-  neither was run.
+  **Addressed 3 September 2026.** Mutect2 4.7.0.0 tumour-only was run over the
+  same nine genes on the same BAM: it reduces the 0.03-0.30 band from 1,463
+  sites to 64 and leaves zero passing with 5 or more supporting reads, against 6
+  here. Both instruments agree. See `results/summaries/arm_d_mutect2.md`.
+  DeepSomatic was not run.
 - The plan's stronger design, correlating candidate VAF against reported
   aneuploidy percentage per tissue, remains impossible: one tissue, and no
   karyotype or aneuploidy percentage exists in the clinical data.

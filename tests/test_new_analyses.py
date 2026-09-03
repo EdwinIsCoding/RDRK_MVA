@@ -107,3 +107,54 @@ class TestChemopreventionLiterature:
         assert "not evidence for this disease" in text.lower(), (
             "tetraploidy from cytokinesis failure is not whole-chromosome "
             "aneuploidy from a weakened checkpoint")
+
+
+class TestMutect2Rerun:
+    """Arm D's declared limitation was that it used a diploid germline model.
+    A somatic caller was run over the same genes and the two agree. The value is
+    the agreement: tumour-only Mutect2 without a panel of normals fails in the
+    opposite direction to a germline caller."""
+
+    MUTECT = REPO / "results" / "summaries" / "arm_d_mutect2.md"
+
+    def test_the_positive_control_gates_the_negative(self):
+        src = (REPO / "scripts" / "39_mutect2_mosaic.py").read_text()
+        assert "CONTROLS" in src
+        assert "must not" in src or "ONLY" in src, (
+            "a negative from an unvalidated caller must be refused, as the "
+            "splicing arm already does")
+
+    def test_both_known_alleles_are_recovered_at_pass(self):
+        if not self.MUTECT.exists():
+            pytest.skip("run scripts/39_mutect2_mosaic.py first")
+        text = self.MUTECT.read_text()
+        assert "2 of 2 controls recovered at PASS" in text, (
+            "Mutect2 did not recover both known causal alleles, so its mosaic "
+            "negative cannot be believed")
+        for pos in ("40209701", "40220612"):
+            assert pos in text
+
+    def test_the_two_callers_are_compared_not_substituted(self):
+        if not self.MUTECT.exists():
+            pytest.skip("Mutect2 not run")
+        text = self.MUTECT.read_text()
+        assert "1,463" in text, "the comparison against Arm D's own figure is gone"
+        assert "does not supersede Arm D" in text
+
+    def test_the_no_panel_of_normals_limitation_is_stated(self):
+        if not self.MUTECT.exists():
+            pytest.skip("Mutect2 not run")
+        low = self.MUTECT.read_text().lower()
+        assert "panel of normals" in low
+        assert "false-positive" in low or "false positive" in low
+
+    def test_the_report_no_longer_claims_two_predictors(self):
+        """The interpretation paragraph said 'two orthogonal methods' after the
+        predictor panel had grown to fifteen."""
+        text = T1.read_text()
+        assert "two orthogonal methods" not in text
+
+    def test_the_report_records_three_independent_confirmations(self):
+        text = T1.read_text()
+        assert "three independent routes" in text.lower()
+        assert "Mutect2" in text

@@ -25,6 +25,13 @@
 
 Both fall on the MANE Select transcript `ENST00000287598.11`.
 
+**Confirmed by three independent routes.** Beyond the supplied Sentieon callset,
+both alleles were recovered by our own `bwa-mem2` alignment and, separately, by
+GATK Mutect2 4.7.0.0 run as a somatic caller over that alignment: PASS at allele
+fraction 0.544 and 0.464, with allele depths 21/25 and 15/13 matching the
+supplied callset exactly. That third call also serves as the positive control
+licensing the mosaic negative in section 4.
+
 **Independently verified at read level.** We aligned the raw FASTQ ourselves with
 `bwa-mem2` against GRCh38, producing a 61 GB BAM with duplicates marked. This is
 orthogonal to the supplied Sentieon callset, so agreement is confirmation rather
@@ -50,9 +57,9 @@ Coverage across all nine known MVA genes is 42-51x against a genome mean of
 **Interpretation.** Biallelic loss of function in `BUB1B` causes mosaic variegated
 aneuploidy syndrome 1 (OMIM 257300), an autosomal recessive chromosomal
 instability disorder. A premature termination codon at p.Leu737, already
-classified pathogenic for this exact condition, in trans with an ultra-rare missense
-predicted damaging by two orthogonal methods, is the canonical MVA1 allelic
-architecture: one clearly disruptive allele plus one hypomorphic allele.
+classified pathogenic for this exact condition, in trans with an ultra-rare
+missense that a majority of predictors call damaging, is the canonical MVA1
+allelic architecture: one clearly disruptive allele plus one hypomorphic allele.
 Complete BUB1B nullity is not compatible with life, so a residual-function
 second allele is expected rather than surprising.
 
@@ -172,6 +179,7 @@ Reported because excluding an explanation is a result.
 | A cryptic splice allele, the a priori leading hypothesis? | SpliceAI at `-D 500` over the rare variants in the known MVA genes | **No.** Nothing reached even the permissive 0.2 threshold; BUB1B maximum delta 0.030. |
 | Coverage gap or deletion over an MVA gene? | 10 kb depth and density profiling | **No.** Gene-body to flank depth ratio 0.86–1.07 across all nine genes. |
 | Structural variant over a known MVA gene? | Breakpoint screen on the panel BAM, discordant pairs and split reads, calibrated against 400 sampled non-MVA panel regions | **No.** Every gene sits inside the background distribution. The uncalibrated version of this screen flagged seven of nine genes, which was the ordinary rate of split-read artefact, not seven structural variants. |
+| Mosaic or low-fraction variant in a known MVA gene? | Two independent callers: `bcftools mpileup` (diploid) and GATK Mutect2 4.7.0.0 tumour-only (somatic), both over the nine genes | **No.** Mutect2 reduces the 0.03-0.30 band from 1,463 sites to 64 and leaves **zero** passing with 5 or more supporting reads, against 6 for the diploid model. Both instruments agree, and they fail in opposite directions. |
 | Mitochondrial cause? | Contig `M` analysis | **No**, but weakly: 13 homoplasmic variants at median 4,177×, and the diploid germline caller used cannot detect low-level heteroplasmy. |
 
 The splicing negative is worth dwelling on. The project plan reasoned that a
@@ -198,7 +206,12 @@ prediction and never an observation of an aberrant junction.
 
 **Singleton.** No de novo calling, no segregation filtering, no parental phasing.
 
-**Mosaic re-genotyping was run and is negative** (section 4). **Genome-wide
+**Mosaic re-genotyping was run twice and is negative both times** (section 4).
+The first run used a diploid germline model, which the report previously listed
+as a limitation; it has since been repeated with GATK Mutect2 in tumour-only
+mode, a dedicated somatic caller, and the two agree. Mutect2 without a panel of
+normals has a high false-positive rate, so the value is the agreement rather
+than either run alone. **Genome-wide
 structural variant calling was not completed**, though a calibrated breakpoint
 screen over the nine known MVA genes has since been run from the panel BAM and
 is reported in section 4 as a negative. The genome-wide gap stands: Delly was
