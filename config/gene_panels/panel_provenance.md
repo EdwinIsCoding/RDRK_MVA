@@ -42,14 +42,43 @@ data, and they are used only to order reporting.
 | 2 | `BUB1`, `BUB3`, `CENATAC`, `CEP192`, `SMC5` | Reported in MVA or in the overlapping near-tetraploidy and Atelis phenotypes, fewer cases |
 | 3 | `CEP57L1` | Paralogue of a known gene, candidate only, no established disease association |
 
-TODO(source): attach an OMIM number or PMID to each tier assignment before the
-panel is used in scoring. The OMIM numbers in `mva_known.tsv` for `BUB1B`,
-`CEP57` and `TRIP13` came from the plan document and have not yet been verified
-against OMIM itself.
+TODO(source): attach an OMIM number or PMID to each tier assignment. The OMIM
+numbers in `mva_known.tsv` for `BUB1B`, `CEP57` and `TRIP13` came from the plan
+document and were never verified against OMIM itself.
 
-### Not yet done
+**This gap did not reach a deliverable.** The one OMIM number that appears in the
+Track 1 and Track 2 reports, 257300 for mosaic variegated aneuploidy syndrome 1,
+was independently confirmed against ClinVar via E-utilities during the
+verification pass, along with the three OMIM numbers cited for the LZTR1
+conditions. See `docs/VERIFICATION.md` section 1. The tier assignments themselves
+are editorial and order reporting only; they do not enter scoring.
 
-`mitotic_extended.tsv`, the 300 to 500 gene panel described in plan section 6.5,
-has not been built. It is Phase 3 work (kickoff prompt P3) and requires GO,
-Reactome, CORUM, STRING and MGI sources with per-gene attribution of which
-source nominated it, plus gnomAD LOEUF and pLI.
+### Built, 31 August 2026
+
+`mitotic_extended.tsv` exists and this section previously said it did not. It was
+built by `scripts/11_build_mitotic_panel.py` and enriched with constraint by
+`scripts/12_join_constraint.py`, and ten scripts and modules read it, including
+the Arm A shortlist that produced the Track 1 answer. The note below was left
+stale for three days; corrected 3 September 2026.
+
+| | |
+|---|---:|
+| Genes | 738 |
+| In the core panel (`in_core_panel = yes`) | 408 |
+| Carrying a gnomAD LOEUF value | 699 |
+
+Nominating sources, per gene and recorded in the `sources` column:
+
+| Source | Genes |
+|---|---:|
+| GO | 586 |
+| Reactome | 263 |
+| STRING | 188 |
+| Known MVA gene | 9 |
+
+**CORUM and MGI were not used**, though plan section 6.5 lists them. The panel
+was built from GO, Reactome and STRING only, and the plan's list should not be
+read as a description of what was done.
+
+The 408 figure is the one quoted as "408 mitotic genes" in the Track 1 report,
+and it is the core subset rather than the whole file.

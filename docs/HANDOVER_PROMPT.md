@@ -1,5 +1,18 @@
 # Handover: verify Track 1, then build Track 2
 
+> **Historical document, superseded 3 September 2026.**
+>
+> This is the brief written for the agent that took over after Track 1. The work
+> it asks for has been done, and its "open items" list below is out of date in
+> at least one way that matters: it says cluster hostnames remain in git history,
+> and they no longer do. History was rewritten and force-pushed on 3 September
+> 2026.
+>
+> It is kept because it records what was known and what was uncertain at the
+> handover, which is part of the honest record of how this project reached its
+> conclusions. **For the current state, read `docs/VERIFICATION.md` and
+> `submission/README.md`, not this.**
+
 You are taking over the MVA Hackathon 2026 project at `/Volumes/ROS2_SSD/RDRK_MVA`.
 A previous agent (Claude Opus 5) did the Track 1 work. Your job has two phases,
 in order: **verify what exists, then build Track 2.**
@@ -258,8 +271,17 @@ a measurement**, and should be labelled as such unless you can support it.
 
 ## Open items for the human, not for you
 
-1. Notify Sage Bionetworks of the training-setting gap (may be done by now).
-2. Repository visibility: it is public; the rules permit private until the
-   hackathon ends. Commit `24e6ae7` contains cluster hostnames and an account
-   name that were later sanitised but remain in history.
-3. Whether to submit the Track 1 file as it stands, or after your verification.
+**Status as of 3 September 2026 appended to each. Do not act on this list; see
+`submission/README.md` for the current one.**
+
+1. Notify Sage Bionetworks of the training-setting gap.
+   **Still outstanding.** Both reports say so.
+2. Repository visibility, and cluster hostnames in history.
+   **Done.** History was rewritten with `git filter-repo` and force-pushed on
+   3 September 2026, and the result was verified by cloning the public
+   repository and scanning every commit. It also turned out both hostnames were
+   still live in the working tree, not only in history. See
+   `docs/VERIFICATION.md` section 6.
+3. Whether to submit the Track 1 file as it stands, or after verification.
+   **Verification is done** and nine claims were corrected; the coordinates and
+   ranking were not changed. Uploading remains.

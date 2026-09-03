@@ -34,6 +34,26 @@ The rules require three artefacts. Two exist.
 Only 3 Track 2 submissions are permitted per team and only the latest is
 reviewed, so there is no value in submitting early to probe a score.
 
+## Everything still outstanding, as of 3 September 2026
+
+The authoritative list. Anything not here is done.
+
+| # | Item | Who |
+|---|---|---|
+| 1 | **Upload the Track 1 predictions file and methods report.** Nothing has been submitted to either track. 6 Track 1 submissions are allowed per participant and the highest score counts. | owner |
+| 2 | **Record and upload the 3-minute pitch video.** The script is written and timed at 178 seconds. Track 2 is incomplete without it. | owner |
+| 3 | **Upload the Track 2 report and repository link.** 3 submissions per team, only the latest reviewed. | owner |
+| 4 | **Notify Sage Bionetworks' Privacy and Compliance Office** of the training-setting deviation in `ETHICS.md` section 3a. Both reports state this is outstanding. | owner |
+| 5 | Optionally ask GitHub Support to purge the now-unreachable pre-rewrite objects, which they will serve by SHA until asked. Not urgent: the redacted strings are third-party infrastructure names, not credentials. | owner |
+| 6 | Delete the local `pre-sanitise-backup` tag and the pre-rewrite bundle, both of which still hold the unredacted history. | owner |
+| 7 | At the conclusion of the hackathon, run `scripts/33_delete_challenge_data.py --execute` and notify `MVAHackathon2026@synapse.org`. | owner |
+
+Three provenance gaps are recorded rather than closed, none of which reached a
+deliverable: the HuggingFace dataset revision hash was not captured at download
+time, the Ensembl REST release number was not in the response body, and exact
+pandoc and Python patch versions were never pinned from inside the container.
+They are marked `TODO(source)` in `PROVENANCE.md` rather than guessed at.
+
 ## Verification performed before submitting
 
 - Coordinates read from the **original callset**, not from the VEP output.
