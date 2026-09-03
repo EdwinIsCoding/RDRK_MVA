@@ -10,7 +10,10 @@ Submission for **Rare Disease, Real Kid: The MVA Hackathon 2026**
 
 Deadline 24 October 2026, code freeze 17 October 2026. All outputs CC BY 4.0.
 
-## Status: Track 1 solved. Submission built, awaiting upload.
+## Status
+
+**Track 1 solved.** Submission built and verified, awaiting upload.
+**Track 2 report and pitch script written**, pitch video not yet recorded.
 
 **Answer: a compound heterozygote in `BUB1B`**, causing mosaic variegated
 aneuploidy syndrome 1 (OMIM 257300).
@@ -41,6 +44,8 @@ reads.
 | `PROVENANCE.md` | Input checksums, tool versions, database snapshot dates |
 | `CLAUDE.md` | Agent contract. Hard rules and anti-patterns |
 | `docs/VERIFICATION.md` | Adversarial re-check of every Track 1 claim against primary sources, and the nine corrections it produced |
+| `submission/track2_nexusdwin_report.md` | The Track 2 report. Mechanism, the closed direct axis, chemoprevention and the safety screen |
+| `submission/track2_nexusdwin_pitch.md` | The 3-minute pitch script |
 
 ### Findings
 
@@ -62,6 +67,12 @@ Each changed a decision, and each was measured rather than assumed.
 - **The direct therapeutic axis is pharmacologically unavailable.** Signed-edge
   nomination yields ten targets all requiring activation; ChEMBL holds 118 drug
   mechanisms across them and none is activating.
+- **We then weakened that finding ourselves.** Only 359 of 19,297 human genes
+  have an activating drug at all, so seeing zero across ten targets has
+  probability 0.83 under the base rate. The claim we make is the narrower one.
+- **The chemoprevention evidence base for this child is empty**: zero registered
+  trials in mosaic variegated aneuploidy, zero naming `BUB1B`, zero prevention
+  trials in rhabdomyosarcoma.
 - **No consanguinity**, confirmed by two independent methods.
 - **No coverage gap** over any MVA gene: 42-51x against a genome mean of 43.8x.
 - **Two variants we had set aside as unresolved are common polymorphisms.** The

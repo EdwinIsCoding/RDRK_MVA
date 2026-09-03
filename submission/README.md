@@ -13,8 +13,26 @@ community.
 
 | File | Purpose |
 |---|---|
-| `track1_submission.csv` | The file to upload. Format validated by `scripts/23_track1_submission.py`. |
+| `track1_submission.csv` | The Track 1 file to upload. Format validated by `scripts/23_track1_submission.py`. |
 | `track1_candidates.tsv` | Human-readable source with the reasoning per row. |
+| `track1_nexusdwin_report.md` | The Track 1 methods write-up, judged separately. |
+| `arm_c_readlevel_verification.md` | Read-level confirmation from our own alignment. |
+| `arm_d_mosaic.md` | The mosaic arm, reported negative. |
+| `track2_nexusdwin_report.md` | **The Track 2 report.** Mechanism characterisation, the closed direct axis, the chemoprevention axis and its safety screen. |
+| `track2_nexusdwin_pitch.md` | **The 3-minute pitch script**, with production constraints. The video itself is not yet recorded. |
+
+## Track 2 submission checklist
+
+The rules require three artefacts. Two exist.
+
+| Required | Status |
+|---|---|
+| Written report, PDF or Markdown, filename carrying the team name | **Done**, `track2_nexusdwin_report.md` |
+| Public GitHub repository with reproducible code | Repository exists and is public. See the open item on commit `4ce0d4c`, which contains cluster hostnames later sanitised but still in history. |
+| 3-minute pitch video on YouTube or Vimeo | **Not done.** The script is written and timed at 179 seconds; the recording and upload remain. |
+
+Only 3 Track 2 submissions are permitted per team and only the latest is
+reviewed, so there is no value in submitting early to probe a score.
 
 ## Verification performed before submitting
 

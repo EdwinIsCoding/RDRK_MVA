@@ -44,6 +44,12 @@ track2:  ## Track 2: direction audit, then the chemoprevention axis
 	python scripts/27_track2_chemoprevention.py
 	python scripts/28_track2_axis_availability.py
 
+pitch-wordcount:  ## spoken word count and runtime of the Track 2 pitch script
+	@python3 -c "import pathlib; \
+	t=pathlib.Path('submission/track2_nexusdwin_pitch.md').read_text(); \
+	w=sum(len(l[1:].split()) for l in t.splitlines() if l.startswith('> ')); \
+	print(f'{w} spoken words, {round(w/140*60)}s at 140 wpm, {round(w/160*60)}s at 160 wpm')"
+
 test:  ## run the test suite
 	pytest -v
 
@@ -54,4 +60,4 @@ lint:  ## ruff and mypy
 reproduce: verify phase0 resources test  ## the full path a judge should be able to run
 	@echo "Reproduction complete. Compare results/ against the submitted artefact."
 
-.PHONY: help verify phase0 resources downloads track2 test lint reproduce
+.PHONY: help verify phase0 resources downloads track2 pitch-wordcount test lint reproduce
