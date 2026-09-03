@@ -46,6 +46,7 @@ reads.
 | `docs/VERIFICATION.md` | Adversarial re-check of every Track 1 claim against primary sources, and the nine corrections it produced |
 | `submission/track2_nexusdwin_report.md` | The Track 2 report. Mechanism, the closed direct axis, chemoprevention and the safety screen |
 | `submission/track2_nexusdwin_pitch.md` | The 3-minute pitch script |
+| `resources/directional_availability/` | Reusable: every gene ChEMBL can push in each direction, published for other teams |
 
 ### Findings
 
@@ -72,7 +73,12 @@ Each changed a decision, and each was measured rather than assumed.
   probability 0.83 under the base rate. The claim we make is the narrower one.
 - **The chemoprevention evidence base for this child is empty**: zero registered
   trials in mosaic variegated aneuploidy, zero naming `BUB1B`, zero prevention
-  trials in rhabdomyosarcoma.
+  trials in rhabdomyosarcoma. The same queries return 150 trials for Fanconi
+  anaemia, so the emptiness is the disease and not the question.
+- **The method discriminates between near-neighbour diseases.** Run unchanged on
+  Fanconi anaemia and ataxia-telangiectasia, it returns 17 and 10 targets
+  reachable by inhibition against 0 for this proband, which is what makes the
+  closed axis a finding rather than a habit.
 - **No consanguinity**, confirmed by two independent methods.
 - **No coverage gap** over any MVA gene: 42-51x against a genome mean of 43.8x.
 - **Two variants we had set aside as unresolved are common polymorphisms.** The

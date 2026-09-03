@@ -44,6 +44,9 @@ track2:  ## Track 2: direction audit, then the chemoprevention axis
 	python scripts/27_track2_chemoprevention.py
 	python scripts/28_track2_axis_availability.py
 
+scalability:  ## run the same Track 2 pipeline on two comparator diseases
+	python scripts/31_track2_scalability.py
+
 resource:  ## publish the reusable directional availability table
 	python scripts/30_publish_directional_availability.py
 
@@ -66,4 +69,4 @@ lint:  ## ruff and mypy
 reproduce: verify phase0 resources test  ## the full path a judge should be able to run
 	@echo "Reproduction complete. Compare results/ against the submitted artefact."
 
-.PHONY: help verify phase0 resources downloads track2 resource track2-drift pitch-wordcount test lint reproduce
+.PHONY: help verify phase0 resources downloads track2 scalability resource track2-drift pitch-wordcount test lint reproduce

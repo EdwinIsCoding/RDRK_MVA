@@ -179,7 +179,11 @@ Observing zero is therefore unremarkable. We say so.
 2. **Every nominated target requires the scarce direction and none requires the
    plentiful one.** An axis containing a mix would have the better-supplied
    direction open to it. This one does not, and six of the ten have inhibitors
-   sitting ready to be reached for by mistake.
+   sitting ready to be reached for by mistake. Section 6 shows this is
+   distinctive rather than generic: run unchanged on Fanconi anaemia and
+   ataxia-telangiectasia, the same nomination returns 17 and 10 targets
+   reachable by inhibition respectively, and this proband's disease is the only
+   one of the three with none.
 3. **The safety argument is independent of availability.** Activating mitotic
    kinases such as `PLK1`, `AURKB` or `CDK1` in a child with a cancer
    predisposition syndrome would be contraindicated if an activator existed. The
@@ -426,7 +430,67 @@ intervention in it.
 
 ---
 
-## 6. What would falsify each hypothesis
+## 6. Does the method generalise, or was it built around one answer?
+
+Everything above concerns one child. A judge is entitled to ask whether the
+machinery says anything useful about a different patient, and that is not a
+question we can settle by asserting it.
+
+So the **unchanged** pipeline was pointed at two other inherited disorders. Both
+are recessive or loss-of-function chromosomal-instability and DNA-repair
+syndromes with cancer predisposition, which makes them near neighbours of this
+proband's disease. A method that cannot tell near neighbours apart is not useful
+in rare disease, where near neighbours are what a differential is made of. Their
+gene sets are read from the curated disease panel by matching each gene's own
+assertion text, not typed in.
+
+Nothing else changed. No parameter, no threshold.
+
+| Disease | Seeds | Targets needing activation | needing inhibition | Drug available in the required direction |
+|---|---:|---:|---:|---:|
+| **Mosaic variegated aneuploidy** | 8 | **10** | **0** | **0** |
+| Fanconi anaemia | 19 | 36 | 17 | 8 |
+| Ataxia-telangiectasia | 2 | 37 | 10 | 5 |
+
+Protein complexes are set aside before counting. OmniPath names them by joining
+components with underscores, they can never match a gene symbol in the
+availability table, and leaving them in would count each as "no drug available"
+and bias every result towards our own conclusion. In Fanconi anaemia the
+ubiquitin machinery alone contributed 154 such identifiers, mostly `UBB_UBE2*`
+pairs that are one piece of biology counted many times.
+
+**Two things follow, and neither was available from the proband alone.**
+
+**The method discriminates.** Three near-neighbour syndromes, one pipeline, three
+different answers. A pipeline tuned until it produced our conclusion would not
+behave that way.
+
+**This proband's disease is the extreme case, and that is now a comparison
+rather than an assertion.** It is the only one of the three in which every
+nominated target requires activation and none requires inhibition, and the only
+one with nothing available in the direction it needs.
+
+The registry half of the argument survives the same test. Asked the identical
+queries, Fanconi anaemia returns 150 interventional trials and ataxia-telangiectasia
+returns 59, against zero for mosaic variegated aneuploidy. **The empty evidence
+base in section 4.1 is a property of the disease, not of how we asked.**
+
+Where the three agree, the agreement is itself a finding about loss-of-function
+disorders as a class: all three nominate far more targets requiring activation
+than inhibition, which is the direction pharmacology supplies least.
+
+**What this does not show.** That the method finds the right drug for any of
+these diseases. It shows the machinery accepts a different disease and returns a
+different, mechanically derived answer. That is the precondition for using it on
+the next patient, not a claim about its accuracy.
+
+**Cost of applying it to a new disease: a seed gene set, and nothing else.**
+Every other input is a public database already wired in, and the safety screen is
+disease-agnostic by construction.
+
+---
+
+## 7. What would falsify each hypothesis
 
 A candidate without a falsification route is not a scientific claim.
 
@@ -439,7 +503,7 @@ A candidate without a falsification route is not a scientific claim.
 
 ---
 
-## 7. Limitations
+## 8. Limitations
 
 Stated plainly, and none of them is repaired elsewhere in this report.
 
@@ -466,12 +530,13 @@ Stated plainly, and none of them is repaired elsewhere in this report.
 
 ---
 
-## 8. Reproducibility
+## 9. Reproducibility
 
 Every number in this report regenerates from the repository.
 
 ```bash
 make track2        # direction audit, chemoprevention axis, axis availability
+make scalability   # the same pipeline on two comparator diseases
 make track2-drift  # have the live registry counts moved since we wrote this?
 make test          # the full automated suite, which prints its own count
 ```
@@ -487,7 +552,8 @@ becomes non-zero it means a chemoprevention trial now exists for this disease,
 and section 4.1 has to be rewritten rather than have its number adjusted.
 
 Outputs land in `results/summaries/`: `track2_direction_audit.md`,
-`track2_chemoprevention.md` and `track2_axis_availability.md`. Sources are
+`track2_chemoprevention.md`, `track2_axis_availability.md` and
+`track2_scalability.md`. Sources are
 OmniPath signed causal edges, ChEMBL, ClinicalTrials.gov API v2, QuickGO and
 HGNC. Every identifier in this report was returned by one of those, and where a
 lookup failed the name is carried as a gap rather than filled with a plausible
@@ -500,7 +566,7 @@ weakens our own headline claim is correct.
 
 ---
 
-## 9. Data handling and AI assistant disclosure
+## 10. Data handling and AI assistant disclosure
 
 Required by the organisers' update of 28 August 2026.
 
@@ -523,7 +589,7 @@ public databases and on the two variant coordinates established in Track 1.
 
 ---
 
-## 10. What this report is
+## 11. What this report is
 
 Research hypotheses addressed to researchers, with their evidence, their gaps
 and the experiments that would falsify them. Nothing here is a diagnosis, a
