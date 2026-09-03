@@ -159,6 +159,15 @@ Built from 1,269 activating and 4,897 inhibiting mechanism records.
 activation rate, the expected number of activatable targets among ten is
 **0.19**, and the probability of observing zero is **0.83**.
 
+**We publish this table rather than only citing it.**
+`resources/directional_availability/` lists every gene for which ChEMBL records
+a drug acting in each direction, so any team can check in one lookup whether the
+target they intend to activate can be activated at all. It is the part of our
+negative result that is useful to someone other than this patient, and it is the
+measurement that weakened our own claim, so it seemed wrong to keep it to
+ourselves. Gene symbols and counts are published rather than ChEMBL records,
+with attribution, because ChEMBL is CC BY-SA 3.0 and our outputs are CC BY 4.0.
+
 Observing zero is therefore unremarkable. We say so.
 
 ### 3.4 What survives, stated at the strength the evidence supports

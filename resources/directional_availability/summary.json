@@ -1,0 +1,12 @@
+{
+  "generated": "2026-09-03",
+  "chembl_version": "ChEMBL_37 (released 2026-05-01)",
+  "activatable_genes": 359,
+  "inhibitable_genes": 1541,
+  "genes_with_both_directions": 214,
+  "approved_protein_coding_genes_hgnc": 19297,
+  "activating_mechanism_records": 1269,
+  "inhibiting_mechanism_records": 4897,
+  "activation_rate": 0.0186,
+  "inhibition_rate": 0.07986
+}
