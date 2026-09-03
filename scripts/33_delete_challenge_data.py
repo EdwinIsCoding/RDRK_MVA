@@ -110,7 +110,9 @@ def main() -> int:
     print("ETHICS.md section 3b, deletion at the conclusion of the hackathon")
     print("=" * 68)
     print(f"Repository: {REPO}")
-    print(f"Mode: {'EXECUTE, deletions are irreversible' if args.execute else 'DRY RUN, nothing will be deleted'}\n")
+    mode = ("EXECUTE, deletions are irreversible" if args.execute
+            else "DRY RUN, nothing will be deleted")
+    print(f"Mode: {mode}\n")
 
     total, present = 0, []
     print("TO DELETE")
