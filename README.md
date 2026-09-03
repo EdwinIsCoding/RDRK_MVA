@@ -21,7 +21,7 @@ aneuploidy syndrome 1 (OMIM 257300).
 | Allele | Change | Evidence |
 |---|---|---|
 | `chr15:40209701 T>G` | `c.2210T>G` **p.Leu737Ter**, nonsense | ClinVar **VCV000533901.9** Pathogenic/Likely pathogenic, listed against MVA1. gnomAD v4.1 exomes AF 7.9e-05, group max 1.0e-04 |
-| `chr15:40220612 T>G` | `c.3006T>G` **p.Asn1002Lys**, missense | **Ultra-rare**: gnomAD v4.1 exomes AF 6.8e-07, one allele in 1,461,878, no homozygotes. No ClinVar record for this nucleotide change; the same protein change via `c.3006T>A` is **VCV004600147.1**, Uncertain significance. SIFT 0.01, PolyPhen 0.997 |
+| `chr15:40220612 T>G` | `c.3006T>G` **p.Asn1002Lys**, missense | **Ultra-rare**: gnomAD v4.1 exomes AF 6.8e-07, one allele in 1,461,878, no homozygotes. No ClinVar record for this nucleotide change; the same protein change via `c.3006T>A` is **VCV004600147.1**, Uncertain significance. **15 predictors: 9 damaging, 5 tolerated, 1 intermediate.** AlphaMissense pathogenic 0.92, CADD 24.5, REVEL 0.472. Favours a damaging effect; does not establish one |
 
 Both verified at read level against **our own alignment**, built from raw FASTQ
 independently of the supplied callset: VAF 0.553 and 0.448, strand balanced,

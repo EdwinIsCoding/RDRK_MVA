@@ -244,3 +244,32 @@ class TestProvenanceGapsStayClosed:
                     f"live REST API gave 158,779 and was wrong.")
                 return
         pytest.fail("BUB3 is not in the known-gene panel")
+
+
+class TestTheSubmissionNotesMatchTheReport:
+    """The notes field is what the organisers read beside the prediction. It
+    once described only SIFT and PolyPhen while the report described fifteen
+    predictors, which is the same overstatement the report had just corrected."""
+
+    def test_the_notes_carry_the_full_panel(self):
+        if not SUBMISSION.exists():
+            pytest.skip("submission absent")
+        notes = SUBMISSION.read_text()
+        assert "15 predictors" in notes, (
+            "the submission notes no longer describe the predictor panel")
+        assert "tolerated" in notes, (
+            "the submission notes state only the damaging calls; the "
+            "disagreement must travel with the claim")
+
+    def test_the_notes_do_not_claim_concordance(self):
+        if not SUBMISSION.exists():
+            pytest.skip("submission absent")
+        low = SUBMISSION.read_text().lower()
+        assert "two concordant" not in low
+
+    def test_all_three_submission_copies_are_identical(self):
+        a = SUBMISSION.read_bytes()
+        for name in ("track1_nexusdwin_bub1b-comphet-clinvar-verified.csv",):
+            other = REPO / "submission" / name
+            if other.exists():
+                assert other.read_bytes() == a, f"{name} has drifted from the submission"
