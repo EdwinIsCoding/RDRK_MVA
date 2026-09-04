@@ -204,20 +204,57 @@ with attribution, because ChEMBL is CC BY-SA 3.0 and our outputs are CC BY 4.0.
 
 Observing zero is therefore unremarkable. We say so.
 
+### 3.5 We tried to break the all-activation finding three ways
+
+Ten targets reached by one hop from eight genes is a small basis for a headline.
+Three things could make the all-activation character an artefact, and none had
+been tested.
+
+**Do stimulatory edges simply dominate the graph?** If most signed edges are
+stimulatory then any loss-of-function seed set yields mostly "activate", and ten
+of ten says nothing. Running the identical nomination on 20 seeded random seed
+sets of the same size, drawn from the curated disease-gene panel, measures the
+stimulatory share at **69%**. At that rate ten of ten has probability **0.024**,
+and only 1 of the 20 random sets was all-activation with five or more targets.
+**The finding survives.**
+
+**Does a wider net change it?** Yes, and this is a real correction. Adding the
+first-hop partners to the seed set reaches 66 targets requiring inhibition;
+seeding from 60 mitotic-panel genes reaches 61. So the all-activation character
+belongs to the **immediate regulators of these eight genes**, not to mitotic
+biology generally, and claim 2 above is scoped accordingly.
+
+**Does that reopen the axis? No, and the reason matters.** Those wider runs
+treat `PLK1`, `AURKA`, `CDK1` and the rest as things to be activated, so the
+inhibition-reachable targets they find are routes to raising a mitotic kinase's
+activity. That is the endpoint the safety screen rules out in a child with a
+cancer predisposition syndrome, independently of whether a drug exists. They are
+not an alternative to the closed axis, they are further paths to the same
+contraindicated place.
+
+**The closure is therefore over-determined**: unavailable in the required
+direction where we looked, and contraindicated where widening the search makes
+something available. Full output:
+`results/summaries/track2_nomination_sensitivity.md`.
+
 ### 3.4 What survives, stated at the strength the evidence supports
 
 1. **The axis is unavailable in fact.** Whatever the reason, no activating drug
    exists for any of these targets today. A repurposing proposal aimed at them
    has nothing to repurpose. Repurposing is constrained by what exists, so this
    is decisive for this track even though it is uninformative about biology.
-2. **Every nominated target requires the scarce direction and none requires the
-   plentiful one.** An axis containing a mix would have the better-supplied
-   direction open to it. This one does not, and six of the ten have inhibitors
-   sitting ready to be reached for by mistake. Section 6 shows this is
-   distinctive rather than generic: run unchanged on Fanconi anaemia and
-   ataxia-telangiectasia, the same nomination returns 17 and 10 targets
-   reachable by inhibition respectively, and this proband's disease is the only
-   one of the three with none.
+2. **Every immediate regulator of the seed genes requires the scarce
+   direction, and that is unlikely by chance.** Six of the ten have inhibitors
+   sitting ready to be reached for by mistake. Two independent checks support
+   this. Section 6 shows it is disease-specific: run unchanged on Fanconi
+   anaemia and ataxia-telangiectasia, the same nomination returns 17 and 10
+   targets reachable by inhibition, and this proband's disease is the only one
+   of the three with none. And section 3.5 measures the null: stimulatory edges
+   are 69% of the signed graph, so ten of ten activation has probability 0.024.
+
+   **The scope is the immediate regulators, not mitotic biology at large.**
+   Widening the seed set does reach inhibition-reachable targets. Section 3.5
+   explains why that does not reopen the axis.
 3. **The safety argument is independent of availability.** Activating mitotic
    kinases such as `PLK1`, `AURKB` or `CDK1` in a child with a cancer
    predisposition syndrome would be contraindicated if an activator existed. The

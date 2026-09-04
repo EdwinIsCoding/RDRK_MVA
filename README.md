@@ -85,6 +85,17 @@ Each changed a decision, and each was measured rather than assumed.
   trials in mosaic variegated aneuploidy, zero naming `BUB1B`, zero prevention
   trials in rhabdomyosarcoma. The same queries return 150 trials for Fanconi
   anaemia, so the emptiness is the disease and not the question.
+- **We tried to break our own headline and it survived, with its scope
+  narrowed.** All-activation across ten targets has probability 0.024 against a
+  measured stimulatory share of 69%, so it is not an artefact of the graph. But
+  it belongs to the immediate regulators of the eight seed genes rather than to
+  mitotic biology, and where a wider net does reach inhibition-reachable
+  targets, those routes activate a mitotic kinase and the safety screen rules
+  them out anyway.
+- **Signature reversal, the method the plan calls highest-yield, is now run**
+  against a labelled BubR1-hypomorph proxy. A null control puts the hits at 91%
+  specific, and the safety screen excluded daunorubicin from the top of the
+  list.
 - **The method discriminates between near-neighbour diseases.** Run unchanged on
   Fanconi anaemia and ataxia-telangiectasia, it returns 17 and 10 targets
   reachable by inhibition against 0 for this proband, which is what makes the
@@ -116,7 +127,7 @@ Each changed a decision, and each was measured rather than assumed.
   all nine are at or above 0.5. The runner now refuses to report a negative if
   its positive controls fail.
 - Splice distances agree with ClinVar HGVS intron offsets for **268/268 SNVs**.
-- **345 automated tests** across the evidence schema, scoring, annotators,
+- **366 automated tests** across the evidence schema, scoring, annotators,
   submission format, and every claim corrected during verification. The suite
   passes clean.
 

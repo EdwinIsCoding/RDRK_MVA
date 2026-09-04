@@ -34,6 +34,8 @@ import time
 import urllib.parse
 import urllib.request
 
+from pydantic import ValidationError
+
 from mva.evidence import Evidence, SourceType
 
 OMNIPATH = "https://omnipathdb.org/interactions"
@@ -244,18 +246,38 @@ def nominate(
 
     best = max(relevant, key=lambda e: e.curation_effort)
     evidence = []
+    malformed = []
     for pmid in best.pmids[:5]:
-        evidence.append(Evidence(
-            criterion="signed_causal_edge",
-            statement=(f"{best.source} {edge_sign.value}s {best.target}; to "
-                       f"{desired_effect_on_seed.value} {best.target}, "
-                       f"{action.value} {best.source}"),
-            source_type=SourceType.PUBMED,
-            source_id=pmid,
-            weight=0.0,   # Track 2 does not use the Track 1 additive score
-            detail={"sources": ";".join(best.sources[:6]),
-                    "curation_effort": best.curation_effort},
-        ))
+        try:
+            evidence.append(Evidence(
+                criterion="signed_causal_edge",
+                statement=(f"{best.source} {edge_sign.value}s {best.target}; to "
+                           f"{desired_effect_on_seed.value} {best.target}, "
+                           f"{action.value} {best.source}"),
+                source_type=SourceType.PUBMED,
+                source_id=pmid,
+                weight=0.0,   # Track 2 does not use the Track 1 additive score
+                detail={"sources": ";".join(best.sources[:6]),
+                        "curation_effort": best.curation_effort},
+            ))
+        except ValidationError:
+            # OmniPath aggregates upstream curations and some carry a
+            # placeholder where a PubMed identifier should be; "123" appears in
+            # the wild. The Evidence validator is right to refuse it, and a
+            # malformed reference in one edge is not a reason to abandon the
+            # nomination. The reference is dropped and counted, so the gap is
+            # visible rather than silently filled with a plausible number.
+            malformed.append(pmid)
+    if malformed and not evidence:
+        # Every reference for this edge was unusable, so there is no citable
+        # basis for the direction. Refuse it rather than assert it uncited.
+        return TargetNomination(
+            gene=gene, direction=None,
+            rationale=(f"{gene} has a signed edge into a seed but every PubMed "
+                       f"reference OmniPath supplies is malformed "
+                       f"({', '.join(malformed)}), so the direction has no "
+                       f"citable basis and is not asserted."),
+            edges=tuple(relevant), evidence=())
 
     return TargetNomination(
         gene=gene, direction=action,
