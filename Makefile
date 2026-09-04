@@ -70,6 +70,9 @@ mito-axis:  ## follow through on the mitochondrial axis: drugs, screen, tissue g
 mutect2:  ## Arm D re-run with a dedicated somatic caller (needs tools/, refs/)
 	python scripts/39_mutect2_mosaic.py
 
+signature:  ## LINCS signature reversal against a labelled BubR1-hypomorph proxy
+	python scripts/41_signature_reversal.py
+
 sv-screen:  ## calibrated breakpoint screen over the known MVA genes
 	python scripts/36_sv_screen_panel.py
 
@@ -107,4 +110,4 @@ lint:  ## ruff and mypy
 reproduce: verify phase0 resources test  ## the full path a judge should be able to run
 	@echo "Reproduction complete. Compare results/ against the submitted artefact."
 
-.PHONY: help verify phase0 resources downloads downloads-track2 reproduce-track2 track2 scalability structural-check resource mito-axis mutect2 sv-screen precedent chemoprev-lit predictors dataset-revision delete-plan track2-drift pitch-wordcount test lint reproduce
+.PHONY: help verify phase0 resources downloads downloads-track2 reproduce-track2 track2 scalability structural-check resource mito-axis mutect2 signature sv-screen precedent chemoprev-lit predictors dataset-revision delete-plan track2-drift pitch-wordcount test lint reproduce

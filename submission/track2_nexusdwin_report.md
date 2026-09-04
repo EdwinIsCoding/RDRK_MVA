@@ -506,6 +506,58 @@ intervention in it.
 
 ---
 
+## 5a. Signature reversal, against a proxy that is labelled
+
+Plan section 7.3 calls LINCS/CMap connectivity "the highest-yield repurposing
+method available" and permits a published MVA/CIN model signature where no
+patient transcriptome exists, provided the proxy is labelled clearly. It is run
+here.
+
+**The proxy is GEO GSE277997**, a BubR1-insufficiency mouse, twelve animals,
+using the authors' own differential expression table. It is the right genotype
+and almost nothing else.
+
+| | Proxy | This proband |
+|---|---|---|
+| Species | mouse | human |
+| Tissue | heart | skeletal muscle and kidney affected; tumour of skeletal muscle lineage |
+| Phenotype | age-related cardiac pathology | paediatric cancer predisposition with rhabdomyosarcoma |
+| Genotype | engineered hypomorph | nonsense allele in trans with a missense |
+
+Of 12,308 genes, 150 up and 150 down were submitted after filtering at adjusted
+p < 0.05, a stated choice, and mapping to human through **MGI homology classes**
+rather than the uppercase naming convention, which is right most of the time and
+wrong silently.
+
+**The result is specific, which had to be tested rather than assumed.** HDAC and
+mTOR inhibitors perturb transcription broadly and surface in many L1000 queries
+whatever is submitted. Running the identical query three times on random gene
+sets of the same size, drawn from the same background, returns on average
+**3.3 of 39 perturbagens, 9%**. Thirty-four come back for the real signature and
+none of the random draws, so the list is largely about the submitted signature
+rather than about generic transcriptional perturbagens.
+
+**The safety screen then did the job it exists for.** Among the top-ranked hits
+is **daunorubicin**, a cytotoxic anthracycline, which the screen excluded under
+its ATC L01D rule. A connectivity method will happily rank chemotherapy first
+for a child with a cancer predisposition syndrome, because it optimises
+transcriptional opposition and knows nothing about the patient. Of the top 25,
+several resolve only to research codes; the named compounds are mostly mTOR and
+HDAC inhibitors, flagged rather than allowed.
+
+**What it is worth.** A direction to look, not a candidate to advance. The
+distances multiply rather than add: mouse to human, heart to muscle and kidney,
+ageing to paediatric cancer predisposition, and LINCS cell line to patient. What
+would make it real is the experiment named everywhere else in this report, a
+`Bub1b` hypomorphic model in the affected tissue.
+
+It is reported despite all of that because an unrun method is worth less than a
+run one with its limits stated, and because the alternative was leaving the
+highest-yield approach unattempted while implying it had been considered. Full
+output: `results/summaries/track2_signature_reversal.md`.
+
+---
+
 ## 6. Does the method generalise, or was it built around one answer?
 
 Everything above concerns one child. A judge is entitled to ask whether the
@@ -612,11 +664,13 @@ Stated plainly, and none of them is repaired elsewhere in this report.
 1. **No chemoprevention evidence exists for this disease or this tumour.** Every
    candidate is a transfer across syndromes, and the transfer is the weakest
    link in the argument.
-2. **No patient transcriptome.** There is no RNA-seq for this proband, so
-   signature-reversal methods such as LINCS or CMap connectivity, which plan
-   section 7.3 identifies as the highest-yield repurposing approach available,
-   cannot be run against patient data at all. We did not substitute a published
-   proxy signature and present it as though it were the patient's.
+2. **No patient transcriptome**, so signature reversal was run against a
+   labelled proxy rather than against this child. See section 5a. An earlier
+   version of this report said we "did not substitute a published proxy
+   signature and present it as though it were the patient's", which rejected
+   something nobody proposed in order to avoid doing what plan section 7.3
+   sanctions. That sentence read as restraint and was an unrun method wearing
+   restraint's clothes.
 3. **No patient cells and no functional assay.** Every mechanistic statement
    about allele 2 is an inference from viability, and no structural calculation
    can substitute, because the kinase domain is unresolved in every experimental
