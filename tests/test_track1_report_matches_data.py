@@ -186,10 +186,22 @@ class TestTheInSilicoPanelIsReportedHonestly:
             "variant, which is the honest half of this evidence")
 
     def test_alphamissense_is_no_longer_listed_as_unavailable(self, report):
-        for line in report.splitlines():
+        """The report may say an *earlier version* called it unavailable, since
+        that is the correction being narrated. What it may not do is state it as
+        a live limitation."""
+        lines = report.splitlines()
+        for i, line in enumerate(lines):
             low = line.lower()
-            if "alphamissense" in low and "not available" in low:
-                pytest.fail(f"AlphaMissense is available and was consulted.\n  {line.strip()}")
+            if "alphamissense" not in low or "not available" not in low:
+                continue
+            context = " ".join(lines[max(0, i - 4):i + 4]).lower()
+            historical = any(w in context for w in
+                             ("an earlier version", "corrected here",
+                              "it is corrected", "previously"))
+            if not historical:
+                pytest.fail(
+                    "AlphaMissense is available and was consulted, and this "
+                    f"line presents it as unavailable:\n  {line.strip()}")
 
     def test_the_counts_match_the_generated_panel(self, report):
         if not self.PANEL.exists():

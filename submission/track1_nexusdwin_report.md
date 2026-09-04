@@ -39,10 +39,11 @@ reproduced identically by all of them. Nothing here excludes those; only a secon
 specimen would. The Mutect2 call also serves as the positive control licensing
 the mosaic negative in section 4.
 
-**Independently verified at read level.** We aligned the raw FASTQ ourselves with
-`bwa-mem2` against GRCh38, producing a 61 GB BAM with duplicates marked. This is
-orthogonal to the supplied Sentieon callset, so agreement is confirmation rather
-than restatement.
+**Read-level evidence from our own alignment.** We aligned the raw FASTQ
+ourselves with `bwa-mem2` against GRCh38, producing a 61 GB BAM with duplicates
+marked. This is a different aligner and a different caller from the supplied
+Sentieon callset, so agreement rules out an error in either pipeline. It does
+not rule out an error in the library they share.
 
 | | chr15:40209701 | chr15:40220612 |
 |---|---|---|
@@ -77,8 +78,8 @@ restriction, prematurity, failure to thrive and short stature are core features.
 ### 1a. The in silico evidence is broader, and less concordant, than we first said
 
 An earlier version of this report applied PP3 on the strength of two predictors,
-SIFT and PolyPhen-2, both of which are in the panel below, and listed AlphaMissense, CADD and REVEL among its
-limitations as "not available". They are available for a single variant through
+SIFT and PolyPhen-2, both of which are in the panel below, and listed
+AlphaMissense, CADD and REVEL among its limitations as "not available". They are available for a single variant through
 a public aggregator of dbNSFP. A stated limitation that one query closes is not a
 limitation; it is an omission, and it is corrected here.
 
@@ -94,8 +95,8 @@ Consulting the full panel changes the claim in **both** directions.
 **More evidence exists than we cited**, and AlphaMissense, the strongest single
 modern missense predictor, calls the variant pathogenic. Where dbNSFP records
 two transcript-level values both are shown, rather than the higher one.
-**But the predictors are
-not concordant.** Five tolerate it, including two meta-predictors that combine
+
+**But the predictors are not concordant.** Five tolerate it, including two meta-predictors that combine
 many of the others, and REVEL sits mid-range rather than near either end.
 Describing the computational evidence as concordant was true only of the two
 predictors we had happened to run.
@@ -258,7 +259,30 @@ was reached.
 
 ---
 
-## 6. Validation
+## 6. What would falsify each claim
+
+`ETHICS.md` commits this project to shipping every Track 1 candidate with the
+experiment that would falsify it, on the grounds that a candidate without a
+falsification route is not a scientific claim. That commitment was honoured in
+the Track 2 report and not here, which is corrected below. Each row names a
+result that would overturn the claim, not merely fail to support it.
+
+| Claim | What would falsify it | Currently |
+|---|---|---|
+| The two alleles are in *trans* | Parental testing showing both inherited from one parent, or long-read sequencing placing both on one haplotype. Either would collapse the compound heterozygote to a single hit and the diagnosis with it. | **Untested.** Inferred from the recessive mechanism. No read or read pair in our alignment touches both positions. |
+| `BUB1B` is the causal gene | A confirmed pathogenic biallelic genotype in another MVA or chromosomal-instability gene, or a structural variant over one, found by the genome-wide SV calling we did not complete. | Panel genes screened and negative; genome-wide unexamined. |
+| Allele 2 is hypomorphic rather than null | A functional assay of p.Asn1002Lys showing complete loss of kinase activity or checkpoint function. Complete BubR1 nullity is not compatible with life, so a null result here would mean the variant is not what carries the second hit. | **Unmeasured.** An inference from viability, with precedent from five curated kinase-domain MVA1 variants (PMID 15475955) but no measurement of this residue. |
+| Allele 2 is damaging at all | The same functional assay showing normal activity, or accumulating population data moving it out of the ultra-rare band. It is a single allele in 1,461,878 today. | 10 of 16 predictors call it damaging, 5 tolerate it. Prediction, not observation. |
+| The nonsense allele causes loss of function | Evidence of a rescuing isoform or escape from nonsense-mediated decay at this position, for instance from patient RNA. | No RNA-seq exists, so this is assumed on position rather than shown. |
+| `LZTR1` p.Tyr748Ter is incidental rather than contributory | Segregation data, or a second `LZTR1` hit, would move it from incidental toward contributory. Nothing in this dataset bears on it either way. | Reported as a secondary finding only. |
+| The phenotype is fully explained | A feature of this proband that MVA1 does not account for, which is a question for the clinicians who have examined the child and not one this data can settle. | Not assessable from a genome and eight coded terms. |
+
+**The single experiment that would resolve the most.** Parental testing. It
+settles phase directly, and phase is the load-bearing inference in the whole
+call: without *trans*, there is no compound heterozygote. It is also the
+cheapest of everything listed above.
+
+## 7. Validation
 
 Method validation was treated as a first-class deliverable, not a footnote.
 
@@ -289,7 +313,7 @@ Method validation was treated as a first-class deliverable, not a footnote.
 
 ---
 
-## 7. Secondary finding
+## 8. Secondary finding
 
 **`LZTR1` chr22:20996720 C>G, `NM_006767.4:c.2244C>G`, p.Tyr748Ter**, heterozygous
 nonsense, rs1682503990, gnomAD v4.1 exomes global AF 1.4 × 10⁻⁶ and group max
@@ -358,7 +382,7 @@ sound about mapping and did not touch the actual mechanism.
 
 ---
 
-## 8. Data handling and AI assistant disclosure
+## 9. Data handling and AI assistant disclosure
 
 Required by the organisers' update of 28 August 2026.
 
@@ -404,7 +428,7 @@ hackathon and `MVAHackathon2026@synapse.org` notified, per the data access terms
 
 ---
 
-## 9. Reproducibility
+## 10. Reproducibility
 
 Every result is regenerable. The repository contains pinned environments
 (`environment.yml`, `pyproject.toml`, `Dockerfile`), a Snakemake workflow, and

@@ -275,7 +275,10 @@ clinicians.
 - **Nothing here is a diagnosis.** A ranked candidate variant is a hypothesis
   requiring orthogonal confirmation. Every Track 1 candidate ships with the
   specific experiment that would falsify it, because a candidate without a
-  falsification route is not a scientific claim.
+  falsification route is not a scientific claim. Section 6 of the Track 1 report
+  and section 7 of the Track 2 report carry those experiments. The Track 1 table
+  was missing until 4 September 2026, so this paragraph described an intention
+  rather than a fact for the life of the project until then.
 - **Nothing here is clinical advice, and nothing here is a treatment
   recommendation.** Track 2 nominates repurposing hypotheses with mechanistic
   rationale and safety contraindications. No dosing, dose range or safety margin
